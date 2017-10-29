@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.5.2.develop (revision 12f383e) on Sonntag, 6. August 2017 14:16:18 CEST|
+         speed=200.0000
+-->
+    <FlightPlan.FlightPlan>
+        <Title>EDDF to LIRF</Title>
+        <FPType>IFR</FPType>
+        <CruisingAlt>27000</CruisingAlt>
+        <DepartureID>EDDF</DepartureID>
+        <DepartureLLA>N50° 1' 39.11",E8° 32' 2.97",+000354.00</DepartureLLA>
+        <DestinationID>LIRF</DestinationID>
+        <DestinationLLA>N41° 48' 1.00",E12° 14' 20.00",+000015.00</DestinationLLA>
+        <Descr>EDDF, LIRF</Descr>
+        <DeparturePosition>07R</DeparturePosition>
+        <DepartureName>Frankfurt Am Main</DepartureName>
+        <DestinationName>Roma Fiumicino Leonardo Da Vinci</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="EDDF">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 1' 29.21",E8° 32' 47.42",+000354.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDDF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ASKIK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 3' 9.99",E8° 32' 1.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ASKIK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="UMDAS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 23' 45.11",E8° 49' 27.05",+000000.00</WorldPosition>
+            <ATCAirway>T844</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>UMDAS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KOVAN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 52' 56.59",E9° 5' 3.45",+000000.00</WorldPosition>
+            <ATCAirway>T844</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>KOVAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TEDGO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 37' 6.27",E9° 15' 33.15",+000000.00</WorldPosition>
+            <ATCAirway>UL608</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>TEDGO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KUNOD">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 20' 19.85",E9° 37' 6.75",+000000.00</WorldPosition>
+            <ATCAirway>UL608</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>KUNOD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KPT">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N47° 44' 44.78",E10° 20' 59.40",+000000.00</WorldPosition>
+            <ATCAirway>UL608</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>KPT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NESES">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 32' 52.99",E10° 33' 17.00",+000000.00</WorldPosition>
+            <ATCAirway>P66</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>NESES</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MOGTI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 23' 20.33",E10° 43' 0.61",+000000.00</WorldPosition>
+            <ATCAirway>UP66</ATCAirway>
+            <ICAO>
+                <ICAORegion>LO</ICAORegion>
+                <ICAOIdent>MOGTI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NIGEB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 5' 20.90",E11° 4' 36.75",+000000.00</WorldPosition>
+            <ATCAirway>UP66</ATCAirway>
+            <ICAO>
+                <ICAORegion>LO</ICAORegion>
+                <ICAOIdent>NIGEB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SOTOV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 56' 37.91",E11° 12' 37.56",+000000.00</WorldPosition>
+            <ATCAirway>UP66</ATCAirway>
+            <ICAO>
+                <ICAORegion>LO</ICAORegion>
+                <ICAOIdent>SOTOV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BEXOR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 52' 49.01",E11° 13' 31.00",+000000.00</WorldPosition>
+            <ATCAirway>T101</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>BEXOR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NAXAV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 27' 50.00",E11° 19' 20.00",+000000.00</WorldPosition>
+            <ATCAirway>T101</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>NAXAV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUMIR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 15' 32.00",E11° 21' 35.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>SUMIR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DIKEM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 2' 23.00",E11° 23' 58.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>DIKEM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VADIK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 38' 24.00",E11° 28' 17.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>VADIK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALBET">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 25' 36.00",E11° 30' 33.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>ALBET</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LUMAV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 48' 52.00",E11° 36' 59.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>LUMAV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUKOM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 33' 9.01",E11° 40' 11.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>SUKOM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PELEG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 13' 40.01",E11° 44' 7.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>PELEG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BAGNO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 53' 26.00",E11° 48' 8.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>BAGNO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GAVRA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 46' 34.00",E11° 49' 29.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>GAVRA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NIKMA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 3' 58.99",E12° 10' 49.00",+000000.00</WorldPosition>
+            <ATCAirway>M726</ATCAirway>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>NIKMA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LIRF">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N41° 48' 1.00",E12° 14' 20.00",+000015.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LIRF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

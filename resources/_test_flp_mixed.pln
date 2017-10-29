@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.5.2.develop (revision 12f383e) on Sonntag, 6. August 2017 14:05:42 CEST|
+         approachrw=05R|
+         sidappr=MERIT4|
+         sidapprrw=22R|
+         sidtrans=PUT|
+         speed=200.0000|
+         star=MIRS1B
+-->
+    <FlightPlan.FlightPlan>
+        <Title>KJFK to EGCC</Title>
+        <FPType>IFR</FPType>
+        <RouteType>Direct</RouteType>
+        <CruisingAlt>27000</CruisingAlt>
+        <DepartureID>KJFK</DepartureID>
+        <DepartureLLA>N40° 38' 54.11",W73° 49' 0.22",+000013.00</DepartureLLA>
+        <DestinationID>EGCC</DestinationID>
+        <DestinationLLA>N53° 21' 14.00",W2° 16' 30.00",+000256.00</DestinationLLA>
+        <Descr>KJFK, EGCC</Descr>
+        <DeparturePosition>13R</DeparturePosition>
+        <DepartureName>John F Kennedy Intl</DepartureName>
+        <DestinationName>Manchester International</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="KJFK">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 38' 23.72",W73° 46' 43.30",+000013.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KJFK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PUT">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N41° 57' 19.65",W71° 50' 38.74",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>PUT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BOS">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N42° 21' 26.81",W70° 59' 22.37",+000000.00</WorldPosition>
+            <ATCAirway>J42</ATCAirway>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>BOS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ENE">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N43° 25' 32.41",W70° 36' 48.69",+000000.00</WorldPosition>
+            <ATCAirway>J55</ATCAirway>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>ENE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SCARS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 32' 55.09",W70° 20' 27.89",+000000.00</WorldPosition>
+            <ATCAirway>J573</ATCAirway>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>SCARS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SEAER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 55' 28.40",W69° 29' 30.47",+000000.00</WorldPosition>
+            <ATCAirway>J573</ATCAirway>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>SEAER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EBONY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 54' 8.68",W67° 9' 23.65",+000000.00</WorldPosition>
+            <ATCAirway>J573</ATCAirway>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>EBONY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RIKAL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 48' 0.00",W54° 32' 0.00",+000000.00</WorldPosition>
+            <ATCAirway>N497C</ATCAirway>
+            <ICAO>
+                <ICAORegion>CY</ICAORegion>
+                <ICAOIdent>RIKAL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="5350N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 0' 0.00",W50° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>CY</ICAORegion>
+                <ICAOIdent>5350N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="5540N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N55° 0' 0.00",W40° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>CY</ICAORegion>
+                <ICAOIdent>5540N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="5530N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N55° 0' 0.00",W30° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>5530N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="5420N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N54° 0' 0.00",W20° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>5420N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MALOT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 0' 0.00",W15° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EI</ICAORegion>
+                <ICAOIdent>MALOT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GISTI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 0' 0.00",W14° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EI</ICAORegion>
+                <ICAOIdent>GISTI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LIFFY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 28' 48.30",W5° 30' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EI</ICAORegion>
+                <ICAOIdent>LIFFY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IDEXA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 28' 14.00",W5° 9' 51.00",+000000.00</WorldPosition>
+            <ATCAirway>UL975</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>IDEXA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GINIS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 27' 39.00",W4° 51' 29.00",+000000.00</WorldPosition>
+            <ATCAirway>UL975</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>GINIS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NATKO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 27' 12.01",W4° 38' 7.00",+000000.00</WorldPosition>
+            <ATCAirway>UL975</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>NATKO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LYNAS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 26' 33.00",W4° 20' 0.00",+000000.00</WorldPosition>
+            <ATCAirway>UL975</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>LYNAS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EGCC">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N53° 21' 14.00",W2° 16' 30.00",+000256.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EGCC</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

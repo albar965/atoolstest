@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SimBase.Document Type="AddOnXml" version="4,0" id="add-on">
+    <AddOn.Name>MyAddOn</AddOn.Name>
+    <AddOn.Description>My Add-on developed by My Company äöüß.</AddOn.Description>
+    <AddOn.Component>
+        <Category>SimObjects</Category>
+        <Path>Content\SimObjects\Airplanes</Path>
+    </AddOn.Component>
+    <AddOn.Component>
+        <Category>Scenarios</Category>
+        <Path>Content\Scenarios</Path>
+    </AddOn.Component>
+    <AddOn.Component>
+        <Category>Scenery</Category>
+        <Path>Content\Scenery\Scenery01</Path>
+        <Name>Scenery01</Name>
+    </AddOn.Component>
+    <AddOn.Component>
+        <Category>Scenery</Category>
+        <Path>C:\Content\Scenery\Scenery02</Path>
+        <Name>Scenery02</Name>
+        <Layer>99</Layer>
+    </AddOn.Component>
+    <AddOn.Component>
+        <Category>DLL</Category>
+        <Path>MyFirstDll.dll</Path>
+        <DLLType>PDK</DLLType>
+    </AddOn.Component>
+    <AddOn.Component>
+        <Category>DLL</Category>
+        <Path>MySecond.dll</Path>
+        <DLLStartName>MyStartFunc</DLLStartName>
+        <DLLStopName>MyStopFunc</DLLStopName>
+    </AddOn.Component>
+    <AddOn.Component>
+        <Category>Texture</Category>
+        <Path>Textures/Global</Path>
+        <Type>GLOBAL</Type>
+    </AddOn.Component>
+</SimBase.Document>

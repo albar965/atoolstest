@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.3.5.develop (revision e249da0) on Montag, 17. April 2017 21:36:51 CEST|
+         approach=FI24|
+         approachdistance=7.8|
+         approachrw=24|
+         approachsize=6|
+         approachsuffix=|
+         approachtype=ILS|
+         speed=240.0000|
+         transition=KKS|
+         transitiondistance=0.0|
+         transitionsize=2|
+         transitiontype=F
+-->
+    <FlightPlan.FlightPlan>
+        <Title>EINN to ENKR</Title>
+        <FPType>VFR</FPType>
+        <RouteType>HighAlt</RouteType>
+        <CruisingAlt>10000</CruisingAlt>
+        <DepartureID>EINN</DepartureID>
+        <DepartureLLA>N52° 41' 39.99",W8° 56' 33.51",+000046.00</DepartureLLA>
+        <DestinationID>ENKR</DestinationID>
+        <DestinationLLA>N69° 43' 29.99",E29° 53' 15.98",+000283.00</DestinationLLA>
+        <Descr>EINN, ENKR</Descr>
+        <DeparturePosition>06</DeparturePosition>
+        <DepartureName>Shannon</DepartureName>
+        <DestinationName>Hoybuktmoen</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="EINN">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N52° 42' 10.71",W8° 55' 28.25",+000046.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EINN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP11">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 0' 0",W7° 0' 0",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP99">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N3° 0' 0",E0° 0' 0",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="LAPIX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N63° 54' 20.80",E20° 28' 43.48",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>LAPIX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SOPLI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N64° 14' 3.50",E20° 44' 25.78",+000000.00</WorldPosition>
+            <ATCAirway>UM607</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>SOPLI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ELBOG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N65° 9' 45.60",E21° 30' 53.39",+000000.00</WorldPosition>
+            <ATCAirway>UM607</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>ELBOG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ESPA">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N65° 32' 36.01",E22° 7' 24.95",+000068.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>ESPA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BESLA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N65° 51' 27.10",E22° 18' 36.93",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>BESLA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP10">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N66° 7' 17.42",E22° 43' 7.99",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="ASKEB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N66° 24' 22.31",E23° 16' 57.55",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>ASKEB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MAGON">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N66° 44' 6.99",E23° 53' 31.96",+000000.00</WorldPosition>
+            <ATCAirway>UM852</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>MAGON</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ABKUR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N66° 57' 36.00",E24° 14' 44.01",+000000.00</WorldPosition>
+            <ATCAirway>UM852</ATCAirway>
+            <ICAO>
+                <ICAORegion>EF</ICAORegion>
+                <ICAOIdent>ABKUR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TEST_waypo">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N67° 30' 27.58",E25° 11' 10.12",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUPOX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N68° 18' 11.00",E26° 31' 47.01",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EF</ICAORegion>
+                <ICAOIdent>SUPOX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KNS">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N68° 27' 14.38",E27° 27' 5.43",+000000.00</WorldPosition>
+            <ATCAirway>UM852</ATCAirway>
+            <ICAO>
+                <ICAORegion>EF</ICAORegion>
+                <ICAOIdent>KNS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NIPSA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N68° 54' 46.01",E27° 43' 20.02",+000000.00</WorldPosition>
+            <ATCAirway>UM857</ATCAirway>
+            <ICAO>
+                <ICAORegion>EF</ICAORegion>
+                <ICAOIdent>NIPSA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP7">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N69° 18' 17.04",E28° 18' 45.11",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="ENKR">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N69° 43' 29.99",E29° 53' 16.00",+000283.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>ENKR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.5.2.develop (revision 12f383e) on Sonntag, 6. August 2017 14:06:17 CEST|
+         speed=200.0000
+-->
+    <FlightPlan.FlightPlan>
+        <Title>LEMG to LFPG</Title>
+        <FPType>IFR</FPType>
+        <RouteType>Direct</RouteType>
+        <CruisingAlt>27000</CruisingAlt>
+        <DepartureID>LEMG</DepartureID>
+        <DepartureLLA>N36° 41' 4.41",W4° 30' 45.45",+000050.00</DepartureLLA>
+        <DestinationID>LFPG</DestinationID>
+        <DestinationLLA>N49° 0' 29.61",E2° 33' 9.79",+000392.00</DestinationLLA>
+        <Descr>LEMG, LFPG</Descr>
+        <DeparturePosition>13</DeparturePosition>
+        <DepartureName>Malaga</DepartureName>
+        <DestinationName>Paris Charles De Gaulle</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="LEMG">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N36° 40' 30.00",W4° 29' 57.00",+000050.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LEMG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BLN">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N38° 9' 9.10",W3° 37' 30.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>BLN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ANZAN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N39° 0' 0.00",W3° 13' 17.20",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>ANZAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NASOS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N39° 23' 56.90",W3° 1' 40.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>NASOS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CJN">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N40° 22' 19.10",W2° 32' 40.60",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>CJN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PINAR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 58' 49.10",W2° 35' 57.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>PINAR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BAN">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N41° 19' 24.80",W2° 37' 47.20",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>BAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HERMI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N41° 28' 24.69",W2° 31' 59.80",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>HERMI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GARVU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N42° 10' 15.70",W2° 4' 40.10",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>GARVU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALEPO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N42° 20' 37.20",W1° 57' 48.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>ALEPO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NOLSA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N42° 25' 39.40",W1° 54' 26.70",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>NOLSA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PPN">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N42° 44' 1.50",W1° 42' 7.20",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>PPN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="THUNE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 15' 13.80",W1° 33' 59.20",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>THUNE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ENSAC">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 12' 0.00",W0° 41' 25.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>ENSAC</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="POI">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N46° 34' 51.60",E0° 17' 53.50",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>POI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OMARI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 10' 0.00",E0° 49' 29.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>OMARI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AMB">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N47° 25' 44.10",E1° 3' 52.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>AMB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DIBES">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 30' 27.00",E1° 6' 17.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>DIBES</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LFPG">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N49° 0' 29.61",E2° 33' 9.79",+000392.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LFPG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

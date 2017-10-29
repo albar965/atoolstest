@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.5.2.develop (revision 2bd25b4) on Mittwoch, 2. August 2017 22:00:56 CEST|
+         approach=FI16|
+         approachdistance=15.7|
+         approachrw=16|
+         approachsize=7|
+         approachsuffix=|
+         approachtype=ILS|
+         sidappr=SULU7E|
+         sidapprdistance=7.2|
+         sidapprrw=07C|
+         sidapprsize=3|
+         speed=150.0000|
+         star=VENE2W|
+         stardistance=62.2|
+         starsize=7|
+         transition=NER6L|
+         transitiondistance=43.4|
+         transitionsize=8|
+         transitiontype=F
+-->
+    <FlightPlan.FlightPlan>
+        <Title>EDDF to LOWW</Title>
+        <FPType>IFR</FPType>
+        <RouteType>HighAlt</RouteType>
+        <CruisingAlt>33000</CruisingAlt>
+        <DepartureID>EDDF</DepartureID>
+        <DepartureLLA>N50° 1' 39.11",E8° 32' 2.97",+000354.00</DepartureLLA>
+        <DestinationID>LOWW</DestinationID>
+        <DestinationLLA>N48° 6' 37.00",E16° 34' 11.00",+000600.00</DestinationLLA>
+        <Descr>EDDF, LOWW</Descr>
+        <DeparturePosition>07R</DeparturePosition>
+        <DepartureName>Frankfurt Am Main</DepartureName>
+        <DestinationName>Wien Schwechat</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="EDDF">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 1' 29.21",E8° 32' 47.42",+000354.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDDF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BOMBI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 3' 24.00",E8° 48' 1.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BOMBI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ESATI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 3' 47.01",E9° 11' 24.00",+000000.00</WorldPosition>
+            <ATCAirway>UL984</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ESATI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LOHRE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 4' 1.00",E9° 29' 11.00",+000000.00</WorldPosition>
+            <ATCAirway>UL984</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>LOHRE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OSBIT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 4' 12.42",E9° 46' 59.04",+000000.00</WorldPosition>
+            <ATCAirway>UL984</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>OSBIT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RASPU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 4' 22.00",E10° 5' 55.00",+000000.00</WorldPosition>
+            <ATCAirway>UL984</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>RASPU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BOREP">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 57' 56.99",E10° 37' 40.00",+000000.00</WorldPosition>
+            <ATCAirway>UZ660</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BOREP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BAMAS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 52' 47.83",E11° 2' 44.99",+000000.00</WorldPosition>
+            <ATCAirway>UZ660</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BAMAS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ANELA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 46' 7.55",E11° 13' 28.57",+000000.00</WorldPosition>
+            <ATCAirway>UL604</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ANELA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EKSOS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 39' 15.00",E11° 24' 27.00",+000000.00</WorldPosition>
+            <ATCAirway>UL604</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>EKSOS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MOOCE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 33' 59.47",E11° 32' 47.66",+000000.00</WorldPosition>
+            <ATCAirway>UL604</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>MOOCE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RODIS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 28' 27.67",E11° 56' 59.33",+000000.00</WorldPosition>
+            <ATCAirway>UL604</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>RODIS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RUDNO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 20' 9.00",E12° 32' 29.03",+000000.00</WorldPosition>
+            <ATCAirway>UL604</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>RUDNO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LALIN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 52' 48.00",E13° 14' 32.00",+000000.00</WorldPosition>
+            <ATCAirway>UL604</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>LALIN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PASAU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 48' 9.01",E13° 39' 4.00",+000000.00</WorldPosition>
+            <ATCAirway>UL850</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>PASAU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DEGAB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 42' 20.46",E13° 55' 53.38",+000000.00</WorldPosition>
+            <ATCAirway>UL850</ATCAirway>
+            <ICAO>
+                <ICAORegion>LO</ICAORegion>
+                <ICAOIdent>DEGAB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LOWW">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N48° 6' 37.00",E16° 34' 11.00",+000600.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LOWW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>
