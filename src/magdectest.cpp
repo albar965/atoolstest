@@ -28,6 +28,12 @@ MagdecTest::MagdecTest()
 
 }
 
+void MagdecTest::runtest(int argc, char *argv[])
+{
+  MagdecTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void MagdecTest::initTestCase()
 {
 }

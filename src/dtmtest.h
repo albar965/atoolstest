@@ -35,6 +35,8 @@ class DtmTest :
 public:
   DtmTest();
 
+  static void runtest(int argc, char *argv[]);
+
 private slots:
   void initTestCase();
   void cleanupTestCase();

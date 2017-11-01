@@ -34,6 +34,12 @@ DtmTest::DtmTest()
 
 }
 
+void DtmTest::runtest(int argc, char *argv[])
+{
+  DtmTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void DtmTest::initTestCase()
 {
 }
@@ -55,9 +61,9 @@ void DtmTest::testElevation_data()
   QTest::addColumn<float>("elevation");
 
   QTest::newRow("Atlantic") << Pos(0.f, 0.f) << atools::fs::common::OCEAN;
-//  QTest::newRow("Frankfurt") << Pos(8.5704f, 50.0333f) << 104.f;
-//  QTest::newRow("Mount Everest") << Pos(86.925278, 27.988056) << 8752.f;
-//  QTest::newRow("Metzada") << Pos(35.3917, 31.3317) << -384.f;
+  // QTest::newRow("Frankfurt") << Pos(8.5704f, 50.0333f) << 104.f;
+  // QTest::newRow("Mount Everest") << Pos(86.925278, 27.988056) << 8752.f;
+  // QTest::newRow("Metzada") << Pos(35.3917, 31.3317) << -384.f;
 }
 
 void DtmTest::testElevationLine_data()
@@ -67,13 +73,13 @@ void DtmTest::testElevationLine_data()
   QTest::addColumn<float>("maxelevation");
 
   QTest::newRow("Frankfurt - Mount Everest") <<
-  LineString(Pos(8.5704f, 50.0333f), Pos(86.925278, 27.988056)) << -42.f << 8752.f;
+    LineString(Pos(8.5704f, 50.0333f), Pos(86.925278, 27.988056)) << -42.f << 8752.f;
 
   QTest::newRow("Frankfurt - Ushuaia") <<
-  LineString(Pos(8.5704f, 50.0333f), Pos(68.2842, -54.8380)) << -500.f << 2865.f;
+    LineString(Pos(8.5704f, 50.0333f), Pos(68.2842, -54.8380)) << -500.f << 2865.f;
 
   QTest::newRow("LGAV - KLAX") <<
-  LineString(Pos(23.9445, 37.9366), Pos(-118.4070, 33.9424)) << -500.f << 3459.f;
+    LineString(Pos(23.9445, 37.9366), Pos(-118.4070, 33.9424)) << -500.f << 3459.f;
 }
 
 void DtmTest::testElevation()

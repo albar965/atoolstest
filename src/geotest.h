@@ -29,11 +29,18 @@ class GeoTest :
 public:
   GeoTest();
 
+  static void runtest(int argc, char *argv[]);
+
 private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testRectOverlap_data();
+  void testRectOverlap();
+
+
   void testRectExpandDateBoundary();
+  void testRectExpandDateBoundary2();
   void testDistanceToLineBeforeLong();
   void testDistanceToLineAfterLong();
 

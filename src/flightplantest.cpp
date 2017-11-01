@@ -25,6 +25,12 @@ FlightplanTest::FlightplanTest()
 
 }
 
+void FlightplanTest::runtest(int argc, char *argv[])
+{
+  FlightplanTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void FlightplanTest::initTestCase()
 {
   flightplan.load(":/test/resources/flightplan.pln");

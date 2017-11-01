@@ -24,6 +24,12 @@ PathTest::PathTest()
 
 }
 
+void PathTest::runtest(int argc, char *argv[])
+{
+  PathTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void PathTest::initTestCase()
 {
 }
@@ -53,7 +59,7 @@ void PathTest::testPath_data()
   QTest::newRow("Not Existing Path wrong case") << QStringList({"/usr", "BINX", "aclocalx"}) << "/usr/BINX/aclocalx";
   QTest::newRow("Not Existing Path wrong case 2") << QStringList({"/usr", "BINX", "ACLOCALX"}) << "/usr/BINX/ACLOCALX";
   QTest::newRow("Not Existing Path wrong case 3") <<
-  QStringList({"/", "USR", "BINX", "ACLOCALX"}) << "/usr/BINX/ACLOCALX";
+    QStringList({"/", "USR", "BINX", "ACLOCALX"}) << "/usr/BINX/ACLOCALX";
 }
 
 void PathTest::testPath()

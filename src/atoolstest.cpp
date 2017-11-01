@@ -24,10 +24,35 @@
 #include "scenerycfgtest.h"
 #include "pathtest.h"
 #include "stringtest.h"
+#include "maintest.h"
 
 #include <QString>
 #include <QTimer>
 #include <QtTest/QtTest>
+
+#if !defined(TEST_OWN_MAIN)
+
+QTEST_MAIN(MainTest)
+
+#else
+
+#define RUNTESTEXT(name) \
+  if(parser->isSet( # name) || parser->isSet("RunAll")) \
+  { \
+    name tst; \
+    runtest(tst, messages, otherOptions); \
+  }
+
+#define RUNTEST(name) \
+  { \
+    name tst; \
+    QTest::qExec(&tst, argCount, argVector); \
+  }
+
+#define DEFINETEST(name) \
+  { \
+    addOption(parser, # name); \
+  };
 
 void test();
 void runtest(QObject& testObject, QVector<std::pair<int, QString> >& messages, const QStringList& options);
@@ -46,24 +71,26 @@ int main(int argc, char *argv[])
   QCoreApplication app(argc, argv);
   parser = new QCommandLineParser();
   parser->setApplicationDescription("atools unit tests.");
+  parser->setSingleDashWordOptionMode(QCommandLineParser::ParseAsLongOptions);
   parser->addHelpOption();
   parser->addVersionOption();
 
   QCommandLineOption allOpt("RunAll", QObject::tr("Run all."));
   parser->addOption(allOpt);
 
-  addOption(parser, "SceneryCfgTest");
-  addOption(parser, "MagdecTest");
-  addOption(parser, "StringTest");
-  addOption(parser, "UpdateTest");
-  addOption(parser, "PathTest");
-  addOption(parser, "GeoTest");
-  addOption(parser, "FlightplanTest");
-  addOption(parser, "MetarTest");
-  addOption(parser, "DtmTest");
+  DEFINETEST(SceneryCfgTest);
+  DEFINETEST(MagdecTest);
+  DEFINETEST(StringTest);
+  // DEFINETEST(UpdateTest);
+  DEFINETEST(PathTest);
+  DEFINETEST(GeoTest);
+  DEFINETEST(FlightplanTest);
+  DEFINETEST(MetarTest);
+  DEFINETEST(DtmTest);
 
-  parser->process(*QCoreApplication::instance());
-  otherOptions = parser->unknownOptionNames();
+  parser->parse(QCoreApplication::arguments());
+  otherOptions.append(QCoreApplication::arguments().first());
+  otherOptions.append(parser->unknownOptionNames());
 
   if(parser->optionNames().isEmpty())
     parser->showHelp();
@@ -73,27 +100,20 @@ int main(int argc, char *argv[])
   return app.exec();
 }
 
-#define RUNTEST(name) \
-  if(parser->isSet( # name) || parser->isSet("RunAll")) \
-  { \
-    name tst; \
-    runtest(tst, messages, otherOptions); \
-  };
-
 void test()
 {
   // status |= QTest::qExec(&tc, argc, argv);
   QVector<std::pair<int, QString> > messages;
 
-  RUNTEST(SceneryCfgTest);
-  RUNTEST(MagdecTest);
-  RUNTEST(StringTest);
-  RUNTEST(UpdateTest);
-  RUNTEST(PathTest);
-  RUNTEST(GeoTest);
-  RUNTEST(FlightplanTest);
-  RUNTEST(MetarTest);
-  RUNTEST(DtmTest);
+  RUNTESTEXT(SceneryCfgTest);
+  RUNTESTEXT(MagdecTest);
+  RUNTESTEXT(StringTest);
+  // RUNTESTEXT(UpdateTest);
+  RUNTESTEXT(PathTest);
+  RUNTESTEXT(GeoTest);
+  RUNTESTEXT(FlightplanTest);
+  RUNTESTEXT(MetarTest);
+  RUNTESTEXT(DtmTest);
 
   bool failed = false;
   for(const std::pair<int, QString>& msg : messages)
@@ -112,12 +132,12 @@ void test()
 void runtest(QObject& testObject, QVector<std::pair<int, QString> >& messages, const QStringList& options)
 {
   int result = QTest::qExec(&testObject, options);
-
   messages.append(std::make_pair(result, QString(testObject.metaObject()->className())));
 }
 
 void addOption(QCommandLineParser *cmdParser, const QString& shortOpt)
 {
-  QCommandLineOption opt(shortOpt);
-  cmdParser->addOption(opt);
+  cmdParser->addOption(QCommandLineOption(shortOpt));
 }
+
+#endif

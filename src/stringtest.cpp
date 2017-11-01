@@ -24,6 +24,12 @@ StringTest::StringTest()
 
 }
 
+void StringTest::runtest(int argc, char *argv[])
+{
+  StringTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void StringTest::initTestCase()
 {
 }

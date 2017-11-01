@@ -29,6 +29,8 @@ class UpdateTest :
 public:
   UpdateTest();
 
+  static void runtest(int argc, char *argv[]);
+
 private slots:
   void initTestCase();
   void cleanupTestCase();

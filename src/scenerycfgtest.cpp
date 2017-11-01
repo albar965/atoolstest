@@ -29,6 +29,12 @@ SceneryCfgTest::SceneryCfgTest()
 
 }
 
+void SceneryCfgTest::runtest(int argc, char *argv[])
+{
+  SceneryCfgTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void SceneryCfgTest::testFsx()
 {
   QString specialCharsPath(QString("Addon Scenery") + QDir::separator() + "TEST äöü~ÄÖÜß§^°|" + QDir::separator());

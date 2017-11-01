@@ -50,6 +50,12 @@ UpdateTest::UpdateTest()
 
 }
 
+void UpdateTest::runtest(int argc, char *argv[])
+{
+  UpdateTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void UpdateTest::initTestCase()
 {
 }

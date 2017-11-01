@@ -33,6 +33,12 @@ GeoTest::GeoTest()
 
 }
 
+void GeoTest::runtest(int argc, char *argv[])
+{
+  GeoTest tst;
+  QTest::qExec(&tst, argc, argv);
+}
+
 void GeoTest::initTestCase()
 {
 }
@@ -313,7 +319,106 @@ void GeoTest::testRectExpandDateBoundary()
     Pos(-160.000000, 53.500000),
     Pos(-153.000000, 56.000000),
   });
+  qDebug() << line.boundingRect();
+  QCOMPARE(line.boundingRect(), Rect(130.000000f, 56.750557f, -120.000000f, -5.000000f));
+}
 
-  QCOMPARE(line.boundingRect(), Rect(0.f, 0.f, 0.f, 0.f));
+void GeoTest::testRectExpandDateBoundary2()
+{
+  atools::geo::LineString line({
+    Pos(78.000000, -2.000000),
+    Pos(92.000000, -2.000000),
+    Pos(107.000000, -12.000000),
+    Pos(114.500000, -12.000000),
+    Pos(115.142220, -14.136945),
+    Pos(120.250000, -19.000000),
+    Pos(121.672775, -20.055000),
+    Pos(124.551109, -21.521944),
+    Pos(126.058891, -23.396944),
+    Pos(128.463608, -23.220278),
+    Pos(131.839996, -21.202499),
+    Pos(136.328888, -21.499722),
+    Pos(136.373611, -21.858889),
+    Pos(136.635284, -22.297501),
+    Pos(138.389999, -26.225277),
+    Pos(143.500000, -29.000000),
+    Pos(146.533340, -29.000000),
+    Pos(148.830826, -32.094444),
+    Pos(150.529358, -33.427212),
+    Pos(150.711975, -33.304508),
+    Pos(150.925964, -33.225113),
+    Pos(151.157013, -33.194321),
+    Pos(151.182495, -33.194019),
+    Pos(151.414490, -33.219353),
+    Pos(151.631042, -33.293667),
+    Pos(151.817703, -33.412018),
+    Pos(151.961868, -33.566494),
+    Pos(152.053604, -33.746738),
+    Pos(152.086380, -33.940586),
+    Pos(152.057587, -34.134876),
+    Pos(151.968765, -34.316330),
+    Pos(151.825668, -34.472458),
+    Pos(151.825012, -34.473015),
+    Pos(151.824753, -34.472805),
+    Pos(152.931900, -35.316578),
+    Pos(152.739960, -35.813446),
+    Pos(152.393036, -36.252247),
+    Pos(151.913284, -36.601898),
+    Pos(151.333664, -36.837250),
+    Pos(150.749985, -36.937763),
+    Pos(150.750809, -36.945099),
+    Pos(150.320557, -38.188610),
+    Pos(151.000000, -43.000000),
+    Pos(150.664719, -43.850834),
+    Pos(150.000000, -44.565834),
+    Pos(150.000000, -45.000000),
+    Pos(163.000000, -45.000000),
+    Pos(163.000000, -89.999985),
+    Pos(75.000000, -6.000000)
+  });
+
+  qDebug() << line.boundingRect();
+
+  // float leftLonX, float topLatY, float rightLonX, float bottomLatY
+  QCOMPARE(line.boundingRect(), Rect(75.000000f, -2.000000f, 163.000000f, -89.999985f));
+}
+
+void GeoTest::testRectOverlap_data()
+{
+  QTest::addColumn<Rect>("r1");
+  QTest::addColumn<Rect>("r2");
+  QTest::addColumn<bool>("result");
+
+  // explicit Rect(float leftLonX, float topLatY, float rightLonX, float bottomLatY);
+
+  Rect germany(Pos(6.70917, 53.5955), Pos(13.346, 48.518));
+  Rect eu(Pos(-6.33111, 58.2156), Pos(28.0862, 36.4054));
+  Rect seeu(Pos(24.6197, 40.9139), Pos(38.3, 34.55));
+  Rect us(Pos(-156.769, 71.2847), Pos(-74.524, 24.0633));
+  Rect pacific(Pos(166.637, 19.2825), Pos(-149.611, -17.5567));
+  Rect pacificE(Pos(-169.534, 16.7287), Pos(-149.611, -17.5567));
+  Rect pacificW(Pos(145.73, 15.1203), Pos(177.444, -17.7564));
+  Rect pacificC(Pos(173.146, 1.38116), Pos(-176, -10.f));
+
+  QTest::newRow("Germany EU") << germany << eu << true;
+  QTest::newRow("SE EU EU") << seeu << eu << true;
+  QTest::newRow("Germany SE EU") << germany << seeu << false;
+  QTest::newRow("US EU") << us << eu << false;
+  QTest::newRow("Germany US") << germany << us << false;
+  QTest::newRow("Pacific US") << pacific << us << false;
+
+  QTest::newRow("Pacific Pacific W") << pacific << pacificW << true;
+  QTest::newRow("Pacific Pacific E") << pacific << pacificE << true;
+  QTest::newRow("Pacific Pacific C") << pacific << pacificC << true;
+
+}
+
+void GeoTest::testRectOverlap()
+{
+  QFETCH(Rect, r1);
+  QFETCH(Rect, r2);
+  QFETCH(bool, result);
+
+  QCOMPARE(r1.overlaps(r2), result);
 
 }

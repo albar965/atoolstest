@@ -29,6 +29,8 @@ class SceneryCfgTest :
 public:
   SceneryCfgTest();
 
+  static void runtest(int argc, char *argv[]);
+
 private slots:
   void testFsx();
   void testP3dv4();
