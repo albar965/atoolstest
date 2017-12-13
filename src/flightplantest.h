@@ -37,6 +37,14 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+#ifdef FPR_TEST
+
+  void testReadFpr();
+
+#endif
+  void testSaveFprDirect();
+  void testSaveFprAirway();
+
   void testLoadFs9();
   void testLoadFms();
   void testLoadFms2();
@@ -52,8 +60,10 @@ private slots:
   void testSaveFms();
   void testSaveGpx();
 
+  void testSaveGarminGns();
+
 private:
-  atools::fs::pln::Flightplan flightplan;
+  atools::fs::pln::Flightplan flightplan, flightplanUser;
 };
 
 #endif // ATOOLSTEST_FPTEST_H

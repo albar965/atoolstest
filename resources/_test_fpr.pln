@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.7.1.develop (revision 7ba5ab4) on 2017 11 08T20:57:00|
+         cycle=1710|
+         navdata=FSX|
+         speed=130.0000
+-->
+    <FlightPlan.FlightPlan>
+        <Title>EDXW to EDDF</Title>
+        <FPType>IFR</FPType>
+        <RouteType>HighAlt</RouteType>
+        <CruisingAlt>27000</CruisingAlt>
+        <DepartureID>EDXW</DepartureID>
+        <DepartureLLA>N54° 55' 8.74",E8° 19' 59.51",+000051.00</DepartureLLA>
+        <DestinationID>EDDF</DestinationID>
+        <DestinationLLA>N50° 1' 59.90",E8° 34' 13.64",+000364.00</DestinationLLA>
+        <Descr>EDXW, EDDF</Descr>
+        <DeparturePosition>15</DeparturePosition>
+        <DepartureName>Westerland/Sylt</DepartureName>
+        <DestinationName>Frankfurt/Main</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="EDXW">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N54° 54' 41.89",E8° 20' 32.59",+000051.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDXW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MEBUS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N54° 24' 27.99",E8° 33' 15.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>MEBUS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GULMI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N52° 53' 51.00",E8° 51' 12.00",+000000.00</WorldPosition>
+            <ATCAirway>UZ710</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>GULMI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WRB">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N51° 30' 20.50",E9° 6' 39.29",+000000.00</WorldPosition>
+            <ATCAirway>UZ710</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>WRB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RANAX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 12' 26.00",E9° 2' 46.00",+000000.00</WorldPosition>
+            <ATCAirway>UN850</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>RANAX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EDEGA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 2' 5.00",E9° 0' 28.00",+000000.00</WorldPosition>
+            <ATCAirway>UN850</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>EDEGA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AMETU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 49' 59.01",E8° 57' 52.00",+000000.00</WorldPosition>
+            <ATCAirway>UN850</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>AMETU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SOGMI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 31' 39.00",E8° 53' 57.00",+000000.00</WorldPosition>
+            <ATCAirway>UN850</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>SOGMI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BOMBI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 3' 24.00",E8° 48' 1.00",+000000.00</WorldPosition>
+            <ATCAirway>UN850</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BOMBI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FFM">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N50° 3' 13.47",E8° 38' 13.53",+000000.00</WorldPosition>
+            <ATCAirway>UL984</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>FFM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EDDF">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 1' 59.90",E8° 34' 13.64",+000364.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDDF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

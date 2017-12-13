@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.8.3 (revision 5f0a51c) on 2017 12 11T17:59:35|
+         cycle=1710|
+         navdata=XP11|
+         simdata=XP11|
+         speed=130.0000
+-->
+    <FlightPlan.FlightPlan>
+        <Title>UT02 to 6T4</Title>
+        <FPType>VFR</FPType>
+        <CruisingAlt>6500</CruisingAlt>
+        <DepartureID>UT02</DepartureID>
+        <DepartureLLA>N38° 5' 4.80",W111° 4' 15.57",+005468.00</DepartureLLA>
+        <DestinationID>6T4</DestinationID>
+        <DestinationLLA>N28° 58' 50.94",W96° 37' 18.90",+000064.00</DestinationLLA>
+        <Descr>UT02, 6T4</Descr>
+        <DeparturePosition>02</DeparturePosition>
+        <DepartureName>Sandy Ranch</DepartureName>
+        <DestinationName>Kubecka Flying Service Inc.</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="UT02">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N38° 5' 19.95",W111° 4' 2.58",+005468.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>UT02</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP1">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N36° 11' 59.85",W107° 17' 1.07",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP3">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N35° 35' 41.22",W106° 24' 56.56",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="AE">
+            <ATCWaypointType>NDB</ATCWaypointType>
+            <WorldPosition>N35° 13' 2.64",W106° 42' 46.08",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K2</ICAORegion>
+                <ICAOIdent>AE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="__">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N34° 41' 47.26",W104° 38' 48.88",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="WP1">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N33° 40' 10.19",W103° 1' 15.37",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="BGS">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N32° 23' 8.12",W101° 29' 1.25",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>BGS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="6TE6">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N33° 38' 29.37",W100° 20' 51.04",+001774.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>6TE6</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TA24">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N31° 28' 30.34",W98° 42' 41.96",+001320.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>TA24</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BGS">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N32° 23' 8.12",W101° 29' 1.25",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>BGS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="58R">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N29° 34' 10.85",W97° 9' 10.96",+000375.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>58R</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="6T4">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N28° 58' 50.94",W96° 37' 18.90",+000064.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>6T4</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

@@ -18,5 +18,7 @@
         <file>resources/_test_flp_mixed.pln</file>
         <file>resources/add-on_win_encoding_no_bom.xml</file>
         <file>resources/add-on_encoding_mismatch.xml</file>
+        <file>resources/_test_fpr.pln</file>
+        <file>resources/_test_flp_user.pln</file>
     </qresource>
 </RCC>

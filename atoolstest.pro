@@ -8,7 +8,7 @@ QT += sql xml core widgets testlib network
 QT -= gui
 
 CONFIG+=testcase
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++14
 
 DEPENDPATH += $$PWD/../atools/src
 INCLUDEPATH += $$PWD/../atools/src $$PWD/src
