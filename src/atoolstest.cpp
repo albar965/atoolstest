@@ -19,6 +19,7 @@
 #include "geotest.h"
 #include "updatetest.h"
 #include "dtmtest.h"
+#include "versiontest.h"
 #include "magdectest.h"
 #include "flightplantest.h"
 #include "scenerycfgtest.h"
@@ -83,6 +84,7 @@ int main(int argc, char *argv[])
   DEFINETEST(StringTest);
   // DEFINETEST(UpdateTest);
   DEFINETEST(PathTest);
+  DEFINETEST(VersionTest);
   DEFINETEST(GeoTest);
   DEFINETEST(FlightplanTest);
   DEFINETEST(MetarTest);
@@ -110,6 +112,7 @@ void test()
   RUNTESTEXT(StringTest);
   // RUNTESTEXT(UpdateTest);
   RUNTESTEXT(PathTest);
+  RUNTESTEXT(VersionTest);
   RUNTESTEXT(GeoTest);
   RUNTESTEXT(FlightplanTest);
   RUNTESTEXT(MetarTest);
