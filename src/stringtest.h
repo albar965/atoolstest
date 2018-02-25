@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2017 Alexander Barthel albar965@mailbox.org
+* Copyright 2015-2018 Alexander Barthel albar965@mailbox.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,12 @@ private slots:
 
   void testCapAirport_data();
   void testCapAirport();
+
+  void testPath_data();
+  void testPath();
+
+  void testCsv_data();
+  void testCsv();
 
 };
 

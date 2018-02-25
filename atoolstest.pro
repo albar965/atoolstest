@@ -36,7 +36,6 @@ SOURCES += \
     src/flightplantest.cpp \
     src/scenerycfgtest.cpp \
     src/magdectest.cpp \
-    src/pathtest.cpp \
     src/updatetest.cpp \
     src/stringtest.cpp \
     src/maintest.cpp \
@@ -49,7 +48,6 @@ HEADERS += \
     src/flightplantest.h \
     src/scenerycfgtest.h \
     src/magdectest.h \
-    src/pathtest.h \
     src/updatetest.h \
     src/stringtest.h \
     src/maintest.h \

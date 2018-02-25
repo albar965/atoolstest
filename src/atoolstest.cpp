@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2017 Alexander Barthel albar965@mailbox.org
+* Copyright 2015-2018 Alexander Barthel albar965@mailbox.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include "magdectest.h"
 #include "flightplantest.h"
 #include "scenerycfgtest.h"
-#include "pathtest.h"
 #include "stringtest.h"
 #include "maintest.h"
 
@@ -81,9 +80,8 @@ int main(int argc, char *argv[])
 
   DEFINETEST(SceneryCfgTest);
   DEFINETEST(MagdecTest);
-  DEFINETEST(StringTest);
   // DEFINETEST(UpdateTest);
-  DEFINETEST(PathTest);
+  DEFINETEST(StringTest);
   DEFINETEST(VersionTest);
   DEFINETEST(GeoTest);
   DEFINETEST(FlightplanTest);
@@ -109,9 +107,8 @@ void test()
 
   RUNTESTEXT(SceneryCfgTest);
   RUNTESTEXT(MagdecTest);
-  RUNTESTEXT(StringTest);
   // RUNTESTEXT(UpdateTest);
-  RUNTESTEXT(PathTest);
+  RUNTESTEXT(StringTest);
   RUNTESTEXT(VersionTest);
   RUNTESTEXT(GeoTest);
   RUNTESTEXT(FlightplanTest);
