@@ -38,6 +38,9 @@ private slots:
   void testRectOverlap_data();
   void testRectOverlap();
 
+  void testCoordString_data();
+  void testCoordString();
+
 
   void testRectExpandDateBoundary();
   void testRectExpandDateBoundary2();

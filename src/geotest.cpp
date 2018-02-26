@@ -21,6 +21,7 @@
 #include "geo/linestring.h"
 #include "geo/rect.h"
 #include "geo/calculations.h"
+#include "fs/util/coordinates.h"
 #include "geo/line.h"
 
 using atools::geo::Pos;
@@ -421,4 +422,66 @@ void GeoTest::testRectOverlap()
 
   QCOMPARE(r1.overlaps(r2), result);
 
+}
+
+void GeoTest::testCoordString_data()
+{
+  QTest::addColumn<QString>("coord");
+  QTest::addColumn<Pos>("pos");
+
+  QTest::newRow("EMPTY_POS") << "" << atools::geo::EMPTY_POS;
+  QTest::newRow("N49° 26' 41.57\" E9° 12' 5.49\"") << "N49° 26' 41.57\" E9° 12' 5.49\""
+                                                   << atools::geo::Pos(9.201525, 49.444881);
+
+  QTest::newRow("N54* 16.82' W008* 35.95'") << "N54* 16.82' W008* 35.95'"
+                                            << atools::geo::Pos(-8.599167, 54.280334);
+
+  QTest::newRow("N 52 33.58 E 13 17.26") << "N 52 33.58 E 13 17.26"
+                                         << atools::geo::Pos(13.287666, 52.559666);
+
+  QTest::newRow("49° 26' 41,57\" N 9° 12' 5,49\" E") << "49° 26' 41,57\" N 9° 12' 5,49\" E"
+                                                     << atools::geo::Pos(9.201525, 49.444881);
+
+  QTest::newRow("49° 26,69' N 9° 12,09' E") << "49° 26,69' N 9° 12,09' E"
+                                            << atools::geo::Pos(9.201500, 49.444832);
+
+  QTest::newRow("49,4449° N 9,2015° E") << "49,4449° N 9,2015° E"
+                                        << atools::geo::Pos(9.201500, 49.444901);
+
+  QTest::newRow("N 49,4449° E 9,2015°") << "N 49,4449° E 9,2015°"
+                                        << atools::geo::Pos(9.201500, 49.444901);
+
+  QTest::newRow("n 50 e10") << "n 50 e10"
+                            << atools::geo::Pos(10.f, 50.f);
+
+  QTest::newRow("n 50.5 e10.5") << "n 50.5 e10.5"
+                                << atools::geo::Pos(10.5f, 50.5f);
+
+  QTest::newRow("n 50,5 e10,5") << "n 50,5 e10,5"
+                                << atools::geo::Pos(10.5f, 50.5f);
+
+  QTest::newRow("46N078W") << "46N078W"
+                           << atools::geo::Pos(-78.f, 46.f);
+
+  QTest::newRow("4620N07805W") << "4620N07805W"
+                               << atools::geo::Pos(-78.083336f, 46.333332f);
+
+  QTest::newRow("481200N0112800E") << "481200N0112800E"
+                                   << atools::geo::Pos(11.466666f, 48.200001f);
+
+  QTest::newRow("N6500/W08000") << "N6500/W08000"
+                                << atools::geo::Pos(-80.f, 65.f);
+
+  QTest::newRow("5020N") << "5020N"
+                         << atools::geo::Pos(-20.f, 50.f);
+}
+
+void GeoTest::testCoordString()
+{
+  QFETCH(QString, coord);
+  QFETCH(Pos, pos);
+
+  // qInfo() << QLocale().decimalPoint();
+  // qInfo() << coord << atools::fs::util::fromAnyFormat(coord);
+  QCOMPARE(atools::fs::util::fromAnyFormat(coord), pos);
 }
