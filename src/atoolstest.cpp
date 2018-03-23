@@ -24,6 +24,7 @@
 #include "flightplantest.h"
 #include "scenerycfgtest.h"
 #include "stringtest.h"
+#include "onlinetest.h"
 #include "maintest.h"
 
 #include <QString>
@@ -65,6 +66,8 @@ static QStringList otherOptions;
 
 int main(int argc, char *argv[])
 {
+  Q_INIT_RESOURCE(atools);
+
   argCount = argc;
   argVector = argv;
 
@@ -78,6 +81,7 @@ int main(int argc, char *argv[])
   QCommandLineOption allOpt("RunAll", QObject::tr("Run all."));
   parser->addOption(allOpt);
 
+  DEFINETEST(OnlineTest);
   DEFINETEST(SceneryCfgTest);
   DEFINETEST(MagdecTest);
   // DEFINETEST(UpdateTest);
@@ -105,6 +109,7 @@ void test()
   // status |= QTest::qExec(&tc, argc, argv);
   QVector<std::pair<int, QString> > messages;
 
+  RUNTESTEXT(OnlineTest);
   RUNTESTEXT(SceneryCfgTest);
   RUNTESTEXT(MagdecTest);
   // RUNTESTEXT(UpdateTest);

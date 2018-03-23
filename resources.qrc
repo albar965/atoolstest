@@ -20,5 +20,12 @@
         <file>resources/add-on_encoding_mismatch.xml</file>
         <file>resources/_test_fpr.pln</file>
         <file>resources/_test_flp_user.pln</file>
+        <file>resources/ivao-status.txt</file>
+        <file>resources/ivao-whazzup.txt</file>
+        <file>resources/vatsim-status.txt</file>
+        <file>resources/vatsim-whazzup.txt</file>
+        <file>resources/ivao-servers.txt</file>
+        <file>resources/vatsim-servers.txt</file>
+        <file>resources/custom-whazzup.txt</file>
     </qresource>
 </RCC>

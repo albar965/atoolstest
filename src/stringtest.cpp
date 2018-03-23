@@ -18,6 +18,7 @@
 #include "stringtest.h"
 
 #include "fs/util/fsutil.h"
+#include "util/csvreader.h"
 #include "atools.h"
 
 StringTest::StringTest()
@@ -97,6 +98,8 @@ void StringTest::testCsv_data()
   QTest::addColumn<QStringList>("result");
 
   // value1,"value2 with , separator",value3,"value4 with "" escaped",value4
+  QTest::newRow("CSV Line Unescaped space") << "a, ,c,d" << QStringList({"a", "", "c", "d"});
+  QTest::newRow("CSV Line Escaped space") << "a,\" \",c,d" << QStringList({"a", " ", "c", "d"});
   QTest::newRow("CSV Line Simple") << "a,b,c,d" << QStringList({"a", "b", "c", "d"});
   QTest::newRow("CSV Line Simple 2") << "aaa,bbb,ccc,ddd" << QStringList({"aaa", "bbb", "ccc", "ddd"});
   QTest::newRow("CSV Line Empty at end") << "aaa,bbb,ccc,ddd," << QStringList({"aaa", "bbb", "ccc", "ddd", ""});
@@ -108,7 +111,7 @@ void StringTest::testCsv_data()
   QTest::newRow("CSV Line Escaped \"\"") << "\"a,a,a\",bbb,ccc,\"dd\"\"dd\"" << QStringList({"a,a,a", "bbb", "ccc", "dd\"dd"});
   QTest::newRow("CSV Line Escaped \"\" at start or value") << "\"a,a,a\",bbb,ccc,\"\"\"dd\"" << QStringList({"a,a,a", "bbb", "ccc", "\"dd"});
   QTest::newRow("CSV Line Escaped \"\" at end or value") << "\"a,a,a\",bbb,ccc,\"dd\"\"\"" << QStringList({"a,a,a", "bbb", "ccc", "dd\""});
-  QTest::newRow("CSV Line Escaped \n") << "\"a,a,a\",bbb,ccc,\"dd\ndd" << QStringList({"a,a,a", "bbb", "ccc", "dd\ndd"});
+  QTest::newRow("CSV Line Escaped \\n") << "\"a,a,a\",bbb,ccc,\"dd\ndd\"" << QStringList({"a,a,a", "bbb", "ccc", "dd\ndd"});
 }
 
 void StringTest::testCsv()
@@ -116,6 +119,11 @@ void StringTest::testCsv()
   QFETCH(QString, csv);
   QFETCH(QStringList, result);
 
-  QCOMPARE(atools::readCsvLine(csv, ',', '"'), result);
+  atools::util::CsvReader reader(',', '"', true);
+  reader.readCsvLine(csv);
+  qInfo().noquote() << "VALUE" << csv;
+  qInfo().noquote() << "RESULT" << reader.getValues().join("|");
+
+  QCOMPARE(reader.getValues(), result);
 
 }

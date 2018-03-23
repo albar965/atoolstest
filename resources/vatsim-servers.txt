@@ -1,0 +1,27 @@
+!GENERAL:
+VERSION = 8
+RELOAD = 2
+UPDATE = 20180323104132
+ATIS ALLOW MIN = 5
+CONNECTED CLIENTS = 323
+;
+;
+!SERVERS:
+CANADA:69.42.61.44:Toronto, Canada:Canada:1:
+CZECH:212.67.73.150:Czech Republic:CenterEast Europe Server - sponsored by VACC-CZ:1:
+GERMANY:138.201.76.151:Germany:Germany:1:
+GERMANY2:212.227.11.18:Germany:Germany 2:1:
+INDIA:139.59.2.4:Bangalore, India:India:1:
+AUSTRALIA:180.200.247.40:Australia:OCEANIA:1:
+RUSSIA-W:84.52.109.230:St Petersburg, Russia:RUSSIA-W:1:
+RUSSIA-C:94.73.241.65:Krasnoyarsk, Russia:Russia Central:1:
+SINGAPORE:128.199.91.34:Singapore:SINGAPORE:1:
+SWEDEN:176.124.148.55:Sweden:SWEDEN - Europe North:1:
+UK1:178.79.154.95:London, UK:UK1:1:
+UK2:178.62.97.26:London, UK:UK2:1:
+USA-C:198.58.118.229:Dallas, USA:USA Central:1:
+USA-E:97.107.135.245:New Jersey, USA:USA East:1:
+USA-W:50.116.3.203:San Francisco, USA:USA West:1:
+UAE:185.93.245.200:Dubai, UAE:United Arab Emirates:1:
+;
+;   END

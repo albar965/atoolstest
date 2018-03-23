@@ -15,22 +15,25 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_FPTEST_H
-#define ATOOLSTEST_FPTEST_H
-
-#include "fs/pln/flightplan.h"
-#include "fs/pln/flightplanio.h"
+#ifndef ATOOLSTEST_ONLINE_TEST_H
+#define ATOOLSTEST_ONLINE_TEST_H
 
 #include <QString>
 #include <QtTest>
 
-class FlightplanTest :
+namespace atools {
+namespace sql {
+class SqlDatabase;
+}
+}
+
+class OnlineTest :
   public QObject
 {
   Q_OBJECT
 
 public:
-  FlightplanTest();
+  OnlineTest();
 
   static void runtest(int argc, char *argv[]);
 
@@ -38,34 +41,31 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-#ifdef FPR_TEST
+  void testCreateSchemaVatsim();
+  void testCreateSchemaIvao();
+  void testCreateSchemaCustom();
 
-  void testReadFpr();
+  void testOpenStatusVatsim();
+  void testOpenStatusIvao();
 
-#endif
-  void testSaveFprDirect();
-  void testSaveFprAirway();
+  void testOpenWhazzupVatsim();
+  void testOpenWhazzupIvao();
 
-  void testLoadFs9();
-  void testLoadFms();
-  void testLoadFms2();
+  void testOpenServersVatsim();
+  void testOpenServersIvao();
 
-  void testSaveFlpDirect();
-  void testSaveFlpAirway();
-  void testSaveFlpMixed();
+  void testOpenWhazzupCustom();
 
-  void testSave();
-  void testSaveClean();
-  void testSaveRte();
-  void testSaveFlp();
-  void testSaveFms();
-  void testSaveGpx();
-
-  void testSaveGarminGns();
+  void testDropSchemaVatsim();
+  void testDropSchemaIvao();
+  void testDropSchemaCustom();
 
 private:
-  atools::fs::pln::Flightplan flightplan, flightplanUser;
-  atools::fs::pln::FlightplanIO io;
+  atools::sql::SqlDatabase *dbCustom = nullptr;
+  atools::sql::SqlDatabase *dbIvao = nullptr;
+  atools::sql::SqlDatabase *dbVatsim = nullptr;
+  QString strFromFile(const QString& filename);
+
 };
 
-#endif // ATOOLSTEST_FPTEST_H
+#endif // ATOOLSTEST_ONLINE_TEST_H
