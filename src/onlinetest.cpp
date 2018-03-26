@@ -23,7 +23,7 @@
 
 using atools::sql::SqlDatabase;
 using atools::sql::SqlUtil;
-using atools::fs::online::OnlineDataManager;
+using atools::fs::online::OnlinedataManager;
 
 OnlineTest::OnlineTest()
 {
@@ -81,7 +81,7 @@ void OnlineTest::cleanupTestCase()
 
 void OnlineTest::testCreateSchemaVatsim()
 {
-  OnlineDataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim);
   odm.createSchema();
   odm.initQueries();
   QCOMPARE(odm.hasSchema(), true);
@@ -90,7 +90,7 @@ void OnlineTest::testCreateSchemaVatsim()
 
 void OnlineTest::testCreateSchemaIvao()
 {
-  OnlineDataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao);
   odm.createSchema();
   odm.initQueries();
   QCOMPARE(odm.hasSchema(), true);
@@ -99,7 +99,7 @@ void OnlineTest::testCreateSchemaIvao()
 
 void OnlineTest::testCreateSchemaCustom()
 {
-  OnlineDataManager odm(dbCustom);
+  OnlinedataManager odm(dbCustom);
   odm.createSchema();
   odm.initQueries();
   QCOMPARE(odm.hasSchema(), true);
@@ -108,27 +108,47 @@ void OnlineTest::testCreateSchemaCustom()
 
 void OnlineTest::testOpenStatusVatsim()
 {
-  OnlineDataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim);
   odm.readFromStatus(strFromFile(":/test/resources/vatsim-status.txt"));
 
   QCOMPARE(odm.getMessageFromStatus(), QString("VATSIM TEST message"));
-  QCOMPARE(odm.getWhazzupUrlFromStatus().startsWith("http://"), true);
-  QCOMPARE(odm.getWhazzupVoiceUrlFromStatus().startsWith("http://"), true);
+
+  for(int i = 0; i < 10; i++)
+  {
+    bool gzipped;
+    QString url0 = odm.getWhazzupUrlFromStatus(gzipped);
+    qInfo() << "url0" << url0;
+    QCOMPARE(url0.startsWith("http://"), true);
+
+    QString url1 = odm.getWhazzupVoiceUrlFromStatus();
+    qInfo() << "url1" << url1;
+    QCOMPARE(url1.startsWith("http://"), true);
+  }
 }
 
 void OnlineTest::testOpenStatusIvao()
 {
-  OnlineDataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao);
   odm.readFromStatus(strFromFile(":/test/resources/ivao-status.txt"));
 
   QCOMPARE(odm.getMessageFromStatus(), QString("IVAO TEST message"));
-  QCOMPARE(odm.getWhazzupUrlFromStatus().startsWith("http://"), true);
-  QCOMPARE(odm.getWhazzupVoiceUrlFromStatus().startsWith("http://"), true);
+
+  for(int i = 0; i < 10; i++)
+  {
+    bool gzipped;
+    QString url0 = odm.getWhazzupUrlFromStatus(gzipped);
+    qInfo() << "url0" << url0;
+    QCOMPARE(url0.startsWith("http://"), true);
+
+    QString url1 = odm.getWhazzupVoiceUrlFromStatus();
+    qInfo() << "url1" << url1;
+    QCOMPARE(url1.startsWith("http://"), true);
+  }
 }
 
 void OnlineTest::testOpenWhazzupVatsim()
 {
-  OnlineDataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(":/test/resources/vatsim-whazzup.txt"), atools::fs::online::VATSIM);
 
@@ -137,15 +157,14 @@ void OnlineTest::testOpenWhazzupVatsim()
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 2);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 5);
   QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 22), QTime(17, 0, 14)));
-  QCOMPARE(SqlUtil(dbVatsim).rowCount("client"), 586);
-  QCOMPARE(SqlUtil(dbVatsim).rowCount("server"), 16);
-  QCOMPARE(SqlUtil(dbVatsim).rowCount("prefile"), 22);
-  QCOMPARE(SqlUtil(dbVatsim).rowCount("voice_server"), 25);
+  QCOMPARE(SqlUtil(dbVatsim).rowCount("client"), 543); // 586
+  QCOMPARE(SqlUtil(dbVatsim).rowCount("atc"), 65);
+  QCOMPARE(SqlUtil(dbVatsim).rowCount("server"), 41);
 }
 
 void OnlineTest::testOpenWhazzupIvao()
 {
-  OnlineDataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(":/test/resources/ivao-whazzup.txt"), atools::fs::online::IVAO);
 
@@ -154,15 +173,14 @@ void OnlineTest::testOpenWhazzupIvao()
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 1);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 0);
   QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 21), QTime(15, 54, 54)));
-  QCOMPARE(SqlUtil(dbIvao).rowCount("client"), 691);
+  QCOMPARE(SqlUtil(dbIvao).rowCount("client"), 599); // 691
+  QCOMPARE(SqlUtil(dbIvao).rowCount("atc"), 92);
   QCOMPARE(SqlUtil(dbIvao).rowCount("server"), 6);
-  QCOMPARE(SqlUtil(dbIvao).rowCount("prefile"), 0);
-  QCOMPARE(SqlUtil(dbIvao).rowCount("voice_server"), 0);
 }
 
 void OnlineTest::testOpenServersVatsim()
 {
-  OnlineDataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(":/test/resources/vatsim-servers.txt"), atools::fs::online::IVAO);
 
@@ -170,14 +188,12 @@ void OnlineTest::testOpenServersVatsim()
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 2);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 5);
-  QCOMPARE(SqlUtil(dbVatsim).rowCount("client"), 586);
-  QCOMPARE(SqlUtil(dbVatsim).rowCount("server"), 32);
-  QCOMPARE(SqlUtil(dbVatsim).rowCount("voice_server"), 25);
+  QCOMPARE(SqlUtil(dbVatsim).rowCount("server"), 41);
 }
 
 void OnlineTest::testOpenServersIvao()
 {
-  OnlineDataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(":/test/resources/ivao-servers.txt"), atools::fs::online::IVAO);
 
@@ -185,14 +201,12 @@ void OnlineTest::testOpenServersIvao()
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 15);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 0);
-  QCOMPARE(SqlUtil(dbIvao).rowCount("client"), 691);
-  QCOMPARE(SqlUtil(dbIvao).rowCount("server"), 6);
-  QCOMPARE(SqlUtil(dbIvao).rowCount("voice_server"), 6);
+  QCOMPARE(SqlUtil(dbIvao).rowCount("server"), 12);
 }
 
 void OnlineTest::testOpenWhazzupCustom()
 {
-  OnlineDataManager odm(dbCustom);
+  OnlinedataManager odm(dbCustom);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(":/test/resources/custom-whazzup.txt"), atools::fs::online::VATSIM);
 
@@ -201,37 +215,42 @@ void OnlineTest::testOpenWhazzupCustom()
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 1);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 0);
   QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2017, 9, 26), QTime(20, 12, 32)));
-  QCOMPARE(SqlUtil(dbCustom).rowCount("client"), 11);
+  QCOMPARE(SqlUtil(dbCustom).rowCount("client"), 10);
+  QCOMPARE(SqlUtil(dbCustom).rowCount("atc"), 1);
   QCOMPARE(SqlUtil(dbCustom).rowCount("server"), 1);
-  QCOMPARE(SqlUtil(dbCustom).rowCount("prefile"), 0);
-  QCOMPARE(SqlUtil(dbCustom).rowCount("voice_server"), 0);
 }
 
 void OnlineTest::testDropSchemaVatsim()
 {
+#ifdef TEST_DROP_ONLINE_SCHEMA
   OnlineDataManager odm(dbVatsim);
   odm.deInitQueries();
   odm.dropSchema();
   QCOMPARE(odm.hasSchema(), false);
   QCOMPARE(odm.hasData(), false);
+#endif
 }
 
 void OnlineTest::testDropSchemaIvao()
 {
+#ifdef TEST_DROP_ONLINE_SCHEMA
   OnlineDataManager odm(dbIvao);
   odm.deInitQueries();
   odm.dropSchema();
   QCOMPARE(odm.hasSchema(), false);
   QCOMPARE(odm.hasData(), false);
+#endif
 }
 
 void OnlineTest::testDropSchemaCustom()
 {
+#ifdef TEST_DROP_ONLINE_SCHEMA
   OnlineDataManager odm(dbCustom);
   odm.deInitQueries();
   odm.dropSchema();
   QCOMPARE(odm.hasSchema(), false);
   QCOMPARE(odm.hasData(), false);
+#endif
 }
 
 QString OnlineTest::strFromFile(const QString& filename)
