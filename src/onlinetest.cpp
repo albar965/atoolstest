@@ -150,7 +150,9 @@ void OnlineTest::testOpenWhazzupVatsim()
 {
   OnlinedataManager odm(dbVatsim);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(":/test/resources/vatsim-whazzup.txt"), atools::fs::online::VATSIM);
+  odm.readFromWhazzup(strFromFile(
+                        ":/test/resources/vatsim-whazzup.txt"), atools::fs::online::VATSIM,
+                      QDateTime::currentDateTime());
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
@@ -166,7 +168,8 @@ void OnlineTest::testOpenWhazzupIvao()
 {
   OnlinedataManager odm(dbIvao);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(":/test/resources/ivao-whazzup.txt"), atools::fs::online::IVAO);
+  odm.readFromWhazzup(strFromFile(
+                        ":/test/resources/ivao-whazzup.txt"), atools::fs::online::IVAO, QDateTime::currentDateTime());
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
@@ -182,7 +185,8 @@ void OnlineTest::testOpenServersVatsim()
 {
   OnlinedataManager odm(dbVatsim);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(":/test/resources/vatsim-servers.txt"), atools::fs::online::IVAO);
+  odm.readFromWhazzup(strFromFile(
+                        ":/test/resources/vatsim-servers.txt"), atools::fs::online::IVAO, QDateTime::currentDateTime());
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
@@ -195,7 +199,8 @@ void OnlineTest::testOpenServersIvao()
 {
   OnlinedataManager odm(dbIvao);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(":/test/resources/ivao-servers.txt"), atools::fs::online::IVAO);
+  odm.readFromWhazzup(strFromFile(
+                        ":/test/resources/ivao-servers.txt"), atools::fs::online::IVAO, QDateTime::currentDateTime());
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
@@ -208,7 +213,9 @@ void OnlineTest::testOpenWhazzupCustom()
 {
   OnlinedataManager odm(dbCustom);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(":/test/resources/custom-whazzup.txt"), atools::fs::online::VATSIM);
+  odm.readFromWhazzup(strFromFile(
+                        ":/test/resources/custom-whazzup.txt"), atools::fs::online::VATSIM,
+                      QDateTime::currentDateTime());
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);

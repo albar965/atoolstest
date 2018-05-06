@@ -27,5 +27,6 @@
         <file>resources/ivao-servers.txt</file>
         <file>resources/vatsim-servers.txt</file>
         <file>resources/custom-whazzup.txt</file>
+        <file>resources/METAR.txt</file>
     </qresource>
 </RCC>
