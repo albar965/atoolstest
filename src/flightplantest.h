@@ -54,6 +54,10 @@ private slots:
   void testSaveFlpAirway();
   void testSaveFlpMixed();
 
+  void testSaveFltplanDirect();
+  void testSaveFltplanAirway();
+  void testSaveFltplanMixed();
+
   void testSave();
   void testSaveClean();
   void testSaveRte();

@@ -163,6 +163,36 @@ void FlightplanTest::testSaveFlpMixed()
   QCOMPARE(QFileInfo("result_flp_mixed.flp").size(), 943);
 }
 
+void FlightplanTest::testSaveFltplanDirect()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/_test_flp_direct.pln");
+  io.saveFltplan(fp, "result_fltplan_direct.fltplan");
+
+  // QCOMPARE(QFileInfo("result_fltplan_direct.fltplan").size(), 1010);
+}
+
+void FlightplanTest::testSaveFltplanAirway()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/_test_flp_airway.pln");
+  io.saveFltplan(fp, "result_fltplan_airway.fltplan");
+
+  // QCOMPARE(QFileInfo("result_fltplan_airway.fltplan").size(), 1130);
+}
+
+void FlightplanTest::testSaveFltplanMixed()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/_test_flp_mixed.pln");
+  io.saveFltplan(fp, "result_fltplan_mixed.fltplan");
+
+  // QCOMPARE(QFileInfo("result_fltplan_mixed.fltplan").size(), 943);
+}
+
 void FlightplanTest::testSave()
 {
   io.save(flightplan, "test_flightplan.pln", "1710", atools::fs::pln::SAVE_NO_OPTIONS);
