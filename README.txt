@@ -3,6 +3,27 @@ atoolstest
 
 Test program for the atools library. Uses the Qt test framework.
 
+Run on the command line with --help to get information about tests.
+
+------------------------------------------------------------------------------
+
+Usage: atoolstest [options]
+atools unit tests.
+
+Options:
+  -h, --help        Displays this help.
+  -v, --version     Displays version information.
+  --RunAll          Run all test classes.
+  --OnlineTest      Run the OnlineTest test class.
+  --SceneryCfgTest  Run the SceneryCfgTest test class.
+  --MagdecTest      Run the MagdecTest test class.
+  --StringTest      Run the StringTest test class.
+  --VersionTest     Run the VersionTest test class.
+  --GeoTest         Run the GeoTest test class.
+  --FlightplanTest  Run the FlightplanTest test class.
+  --MetarTest       Run the MetarTest test class.
+  --DtmTest         Run the DtmTest test class.
+
 ------------------------------------------------------------------------------
 
 This software is licensed under GPL3 or any later version.

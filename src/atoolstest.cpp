@@ -31,12 +31,6 @@
 #include <QTimer>
 #include <QtTest/QtTest>
 
-#if !defined(TEST_OWN_MAIN)
-
-QTEST_MAIN(MainTest)
-
-#else
-
 #define RUNTESTEXT(name) \
   if(parser->isSet( # name) || parser->isSet("RunAll")) \
   { \
@@ -78,7 +72,7 @@ int main(int argc, char *argv[])
   parser->addHelpOption();
   parser->addVersionOption();
 
-  QCommandLineOption allOpt("RunAll", QObject::tr("Run all."));
+  QCommandLineOption allOpt("RunAll", QObject::tr("Run all test classes."));
   parser->addOption(allOpt);
 
   DEFINETEST(OnlineTest);
@@ -142,7 +136,5 @@ void runtest(QObject& testObject, QVector<std::pair<int, QString> >& messages, c
 
 void addOption(QCommandLineParser *cmdParser, const QString& shortOpt)
 {
-  cmdParser->addOption(QCommandLineOption(shortOpt));
+  cmdParser->addOption(QCommandLineOption(shortOpt, QString("Run the %1 test class.").arg(shortOpt)));
 }
-
-#endif
