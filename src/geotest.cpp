@@ -49,6 +49,46 @@ void GeoTest::cleanupTestCase()
 
 }
 
+void GeoTest::testSunsetSunrise_data()
+{
+  QTest::addColumn<Pos>("pos");
+  QTest::addColumn<QDate>("date");
+  QTest::addColumn<float>("zenith");
+  QTest::addColumn<QTime>("result");
+
+  float sunriseOfficial = 90.f + 50.f / 60.f;
+  float sunsetOfficial = -(90.f + 50.f / 60.f);
+
+  // http://edwilliams.org/sunrise_sunset_example.htm
+  QTest::newRow("Example Rising") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunriseOfficial << QTime(9, 26, 29);
+  QTest::newRow("Example Setting") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunsetOfficial << QTime(0, 33, 0);
+
+  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << 90.f << QTime(3, 56, 45);
+  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << -90.f << QTime(19, 5, 53);
+
+  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunriseOfficial << QTime(3, 50, 43);
+  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunsetOfficial << QTime(19, 11, 54);
+
+  QTest::newRow("YSSY Rise") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunriseOfficial << QTime(20, 50, 0);
+  QTest::newRow("YSSY Set") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunsetOfficial << QTime(7, 13, 46);
+
+  QTest::newRow("SUMU Rise") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunriseOfficial << QTime(10, 40, 07);
+  QTest::newRow("SUMU Set") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunsetOfficial << QTime(21, 1, 15);
+}
+
+void GeoTest::testSunsetSunrise()
+{
+  QFETCH(Pos, pos);
+  QFETCH(QDate, date);
+  QFETCH(float, zenith);
+  QFETCH(QTime, result);
+
+  QTime time = atools::geo::calculateSunriseSunset(pos, date, zenith);
+  qDebug() << pos << date << zenith;
+  qDebug() << time << QDateTime(date, time).toLocalTime();
+  QCOMPARE(time, result);
+}
+
 void GeoTest::testAngleQuad1()
 {
   float x = 0.f, y = 0.f;

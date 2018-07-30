@@ -35,12 +35,14 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testSunsetSunrise_data();
+  void testSunsetSunrise();
+
   void testRectOverlap_data();
   void testRectOverlap();
 
   void testCoordString_data();
   void testCoordString();
-
 
   void testRectExpandDateBoundary();
   void testRectExpandDateBoundary2();
