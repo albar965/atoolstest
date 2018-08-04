@@ -32,6 +32,8 @@ public:
   static void runtest(int argc, char *argv[]);
 
 private slots:
+  void testXplane();
+
   void testFsx();
   void testP3dv4();
 

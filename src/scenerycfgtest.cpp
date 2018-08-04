@@ -19,10 +19,14 @@
 
 #include "fs/scenery/scenerycfg.h"
 #include "fs/scenery/addonpackage.h"
+#include "fs/xp/scenerypacks.h"
 
 using atools::fs::scenery::SceneryCfg;
 using atools::fs::scenery::SceneryArea;
 using atools::fs::scenery::AddOnPackage;
+
+using atools::fs::xp::SceneryPack;
+using atools::fs::xp::SceneryPacks;
 
 SceneryCfgTest::SceneryCfgTest()
 {
@@ -33,6 +37,125 @@ void SceneryCfgTest::runtest(int argc, char *argv[])
 {
   SceneryCfgTest tst;
   QTest::qExec(&tst, argc, argv);
+}
+
+void SceneryCfgTest::testXplane()
+{
+  // I
+  // 1000 Version
+  // SCENERY
+  //
+  // SCENERY_PACK Custom Scenery/Norway ENBN tdg/
+  // SCENERY_PACK Custom Scenery/Svalbard1/
+  // SCENERY_PACK Custom Scenery/LNMY Test Intl äöü ÄÖÜß_'
+  // SCENERY_PACK Custom Scenery/WA0B Susi Air Idedua Airstrip/
+  // SCENERY_PACK_DISABLED /home/USER/Projekte/atoolstest/testdata/X-Plane Landmarks - Sydney/
+  // SCENERY_PACK ../X-Plane Landmarks - Sydney/
+  // SCENERY_PACK Custom Scenery/Does not exist/
+  // SCENERY_PACK Custom Scenery/No apt.dat/
+  // SCENERY_PACK Custom Scenery/ZYYJ_Yanji/
+  // SCENERY_PACK Custom Scenery/ZBYN v1/
+  // SCENERY_PACK Custom Scenery/Global Airports/
+  // SCENERY_PACK_DISABLED Custom Scenery/ZYYJ_Yanji/
+
+  SceneryPacks packs;
+  packs.read("testdata/X-Plane");
+
+  QCOMPARE(packs.getEntries().size(), 9);
+
+  int idx = 0;
+  // SCENERY_PACK Custom Scenery/Norway ENBN tdg/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("Norway ENBN tdg/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx).valid, true);
+  QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
+
+  // SCENERY_PACK Custom Scenery/Svalbard1/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("Svalbard1/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx).valid, true);
+  QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
+
+  // SCENERY_PACK Custom Scenery/LNMY Test Intl äöü ÄÖÜß_'/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("LNMY Test Intl äöü ÄÖÜß_'/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx).valid, true);
+  QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
+
+  // SCENERY_PACK Custom Scenery/WA0B Susi Air Idedua Airstrip/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("WA0B Susi Air Idedua Airstrip/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx).valid, true);
+  QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
+
+  // SCENERY_PACK /home/USER/Projekte/atoolstest/testdata/X-Plane Landmarks - Sydney/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("X-Plane Landmarks - Sydney"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx).valid, false);
+  QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), false);
+
+  // SCENERY_PACK ../X-Plane Landmarks - Sydney/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("X-Plane Landmarks - Sydney/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx).valid, true);
+  QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
+
+  // SCENERY_PACK Custom Scenery/Does not exist/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("Does not exist"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx).valid, false);
+  QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), false);
+
+  // SCENERY_PACK Custom Scenery/No apt.dat/
+  // ignored
+
+  // SCENERY_PACK_BROKEN Custom Scenery/Broken/
+  QCOMPARE(packs.getEntries().at(0).disabled, false);
+  QCOMPARE(packs.getEntries().at(0).valid, true);
+
+  // SCENERY_PACK Custom Scenery/ZYYJ_Yanji/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("ZYYJ_Yanji/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, false);
+  QCOMPARE(packs.getEntries().at(idx++).valid, true);
+
+  // SCENERY_PACK Custom Scenery/ZBYN v1/
+  // ignored
+
+  // SCENERY_PACK_DISABLED Custom Scenery/ZYYJ_Yanji/
+  qInfo() << packs.getEntries().at(idx).filepath;
+  qInfo() << packs.getEntries().at(idx).errorText;
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("ZYYJ_Yanji/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).disabled, true);
+  QCOMPARE(packs.getEntries().at(idx++).valid, true);
+
+  const SceneryPack *entry = packs.getEntryByPath(packs.getEntries().first().filepath);
+  QCOMPARE(entry->filepath.endsWith("Norway ENBN tdg/Earth nav data/apt.dat"), true);
+  QCOMPARE(entry->disabled, false);
+  QCOMPARE(entry->valid, true);
+
+  const SceneryPack *entry2 = packs.getEntryByPath(packs.getEntries().last().filepath);
+  QCOMPARE(entry2->filepath.endsWith("ZYYJ_Yanji/Earth nav data/apt.dat"), true);
+  QCOMPARE(entry2->disabled, true);
+  QCOMPARE(entry2->valid, true);
+
+  const SceneryPack *entry3 = packs.getEntryByPath("Not existing filepath");
+  QVERIFY(entry3 == nullptr);
 }
 
 void SceneryCfgTest::testFsx()

@@ -21,6 +21,10 @@ unix {
   PRE_TARGETDEPS += $$PWD/../build-atools-$${CONF_TYPE}/libatools.a
 }
 
+unix:!macx {
+  copydata.commands = cp -avfu $$PWD/testdata $$OUT_PWD
+}
+
 TARGET = atoolstest
 CONFIG   += console
 CONFIG   -= app_bundle
@@ -65,3 +69,6 @@ DISTFILES += \
 RESOURCES += \
     resources.qrc
 
+
+first.depends = $(first) copydata
+QMAKE_EXTRA_TARGETS += first copydata
