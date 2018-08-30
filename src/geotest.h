@@ -35,6 +35,9 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testWindDrift_data();
+  void testWindDrift();
+
   void testSunsetSunrise_data();
   void testSunsetSunrise();
 

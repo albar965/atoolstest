@@ -49,31 +49,99 @@ void GeoTest::cleanupTestCase()
 
 }
 
+void GeoTest::testWindDrift_data()
+{
+  // float windCorrectedHeading(float windSpeed, float windDirectionDeg, float courseDeg, float trueAirspeed)
+  QTest::addColumn<float>("heading");
+  QTest::addColumn<float>("windSpeed");
+  QTest::addColumn<float>("windDirectionDeg");
+  QTest::addColumn<float>("courseDeg");
+  QTest::addColumn<float>("trueAirspeed");
+
+  QTest::newRow("Flying 0° wind from 0° impossible") << std::numeric_limits<float>::max()
+                                                     << 100.f << 0.f << 0.f << 50.f;
+  QTest::newRow("Flying 180° wind from 180°") << std::numeric_limits<float>::max()
+                                            << 100.f << 180.f << 180.f << 99.9f;
+
+  QTest::newRow("Flying 0° wind from 0° at 0") << std::numeric_limits<float>::max()
+                                            << 0.f << 0.f << 0.f << 0.f;
+
+  QTest::newRow("Flying 0° wind from 0° TAS 0") << std::numeric_limits<float>::max()
+                                              << 10.f << 0.f << 0.f << 0.f;
+
+  QTest::newRow("Flying 0° wind from 0°") << 0.f << 100.f << 0.f << 0.f << 200.f;
+  QTest::newRow("Flying 180° wind from 0°") << 180.f << 100.f << 0.f << 180.f << 200.f;
+
+  QTest::newRow("Flying 0° wind from 90°") << 30.f << 100.f << 90.f << 0.f << 200.f;
+  QTest::newRow("Flying 180° wind from 90°") << 150.f << 100.f << 90.f << 180.f << 200.f;
+
+  QTest::newRow("Flying 0° wind from 270°") << 330.f << 100.f << 270.f << 0.f << 200.f;
+  QTest::newRow("Flying 180° wind from 270°") << 210.f << 100.f << 270.f << 180.f << 200.f;
+
+  QTest::newRow("Flying 90° wind from 0°") << 60.f << 100.f << 0.f << 90.f << 200.f;
+  QTest::newRow("Flying 270° wind from 0°") << 300.f << 100.f << 0.f << 270.f << 200.f;
+
+  QTest::newRow("Flying 90° wind from 180°") << 120.f << 100.f << 180.f << 90.f << 200.f;
+  QTest::newRow("Flying 270° wind from 180°") << 240.f << 100.f << 180.f << 270.f << 200.f;
+}
+
+void GeoTest::testWindDrift()
+{
+  // float windCorrectedHeading(float windSpeed, float windDirectionDeg, float courseDeg, float trueAirspeed)
+  QFETCH(float, heading);
+  QFETCH(float, windSpeed);
+  QFETCH(float, windDirectionDeg);
+  QFETCH(float, courseDeg);
+  QFETCH(float, trueAirspeed);
+
+  float hd = atools::geo::windCorrectedHeading(windSpeed, windDirectionDeg, courseDeg, trueAirspeed);
+
+  qDebug() << "hd" << hd
+           << "windSpeed" << windSpeed
+           << "windDirectionDeg" << windDirectionDeg
+           << "courseDeg" << courseDeg
+           << "trueAirspeed" << trueAirspeed;
+
+  QCOMPARE(hd, heading);
+}
+
 void GeoTest::testSunsetSunrise_data()
 {
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<QDate>("date");
   QTest::addColumn<float>("zenith");
   QTest::addColumn<QTime>("result");
+  QTest::addColumn<bool>("neverrise");
+  QTest::addColumn<bool>("neverset");
 
   float sunriseOfficial = 90.f + 50.f / 60.f;
   float sunsetOfficial = -(90.f + 50.f / 60.f);
 
   // http://edwilliams.org/sunrise_sunset_example.htm
-  QTest::newRow("Example Rising") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunriseOfficial << QTime(9, 26, 29);
-  QTest::newRow("Example Setting") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunsetOfficial << QTime(0, 33, 0);
+  QTest::newRow("Example Rising") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunriseOfficial << QTime(9, 26, 29)
+                                  << false << false;
+  QTest::newRow("Example Setting") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunsetOfficial << QTime(0, 33, 0)
+                                   << false << false;
 
-  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << 90.f << QTime(3, 56, 45);
-  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << -90.f << QTime(19, 5, 53);
+  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << 90.f << QTime(3, 56, 45)
+                             << false << false;
+  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << -90.f << QTime(19, 5, 53)
+                            << false << false;
 
-  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunriseOfficial << QTime(3, 50, 43);
-  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunsetOfficial << QTime(19, 11, 54);
+  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunriseOfficial << QTime(3, 50, 43)
+                             << false << false;
+  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunsetOfficial << QTime(19, 11, 54)
+                            << false << false;
 
-  QTest::newRow("YSSY Rise") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunriseOfficial << QTime(20, 50, 0);
-  QTest::newRow("YSSY Set") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunsetOfficial << QTime(7, 13, 46);
+  QTest::newRow("YSSY Rise") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunriseOfficial << QTime(20, 50, 0)
+                             << false << false;
+  QTest::newRow("YSSY Set") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunsetOfficial << QTime(7, 13, 46)
+                            << false << false;
 
-  QTest::newRow("SUMU Rise") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunriseOfficial << QTime(10, 40, 07);
-  QTest::newRow("SUMU Set") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunsetOfficial << QTime(21, 1, 15);
+  QTest::newRow("SUMU Rise") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunriseOfficial << QTime(10, 40, 07)
+                             << false << false;
+  QTest::newRow("SUMU Set") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunsetOfficial << QTime(21, 1, 15)
+                            << false << false;
 }
 
 void GeoTest::testSunsetSunrise()
@@ -82,11 +150,16 @@ void GeoTest::testSunsetSunrise()
   QFETCH(QDate, date);
   QFETCH(float, zenith);
   QFETCH(QTime, result);
+  QFETCH(bool, neverrise);
+  QFETCH(bool, neverset);
 
-  QTime time = atools::geo::calculateSunriseSunset(pos, date, zenith);
+  bool neverRises, neverSets;
+  QTime time = atools::geo::calculateSunriseSunset(neverRises, neverSets, pos, date, zenith);
   qDebug() << pos << date << zenith;
   qDebug() << time << QDateTime(date, time).toLocalTime();
   QCOMPARE(time, result);
+  QCOMPARE(neverrise, neverRises);
+  QCOMPARE(neverset, neverSets);
 }
 
 void GeoTest::testAngleQuad1()
