@@ -61,13 +61,13 @@ void GeoTest::testWindDrift_data()
   QTest::newRow("Flying 0° wind from 0° impossible") << std::numeric_limits<float>::max()
                                                      << 100.f << 0.f << 0.f << 50.f;
   QTest::newRow("Flying 180° wind from 180°") << std::numeric_limits<float>::max()
-                                            << 100.f << 180.f << 180.f << 99.9f;
+                                              << 100.f << 180.f << 180.f << 99.9f;
 
   QTest::newRow("Flying 0° wind from 0° at 0") << std::numeric_limits<float>::max()
-                                            << 0.f << 0.f << 0.f << 0.f;
+                                               << 0.f << 0.f << 0.f << 0.f;
 
   QTest::newRow("Flying 0° wind from 0° TAS 0") << std::numeric_limits<float>::max()
-                                              << 10.f << 0.f << 0.f << 0.f;
+                                                << 10.f << 0.f << 0.f << 0.f;
 
   QTest::newRow("Flying 0° wind from 0°") << 0.f << 100.f << 0.f << 0.f << 200.f;
   QTest::newRow("Flying 180° wind from 0°") << 180.f << 100.f << 0.f << 180.f << 200.f;
@@ -160,6 +160,92 @@ void GeoTest::testSunsetSunrise()
   QCOMPARE(time, result);
   QCOMPARE(neverrise, neverRises);
   QCOMPARE(neverset, neverSets);
+}
+
+void GeoTest::testNormalize()
+{
+  /* Normalize course to 0 < course < 360 */
+
+  QCOMPARE(atools::geo::normalizeCourse(0.f), 0.f);
+  QCOMPARE(atools::geo::normalizeCourse(360.f), 0.f);
+  QCOMPARE(atools::geo::normalizeCourse(370.f), 10.f);
+  QCOMPARE(atools::geo::normalizeCourse(720.f), 0.f);
+  QCOMPARE(atools::geo::normalizeCourse(730.f), 10.f);
+  QCOMPARE(atools::geo::normalizeCourse(710.f), 350.f);
+  QCOMPARE(atools::geo::normalizeCourse(-10.f), 350.f);
+  QCOMPARE(atools::geo::normalizeCourse(-350.f), 10.f);
+
+  QCOMPARE(atools::geo::normalizeCourse(3610.f), 10.f);
+  QCOMPARE(atools::geo::normalizeCourse(-3610.f), 350.f);
+  QCOMPARE(atools::geo::normalizeCourse(std::numeric_limits<float>::max()), 0.f);
+  QCOMPARE(atools::geo::normalizeCourse(std::numeric_limits<float>::lowest()), 0.f);
+
+  QCOMPARE(atools::geo::normalizeCourse(0), 0);
+  QCOMPARE(atools::geo::normalizeCourse(360), 0);
+  QCOMPARE(atools::geo::normalizeCourse(370), 10);
+  QCOMPARE(atools::geo::normalizeCourse(720), 0);
+  QCOMPARE(atools::geo::normalizeCourse(730), 10);
+  QCOMPARE(atools::geo::normalizeCourse(710), 350);
+  QCOMPARE(atools::geo::normalizeCourse(-10), 350);
+  QCOMPARE(atools::geo::normalizeCourse(-350), 10);
+  QCOMPARE(atools::geo::normalizeCourse(3610), 10);
+  QCOMPARE(atools::geo::normalizeCourse(-3610), 350);
+  QCOMPARE(atools::geo::normalizeCourse(std::numeric_limits<int>::max()), 127);
+  QCOMPARE(atools::geo::normalizeCourse(std::numeric_limits<int>::lowest()), 232);
+
+  /* Normalize laty to -90 < laty < 90 */
+  QCOMPARE(atools::geo::normalizeLatYDeg(0.f), 0.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(10.f), 10.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(90.f), -90.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(180.f), 0.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-180.f), 0.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(370.f), 10.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-370.f), -10.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(100.f), -80.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-90.f), -90.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-100.f), 80.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(910.f), 10.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-910.f), -10.f);
+
+  QCOMPARE(atools::geo::normalizeLatYDeg(0), 0);
+  QCOMPARE(atools::geo::normalizeLatYDeg(10), 10);
+  QCOMPARE(atools::geo::normalizeLatYDeg(90), -90);
+  QCOMPARE(atools::geo::normalizeLatYDeg(180), 0);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-180), 0);
+  QCOMPARE(atools::geo::normalizeLatYDeg(370), 10);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-370), -10);
+  QCOMPARE(atools::geo::normalizeLatYDeg(100), -80);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-90), -90);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-100), 80);
+  QCOMPARE(atools::geo::normalizeLatYDeg(910), 10);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-910), -10);
+
+  /* Normalize lonx to -180 < lonx < 180 */
+  QCOMPARE(atools::geo::normalizeLonXDeg(0.f), 0.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(10.f), 10.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(180.f), -180.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(360.f), 0.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-360.f), 0.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(730.f), 10.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-730.f), -10.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(190.f), -170.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-190.f), 170.f);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-100.f), -100.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(1810.f), 10.f);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-1810.f), -10.f);
+
+  QCOMPARE(atools::geo::normalizeLonXDeg(0), 0);
+  QCOMPARE(atools::geo::normalizeLonXDeg(10), 10);
+  QCOMPARE(atools::geo::normalizeLonXDeg(180), -180);
+  QCOMPARE(atools::geo::normalizeLonXDeg(360), 0);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-360), 0);
+  QCOMPARE(atools::geo::normalizeLonXDeg(730), 10);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-730), -10);
+  QCOMPARE(atools::geo::normalizeLonXDeg(190), -170);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-190), 170);
+  QCOMPARE(atools::geo::normalizeLonXDeg(-100), -100);
+  QCOMPARE(atools::geo::normalizeLatYDeg(1810), 10);
+  QCOMPARE(atools::geo::normalizeLatYDeg(-1810), -10);
 }
 
 void GeoTest::testAngleQuad1()

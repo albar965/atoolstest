@@ -41,6 +41,8 @@ private slots:
   void testSunsetSunrise_data();
   void testSunsetSunrise();
 
+  void testNormalize();
+
   void testRectOverlap_data();
   void testRectOverlap();
 
