@@ -25,6 +25,7 @@
 #include "scenerycfgtest.h"
 #include "stringtest.h"
 #include "onlinetest.h"
+#include "perftest.h"
 #include "maintest.h"
 
 #include <QString>
@@ -80,6 +81,7 @@ int main(int argc, char *argv[])
   DEFINETEST(MagdecTest);
   // DEFINETEST(UpdateTest);
   DEFINETEST(StringTest);
+  DEFINETEST(PerfTest);
   DEFINETEST(VersionTest);
   DEFINETEST(GeoTest);
   DEFINETEST(FlightplanTest);
@@ -108,6 +110,7 @@ void test()
   RUNTESTEXT(MagdecTest);
   // RUNTESTEXT(UpdateTest);
   RUNTESTEXT(StringTest);
+  RUNTESTEXT(PerfTest);
   RUNTESTEXT(VersionTest);
   RUNTESTEXT(GeoTest);
   RUNTESTEXT(FlightplanTest);

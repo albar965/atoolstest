@@ -44,7 +44,8 @@ SOURCES += \
     src/stringtest.cpp \
     src/maintest.cpp \
     src/versiontest.cpp \
-    src/onlinetest.cpp
+    src/onlinetest.cpp \
+    src/perftest.cpp
 
 HEADERS += \
     src/metartest.h \
@@ -57,7 +58,8 @@ HEADERS += \
     src/stringtest.h \
     src/maintest.h \
     src/versiontest.h \
-    src/onlinetest.h
+    src/onlinetest.h \
+    src/perftest.h
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
