@@ -46,6 +46,10 @@ private slots:
 
   void testNormalize();
 
+  void testInterpolate();
+  void testInterpolateForX();
+  void testInterpolateForY();
+
   void testRectOverlap_data();
   void testRectOverlap();
 

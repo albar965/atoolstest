@@ -41,7 +41,7 @@ void PerfTest::initTestCase()
   perf.setName("Boeing 737-200");
   perf.setAircraftType("B732");
 
-  perf.setFuelUnit(atools::fs::perf::WEIGHT);
+  perf.setFuelAsVolume(false);
   perf.setTaxiFuel(1000);
   perf.setReserveFuel(6000);
   perf.setExtraFuel(2000);
@@ -75,20 +75,20 @@ void PerfTest::testPerfSaveLoad()
   QCOMPARE(perf.getName(), QString("Boeing 737-200"));
   QCOMPARE(perf.getAircraftType(), QString("B732"));
 
-  QCOMPARE(perf.getFuelUnit(), atools::fs::perf::WEIGHT);
-  QCOMPARE(perf.getTaxiFuel(), 1000);
-  QCOMPARE(perf.getReserveFuel(), 6000);
-  QCOMPARE(perf.getExtraFuel(), 2000);
+  QCOMPARE(perf.useFuelAsVolume(), false);
+  QCOMPARE(perf.getTaxiFuel(), 1000.f);
+  QCOMPARE(perf.getReserveFuel(), 6000.f);
+  QCOMPARE(perf.getExtraFuel(), 2000.f);
 
-  QCOMPARE(perf.getClimbVertSpeed(), 2000);
-  QCOMPARE(perf.getClimbSpeed(), 250);
-  QCOMPARE(perf.getClimbFuelFlow(), 800);
+  QCOMPARE(perf.getClimbVertSpeed(), 2000.f);
+  QCOMPARE(perf.getClimbSpeed(), 250.f);
+  QCOMPARE(perf.getClimbFuelFlow(), 800.f);
 
-  QCOMPARE(perf.getCruiseSpeed(), 450);
-  QCOMPARE(perf.getCruiseFuelFlow(), 400);
-  QCOMPARE(perf.getContingencyFuel(), 10);
+  QCOMPARE(perf.getCruiseSpeed(), 450.f);
+  QCOMPARE(perf.getCruiseFuelFlow(), 400.f);
+  QCOMPARE(perf.getContingencyFuel(), 10.f);
 
-  QCOMPARE(perf.getDescentSpeed(), 300);
-  QCOMPARE(perf.getDescentVertSpeed(), 3000);
-  QCOMPARE(perf.getDescentFuelFlow(), 100);
+  QCOMPARE(perf.getDescentSpeed(), 300.f);
+  QCOMPARE(perf.getDescentVertSpeed(), 3000.f);
+  QCOMPARE(perf.getDescentFuelFlow(), 100.f);
 }

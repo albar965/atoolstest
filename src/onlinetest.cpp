@@ -81,7 +81,7 @@ void OnlineTest::cleanupTestCase()
 
 void OnlineTest::testCreateSchemaVatsim()
 {
-  OnlinedataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim, true);
   odm.createSchema();
   odm.initQueries();
   QCOMPARE(odm.hasSchema(), true);
@@ -90,7 +90,7 @@ void OnlineTest::testCreateSchemaVatsim()
 
 void OnlineTest::testCreateSchemaIvao()
 {
-  OnlinedataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao, true);
   odm.createSchema();
   odm.initQueries();
   QCOMPARE(odm.hasSchema(), true);
@@ -99,7 +99,7 @@ void OnlineTest::testCreateSchemaIvao()
 
 void OnlineTest::testCreateSchemaCustom()
 {
-  OnlinedataManager odm(dbCustom);
+  OnlinedataManager odm(dbCustom, true);
   odm.createSchema();
   odm.initQueries();
   QCOMPARE(odm.hasSchema(), true);
@@ -108,7 +108,7 @@ void OnlineTest::testCreateSchemaCustom()
 
 void OnlineTest::testOpenStatusVatsim()
 {
-  OnlinedataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim, true);
   odm.readFromStatus(strFromFile(":/test/resources/vatsim-status.txt"));
 
   QCOMPARE(odm.getMessageFromStatus(), QString("VATSIM TEST message"));
@@ -128,7 +128,7 @@ void OnlineTest::testOpenStatusVatsim()
 
 void OnlineTest::testOpenStatusIvao()
 {
-  OnlinedataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao, true);
   odm.readFromStatus(strFromFile(":/test/resources/ivao-status.txt"));
 
   QCOMPARE(odm.getMessageFromStatus(), QString("IVAO TEST message"));
@@ -148,17 +148,17 @@ void OnlineTest::testOpenStatusIvao()
 
 void OnlineTest::testOpenWhazzupVatsim()
 {
-  OnlinedataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim, true);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(
-                        ":/test/resources/vatsim-whazzup.txt"), atools::fs::online::VATSIM,
-                      QDateTime::currentDateTime());
+  odm.readFromWhazzup(strFromFile(":/test/resources/vatsim-whazzup.txt"), atools::fs::online::VATSIM,
+                      QDateTime(QDate(2018, 3, 22), QTime(16, 0, 00)));
+  dbVatsim->commit();
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 2);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 5);
-  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 22), QTime(17, 0, 14)));
+  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 22), QTime(17, 0, 14))); // 20180322170014
   QCOMPARE(SqlUtil(dbVatsim).rowCount("client"), 543); // 586
   QCOMPARE(SqlUtil(dbVatsim).rowCount("atc"), 65);
   QCOMPARE(SqlUtil(dbVatsim).rowCount("server"), 41);
@@ -166,16 +166,17 @@ void OnlineTest::testOpenWhazzupVatsim()
 
 void OnlineTest::testOpenWhazzupIvao()
 {
-  OnlinedataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao, true);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(
-                        ":/test/resources/ivao-whazzup.txt"), atools::fs::online::IVAO, QDateTime::currentDateTime());
+                        ":/test/resources/ivao-whazzup.txt"), atools::fs::online::IVAO,
+                      QDateTime(QDate(2018, 3, 21), QTime(14, 0, 0)));
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 1);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 0);
-  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 21), QTime(15, 54, 54)));
+  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 21), QTime(15, 54, 54))); // 20180321155454
   QCOMPARE(SqlUtil(dbIvao).rowCount("client"), 599); // 691
   QCOMPARE(SqlUtil(dbIvao).rowCount("atc"), 92);
   QCOMPARE(SqlUtil(dbIvao).rowCount("server"), 6);
@@ -183,10 +184,11 @@ void OnlineTest::testOpenWhazzupIvao()
 
 void OnlineTest::testOpenServersVatsim()
 {
-  OnlinedataManager odm(dbVatsim);
+  OnlinedataManager odm(dbVatsim, true);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(
-                        ":/test/resources/vatsim-servers.txt"), atools::fs::online::IVAO, QDateTime::currentDateTime());
+                        ":/test/resources/vatsim-servers.txt"), atools::fs::online::IVAO,
+                      QDateTime(QDate(2018, 3, 22), QTime(16, 0, 00)));
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
@@ -197,10 +199,11 @@ void OnlineTest::testOpenServersVatsim()
 
 void OnlineTest::testOpenServersIvao()
 {
-  OnlinedataManager odm(dbIvao);
+  OnlinedataManager odm(dbIvao, true);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(
-                        ":/test/resources/ivao-servers.txt"), atools::fs::online::IVAO, QDateTime::currentDateTime());
+                        ":/test/resources/ivao-servers.txt"), atools::fs::online::IVAO,
+                      QDateTime(QDate(2018, 3, 21), QTime(14, 0, 0)));
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
@@ -211,17 +214,17 @@ void OnlineTest::testOpenServersIvao()
 
 void OnlineTest::testOpenWhazzupCustom()
 {
-  OnlinedataManager odm(dbCustom);
+  OnlinedataManager odm(dbCustom, true);
   odm.initQueries();
   odm.readFromWhazzup(strFromFile(
                         ":/test/resources/custom-whazzup.txt"), atools::fs::online::VATSIM,
-                      QDateTime::currentDateTime());
+                      QDateTime(QDate(2017, 9, 26), QTime(20, 0, 0)));
 
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 1);
   QCOMPARE(odm.getAtisAllowMinutesFromWhazzup(), 0);
-  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2017, 9, 26), QTime(20, 12, 32)));
+  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2017, 9, 26), QTime(20, 12, 32))); // 20170926201232
   QCOMPARE(SqlUtil(dbCustom).rowCount("client"), 10);
   QCOMPARE(SqlUtil(dbCustom).rowCount("atc"), 1);
   QCOMPARE(SqlUtil(dbCustom).rowCount("server"), 1);

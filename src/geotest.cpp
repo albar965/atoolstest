@@ -301,6 +301,33 @@ void GeoTest::testNormalize()
   QCOMPARE(atools::geo::normalizeLatYDeg(-1810), -10);
 }
 
+void GeoTest::testInterpolateForX()
+{
+  QCOMPARE(atools::interpolateForX(QLineF(5, 100, 15, 200), 10), QPointF(10, 150));
+  QCOMPARE(atools::interpolateForX(QLineF(5, 100, 15, 200), 5), QPointF(5, 100));
+  QCOMPARE(atools::interpolateForX(QLineF(5, 100, 15, 200), 15), QPointF(15, 200));
+  QCOMPARE(atools::interpolateForX(QLineF(5, 100, 15, 200), 7.5), QPointF(7.5, 125));
+  QCOMPARE(atools::interpolateForX(QLineF(5, 100, 15, 200), 12.5), QPointF(12.5, 175));
+}
+
+void GeoTest::testInterpolateForY()
+{
+  QCOMPARE(atools::interpolateForY(QLineF(5, 100, 15, 200), 150), QPointF(10, 150));
+  QCOMPARE(atools::interpolateForY(QLineF(5, 100, 15, 200), 100), QPointF(5, 100));
+  QCOMPARE(atools::interpolateForY(QLineF(5, 100, 15, 200), 200), QPointF(15, 200));
+  QCOMPARE(atools::interpolateForY(QLineF(5, 100, 15, 200), 125), QPointF(7.5, 125));
+  QCOMPARE(atools::interpolateForY(QLineF(5, 100, 15, 200), 175), QPointF(12.5, 175));
+}
+
+void GeoTest::testInterpolate()
+{
+  QCOMPARE(atools::interpolate(100, 200, 5, 15, 10), 150);
+  QCOMPARE(atools::interpolate(100., 200., 5., 15., 7.5), 125.);
+  QCOMPARE(atools::interpolate(100., 200., 5., 15., 12.5), 175.);
+  QCOMPARE(atools::interpolate(100, 200, 5, 15, 5), 100);
+  QCOMPARE(atools::interpolate(100, 200, 5, 15, 15), 200);
+}
+
 void GeoTest::testAngleQuad1()
 {
   float x = 0.f, y = 0.f;
