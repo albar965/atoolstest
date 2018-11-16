@@ -35,6 +35,12 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testRectInflate_data();
+  void testRectInflate();
+
+  void testRectExtend_data();
+  void testRectExtend();
+
   void testAngleDiff_data();
   void testAngleDiff();
 
@@ -74,6 +80,7 @@ private slots:
   void testAngleQuad2();
   void testAngleQuad3();
   void testAngleQuad4();
+
 };
 
 #endif // ATOOLSTEST_GEOTEST_H

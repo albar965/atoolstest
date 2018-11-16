@@ -764,6 +764,7 @@ void GeoTest::testCoordString_data()
 
   ROW("5020N", atools::geo::Pos(-20.f, 50.f));
 
+#undef ROW
 }
 
 void GeoTest::testCoordString()
@@ -774,4 +775,112 @@ void GeoTest::testCoordString()
   // qInfo() << QLocale().decimalPoint();
   qInfo() << coord << atools::fs::util::fromAnyFormat(coord);
   QCOMPARE(atools::fs::util::fromAnyFormat(coord), pos);
+}
+
+void GeoTest::testRectExtend_data()
+{
+#define FUNC QString("%1:%2").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
+
+  QTest::addColumn<Rect>("pos");
+  QTest::addColumn<LineString>("extends");
+  QTest::addColumn<Rect>("expected");
+
+  QTest::newRow(FUNC) << Rect(0.f, 0.f) << LineString({0.f, 0.f}) << Rect(0.f, 0.f);
+  QTest::newRow(FUNC) << Rect(0.f, 0.f) << LineString({1.f, 0.f}) << Rect(0.f, 0.f, 1.f, 0.f);
+  QTest::newRow(FUNC) << Rect(0.f, 0.f) << LineString({0.f, 1.f}) << Rect(0.f, 1.f, 0.f, 0.f);
+  QTest::newRow(FUNC) << Rect(0.f, 1.f) << LineString({1.f, 0.f}) << Rect(0.f, 1.f, 1.f, 0.f);
+  QTest::newRow(FUNC) << Rect(1.f, 0.f) << LineString({0.f, 1.f}) << Rect(0.f, 1.f, 1.f, 0.f);
+
+  QTest::newRow(FUNC) << Rect(0.f, 0.f) << LineString({-1.f, -1.f}) << Rect(-1.f, 0.f, 0.f, -1.f);
+
+  QTest::newRow(FUNC) << Rect(0.f, 0.f)
+                      << LineString({-1.f, 1.f, 1.f, 1.f, 1.f, -1.f, -1.f, -1.f})
+                      << Rect(-1.f, 1.f, 1.f, -1.f);
+
+  QTest::newRow(FUNC) << Rect(-1.f, 1.f, 1.f, 1.f)
+                      << LineString({-2.f, 2.f, 2.f, 2.f, 2.f, -2.f, -2.f, -2.f})
+                      << Rect(-2.f, 2.f, 2.f, -2.f);
+
+  QTest::newRow(FUNC) << Rect(-180.f, 0.f)
+                      << LineString({179.f, 0.f, -179.f, 0.f})
+                      << Rect(179.f, 0.f, -179.f, 0.f);
+
+  QTest::newRow(FUNC) << Rect(180.f, 0.f)
+                      << LineString({179.f, 0.f, -179.f, 0.f})
+                      << Rect(179.f, 0.f, -179.f, 0.f);
+
+  QTest::newRow(FUNC) << Rect(-180.f, 0.f)
+                      << LineString({-179.f, 0.f, 179.f, 0.f})
+                      << Rect(179.f, 0.f, -179.f, 0.f);
+
+  QTest::newRow(FUNC) << Rect(180.f, 0.f)
+                      << LineString({-179.f, 0.f, 179.f, 0.f})
+                      << Rect(179.f, 0.f, -179.f, 0.f);
+
+  QTest::newRow(FUNC) << Rect(170.f, 10.f, -170.f, -10.f)
+                      << LineString({-160.f, 0.f, 160.f, 0.f})
+                      << Rect(160.f, 10.f, -160.f, -10.f);
+
+  QTest::newRow(FUNC) << Rect(170.f, 10.f, -170.f, -10.f)
+                      << LineString({-100.f, 40.f})
+                      << Rect(170.f, 40.f, -100.f, -10.f);
+
+  QTest::newRow(FUNC) << Rect(170.f, 10.f, -170.f, -10.f)
+                      << LineString({100.f, 40.f})
+                      << Rect(100.f, 40.f, -170.f, -10.f);
+
+  QTest::newRow(FUNC) << Rect(170.f, 10.f, -170.f, -10.f)
+                      << LineString({-100.f, -40.f})
+                      << Rect(170.f, 10.f, -100.f, -40.f);
+
+  QTest::newRow(FUNC) << Rect(170.f, 10.f, -170.f, -10.f)
+                      << LineString({100.f, -40.f})
+                      << Rect(100.f, 10.f, -170.f, -40.f);
+
+#undef FUNC
+}
+
+void GeoTest::testRectExtend()
+{
+  QFETCH(Rect, pos);
+  QFETCH(LineString, extends);
+  QFETCH(Rect, expected);
+
+  Rect rect(pos);
+  for(const Pos& ext:extends)
+    rect.extend(ext);
+
+  qDebug() << "expected" << rect << "expected" << expected;
+  QCOMPARE(rect, expected);
+}
+
+void GeoTest::testRectInflate_data()
+{
+#define FUNC QString("%1:%2").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
+
+  QTest::addColumn<Rect>("rect");
+  QTest::addColumn<float>("width");
+  QTest::addColumn<float>("height");
+  QTest::addColumn<Rect>("expected");
+
+  QTest::newRow(FUNC) << Rect(-1.f, 1.f, 1.f, -1.f) << 1.f << 1.f << Rect(-2.f, 2.f, 2.f, -2.f);
+  QTest::newRow(FUNC) << Rect(0.f, 0.f) << 1.f << 1.f << Rect(-1.f, 1.f, 1.f, -1.f);
+  QTest::newRow(FUNC) << Rect(0.f, 1.f, 0.f, -1.f) << 1.f << 1.f << Rect(-1.f, 2.f, 1.f, -2.f);
+  QTest::newRow(FUNC) << Rect(-1.f, 0.f, 1.f, 0.f) << 1.f << 1.f << Rect(-2.f, 1.f, 2.f, -1.f);
+
+  QTest::newRow(FUNC) << Rect(170.f, 1.f, -170.f, -1.f) << 1.f << 1.f << Rect(169.f, 2.f, -169.f, -2.f);
+
+#undef FUNC
+}
+
+void GeoTest::testRectInflate()
+{
+  QFETCH(Rect, rect);
+  QFETCH(float, width);
+  QFETCH(float, height);
+  QFETCH(Rect, expected);
+
+  rect.inflate(width, height);
+  qDebug() << "expected" << rect << "expected" << expected;
+  QCOMPARE(rect, expected);
 }
