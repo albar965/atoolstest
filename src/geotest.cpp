@@ -30,6 +30,21 @@ using atools::geo::LineString;
 using atools::geo::LineDistance;
 using atools::geo::angleAbsDiff;
 
+namespace QTest {
+template<>
+char *toString(const Pos& pos)
+{
+  return qstrdup(pos.toString().toLocal8Bit());
+}
+
+template<>
+char *toString(const Rect& rect)
+{
+  return qstrdup(rect.toString().toLocal8Bit());
+}
+
+}
+
 GeoTest::GeoTest()
 {
 
@@ -48,6 +63,31 @@ void GeoTest::initTestCase()
 void GeoTest::cleanupTestCase()
 {
 
+}
+
+void GeoTest::testScale()
+{
+  QCOMPARE(Rect(0.f, 0.f).scale(1.0f, 1.0f), Rect(0.f, 0.f));
+  QCOMPARE(Rect(-10.f, 10.f, 10.f, -10.f).scale(1.0f, 1.0f), Rect(-10.f, 10.f, 10.f, -10.f));
+  QCOMPARE(Rect(-10.f, 10.f, 10.f, -10.f).scale(2.0f, 2.0f), Rect(-20.f, 20.f, 20.f, -20.f));
+  QCOMPARE(Rect(-10.f, 10.f, 10.f, -10.f).scale(0.1f, 0.1f), Rect(-1.f, 1.f, 1.f, -1.f));
+
+  QCOMPARE(Rect(170.f, 10.f, -170.f, -10.f).scale(1.0f, 1.0f), Rect(170.f, 10.f, -170.f, -10.f));
+  QCOMPARE(Rect(170.f, 10.f, -170.f, -10.f).scale(2.0f, 2.0f), Rect(160.f, 20.f, -160.f, -20.f));
+  QCOMPARE(Rect(170.f, 10.f, -170.f, -10.f).scale(0.1f, 0.1f), Rect(179.f, 1.f, -179.f, -1.f));
+}
+
+void GeoTest::testCenter()
+{
+  QCOMPARE(Rect(0.f, 0.f).getCenter(), Pos(0.f, 0.f));
+  QCOMPARE(Rect(-10.f, 10.f).getCenter(), Pos(-10.f, 10.f));
+  QCOMPARE(Rect(-10.f, 10.f, 10.f, -10.f).getCenter(), Pos(0.f, 0.f));
+  QCOMPARE(Rect(-10.f, 10.f, 0.f, 0.f).getCenter(), Pos(-5.f, 5.f));
+  QCOMPARE(Rect(0.f, 10.f, 10.f, 0.f).getCenter(), Pos(5.f, 5.f));
+  QCOMPARE(Rect(160.f, 10.f, -160.f, -10.f).getCenter(), Pos(-180.f, 0.f));
+  QCOMPARE(Rect(150.f, 10.f, -170.f, -10.f).getCenter(), Pos(170.f, 0.f));
+  QCOMPARE(Rect(170.f, 10.f, -150.f, -10.f).getCenter(), Pos(-170.f, 0.f));
+  QCOMPARE(Rect(-100.f, 10.f, 100.f, -10.f).getCenter(), Pos(-0.f, 0.f));
 }
 
 void GeoTest::testAngleDiff_data()
@@ -781,7 +821,7 @@ void GeoTest::testRectExtend_data()
 {
 #define FUNC QString("%1:%2").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
 
-  QTest::addColumn<Rect>("pos");
+  QTest::addColumn<Rect>("rect");
   QTest::addColumn<LineString>("extends");
   QTest::addColumn<Rect>("expected");
 
@@ -842,16 +882,11 @@ void GeoTest::testRectExtend_data()
 
 void GeoTest::testRectExtend()
 {
-  QFETCH(Rect, pos);
+  QFETCH(Rect, rect);
   QFETCH(LineString, extends);
   QFETCH(Rect, expected);
 
-  Rect rect(pos);
-  for(const Pos& ext:extends)
-    rect.extend(ext);
-
-  qDebug() << "expected" << rect << "expected" << expected;
-  QCOMPARE(rect, expected);
+  QCOMPARE(rect.extend(extends), expected);
 }
 
 void GeoTest::testRectInflate_data()
@@ -880,7 +915,5 @@ void GeoTest::testRectInflate()
   QFETCH(float, height);
   QFETCH(Rect, expected);
 
-  rect.inflate(width, height);
-  qDebug() << "expected" << rect << "expected" << expected;
-  QCOMPARE(rect, expected);
+  QCOMPARE(rect.inflate(width, height), expected);
 }

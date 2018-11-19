@@ -35,6 +35,9 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testScale();
+  void testCenter();
+
   void testRectInflate_data();
   void testRectInflate();
 
