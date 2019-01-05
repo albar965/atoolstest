@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <version type="int">2</version>
+  <departure>
+    <airport type="string">EDDF</airport>
+  </departure>
+  <destination>
+    <airport type="string">LIRF</airport>
+  </destination>
+  <route>
+    <wp>
+      <type type="string">navaid</type>
+      <departure type="bool">true</departure>
+      <ident type="string">EDDF</ident>
+      <lon type="double">8.541722452</lon>
+      <lat type="double">50.03219323</lat>
+    </wp>
+    <wp n="1">
+      <type type="string">navaid</type>
+      <ident type="string">BOMBI</ident>
+      <lon type="double">8.800278</lon>
+      <lat type="double">50.056667</lat>
+    </wp>
+    <wp n="2">
+      <type type="string">navaid</type>
+      <ident type="string">OMOGI</ident>
+      <lon type="double">8.989167</lon>
+      <lat type="double">49.655833</lat>
+    </wp>
+    <wp n="3">
+      <type type="string">navaid</type>
+      <ident type="string">SUNEG</ident>
+      <lon type="double">8.864167</lon>
+      <lat type="double">49.198611</lat>
+    </wp>
+    <wp n="4">
+      <type type="string">navaid</type>
+      <ident type="string">TGO</ident>
+      <lon type="double">9.259208</lon>
+      <lat type="double">48.618408</lat>
+    </wp>
+    <wp n="5">
+      <type type="string">navaid</type>
+      <ident type="string">AMEMI</ident>
+      <lon type="double">10.167222</lon>
+      <lat type="double">47.894722</lat>
+    </wp>
+    <wp n="6">
+      <type type="string">navaid</type>
+      <ident type="string">KPT</ident>
+      <lon type="double">10.349722</lon>
+      <lat type="double">47.745833</lat>
+    </wp>
+    <wp n="7">
+      <type type="string">navaid</type>
+      <ident type="string">ALGOI</ident>
+      <lon type="double">10.488669</lon>
+      <lat type="double">47.447425</lat>
+    </wp>
+    <wp n="8">
+      <type type="string">navaid</type>
+      <ident type="string">PITAR</ident>
+      <lon type="double">10.680556</lon>
+      <lat type="double">47.029167</lat>
+    </wp>
+    <wp n="9">
+      <type type="string">navaid</type>
+      <ident type="string">GIMOS</ident>
+      <lon type="double">10.728362</lon>
+      <lat type="double">46.83711</lat>
+    </wp>
+    <wp n="10">
+      <type type="string">navaid</type>
+      <ident type="string">RENTA</ident>
+      <lon type="double">10.863611</lon>
+      <lat type="double">46.305556</lat>
+    </wp>
+    <wp n="11">
+      <type type="string">navaid</type>
+      <ident type="string">ADOSA</ident>
+      <lon type="double">11.026389</lon>
+      <lat type="double">45.644444</lat>
+    </wp>
+    <wp n="12">
+      <type type="string">navaid</type>
+      <ident type="string">OSTEG</ident>
+      <lon type="double">11.138889</lon>
+      <lat type="double">45.178611</lat>
+    </wp>
+    <wp n="13">
+      <type type="string">navaid</type>
+      <ident type="string">KREVA</ident>
+      <lon type="double">11.235</lon>
+      <lat type="double">44.774444</lat>
+    </wp>
+    <wp n="14">
+      <type type="string">navaid</type>
+      <ident type="string">BOA</ident>
+      <lon type="double">11.290553</lon>
+      <lat type="double">44.536937</lat>
+    </wp>
+    <wp n="15">
+      <type type="string">navaid</type>
+      <ident type="string">VALEN</ident>
+      <lon type="double">11.533056</lon>
+      <lat type="double">43.937222</lat>
+    </wp>
+    <wp n="16">
+      <type type="string">navaid</type>
+      <ident type="string">BUKIN</ident>
+      <lon type="double">11.636667</lon>
+      <lat type="double">43.676944</lat>
+    </wp>
+    <wp n="17">
+      <type type="string">navaid</type>
+      <ident type="string">IXUSI</ident>
+      <lon type="double">11.730833</lon>
+      <lat type="double">43.438611</lat>
+    </wp>
+    <wp n="18">
+      <type type="string">navaid</type>
+      <ident type="string">BOL</ident>
+      <lon type="double">12.048611</lon>
+      <lat type="double">42.618333</lat>
+    </wp>
+    <wp n="19">
+      <type type="string">navaid</type>
+      <ident type="string">OST</ident>
+      <lon type="double">12.237496</lon>
+      <lat type="double">41.803876</lat>
+    </wp>
+    <wp n="20">
+      <type type="string">navaid</type>
+      <ident type="string">LUNAK</ident>
+      <lon type="double">11.870556</lon>
+      <lat type="double">41.703333</lat>
+    </wp>
+    <wp n="21">
+      <type type="string">navaid</type>
+      <approach type="bool">true</approach>
+      <ident type="string">LIRF</ident>
+      <lon type="double">12.25455187</lon>
+      <lat type="double">41.80965064</lat>
+    </wp>
+  </route>
+</PropertyList>

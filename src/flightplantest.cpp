@@ -24,6 +24,8 @@ using atools::fs::pln::Flightplan;
 using atools::fs::pln::FlightplanIO;
 using atools::fs::pln::FlightplanEntry;
 
+const static QLatin1Literal OUTPUT("flightplan_output");
+
 FlightplanTest::FlightplanTest()
 {
 
@@ -37,6 +39,8 @@ void FlightplanTest::runtest(int argc, char *argv[])
 
 void FlightplanTest::initTestCase()
 {
+  QDir().mkpath(OUTPUT);
+
   io.load(flightplan, ":/test/resources/flightplan.pln");
 
   QCOMPARE(flightplan.getEntries().size(), 18);
@@ -81,19 +85,34 @@ void FlightplanTest::testReadFpr()
 
 #endif
 
+void FlightplanTest::testDetectFormat()
+{
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/RANDOM_BIN_1.tst"), atools::fs::pln::NONE);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/RANDOM_BIN_2.tst"), atools::fs::pln::NONE);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/RANDOM_BIN_3.tst"), atools::fs::pln::NONE);
+
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/flightplan-procs.pln"), atools::fs::pln::PLN_FSX);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/flightplan-fs9.pln"), atools::fs::pln::PLN_FS9);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/LIDTLSZS_FSC.pln"), atools::fs::pln::PLN_FSC);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/KSEA_KFLL_sid_star_trans.xml"), atools::fs::pln::FLIGHTGEAR);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/EDDF-LIRF.fgfp"), atools::fs::pln::FLIGHTGEAR);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/KORD-KSEA.fgfp"), atools::fs::pln::FLIGHTGEAR);
+
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/add-on.xml"), atools::fs::pln::NONE);
+}
+
 void FlightplanTest::testSaveFprDirect()
 {
   Flightplan fp;
 
-  io.load(fp,
-          "/home/alex/ownCloud/Flight Simulator/Flightplans/IFR Banak (ENNA) to Muenchen Franz-Josef Strauss (EDDM).pln");
+  io.load(fp, ":/test/resources/enna_eddm.pln");
 
   for(FlightplanEntry& e:fp.getEntries())
     e.setAirway(QString());
 
-  io.saveFpr(fp, "_test_fpr_direct.fpr");
+  io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_direct.fpr");
 
-  QCOMPARE(QFileInfo("result_flp_mixed.flp").size(), 943);
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 943);
 }
 
 void FlightplanTest::testSaveFprAirway()
@@ -101,9 +120,9 @@ void FlightplanTest::testSaveFprAirway()
   Flightplan fp;
 
   io.load(fp, ":/test/resources/_test_fpr.pln");
-  io.saveFpr(fp, "_test_fpr_airway.fpr");
+  io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_airway.fpr");
 
-  QCOMPARE(QFileInfo("result_flp_mixed.flp").size(), 943);
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 943);
 }
 
 void FlightplanTest::testLoadFs9()
@@ -113,6 +132,15 @@ void FlightplanTest::testLoadFs9()
   io.load(fp, ":/test/resources/flightplan-fs9.pln");
 
   QCOMPARE(fp.getEntries().size(), 13);
+}
+
+void FlightplanTest::testLoadFsc()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/LIDTLSZS_FSC.pln");
+
+  QCOMPARE(fp.getEntries().size(), 27);
 }
 
 void FlightplanTest::testLoadFms()
@@ -138,9 +166,9 @@ void FlightplanTest::testSaveFlpDirect()
   Flightplan fp;
 
   io.load(fp, ":/test/resources/_test_flp_direct.pln");
-  io.saveFlp(fp, "result_flp_direct.flp");
+  io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_direct.flp");
 
-  QCOMPARE(QFileInfo("result_flp_direct.flp").size(), 1010);
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1010);
 }
 
 void FlightplanTest::testSaveFlpAirway()
@@ -148,9 +176,9 @@ void FlightplanTest::testSaveFlpAirway()
   Flightplan fp;
 
   io.load(fp, ":/test/resources/_test_flp_airway.pln");
-  io.saveFlp(fp, "result_flp_airway.flp");
+  io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_airway.flp");
 
-  QCOMPARE(QFileInfo("result_flp_airway.flp").size(), 1130);
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_airway.flp").size(), 1130);
 }
 
 void FlightplanTest::testSaveFlpMixed()
@@ -158,9 +186,9 @@ void FlightplanTest::testSaveFlpMixed()
   Flightplan fp;
 
   io.load(fp, ":/test/resources/_test_flp_mixed.pln");
-  io.saveFlp(fp, "result_flp_mixed.flp");
+  io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_mixed.flp");
 
-  QCOMPARE(QFileInfo("result_flp_mixed.flp").size(), 943);
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 943);
 }
 
 void FlightplanTest::testSaveFltplanDirect()
@@ -168,7 +196,7 @@ void FlightplanTest::testSaveFltplanDirect()
   Flightplan fp;
 
   io.load(fp, ":/test/resources/_test_flp_direct.pln");
-  io.saveFltplan(fp, "result_fltplan_direct.fltplan");
+  io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan");
 
   // QCOMPARE(QFileInfo("result_fltplan_direct.fltplan").size(), 1010);
 }
@@ -178,7 +206,7 @@ void FlightplanTest::testSaveFltplanAirway()
   Flightplan fp;
 
   io.load(fp, ":/test/resources/_test_flp_airway.pln");
-  io.saveFltplan(fp, "result_fltplan_airway.fltplan");
+  io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan");
 
   // QCOMPARE(QFileInfo("result_fltplan_airway.fltplan").size(), 1130);
 }
@@ -188,43 +216,113 @@ void FlightplanTest::testSaveFltplanMixed()
   Flightplan fp;
 
   io.load(fp, ":/test/resources/_test_flp_mixed.pln");
-  io.saveFltplan(fp, "result_fltplan_mixed.fltplan");
+  io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed.fltplan");
 
   // QCOMPARE(QFileInfo("result_fltplan_mixed.fltplan").size(), 943);
 }
 
+void FlightplanTest::testSaveFlightGearDirect()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/_test_flp_direct.pln");
+  io.saveFlightGear(fp, OUTPUT + QDir::separator() + "result_fltplan_direct_fg.xml");
+}
+
+void FlightplanTest::testSaveFlightGearAirway()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/_test_flp_airway.pln");
+  io.saveFlightGear(fp, OUTPUT + QDir::separator() + "result_fltplan_airway_fg.xml");
+}
+
+void FlightplanTest::testSaveFlightGearMixed()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/_test_flp_mixed.pln");
+  io.saveFlightGear(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed_fg.xml");
+}
+
+void FlightplanTest::testSaveFlightGearSidStarTrans()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/KSEA_KFLL_sid_star_trans.pln");
+  io.saveFlightGear(fp, OUTPUT + QDir::separator() + "result_fltplan_sid_star_trans_fg.xml");
+}
+
+void FlightplanTest::testLoadFlightGearSidStarTrans()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/KSEA_KFLL_sid_star_trans.xml");
+
+  QCOMPARE(fp.getEntries().size(), 121);
+
+  io.saveFlightGear(fp, OUTPUT + QDir::separator() + "KSEA_KFLL_sid_star_trans.xml");
+}
+
+void FlightplanTest::testLoadFlightGearRunway()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/EDDF_LIRF_rw.xml");
+  QCOMPARE(fp.getEntries().size(), 25);
+}
+
+void FlightplanTest::testLoadFlightGear()
+{
+  Flightplan fp;
+  io.load(fp, ":/test/resources/EDDF_LIRF.xml");
+  QCOMPARE(fp.getEntries().size(), 22);
+
+  fp.clear();
+  io.load(fp, ":/test/resources/KORD-KSEA.fgfp");
+  QCOMPARE(fp.getEntries().size(), 21);
+
+  fp.clear();
+  io.load(fp, ":/test/resources/EDDF-LIRF.fgfp");
+  QCOMPARE(fp.getEntries().size(), 19);
+}
+
 void FlightplanTest::testSave()
 {
-  io.save(flightplan, "test_flightplan.pln", "1710", atools::fs::pln::SAVE_NO_OPTIONS);
+  io.save(flightplan, OUTPUT + QDir::separator() + "test_flightplan.pln", "1710", atools::fs::pln::SAVE_NO_OPTIONS);
 }
 
 void FlightplanTest::testSaveClean()
 {
-  io.save(flightplan, "result_flightplan_clean.pln", "1710", atools::fs::pln::SAVE_CLEAN);
+  io.save(flightplan, OUTPUT + QDir::separator() + "result_flightplan_clean.pln", "1710", atools::fs::pln::SAVE_CLEAN);
 }
 
 void FlightplanTest::testSaveRte()
 {
-  io.saveRte(flightplan, "result_flightplan.rte");
+  io.saveRte(flightplan, OUTPUT + QDir::separator() + "result_flightplan.rte");
 }
 
 void FlightplanTest::testSaveFlp()
 {
-  io.saveFlp(flightplan, "result_flightplan.flp");
+  io.saveFlp(flightplan, OUTPUT + QDir::separator() + "result_flightplan.flp");
 }
 
 void FlightplanTest::testSaveFms()
 {
-  io.saveFms(flightplan, "result_flightplan.fms", "1710", false);
+  io.saveFms(flightplan, OUTPUT + QDir::separator() + "result_flightplan.fms", "1710", false);
 }
 
 void FlightplanTest::testSaveGarminGns()
 {
-  io.saveGarminGns(flightplan, "result_flightplan_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
-  io.saveGarminGns(flightplanUser, "result_flightplan_usr_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
+  io.saveGarminGns(flightplan,
+                   OUTPUT + QDir::separator() + "result_flightplan_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
+  io.saveGarminGns(flightplanUser,
+                   OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
 
-  io.saveGarminGns(flightplan, "result_flightplan_gns_uwp.fpl", atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
-  io.saveGarminGns(flightplanUser, "result_flightplan_usr_gns_uwp.fpl", atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
+  io.saveGarminGns(flightplan, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl",
+                   atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
+  io.saveGarminGns(flightplanUser, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl",
+                   atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
 }
 
 void FlightplanTest::testSaveGpx()
@@ -367,5 +465,5 @@ void FlightplanTest::testSaveGpx()
   track.append(atools::geo::Pos(29.60868541158515, 69.35865657541576, 0));
   track.append(atools::geo::Pos(29.90336391749667, 69.44466508670483, 0));
 
-  io.saveGpx(flightplan, "result_flightplan.gpx", track, QVector<quint32>(), 10000);
+  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan.gpx", track, QVector<quint32>(), 10000);
 }

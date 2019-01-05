@@ -43,10 +43,13 @@ private slots:
   void testReadFpr();
 
 #endif
+
+private slots:
   void testSaveFprDirect();
   void testSaveFprAirway();
 
   void testLoadFs9();
+  void testLoadFsc();
   void testLoadFms();
   void testLoadFms2();
 
@@ -66,6 +69,17 @@ private slots:
   void testSaveGpx();
 
   void testSaveGarminGns();
+
+  void testSaveFlightGearDirect();
+  void testSaveFlightGearAirway();
+  void testSaveFlightGearMixed();
+  void testSaveFlightGearSidStarTrans();
+
+  void testLoadFlightGearRunway();
+  void testLoadFlightGearSidStarTrans();
+  void testLoadFlightGear();
+
+  void testDetectFormat();
 
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser;

@@ -28,5 +28,17 @@
         <file>resources/vatsim-servers.txt</file>
         <file>resources/custom-whazzup.txt</file>
         <file>resources/METAR.txt</file>
+        <file>resources/enna_eddm.pln</file>
+        <file>resources/KSEA_KFLL_sid_star_trans.pln</file>
+        <file>resources/EDDF_LIRF_rw.xml</file>
+        <file>resources/EDDF_LIRF.xml</file>
+        <file>resources/KSEA_KFLL_sid_star_trans.xml</file>
+        <file>resources/LIDTLSZS_FSC.pln</file>
+        <file>resources/RANDOM_BIN_3.tst</file>
+        <file>resources/RANDOM_BIN_2.tst</file>
+        <file>resources/RANDOM_BIN_1.tst</file>
+        <file>resources/KORD-KSEA.fgfp</file>
+        <file>resources/EDDF-LIRF.fgfp</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

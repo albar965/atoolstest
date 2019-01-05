@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Erstellt mit Little Navmap Version 2.2.3 (Revision a3908da) am 2019 01 05T15:49:39|
+         aircraftperffile=/home/alex/Nextcloud/Flight Simulator/Aircraft Performance/vFlyteAir Piper Twin Comanche.lnmperf|
+         aircraftperfname=vFlyteAir Piper Twin Comanche|
+         aircraftperftype=PA30|
+         approach=FI31|
+         approacharinc=I31-Y|
+         approachdistance=9.3|
+         approachrw=31|
+         approachsize=7|
+         approachsuffix=Y|
+         approachtype=ILS|
+         cycle=1811|
+         navdata=NAVIGRAPH|
+         sidappr=GOMS1B|
+         sidapprdistance=47.2|
+         sidapprrw=15|
+         sidapprsize=8|
+         simdata=XP11
+-->
+    <FlightPlan.FlightPlan>
+        <Title>LEPP to LFBP</Title>
+        <FPType>IFR</FPType>
+        <CruisingAlt>8500</CruisingAlt>
+        <DepartureID>LEPP</DepartureID>
+        <DepartureLLA>N42° 46' 46.42",W1° 39' 11.73",+001502.00</DepartureLLA>
+        <DestinationID>LFBP</DestinationID>
+        <DestinationLLA>N43° 22' 47.65",W0° 25' 6.64",+000616.00</DestinationLLA>
+        <Descr>LEPP, LFBP</Descr>
+        <DeparturePosition>15</DeparturePosition>
+        <DepartureName>Pamplona</DepartureName>
+        <DestinationName>Pau Pyrenees</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="LEPP">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N42° 46' 12.00",W1° 38' 47.00",+001502.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LEPP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BEGUY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 3' 30.00",W1° 27' 3.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LE</ICAORegion>
+                <ICAOIdent>BEGUY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LFBP">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N43° 22' 47.65",W0° 25' 6.64",+000616.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LFBP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+	<source type="string">https://flightplandatabase.com/plan/1551265</source>
+	<version type="int">2</version>
+	<departure>
+		<airport type="string">KORD</airport>
+	</departure>
+	<destination>
+		<airport type="string">KSEA</airport>
+	</destination>
+	<route>
+		<wp n="0">
+			<type type="string">navaid</type>
+			<departure type="bool">true</departure>
+			<ident type="string">KORD</ident>
+			<lat type="double">41.975700</lat>
+			<lon type="double">-87.906400</lon>
+		</wp>
+		<wp n="1">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">31700</altitude-ft>
+			<ident type="string">MADDY</ident>
+			<lat type="double">42.495000</lat>
+			<lon type="double">-89.779400</lon>
+		</wp>
+		<wp n="2">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">BAULK</ident>
+			<lat type="double">42.684700</lat>
+			<lon type="double">-90.194700</lon>
+		</wp>
+		<wp n="3">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">ISINY</ident>
+			<lat type="double">42.925100</lat>
+			<lon type="double">-90.729400</lon>
+		</wp>
+		<wp n="4">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">FARON</ident>
+			<lat type="double">42.994700</lat>
+			<lon type="double">-90.886000</lon>
+		</wp>
+		<wp n="5">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">UKN</ident>
+			<lat type="double">43.280100</lat>
+			<lon type="double">-91.537400</lon>
+		</wp>
+		<wp n="6">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">GABDE</ident>
+			<lat type="double">43.647200</lat>
+			<lon type="double">-92.307400</lon>
+		</wp>
+		<wp n="7">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">RST</ident>
+			<lat type="double">43.782900</lat>
+			<lon type="double">-92.597000</lon>
+		</wp>
+		<wp n="8">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">KASPR</ident>
+			<lat type="double">43.965500</lat>
+			<lon type="double">-93.247000</lon>
+		</wp>
+		<wp n="9">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">ALMAY</ident>
+			<lat type="double">44.058600</lat>
+			<lon type="double">-93.585000</lon>
+		</wp>
+		<wp n="10">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">ZELET</ident>
+			<lat type="double">44.375000</lat>
+			<lon type="double">-94.771100</lon>
+		</wp>
+		<wp n="11">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">KUKGE</ident>
+			<lat type="double">44.427800</lat>
+			<lon type="double">-94.975000</lon>
+		</wp>
+		<wp n="12">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">RWF</ident>
+			<lat type="double">44.467300</lat>
+			<lon type="double">-95.128200</lon>
+		</wp>
+		<wp n="13">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">ABR</ident>
+			<lat type="double">45.417400</lat>
+			<lon type="double">-98.368700</lon>
+		</wp>
+		<wp n="14">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">MLS</ident>
+			<lat type="double">46.382200</lat>
+			<lon type="double">-105.954000</lon>
+		</wp>
+		<wp n="15">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">ESTRO</ident>
+			<lat type="double">46.952600</lat>
+			<lon type="double">-109.010000</lon>
+		</wp>
+		<wp n="16">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">LWT</ident>
+			<lat type="double">47.053000</lat>
+			<lon type="double">-109.606000</lon>
+		</wp>
+		<wp n="17">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">35000</altitude-ft>
+			<ident type="string">MLP</ident>
+			<lat type="double">47.456900</lat>
+			<lon type="double">-115.646000</lon>
+		</wp>
+		<wp n="18">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">25100</altitude-ft>
+			<ident type="string">EPH</ident>
+			<lat type="double">47.377900</lat>
+			<lon type="double">-119.424000</lon>
+		</wp>
+		<wp n="19">
+			<type type="string">navaid</type>
+			<alt-restrict type="string">at</alt-restrict>
+			<altitude-ft type="double">20400</altitude-ft>
+			<ident type="string">OZALI</ident>
+			<lat type="double">47.393400</lat>
+			<lon type="double">-119.963000</lon>
+		</wp>
+		<wp n="20">
+			<type type="string">navaid</type>
+			<arrival type="bool">true</arrival>
+			<ident type="string">KSEA</ident>
+			<lat type="double">47.450200</lat>
+			<lon type="double">-122.312000</lon>
+		</wp>
+	</route>
+</PropertyList>

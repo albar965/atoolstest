@@ -1,0 +1,1129 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 2.2.3 (revision a3908da) on 2019 01 03T14:43:48|
+         aircraftperffile=|
+         aircraftperfname=|
+         aircraftperftype=|
+         cycle=1811|
+         navdata=NAVIGRAPH|
+         sidappr=HAROB6|
+         sidapprdistance=39.2|
+         sidapprrw=16C|
+         sidapprsize=7|
+         sidtrans=FEPOT|
+         sidtransdistance=12.2|
+         sidtranssize=2|
+         simdata=XP11|
+         star=FORTL7|
+         stardistance=27.1|
+         starrw=10L|
+         starsize=3|
+         startrans=SRQ|
+         startransdistance=93.8|
+         startranssize=3
+-->
+    <FlightPlan.FlightPlan>
+        <Title>KSEA to KFLL</Title>
+        <FPType>IFR</FPType>
+        <RouteType>LowAlt</RouteType>
+        <CruisingAlt>17000</CruisingAlt>
+        <DepartureID>KSEA</DepartureID>
+        <DepartureLLA>N47° 27' 49.67",W122° 18' 27.94",+000433.00</DepartureLLA>
+        <DestinationID>KFLL</DestinationID>
+        <DestinationLLA>N26° 4' 18.00",W80° 8' 58.91",+000004.00</DestinationLLA>
+        <Descr>KSEA, KFLL</Descr>
+        <DeparturePosition>16L</DeparturePosition>
+        <DepartureName>Seattle Tacoma Intl</DepartureName>
+        <DestinationName>Fort Lauderdale Hollywood Intl</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="KSEA">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 26' 59.60",W122° 18' 42.39",+000433.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KSEA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OLM">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N46° 58' 17.90",W122° 54' 6.60",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>OLM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MCKEN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 52' 3.70",W122° 33' 45.41",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>MCKEN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALDER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 49' 17.62",W122° 24' 51.20",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>ALDER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WEBIM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 43' 54.66",W122° 7' 37.58",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>WEBIM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WHYTE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 34' 42.43",W121° 38' 37.21",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>WHYTE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WOREM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 34' 31.55",W120° 58' 33.87",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>WOREM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TAMPO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 34' 28.40",W120° 51' 55.34",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>TAMPO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TUDGY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 34' 28.09",W120° 51' 19.03",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>TUDGY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="YKM">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N46° 34' 12.86",W120° 26' 40.68",+000000.00</WorldPosition>
+            <ATCAirway>V204</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>YKM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUNED">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 17' 41.55",W119° 57' 36.16",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>SUNED</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BRUKK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 11' 28.86",W119° 46' 48.16",+000000.00</WorldPosition>
+            <ATCAirway>V4</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>BRUKK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AMPLE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N46° 7' 20.29",W119° 39' 38.05",+000000.00</WorldPosition>
+            <ATCAirway>V4</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>AMPLE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LACIB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 54' 48.66",W119° 18' 9.54",+000000.00</WorldPosition>
+            <ATCAirway>V4</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>LACIB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CORDO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 50' 26.98",W119° 10' 44.95",+000000.00</WorldPosition>
+            <ATCAirway>V4</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>CORDO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PDT">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N45° 41' 54.32",W118° 56' 19.37",+000000.00</WorldPosition>
+            <ATCAirway>V4</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>PDT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CABAN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 35' 11.26",W118° 35' 41.59",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>CABAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EYUYA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 33' 28.53",W118° 30' 28.73",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>EYUYA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HAGRD">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 29' 13.45",W118° 17' 36.36",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>HAGRD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IBEAM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N45° 23' 46.93",W118° 1' 16.44",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>IBEAM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUMOQ">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 55' 51.52",W116° 40' 1.89",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>SUMOQ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DNJ">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N44° 46' 1.55",W116° 12' 22.59",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>DNJ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="YOWLS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 27' 30.72",W114° 16' 25.28",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>YOWLS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DBS">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N44° 5' 19.87",W112° 12' 33.63",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>DBS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SABAT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N44° 0' 59.71",W111° 39' 55.05",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>SABAT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LAMON">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 57' 34.18",W111° 14' 57.69",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>LAMON</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RELAE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 52' 40.16",W110° 40' 26.88",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>RELAE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="QUIRT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 52' 6.61",W110° 36' 35.40",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>QUIRT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NALSI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 51' 31.43",W110° 32' 33.62",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>NALSI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DNW">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N43° 49' 41.80",W110° 20' 7.70",+000000.00</WorldPosition>
+            <ATCAirway>V298</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>DNW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NEEDS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 31' 54.37",W109° 35' 25.17",+000000.00</WorldPosition>
+            <ATCAirway>V330</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>NEEDS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ROWEY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 19' 13.41",W109° 4' 10.90",+000000.00</WorldPosition>
+            <ATCAirway>V330</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>ROWEY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ARUXY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N43° 15' 18.26",W108° 54' 39.42",+000000.00</WorldPosition>
+            <ATCAirway>V330</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>ARUXY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RIW">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N43° 3' 56.63",W108° 27' 19.93",+000000.00</WorldPosition>
+            <ATCAirway>V330</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>RIW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HUNTZ">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N42° 52' 55.05",W108° 4' 23.42",+000000.00</WorldPosition>
+            <ATCAirway>V138</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>HUNTZ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MBW">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N41° 50' 43.89",W106° 0' 15.41",+000000.00</WorldPosition>
+            <ATCAirway>V138</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>MBW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CIKNA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N41° 36' 7.09",W105° 31' 32.72",+000000.00</WorldPosition>
+            <ATCAirway>V138</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>CIKNA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MILKY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N41° 24' 18.44",W105° 8' 39.98",+000000.00</WorldPosition>
+            <ATCAirway>V138</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>MILKY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CYS">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N41° 12' 39.48",W104° 46' 22.48",+000000.00</WorldPosition>
+            <ATCAirway>V138</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>CYS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HAMER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N41° 2' 39.21",W104° 30' 56.20",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>HAMER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SHOOP">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 52' 54.61",W104° 16' 1.52",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K2</ICAORegion>
+                <ICAOIdent>SHOOP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RAYME">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 33' 42.84",W103° 46' 59.72",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K2</ICAORegion>
+                <ICAOIdent>RAYME</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TUMBL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 25' 51.32",W103° 35' 14.65",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K2</ICAORegion>
+                <ICAOIdent>TUMBL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AKO">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N40° 9' 19.99",W103° 10' 46.96",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K2</ICAORegion>
+                <ICAOIdent>AKO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GERON">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 3' 49.94",W102° 59' 53.96",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K2</ICAORegion>
+                <ICAOIdent>GERON</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GLD">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N39° 23' 16.33",W101° 41' 32.28",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>GLD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ORION">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N39° 2' 53.53",W100° 43' 47.13",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>ORION</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RANSO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N38° 44' 24.35",W99° 52' 59.47",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>RANSO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DISKS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N38° 21' 37.75",W98° 52' 19.21",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>DISKS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HARAN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N38° 15' 12.61",W98° 35' 34.37",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>HARAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SPELT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N38° 7' 47.48",W98° 16' 25.50",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>SPELT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="YETRU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N38° 6' 28.94",W98° 13' 3.93",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>YETRU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OKZUC">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N38° 6' 2.41",W98° 11' 55.73",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>OKZUC</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="JASIG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N38° 2' 55.92",W98° 3' 59.01",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>JASIG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HUT">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N37° 59' 48.90",W97° 56' 2.94",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>HUT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HESUL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 55' 6.94",W97° 49' 29.00",+000000.00</WorldPosition>
+            <ATCAirway>V73</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>HESUL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WUKUS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 53' 27.69",W97° 47' 10.65",+000000.00</WorldPosition>
+            <ATCAirway>V73</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>WUKUS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MUGER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 50' 54.64",W97° 43' 37.66",+000000.00</WorldPosition>
+            <ATCAirway>V73</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>MUGER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZIMEX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 49' 44.28",W97° 41' 59.77",+000000.00</WorldPosition>
+            <ATCAirway>V73</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>ZIMEX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ICT">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N37° 44' 42.93",W97° 35' 1.79",+000000.00</WorldPosition>
+            <ATCAirway>V73</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>ICT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NUTME">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 43' 51.42",W97° 18' 40.61",+000000.00</WorldPosition>
+            <ATCAirway>V350</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>NUTME</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="YOHER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 42' 34.44",W96° 53' 42.84",+000000.00</WorldPosition>
+            <ATCAirway>V350</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>YOHER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OBDAW">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 41' 13.96",W96° 32' 36.56",+000000.00</WorldPosition>
+            <ATCAirway>V350</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>OBDAW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CNU">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N37° 37' 34.17",W95° 35' 36.48",+000000.00</WorldPosition>
+            <ATCAirway>V350</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>CNU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KUVPE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 34' 56.15",W95° 17' 1.40",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>KUVPE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NALLY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 32' 9.57",W94° 57' 48.33",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>NALLY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NASHE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 27' 40.01",W94° 27' 29.43",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>NASHE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZEDDI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 25' 43.74",W94° 14' 42.04",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>ZEDDI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OZARK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 23' 38.38",W93° 46' 5.67",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>OZARK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="JACCK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 23' 12.34",W93° 42' 30.26",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>JACCK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SGF">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N37° 21' 21.40",W93° 20' 2.56",+000000.00</WorldPosition>
+            <ATCAirway>V132</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>SGF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FORDS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 9' 14.71",W93° 3' 20.78",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>FORDS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="REVEE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 7' 53.94",W93° 1' 29.79",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>REVEE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DGD">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N37° 1' 24.48",W92° 52' 36.92",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>DGD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AVARR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N36° 47' 55.14",W92° 23' 35.40",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>AVARR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZERTY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N36° 37' 46.03",W92° 2' 1.29",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K3</ICAORegion>
+                <ICAOIdent>ZERTY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ARG">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N36° 6' 36.07",W90° 57' 13.31",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>ARG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GQE">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N35° 20' 49.31",W90° 28' 41.37",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>GQE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KALIE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N35° 12' 8.01",W90° 13' 44.61",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>KALIE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KUMGE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N35° 11' 15.43",W90° 12' 14.52",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K4</ICAORegion>
+                <ICAOIdent>KUMGE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZEDTU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N35° 6' 58.55",W90° 4' 55.53",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>ZEDTU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CUXEG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N35° 6' 15.35",W90° 3' 41.73",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>CUXEG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ERPOW">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 59' 41.27",W89° 52' 31.37",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>ERPOW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HLI">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N34° 46' 12.88",W89° 29' 47.48",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>HLI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ICAVY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 29' 51.00",W88° 47' 3.65",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>ICAVY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZATEL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 27' 49.78",W88° 41' 30.77",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>ZATEL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GANTT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 26' 42.26",W88° 38' 57.40",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>GANTT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HAB">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N34° 11' 55.57",W88° 0' 41.83",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>HAB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FOGUM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 6' 25.32",W87° 49' 24.17",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>FOGUM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EXIST">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 59' 37.53",W87° 34' 53.36",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>EXIST</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CHOOK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 56' 4.62",W87° 27' 21.41",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>CHOOK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CORES">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 50' 7.19",W87° 14' 36.71",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>CORES</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NEGEE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 48' 12.56",W87° 10' 36.88",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>NEGEE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VUZ">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N33° 40' 12.47",W86° 53' 59.40",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>VUZ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HANDE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 18' 44.40",W86° 31' 24.43",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>HANDE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ADZIN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 10' 36.99",W86° 22' 56.20",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>ADZIN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KYLEE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 9' 41.04",W86° 21' 57.73",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>KYLEE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FAYEZ">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 0' 38.93",W86° 12' 34.79",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>FAYEZ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NIXBY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N32° 55' 34.52",W86° 7' 19.95",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>NIXBY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SEMAN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N32° 46' 20.97",W85° 57' 49.43",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>SEMAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KENTT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N32° 36' 42.77",W85° 47' 57.32",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>KENTT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TGE">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N32° 29' 5.54",W85° 40' 9.55",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>TGE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MILER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N32° 12' 57.74",W85° 23' 50.34",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>MILER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EUF">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N31° 57' 0.90",W85° 7' 49.72",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>EUF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AXOSE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 53' 13.32",W84° 56' 57.43",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>AXOSE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SAWES">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 50' 59.68",W84° 50' 36.02",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>SAWES</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AYUVO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 45' 50.73",W84° 35' 58.46",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>AYUVO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SHANY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 45' 5.09",W84° 33' 49.37",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>SHANY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PZD">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N31° 39' 18.74",W84° 17' 35.15",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>PZD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SALER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 20' 41.96",W84° 8' 54.57",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>SALER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HARKE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 4' 31.76",W84° 1' 25.23",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>HARKE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="YALMI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N30° 55' 31.24",W83° 57' 16.11",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>YALMI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GEF">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N30° 33' 4.83",W83° 46' 59.28",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>GEF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CTY">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N29° 35' 56.40",W83° 2' 55.64",+000000.00</WorldPosition>
+            <ATCAirway>V159</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>CTY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CEDDI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N29° 17' 10.66",W82° 58' 22.44",+000000.00</WorldPosition>
+            <ATCAirway>V35</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>CEDDI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KAJYE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N28° 59' 10.29",W82° 54' 2.09",+000000.00</WorldPosition>
+            <ATCAirway>V35</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>KAJYE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ENDED">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N28° 24' 35.14",W82° 47' 3.98",+000000.00</WorldPosition>
+            <ATCAirway>V35</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>ENDED</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DONHU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N28° 10' 15.89",W82° 44' 12.13",+000000.00</WorldPosition>
+            <ATCAirway>V35</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>DONHU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PIE">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N27° 54' 27.95",W82° 41' 3.52",+000000.00</WorldPosition>
+            <ATCAirway>V35</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>PIE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="JRGAL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N27° 35' 12.48",W82° 36' 24.60",+000000.00</WorldPosition>
+            <ATCAirway>V579</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>JRGAL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KFLL">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N26° 4' 18.00",W80° 8' 58.91",+000004.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KFLL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

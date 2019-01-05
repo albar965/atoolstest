@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 1.7.1.develop (revision 4b5831f) on 2017 11 09T23:05:41|
+         cycle=1707|
+         navdata=XP11|
+         speed=130.0000
+-->
+    <FlightPlan.FlightPlan>
+        <Title>ENNA to EDDM</Title>
+        <FPType>IFR</FPType>
+        <RouteType>HighAlt</RouteType>
+        <CruisingAlt>30000</CruisingAlt>
+        <DepartureID>ENNA</DepartureID>
+        <DepartureLLA>N70° 4' 52.48",E24° 58' 14.07",+000024.00</DepartureLLA>
+        <DestinationID>EDDM</DestinationID>
+        <DestinationLLA>N48° 21' 7.56",E11° 47' 21.95",+001486.00</DestinationLLA>
+        <Descr>ENNA, EDDM</Descr>
+        <DeparturePosition>16</DeparturePosition>
+        <DepartureName>Banak</DepartureName>
+        <DestinationName>Muenchen Franz-Josef Strauss</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="ENNA">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N70° 4' 0.00",E24° 58' 26.00",+000024.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>ENNA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RADNO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N70° 4' 27.60",E24° 58' 46.17",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EN</ICAORegion>
+                <ICAOIdent>RADNO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ATA">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N69° 58' 38.95",E23° 22' 18.25",+000000.00</WorldPosition>
+            <ATCAirway>M609</ATCAirway>
+            <ICAO>
+                <ICAORegion>EN</ICAORegion>
+                <ICAOIdent>ATA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GAPRO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N69° 10' 21.00",E21° 47' 46.00",+000000.00</WorldPosition>
+            <ATCAirway>N150</ATCAirway>
+            <ICAO>
+                <ICAORegion>EN</ICAORegion>
+                <ICAOIdent>GAPRO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OGLAV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N68° 49' 58.99",E21° 10' 22.00",+000000.00</WorldPosition>
+            <ATCAirway>N150</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>OGLAV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NOVRI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N68° 32' 41.99",E20° 39' 44.00",+000000.00</WorldPosition>
+            <ATCAirway>N150</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>NOVRI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KRA">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N67° 49' 9.20",E20° 20' 15.00",+000000.00</WorldPosition>
+            <ATCAirway>T317</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>KRA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VAGAS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N67° 20' 57.19",E20° 9' 7.70",+000000.00</WorldPosition>
+            <ATCAirway>T317</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>VAGAS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ITVAV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N66° 44' 30.01",E19° 56' 58.00",+000000.00</WorldPosition>
+            <ATCAirway>T317</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>ITVAV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OSKIR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N65° 40' 14.99",E19° 36' 56.00",+000000.00</WorldPosition>
+            <ATCAirway>T317</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>OSKIR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="REKMI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N65° 10' 58.71",E19° 28' 21.20",+000000.00</WorldPosition>
+            <ATCAirway>T317</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>REKMI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RASEN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N63° 48' 42.50",E19° 5' 51.20",+000000.00</WorldPosition>
+            <ATCAirway>T317</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>RASEN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OSK">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N63° 24' 21.80",E18° 59' 36.80",+000000.00</WorldPosition>
+            <ATCAirway>T317</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>OSK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SIPRI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N60° 50' 44.20",E18° 45' 6.20",+000000.00</WorldPosition>
+            <ATCAirway>T318</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>SIPRI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HMR">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N60° 16' 45.50",E18° 23' 29.70",+000000.00</WorldPosition>
+            <ATCAirway>N5</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>HMR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BABAP">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N59° 25' 20.21",E18° 42' 27.50",+000000.00</WorldPosition>
+            <ATCAirway>N5</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>BABAP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALOLA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N59° 15' 36.30",E18° 37' 6.40",+000000.00</WorldPosition>
+            <ATCAirway>T316</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>ALOLA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NEPVA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N58° 55' 44.00",E18° 33' 59.00",+000000.00</WorldPosition>
+            <ATCAirway>T316</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>NEPVA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GOTAL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N58° 14' 38.00",E18° 27' 43.00",+000000.00</WorldPosition>
+            <ATCAirway>T316</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>GOTAL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VSB">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N57° 39' 34.30",E18° 20' 48.70",+000000.00</WorldPosition>
+            <ATCAirway>T316</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>VSB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PENOR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N55° 38' 19.00",E17° 9' 41.00",+000000.00</WorldPosition>
+            <ATCAirway>T316</ATCAirway>
+            <ICAO>
+                <ICAORegion>ES</ICAORegion>
+                <ICAOIdent>PENOR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RIVDI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N55° 11' 39.01",E17° 4' 20.00",+000000.00</WorldPosition>
+            <ATCAirway>M607</ATCAirway>
+            <ICAO>
+                <ICAORegion>EP</ICAORegion>
+                <ICAOIdent>RIVDI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MALOX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N54° 14' 39.00",E16° 52' 53.00",+000000.00</WorldPosition>
+            <ATCAirway>M607</ATCAirway>
+            <ICAO>
+                <ICAORegion>EP</ICAORegion>
+                <ICAOIdent>MALOX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LUXAL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 54' 55.99",E16° 32' 35.00",+000000.00</WorldPosition>
+            <ATCAirway>P31</ATCAirway>
+            <ICAO>
+                <ICAORegion>EP</ICAORegion>
+                <ICAOIdent>LUXAL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="XERBI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 1' 56.00",E15° 40' 16.00",+000000.00</WorldPosition>
+            <ATCAirway>P31</ATCAirway>
+            <ICAO>
+                <ICAORegion>EP</ICAORegion>
+                <ICAOIdent>XERBI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GOVEN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N52° 3' 30.00",E14° 45' 20.00",+000000.00</WorldPosition>
+            <ATCAirway>P31</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>GOVEN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BUKIG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 44' 39.00",E14° 27' 50.00",+000000.00</WorldPosition>
+            <ATCAirway>UP31</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BUKIG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KOBUS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 30' 48.00",E14° 15' 9.00",+000000.00</WorldPosition>
+            <ATCAirway>UP31</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>KOBUS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GARKI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 23' 3.87",E14° 6' 58.02",+000000.00</WorldPosition>
+            <ATCAirway>UP31</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>GARKI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RIKLU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 55' 52.00",E13° 48' 40.00",+000000.00</WorldPosition>
+            <ATCAirway>UP31</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>RIKLU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MAREM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 42' 55.68",E13° 37' 43.79",+000000.00</WorldPosition>
+            <ATCAirway>UP31</ATCAirway>
+            <ICAO>
+                <ICAORegion>LK</ICAORegion>
+                <ICAOIdent>MAREM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DIKVA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 12' 36.46",E13° 25' 40.28",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>LK</ICAORegion>
+                <ICAOIdent>DIKVA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VESUB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 25' 9.33",E12° 59' 50.70",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>LK</ICAORegion>
+                <ICAOIdent>VESUB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BAGMI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 13' 36.00",E12° 51' 26.00",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BAGMI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ODUDA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 4' 29.00",E12° 44' 50.00",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ODUDA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NETES">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 54' 22.99",E12° 37' 35.00",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>NETES</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="UNKOM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 47' 47.99",E12° 32' 54.00",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>UNKOM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MITNU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 42' 7.01",E12° 29' 41.00",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>MITNU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TUSTO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 36' 30.00",E12° 26' 30.00",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>TUSTO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LANDU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 35' 46.89",E12° 16' 26.14",+000000.00</WorldPosition>
+            <ATCAirway>T106</ATCAirway>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>LANDU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EDDM">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N48° 21' 7.56",E11° 47' 21.95",+001486.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDDM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>
