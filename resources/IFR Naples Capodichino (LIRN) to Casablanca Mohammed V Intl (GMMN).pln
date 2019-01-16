@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 2.2.3 (revision a3908da) on 2019 01 16T13:49:18|
+         aircraftperffile=/home/alex/Nextcloud/Flight Simulator/Aircraft Performance/Aerobask Diamond DA-62.lnmperf|
+         aircraftperfname=Aerobask Diamond DA-62|
+         aircraftperftype=DA62|
+         cycle=1811|
+         navdata=NAVIGRAPH|
+         simdata=XP11
+-->
+    <FlightPlan.FlightPlan>
+        <Title>LIRN to GMMN</Title>
+        <FPType>IFR</FPType>
+        <CruisingAlt>10000</CruisingAlt>
+        <DepartureID>LIRN</DepartureID>
+        <DepartureLLA>N40° 52' 47.23",E14° 16' 39.15",+000292.00</DepartureLLA>
+        <DestinationID>GMMN</DestinationID>
+        <DestinationLLA>N33° 21' 51.00",W7° 34' 54.00",+000656.00</DestinationLLA>
+        <Descr>LIRN, GMMN</Descr>
+        <DeparturePosition>06</DeparturePosition>
+        <DepartureName>Naples Capodichino</DepartureName>
+        <DestinationName>Casablanca Mohammed V Intl</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="LIRN">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N40° 53' 4.00",E14° 17' 27.00",+000292.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LIRN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ISKIA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 41' 27.00",E13° 53' 27.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>ISKIA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PNZ">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N40° 54' 42.70",E12° 57' 26.70",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>PNZ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ROTUN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 53' 0.01",E12° 18' 20.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>ROTUN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TURMO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 51' 40.00",E11° 49' 58.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>TURMO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="POKAV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 50' 23.00",E11° 23' 59.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>POKAV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="USEPI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 26' 47.00",E8° 23' 56.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LI</ICAORegion>
+                <ICAOIdent>USEPI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUPUX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 25' 28.99",E8° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>SUPUX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KUPIM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 20' 4.01",E7° 17' 52.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>KUPIM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ERETI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N40° 11' 1.01",E7° 10' 37.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>ERETI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ETEKO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N39° 42' 50.00",E6° 48' 16.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>ETEKO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="REQIN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N39° 0' 0.00",E6° 15' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>REQIN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BOURI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 59' 21.00",E5° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>BOURI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LIMON">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N37° 4' 16.00",E3° 53' 58.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>LIMON</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZEM">
+            <ATCWaypointType>NDB</ATCWaypointType>
+            <WorldPosition>N36° 47' 46.22",E3° 34' 18.46",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>ZEM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALR">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N36° 41' 27.59",E3° 12' 55.73",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>ALR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CHE">
+            <ATCWaypointType>NDB</ATCWaypointType>
+            <WorldPosition>N36° 36' 5.10",E2° 11' 35.98",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>CHE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DAHRA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N36° 21' 54.99",E1° 30' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>DAHRA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MOS">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N35° 53' 55.13",E0° 8' 10.67",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>MOS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ORA">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N35° 36' 45.53",W0° 39' 17.96",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>DA</ICAORegion>
+                <ICAOIdent>ORA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ORSUP">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 50' 55.00",W1° 50' 26.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>ORSUP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OJD">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N34° 46' 24.10",W1° 57' 1.60",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>OJD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ROMOR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 36' 6.20",W2° 36' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>ROMOR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="XAVOV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 33' 36.00",W2° 45' 9.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>XAVOV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DOTIV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 21' 45.00",W3° 28' 29.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>DOTIV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SOVAL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 10' 22.00",W4° 10' 8.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>SOVAL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EMKOK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N34° 7' 13.62",W4° 21' 4.17",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>EMKOK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FES">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N33° 55' 38.70",W5° 0' 48.90",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>FES</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BISMI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N33° 38' 49.95",W6° 53' 36.64",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GM</ICAORegion>
+                <ICAOIdent>BISMI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GMMN">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N33° 21' 51.00",W7° 34' 54.00",+000656.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>GMMN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

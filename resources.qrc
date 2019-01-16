@@ -39,6 +39,10 @@
         <file>resources/RANDOM_BIN_1.tst</file>
         <file>resources/KORD-KSEA.fgfp</file>
         <file>resources/EDDF-LIRF.fgfp</file>
+        <file>resources/IFR Gran Canaria (GCLP) to General Juan N Alvarez Intl (MMAA).pln</file>
+        <file>resources/IFR Eduardo Gomes (SBEG) to Val De Cans Intl (SBBE).pln</file>
+        <file>resources/IFR Naples Capodichino (LIRN) to Casablanca Mohammed V Intl (GMMN).pln</file>
+        <file>resources/IFR Rotterdam The Hague (EHRD) to Palma De Mallorca (LEPA).pln</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

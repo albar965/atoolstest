@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 2.2.3 (revision a3908da) on 2019 01 16T13:33:15|
+         aircraftperffile=/home/alex/Nextcloud/Flight Simulator/Aircraft Performance/Aerobask Diamond DA-62.lnmperf|
+         aircraftperfname=Aerobask Diamond DA-62|
+         aircraftperftype=DA62|
+         cycle=1811|
+         navdata=NAVIGRAPH|
+         simdata=XP11
+-->
+    <FlightPlan.FlightPlan>
+        <Title>GCLP to MMAA</Title>
+        <FPType>IFR</FPType>
+        <CruisingAlt>26000</CruisingAlt>
+        <DepartureID>GCLP</DepartureID>
+        <DepartureLLA>N27° 55' 7.75",W15° 23' 32.52",+000077.00</DepartureLLA>
+        <DestinationID>MMAA</DestinationID>
+        <DestinationLLA>N16° 45' 25.55",W99° 45' 13.76",+000016.00</DestinationLLA>
+        <Descr>GCLP, MMAA</Descr>
+        <DeparturePosition>03L</DeparturePosition>
+        <DepartureName>Gran Canaria</DepartureName>
+        <DestinationName>General Juan N Alvarez Intl</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="GCLP">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N27° 55' 55.00",W15° 23' 12.00",+000077.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>GCLP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ARACO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N28° 25' 57.10",W17° 27' 8.40",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GC</ICAORegion>
+                <ICAOIdent>ARACO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ROSTA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N28° 15' 21.80",W20° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>GC</ICAORegion>
+                <ICAOIdent>ROSTA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="3030N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N30° 0' 0.00",W30° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LP</ICAORegion>
+                <ICAOIdent>3030N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="3140N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 0' 0.00",W40° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LP</ICAORegion>
+                <ICAOIdent>3140N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="3150N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N31° 0' 0.00",W50° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>3150N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="3060N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N30° 0' 0.00",W60° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>3060N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="2870N">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N28° 0' 0.00",W70° 0' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>2870N</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GRATX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N26° 54' 40.73",W74° 17' 30.10",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K6</ICAORegion>
+                <ICAOIdent>GRATX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CLETT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N26° 38' 21.90",W74° 45' 57.51",+000000.00</WorldPosition>
+            <ATCAirway>B646</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>CLETT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LASEE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N26° 14' 21.27",W75° 27' 28.17",+000000.00</WorldPosition>
+            <ATCAirway>B646</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>LASEE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DAAST">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N26° 0' 31.49",W75° 51' 5.65",+000000.00</WorldPosition>
+            <ATCAirway>B646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MY</ICAORegion>
+                <ICAOIdent>DAAST</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EXTER">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N25° 46' 28.47",W76° 16' 16.49",+000000.00</WorldPosition>
+            <ATCAirway>B646</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>EXTER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MAMML">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N25° 32' 11.97",W76° 38' 51.60",+000000.00</WorldPosition>
+            <ATCAirway>B646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MY</ICAORegion>
+                <ICAOIdent>MAMML</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OHBEE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N25° 26' 22.68",W76° 48' 1.33",+000000.00</WorldPosition>
+            <ATCAirway>B646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MY</ICAORegion>
+                <ICAOIdent>OHBEE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZQA">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N25° 1' 31.88",W77° 26' 47.16",+000000.00</WorldPosition>
+            <ATCAirway>B646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MY</ICAORegion>
+                <ICAOIdent>ZQA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SANNS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N24° 48' 2.56",W77° 57' 17.40",+000000.00</WorldPosition>
+            <ATCAirway>R628</ATCAirway>
+            <ICAO>
+                <ICAORegion>MY</ICAORegion>
+                <ICAOIdent>SANNS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PEKRE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N24° 44' 16.03",W78° 5' 45.99",+000000.00</WorldPosition>
+            <ATCAirway>R628</ATCAirway>
+            <ICAO>
+                <ICAORegion>MY</ICAORegion>
+                <ICAOIdent>PEKRE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MENDL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N24° 27' 9.22",W78° 40' 42.12",+000000.00</WorldPosition>
+            <ATCAirway>R628</ATCAirway>
+            <ICAO>
+                <ICAORegion>MY</ICAORegion>
+                <ICAOIdent>MENDL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ZOLLA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N24° 14' 34.93",W79° 6' 5.32",+000000.00</WorldPosition>
+            <ATCAirway>R628</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>ZOLLA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TANIA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N24° 1' 48.34",W79° 31' 39.29",+000000.00</WorldPosition>
+            <ATCAirway>R628</ATCAirway>
+            <ICAO>
+                <ICAORegion>K7</ICAORegion>
+                <ICAOIdent>TANIA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="UVA">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N23° 1' 28.87",W81° 27' 12.93",+000000.00</WorldPosition>
+            <ATCAirway>R628</ATCAirway>
+            <ICAO>
+                <ICAORegion>MU</ICAORegion>
+                <ICAOIdent>UVA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FARKO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N22° 59' 59.00",W81° 58' 51.01",+000000.00</WorldPosition>
+            <ATCAirway>J1</ATCAirway>
+            <ICAO>
+                <ICAORegion>MU</ICAORegion>
+                <ICAOIdent>FARKO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="UHA">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N22° 58' 43.82",W82° 25' 35.94",+000000.00</WorldPosition>
+            <ATCAirway>J1</ATCAirway>
+            <ICAO>
+                <ICAORegion>MU</ICAORegion>
+                <ICAOIdent>UHA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NAKRO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N22° 51' 36.00",W83° 19' 12.99",+000000.00</WorldPosition>
+            <ATCAirway>UR522</ATCAirway>
+            <ICAO>
+                <ICAORegion>MU</ICAORegion>
+                <ICAOIdent>NAKRO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FRANT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N22° 44' 24.00",W84° 8' 11.01",+000000.00</WorldPosition>
+            <ATCAirway>UR522</ATCAirway>
+            <ICAO>
+                <ICAORegion>MU</ICAORegion>
+                <ICAOIdent>FRANT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MUPKI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N22° 36' 25.00",W85° 3' 42.99",+000000.00</WorldPosition>
+            <ATCAirway>UR522</ATCAirway>
+            <ICAO>
+                <ICAORegion>MU</ICAORegion>
+                <ICAOIdent>MUPKI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALURU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N22° 27' 57.00",W86° 0' 0.00",+000000.00</WorldPosition>
+            <ATCAirway>UR522</ATCAirway>
+            <ICAO>
+                <ICAORegion>MU</ICAORegion>
+                <ICAOIdent>ALURU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="XOPGI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N22° 23' 31.00",W86° 32' 41.99",+000000.00</WorldPosition>
+            <ATCAirway>UR522</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>XOPGI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALSEG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N21° 52' 12.00",W87° 41' 3.00",+000000.00</WorldPosition>
+            <ATCAirway>UB646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>ALSEG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AXEVU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N21° 47' 52.00",W87° 50' 20.99",+000000.00</WorldPosition>
+            <ATCAirway>UB646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>AXEVU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SEBAK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N21° 37' 2.00",W88° 13' 34.99",+000000.00</WorldPosition>
+            <ATCAirway>UB646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>SEBAK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OVAXU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N21° 24' 40.00",W88° 39' 51.01",+000000.00</WorldPosition>
+            <ATCAirway>UB646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>OVAXU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GABOB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N21° 19' 3.30",W88° 51' 42.81",+000000.00</WorldPosition>
+            <ATCAirway>UB646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>GABOB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LIBAB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N21° 5' 22.00",W89° 20' 28.00",+000000.00</WorldPosition>
+            <ATCAirway>UB646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>LIBAB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MID">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N20° 56' 16.97",W89° 39' 22.39",+000000.00</WorldPosition>
+            <ATCAirway>UB646</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>MID</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="XOLRO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N20° 49' 43.00",W90° 5' 11.00",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>XOLRO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALPOM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N20° 42' 12.00",W90° 34' 22.00",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>ALPOM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DYSON">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N20° 37' 45.70",W90° 51' 26.20",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>DYSON</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VODIV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N20° 18' 48.00",W92° 2' 58.01",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>VODIV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KONLA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N19° 54' 49.00",W93° 30' 29.99",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>KONLA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DUSOV">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N19° 51' 11.00",W93° 43' 36.01",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>DUSOV</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OMPAN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N19° 29' 25.00",W95° 0' 0.00",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>OMPAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BOLTA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N19° 16' 3.00",W95° 46' 5.01",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>BOLTA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VER">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N19° 8' 35.64",W96° 11' 20.88",+000000.00</WorldPosition>
+            <ATCAirway>UJ18</ATCAirway>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>VER</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PACOS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N17° 39' 13.00",W99° 14' 11.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>MM</ICAORegion>
+                <ICAOIdent>PACOS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MMAA">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N16° 45' 25.55",W99° 45' 13.76",+000016.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>MMAA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

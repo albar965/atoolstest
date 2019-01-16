@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 2.2.3 (revision a3908da) on 2019 01 16T13:16:30|
+         aircraftperffile=/home/alex/Nextcloud/Flight Simulator/Aircraft Performance/Aerobask Diamond DA-62.lnmperf|
+         aircraftperfname=Aerobask Diamond DA-62|
+         aircraftperftype=DA62|
+         cycle=1811|
+         navdata=NAVIGRAPH|
+         simdata=XP11
+-->
+    <FlightPlan.FlightPlan>
+        <Title>SBEG to SBBE</Title>
+        <FPType>IFR</FPType>
+        <CruisingAlt>25000</CruisingAlt>
+        <DepartureID>SBEG</DepartureID>
+        <DepartureLLA>S3° 2' 18.90",W60° 3' 42.80",+000264.00</DepartureLLA>
+        <DestinationID>SBBE</DestinationID>
+        <DestinationLLA>S1° 23' 5.00",W48° 28' 44.00",+000054.00</DestinationLLA>
+        <Descr>SBEG, SBBE</Descr>
+        <DeparturePosition>11</DeparturePosition>
+        <DepartureName>Eduardo Gomes</DepartureName>
+        <DestinationName>Val De Cans Intl</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="SBEG">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>S3° 2' 20.00",W60° 2' 46.00",+000264.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>SBEG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MALPU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 56' 48.60",W59° 19' 20.40",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>MALPU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KULAB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 51' 16.68",W58° 29' 50.79",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>KULAB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DOLTI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 46' 59.40",W57° 52' 19.80",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>DOLTI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="XOLOK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 37' 1.80",W56° 25' 34.20",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>XOLOK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OPLIP">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 35' 55.80",W56° 16' 0.00",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>OPLIP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TOBUX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 30' 29.40",W55° 28' 43.21",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>TOBUX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BUVEB">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 29' 51.00",W55° 23' 11.40",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>BUVEB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DARBU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 22' 34.20",W54° 30' 31.20",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>DARBU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NUVUG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 15' 58.20",W53° 49' 55.20",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>NUVUG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KAKEK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 8' 12.00",W53° 2' 14.40",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>KAKEK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OPSUT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 5' 19.20",W52° 44' 34.80",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>OPSUT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MASVU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S2° 2' 39.00",W52° 28' 6.00",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>MASVU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ILMAN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S1° 29' 36.60",W49° 8' 7.20",+000000.00</WorldPosition>
+            <ATCAirway>UZ81</ATCAirway>
+            <ICAO>
+                <ICAORegion>SB</ICAORegion>
+                <ICAOIdent>ILMAN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SBBE">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>S1° 23' 5.00",W48° 28' 44.00",+000054.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>SBBE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

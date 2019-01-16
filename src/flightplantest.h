@@ -81,6 +81,11 @@ private slots:
 
   void testDetectFormat();
 
+  void testSaveLeveld();
+  void testSaveLeveld2();
+  void testSaveFeelthere();
+  void testSaveFeelthere2();
+
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser;
   atools::fs::pln::FlightplanIO io;

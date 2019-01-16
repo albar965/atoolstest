@@ -312,6 +312,34 @@ void FlightplanTest::testSaveFms()
   io.saveFms(flightplan, OUTPUT + QDir::separator() + "result_flightplan.fms", "1710", false);
 }
 
+void FlightplanTest::testSaveLeveld()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/IFR Eduardo Gomes (SBEG) to Val De Cans Intl (SBBE).pln");
+  io.saveLeveldRte(plan, OUTPUT + QDir::separator() + "result_flightplan_leveld_SBEG_SBBE.rte");
+}
+
+void FlightplanTest::testSaveLeveld2()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/IFR Gran Canaria (GCLP) to General Juan N Alvarez Intl (MMAA).pln");
+  io.saveLeveldRte(plan, OUTPUT + QDir::separator() + "result_flightplan_leveld_GCLP_MMAA.rte");
+}
+
+void FlightplanTest::testSaveFeelthere()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/IFR Rotterdam The Hague (EHRD) to Palma De Mallorca (LEPA).pln");
+  io.saveFeelthereFpl(plan, OUTPUT + QDir::separator() + "result_flightplan_feelthere_EHRD_LEPA.fpl", 384);
+}
+
+void FlightplanTest::testSaveFeelthere2()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/IFR Naples Capodichino (LIRN) to Casablanca Mohammed V Intl (GMMN).pln");
+  io.saveFeelthereFpl(plan, OUTPUT + QDir::separator() + "result_flightplan_feelthere_LIRN_GMMN.fms", 377);
+}
+
 void FlightplanTest::testSaveGarminGns()
 {
   io.saveGarminGns(flightplan,
