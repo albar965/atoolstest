@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 2.2.3 (revision a3908da) on 2019 01 16T17:48:49|
+         aircraftperffile=/home/alex/Nextcloud/Flight Simulator/Aircraft Performance/Aerobask Diamond DA-62.lnmperf|
+         aircraftperfname=Aerobask Diamond DA-62|
+         aircraftperftype=DA62|
+         cycle=1811|
+         navdata=NAVIGRAPH|
+         simdata=XP11
+-->
+    <FlightPlan.FlightPlan>
+        <Title>EDDH to EDDM</Title>
+        <FPType>IFR</FPType>
+        <RouteType>VOR</RouteType>
+        <CruisingAlt>10000</CruisingAlt>
+        <DepartureID>EDDH</DepartureID>
+        <DepartureLLA>N53° 39' 15.88",E9° 58' 30.76",+000053.00</DepartureLLA>
+        <DestinationID>EDDM</DestinationID>
+        <DestinationLLA>N48° 21' 7.56",E11° 47' 21.95",+001486.00</DestinationLLA>
+        <Descr>EDDH, EDDM</Descr>
+        <DeparturePosition>15</DeparturePosition>
+        <DepartureName>Hamburg - Fuhlsbuettel</DepartureName>
+        <DestinationName>Muenchen Franz-Josef Strauss</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="EDDH">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N53° 37' 49.40",E9° 59' 17.62",+000053.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDDH</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HLZ">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N52° 21' 48.22",E10° 47' 42.79",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>HLZ</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ERT">
+            <ATCWaypointType>NDB</ATCWaypointType>
+            <WorldPosition>N50° 58' 57.36",E10° 55' 22.68",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ERT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HOD">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N50° 17' 23.25",E11° 51' 18.83",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>HOD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BAY">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N49° 59' 6.54",E11° 38' 12.06",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BAY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ERL">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N49° 39' 19.49",E11° 9' 2.92",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ERL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DKB">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N49° 8' 33.91",E10° 14' 17.90",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DKB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NEU">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N48° 42' 45.10",E11° 12' 39.49",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ET</ICAORegion>
+                <ICAOIdent>NEU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EDDM">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N48° 21' 7.56",E11° 47' 21.95",+001486.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDDM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

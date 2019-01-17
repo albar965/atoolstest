@@ -43,6 +43,8 @@
         <file>resources/IFR Eduardo Gomes (SBEG) to Val De Cans Intl (SBBE).pln</file>
         <file>resources/IFR Naples Capodichino (LIRN) to Casablanca Mohammed V Intl (GMMN).pln</file>
         <file>resources/IFR Rotterdam The Hague (EHRD) to Palma De Mallorca (LEPA).pln</file>
+        <file>resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Fiumicino (LIRF).pln</file>
+        <file>resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Muenchen Franz-Josef Strauss (EDDM).pln</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

@@ -340,6 +340,26 @@ void FlightplanTest::testSaveFeelthere2()
   io.saveFeelthereFpl(plan, OUTPUT + QDir::separator() + "result_flightplan_feelthere_LIRN_GMMN.fms", 377);
 }
 
+void FlightplanTest::testSaveEfbr()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Fiumicino (LIRF).pln");
+  io.saveEfbr(plan,
+              OUTPUT + QDir::separator() + "result_flightplan_efb_EDDH_LIRF.efbr",
+              "IDEKO ABMAL Z990 HLZ M852 POVEL Z94 GALMA M736 LIZUM N503 VIC L12 LUMAV M726 GAVRA Z806 GIKIN L865 TAQ",
+              "1703", "23", "16R");
+}
+
+void FlightplanTest::testSaveEfbr2()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Muenchen Franz-Josef Strauss (EDDM).pln");
+  io.saveEfbr(plan,
+              OUTPUT + QDir::separator() + "result_flightplan_efb_EDDH_EDDM.efbr",
+              "HLZ ERT HOD BAY ERL DKB NEU",
+              "1703", "23", "16R");
+}
+
 void FlightplanTest::testSaveGarminGns()
 {
   io.saveGarminGns(flightplan,

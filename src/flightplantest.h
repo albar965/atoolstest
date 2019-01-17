@@ -86,6 +86,9 @@ private slots:
   void testSaveFeelthere();
   void testSaveFeelthere2();
 
+  void testSaveEfbr();
+  void testSaveEfbr2();
+
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser;
   atools::fs::pln::FlightplanIO io;
