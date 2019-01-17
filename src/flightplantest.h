@@ -89,6 +89,8 @@ private slots:
   void testSaveEfbr();
   void testSaveEfbr2();
 
+  void testSaveQwRte();
+
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser;
   atools::fs::pln::FlightplanIO io;

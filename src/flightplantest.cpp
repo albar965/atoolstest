@@ -360,6 +360,13 @@ void FlightplanTest::testSaveEfbr2()
               "1703", "23", "16R");
 }
 
+void FlightplanTest::testSaveQwRte()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Fiumicino (LIRF).pln");
+  io.saveQwRte(plan, OUTPUT + QDir::separator() + "result_flightplan_qw_EDDH_LIRF.rte");
+}
+
 void FlightplanTest::testSaveGarminGns()
 {
   io.saveGarminGns(flightplan,
