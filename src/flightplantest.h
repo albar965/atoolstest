@@ -91,6 +91,8 @@ private slots:
 
   void testSaveQwRte();
 
+  void testSaveMaddogMdx();
+
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser;
   atools::fs::pln::FlightplanIO io;

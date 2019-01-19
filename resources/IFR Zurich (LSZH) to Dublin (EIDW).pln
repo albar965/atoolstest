@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 2.2.3 (revision a3908da) on 2019 01 17T15:29:58|
+         aircraftperffile=/home/alex/Nextcloud/Flight Simulator/Aircraft Performance/Aerobask Diamond DA-62.lnmperf|
+         aircraftperfname=Aerobask Diamond DA-62|
+         aircraftperftype=DA62|
+         cycle=1811|
+         navdata=NAVIGRAPH|
+         simdata=XP11
+-->
+    <FlightPlan.FlightPlan>
+        <Title>LSZH to EIDW</Title>
+        <FPType>IFR</FPType>
+        <CruisingAlt>28000</CruisingAlt>
+        <DepartureID>LSZH</DepartureID>
+        <DepartureLLA>N47° 28' 32.56",E8° 32' 9.39",+001416.00</DepartureLLA>
+        <DestinationID>EIDW</DestinationID>
+        <DestinationLLA>N53° 25' 17.01",W6° 16' 12.00",+000242.00</DestinationLLA>
+        <Descr>LSZH, EIDW</Descr>
+        <DeparturePosition>16</DeparturePosition>
+        <DepartureName>Zurich</DepartureName>
+        <DestinationName>Dublin</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="LSZH">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N47° 27' 29.01",E8° 32' 53.00",+001416.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>LSZH</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DITON">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 18' 8.00",E8° 20' 0.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>LS</ICAORegion>
+                <ICAOIdent>DITON</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="HOC">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N47° 27' 59.60",E7° 39' 55.60",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LS</ICAORegion>
+                <ICAOIdent>HOC</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NATLI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 29' 31.00",E7° 30' 26.00",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>NATLI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LUL">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N47° 41' 17.80",E6° 17' 44.10",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>LUL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IXILU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 44' 24.99",E6° 2' 29.00",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>IXILU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RESPO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 49' 58.10",E5° 36' 28.80",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>RESPO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="RLP">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N47° 54' 22.71",E5° 14' 57.00",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>RLP</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ROTSI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 16' 36.01",E4° 38' 3.00",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>ROTSI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KOTUN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 43' 28.00",E3° 52' 16.00",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>KOTUN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="PODUK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 14' 46.01",E3° 21' 2.00",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>PODUK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DIDOR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 18' 49.00",E3° 16' 55.00",+000000.00</WorldPosition>
+            <ATCAirway>UL613</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>DIDOR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IRBAL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 41' 42.00",E2° 37' 37.00",+000000.00</WorldPosition>
+            <ATCAirway>UT10</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>IRBAL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NITAR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 55' 11.99",E2° 14' 11.00",+000000.00</WorldPosition>
+            <ATCAirway>UT10</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>NITAR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ABNUR">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 10' 17.01",E1° 51' 31.00",+000000.00</WorldPosition>
+            <ATCAirway>UT10</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>ABNUR</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DIMAL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 29' 33.00",E1° 21' 59.00",+000000.00</WorldPosition>
+            <ATCAirway>UT10</ATCAirway>
+            <ICAO>
+                <ICAORegion>LF</ICAORegion>
+                <ICAOIdent>DIMAL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ALESO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 34' 31.99",E1° 13' 32.00",+000000.00</WorldPosition>
+            <ATCAirway>UT10</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>ALESO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BIG">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N51° 19' 51.15",E0° 2' 5.32",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>BIG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GOXUL">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 21' 32.01",W0° 10' 33.00",+000000.00</WorldPosition>
+            <ATCAirway>UL9</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>GOXUL</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LINDY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 28' 14.00",W1° 2' 57.00",+000000.00</WorldPosition>
+            <ATCAirway>UL9</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>LINDY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="NORRY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 28' 47.00",W1° 7' 24.00",+000000.00</WorldPosition>
+            <ATCAirway>UL9</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>NORRY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CPT">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N51° 29' 29.66",W1° 13' 10.89",+000000.00</WorldPosition>
+            <ATCAirway>UL9</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>CPT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KENET">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 31' 14.01",W1° 27' 18.00",+000000.00</WorldPosition>
+            <ATCAirway>UL9</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>KENET</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="UGNUS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 42' 32.00",W2° 8' 23.00",+000000.00</WorldPosition>
+            <ATCAirway>UN14</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>UGNUS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="OKTAD">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 49' 4.01",W2° 32' 46.00",+000000.00</WorldPosition>
+            <ATCAirway>UN14</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>OKTAD</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DOBEM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 52' 10.99",W2° 55' 45.00",+000000.00</WorldPosition>
+            <ATCAirway>UN14</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>DOBEM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TOPRO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 54' 42.00",W3° 14' 57.00",+000000.00</WorldPosition>
+            <ATCAirway>UN14</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>TOPRO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MEDOG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 57' 1.01",W3° 32' 58.00",+000000.00</WorldPosition>
+            <ATCAirway>UN14</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>MEDOG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LANON">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N52° 25' 52.00",W4° 22' 21.00",+000000.00</WorldPosition>
+            <ATCAirway>UL18</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>LANON</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BADSI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N52° 39' 30.00",W4° 46' 17.00",+000000.00</WorldPosition>
+            <ATCAirway>UL18</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>BADSI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LIPGO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 3' 50.09",W5° 30' 0.00",+000000.00</WorldPosition>
+            <ATCAirway>UL18</ATCAirway>
+            <ICAO>
+                <ICAORegion>EG</ICAORegion>
+                <ICAOIdent>LIPGO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="EIDW">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N53° 25' 17.01",W6° 16' 12.00",+000242.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EIDW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

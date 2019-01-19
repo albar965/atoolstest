@@ -367,6 +367,35 @@ void FlightplanTest::testSaveQwRte()
   io.saveQwRte(plan, OUTPUT + QDir::separator() + "result_flightplan_qw_EDDH_LIRF.rte");
 }
 
+void FlightplanTest::testSaveMaddogMdx()
+{
+  {
+    Flightplan plan;
+    io.load(plan, ":/test/resources/IFR Zurich (LSZH) to Dublin (EIDW).pln");
+    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_LSZH_EIDW.mdx");
+  }
+  {
+    Flightplan plan;
+    io.load(plan, ":/test/resources/_test_flp_airway.pln");
+    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_airway.mdx");
+  }
+  {
+    Flightplan plan;
+    io.load(plan, ":/test/resources/_test_flp_direct.pln");
+    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_direct.mdx");
+  }
+  {
+    Flightplan plan;
+    io.load(plan, ":/test/resources/_test_flp_mixed.pln");
+    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_mixed.mdx");
+  }
+  {
+    Flightplan plan;
+    io.load(plan, ":/test/resources/_test_flp_user.pln");
+    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_user.mdx");
+  }
+}
+
 void FlightplanTest::testSaveGarminGns()
 {
   io.saveGarminGns(flightplan,
