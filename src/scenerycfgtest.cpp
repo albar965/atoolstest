@@ -256,7 +256,7 @@ void SceneryCfgTest::testP3dv4AddOnEncodingMismatch()
 
 void SceneryCfgTest::testP3dv4AddOnNoEncoding()
 {
-  AddOnPackage package("/home/alex/Projekte/atoolstest/resources/add-on_win_encoding_no_bom.xml");
+  AddOnPackage package(":/test/resources/add-on_win_encoding_no_bom.xml");
   QCOMPARE(package.getDescription(), QString("Sends simulator reports to Navigraph Charts öäüÖÄÜ"));
 
 }

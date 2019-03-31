@@ -53,6 +53,9 @@ private slots:
 private:
   void addData(const atools::geo::Pos& pos, qint64 fileOffset, int fileIndex);
 
+  // Checking several hardcoded paths
+  QString globeDataPath;
+
 };
 
 #endif // ATOOLSTEST_DTMTEST_H

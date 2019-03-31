@@ -30,10 +30,7 @@ This software is licensed under GPL3 or any later version.
 
 The source code for this application is available at Github:
 https://github.com/albar965/atools
-https://github.com/albar965/littlenavmap
-
-The source code for Little Navconnect is available at Github too:
-https://github.com/albar965/littlenavconnect
+https://github.com/albar965/atoolstest
 
 Copyright 2015-2019 Alexander Barthel (alex@littlenavmap.org).
 

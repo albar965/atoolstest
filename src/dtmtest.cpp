@@ -23,11 +23,16 @@
 #include "geo/rect.h"
 #include "geo/calculations.h"
 
+// Look for several paths
+static QStringList TEST_DATA({
+  "Global Land One-kilometer Base Elevation (GLOBE)/all10",
+  "../Global Land One-kilometer Base Elevation (GLOBE)/all10",
+  "../../Global Land One-kilometer Base Elevation (GLOBE)/all10"
+});
+
 using atools::fs::common::GlobeReader;
 using atools::geo::Pos;
 using atools::geo::LineString;
-
-static QString TEST_DATA("/data/alex/Public/Global Land One-kilometer Base Elevation (GLOBE)/all10");
 
 DtmTest::DtmTest()
 {
@@ -50,7 +55,19 @@ void DtmTest::cleanupTestCase()
 
 void DtmTest::testOpen()
 {
-  GlobeReader reader(QFINDTESTDATA(TEST_DATA));
+  for(const QString& path : TEST_DATA)
+  {
+    QFileInfo fi(path);
+    if(fi.exists() && fi.isDir())
+    {
+      globeDataPath = path;
+      qInfo() << "Using GLOBE data at" << globeDataPath;
+      break;
+    }
+  }
+  QCOMPARE(globeDataPath.isEmpty(), false);
+
+  GlobeReader reader(globeDataPath);
 
   QCOMPARE(reader.openFiles(), true);
 }
@@ -84,7 +101,7 @@ void DtmTest::testElevationLine_data()
 
 void DtmTest::testElevation()
 {
-  GlobeReader reader(QFINDTESTDATA(TEST_DATA));
+  GlobeReader reader(globeDataPath);
   reader.openFiles();
 
   QFETCH(Pos, pos);
@@ -95,7 +112,7 @@ void DtmTest::testElevation()
 
 void DtmTest::testElevationLine()
 {
-  GlobeReader reader(QFINDTESTDATA(TEST_DATA));
+  GlobeReader reader(globeDataPath);
   reader.openFiles();
   LineString elevations;
 
@@ -151,7 +168,7 @@ void DtmTest::testFilePos_data()
 
 void DtmTest::testFilePos()
 {
-  GlobeReader reader(QFINDTESTDATA(TEST_DATA));
+  GlobeReader reader(globeDataPath);
   reader.openFiles();
 
   int fileIndexResult;

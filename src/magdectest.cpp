@@ -55,26 +55,27 @@ void MagdecTest::testMagdec_data()
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("magvar");
 
-  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.5838f;
+  // Cannot test 90 degree since normalize will roll over
 
-  QTest::newRow("First Offset") << Pos(0.f, -90.f) << -30.3607f;
-  QTest::newRow("Last Offset") << Pos(-1.f, 90.f) << -3.59802f;
+  QTest::newRow("Last Offset") << Pos(-1.f, 89.99f) << -3.59544f;
+  QTest::newRow("First Offset") << Pos(0.f, -89.99f) << -30.3497f;
   QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -5.16357f;
   QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.81784f;
   QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) << -5.16466f;
   QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.4714f; // 17° East
   QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.6735f; // 21° West
   QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.47886f; // 9° West
+  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.5838f;
 
   QTest::newRow("West Min") << Pos(-180.f, 0.f) << 9.61853f;
   QTest::newRow("East Max") << Pos(180.f, 0.f) << 9.61853f;
-  QTest::newRow("North") << Pos(0.f, 90.f) << -2.59827f;
-  QTest::newRow("South") << Pos(0.f, -90.f) << -30.3607f;
+  QTest::newRow("North") << Pos(0.f, 89.99f) << -2.59629f;
+  QTest::newRow("South") << Pos(0.f, -89.99f) << -30.3497f;
 
-  QTest::newRow("West North") << Pos(-180.f, 90.f) << 177.402f;
-  QTest::newRow("West South") << Pos(-180.f, -90.f) << 149.639f;
-  QTest::newRow("East North") << Pos(180.f, 90.f) << 177.402f;
-  QTest::newRow("East South") << Pos(180.f, -90.f) << 149.639f;
+  QTest::newRow("West North") << Pos(-180.f, 89.99f) << 177.396f;
+  QTest::newRow("West South") << Pos(-180.f, -89.99f) << 149.627f;
+  QTest::newRow("East North") << Pos(180.f, 89.99f) << 177.396f;
+  QTest::newRow("East South") << Pos(180.f, -89.99f) << 149.627f;
 }
 
 void MagdecTest::testMagdec()
@@ -85,5 +86,6 @@ void MagdecTest::testMagdec()
   QFETCH(Pos, pos);
   QFETCH(float, magvar);
 
+  qDebug() << pos << magvar;
   QCOMPARE(reader.getMagVar(pos), magvar);
 }

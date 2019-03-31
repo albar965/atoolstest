@@ -112,7 +112,7 @@ void FlightplanTest::testSaveFprDirect()
 
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_direct.fpr");
 
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 943);
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_direct.fpr").size(), 36089);
 }
 
 void FlightplanTest::testSaveFprAirway()
@@ -122,7 +122,7 @@ void FlightplanTest::testSaveFprAirway()
   io.load(fp, ":/test/resources/_test_fpr.pln");
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_airway.fpr");
 
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 943);
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_airway.fpr").size(), 36089);
 }
 
 void FlightplanTest::testLoadFs9()

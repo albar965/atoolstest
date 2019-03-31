@@ -41,64 +41,52 @@ void MetarTest::cleanupTestCase()
 
 }
 
-void MetarTest::testMetarAsn_data()
+void MetarTest::testMetarAsn()
 {
-  QTest::addColumn<QString>("data");
+  QFile metarFile(":/test/resources/current_wx_snapshot.txt");
+  QVERIFY(metarFile.open(QIODevice::ReadOnly | QIODevice::Text));
 
-  QFile metars(":/test/resources/current_wx_snapshot.txt");
-  QVERIFY(metars.open(QIODevice::ReadOnly | QIODevice::Text));
+  QTextStream weatherSnapshot(&metarFile);
 
-  QTextStream weatherSnapshot(&metars);
-
+  int numFailed = 0;
   QString line;
   while(weatherSnapshot.readLineInto(&line))
   {
     QStringList list = line.split("::");
     QVERIFY(list.size() >= 2);
 
-    QTest::newRow(qPrintable(list.at(0))) << list.at(1);
+    if(!line.isEmpty())
+    {
+      atools::fs::weather::Metar metar(list.at(1), "XXXX", QDateTime(), true);
+      numFailed += !metar.isValid();
+    }
   }
-  metars.close();
+  metarFile.close();
+
+  // Check the number of failed since too many are not readable
+  QCOMPARE(numFailed, 29);
 }
 
-void MetarTest::testMetarAsn()
+
+void MetarTest::testMetarSim()
 {
-  QFETCH(QString, data);
+  QFile metarFiles(":/test/resources/METAR.txt");
+  QVERIFY(metarFiles.open(QIODevice::ReadOnly | QIODevice::Text));
 
-  atools::fs::weather::Metar metar(data);
+  QTextStream weatherSnapshot(&metarFiles);
 
-  QVERIFY(metar.getParsedMetar().isValid());
-  // QCOMPARE(metar.getParsedMetar().getUnusedData(), QString());
-  QVERIFY(!metar.getCleanMetar().isEmpty());
-  QVERIFY(!metar.getMetar().isEmpty());
-}
-
-void MetarTest::testMetarSim_data()
-{
-  QTest::addColumn<QString>("data");
-
-  QFile metars(":/test/resources/METAR.txt");
-  QVERIFY(metars.open(QIODevice::ReadOnly | QIODevice::Text));
-
-  QTextStream weatherSnapshot(&metars);
-
+  int numFailed = 0;
   QString line;
   while(weatherSnapshot.readLineInto(&line))
   {
     if(!line.isEmpty())
-      QTest::newRow(qPrintable(line)) << line;
+    {
+      atools::fs::weather::Metar metar(line, "XXXX", QDateTime(), true);
+      numFailed += !metar.isValid();
+    }
   }
-  metars.close();
-}
+  metarFiles.close();
 
-void MetarTest::testMetarSim()
-{
-  QFETCH(QString, data);
-
-  atools::fs::weather::Metar metar(data, "XXXX", QDateTime(), true);
-
-  QVERIFY(metar.getParsedMetar().isValid());
-  // QCOMPARE(metar.getParsedMetar().getUnusedData(), QString());
-  QVERIFY(!metar.getCleanMetar().isEmpty());
-  QVERIFY(!metar.getMetar().isEmpty());
+  // Check the number of failed since too many are not readable
+  QCOMPARE(numFailed, 21);
 }

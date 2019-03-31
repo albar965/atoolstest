@@ -35,10 +35,7 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-  void testMetarAsn_data();
   void testMetarAsn();
-
-  void testMetarSim_data();
   void testMetarSim();
 
 };

@@ -26,12 +26,14 @@
 #include "stringtest.h"
 #include "onlinetest.h"
 #include "perftest.h"
-#include "maintest.h"
 
 #include <QString>
 #include <QTimer>
 #include <QtTest/QtTest>
 
+/*
+ * Macros that allow to create and add test classes for command line selection.
+ */
 #define RUNTESTEXT(name) \
   if(parser->isSet( # name) || parser->isSet("RunAll")) \
   { \
@@ -50,6 +52,7 @@
     addOption(parser, # name); \
   };
 
+// Forward declarations
 void test();
 void runtest(QObject& testObject, QVector<std::pair<int, QString> >& messages, const QStringList& options);
 void addOption(QCommandLineParser *parser, const QString& shortOpt);
@@ -67,9 +70,14 @@ int main(int argc, char *argv[])
   argVector = argv;
 
   QCoreApplication app(argc, argv);
+  QCoreApplication::setApplicationName("atoolstest");
+  QCoreApplication::setOrganizationName("ABarthel");
+  QCoreApplication::setOrganizationDomain("littlenavmap.org");
+  QCoreApplication::setApplicationVersion("0.9.0.develop"); // VERSION_NUMBER
+
+  // Command line reading
   parser = new QCommandLineParser();
   parser->setApplicationDescription("atools unit tests.");
-  parser->setSingleDashWordOptionMode(QCommandLineParser::ParseAsLongOptions);
   parser->addHelpOption();
   parser->addVersionOption();
 
@@ -92,12 +100,18 @@ int main(int argc, char *argv[])
   otherOptions.append(QCoreApplication::arguments().first());
   otherOptions.append(parser->unknownOptionNames());
 
-  if(parser->optionNames().isEmpty())
+  if(parser->optionNames().isEmpty() || parser->isSet("h"))
+    // Display help and exit
     parser->showHelp();
-
-  QTimer::singleShot(0, test);
-
-  return app.exec();
+  else if(parser->isSet("v"))
+    // Display version and exit
+    parser->showVersion();
+  else
+  {
+    // Start test execution in event queue
+    QTimer::singleShot(0, test);
+    return app.exec();
+  }
 }
 
 void test()
@@ -128,6 +142,8 @@ void test()
     else
       qDebug() << msg.second << "Success";
   }
+
+  qInfo() << "exit" << static_cast<int>(failed);
   QApplication::exit(failed);
 }
 

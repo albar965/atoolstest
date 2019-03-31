@@ -1,0 +1,70 @@
+# Build Instructions
+
+The atools static library is required. Clone atools (`git clone https://github.com/albar965/atools.git`)
+and follow the build instructions there. The instructions in this `BUILD.txt` file assume that atools was installed
+and compiled successfully and Qt Creator was configured accordingly.
+
+Clone the atoolstest GIT repository into the same directory as atools. You can use another
+directory but then you need to adapt the configuration by changing environment variables.
+
+Look at the `atoolstest.pro` file. There is a list of documented environment variables that can
+be set to customize the build. Most of these variables are optional and use a reasonable default
+value. Set these variables in the Qt Creator GUI or on the command line.
+
+There is no need to edit the `*.pro` files.
+
+## Default paths and Environment Variables
+
+The projects can be built with almost no configuration changes since all project files fall back to sensible
+default paths if the corresponding environment variables are not set. `APROJECTS` is the placeholder for the base directory in
+the examples below. Avoid paths with spaces if possible.
+
+* `APROJECTS/atools/src`                   Sources. `ATOOLS_INC_PATH`
+* `APROJECTS/build-atools-debug`           atools debug build. `ATOOLS_LIB_PATH`
+* `APROJECTS/build-atools-release`         atools release build. `ATOOLS_LIB_PATH`
+* `APROJECTS/build-atoolstest-debug`       atoolstest debug build.
+* `APROJECTS/build-atoolstest-release`     atoolstest release build.
+* `APROJECTS/deploy`                       Target for `make deploy`. `DEPLOY_BASE`
+* `APROJECTS/atoolstest`                   Sources.
+
+## Windows
+
+- Clone atoolstest from GIT (`git clone https://github.com/albar965/atoolstest.git`)
+  to e.g.: `C:\Projects\atoolstest`
+- For atoolstest use the build directory of e.g.: `C:\Projects\build-atoolstest-release`. Otherwise
+  change the paths with envronment variables (see `atoolstest.pro` file).
+- Import atoolstest into the Qt Creator workspace (atools should be already there).
+- Configure the project and enable the shadow build for release or debug versions.
+- Set the build kit for atools and atoolstest to MinGW 32bit.
+- Run qmake from Qt Creator for all projects
+- Build all projects from Qt Creator
+- Create and run the target `deploy`. This will create a directory `DEPLOY_BASE\atoolstest` with the program.
+
+The atoolstest project can be built using the MinGW environment only. MSVC will not work.
+
+## Linux
+
+Install Qt development packages. Version at least 5.6.
+
+You can build the program on Linux or macOS similar to the Windows instructions above either using
+the Qt Creator GUI or the command line.
+
+The following assumes that atools was already installed and built.
+
+### To build the atoolstest release version:
+
+```
+mkdir build-atoolstest-release
+cd build-atoolstest-release
+qmake ../atoolstest/atoolstest.pro CONFIG+=release
+make
+```
+
+### To build the atoolstest debug version:
+
+```
+mkdir build-atoolstest-debug
+cd build-atoolstest-debug
+qmake ../atoolstest/atoolstest.pro CONFIG+=debug
+make
+```
