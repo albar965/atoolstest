@@ -62,6 +62,15 @@ static char **argVector = nullptr;
 static QCommandLineParser *parser = nullptr;
 static QStringList otherOptions;
 
+// Use own streams since Qt directs all output to stderr per default
+QDebug& qStdOut();
+QDebug& qStdErr();
+void initIo();
+void deinitIo();
+
+// =====================================================================================
+// main
+// =====================================================================================
 int main(int argc, char *argv[])
 {
   Q_INIT_RESOURCE(atools);
@@ -69,11 +78,17 @@ int main(int argc, char *argv[])
   argCount = argc;
   argVector = argv;
 
+  initIo();
+
   QCoreApplication app(argc, argv);
   QCoreApplication::setApplicationName("atoolstest");
   QCoreApplication::setOrganizationName("ABarthel");
   QCoreApplication::setOrganizationDomain("littlenavmap.org");
-  QCoreApplication::setApplicationVersion("0.9.0.develop"); // VERSION_NUMBER
+  QCoreApplication::setApplicationVersion("0.9.1.develop"); // VERSION_NUMBER
+
+  qStdOut() << "Starting tests ..." << endl;
+  qStdOut() << "LANG=" << QProcessEnvironment::systemEnvironment().value("LANG") << endl;
+  qStdOut() << "LANGUAGE=" << QProcessEnvironment::systemEnvironment().value("LANGUAGE") << endl;
 
   // Command line reading
   parser = new QCommandLineParser();
@@ -136,14 +151,16 @@ void test()
   {
     if(msg.first > 0)
     {
-      qWarning() << msg.second << "FAILED" << msg.first;
+      qStdErr() << msg.second << "FAILED" << msg.first << endl;
       failed = true;
     }
     else
-      qDebug() << msg.second << "Success";
+      qStdOut() << msg.second << "Success" << endl;
   }
 
-  qInfo() << "exit" << static_cast<int>(failed);
+  qStdOut() << "exit" << static_cast<int>(failed);
+
+  deinitIo();
   QApplication::exit(failed);
 }
 
@@ -156,4 +173,39 @@ void runtest(QObject& testObject, QVector<std::pair<int, QString> >& messages, c
 void addOption(QCommandLineParser *cmdParser, const QString& shortOpt)
 {
   cmdParser->addOption(QCommandLineOption(shortOpt, QString("Run the %1 test class.").arg(shortOpt)));
+}
+
+// =============================================================
+// Own IO to avoid all redirected to stderr and have functions of QDebug
+static QDebug *qDbgStdOut;
+static QDebug *qDbgStdErr;
+static QFile stdOutFile;
+static QFile stdErrFile;
+
+void initIo()
+{
+  stdOutFile.open(stdout, QIODevice::WriteOnly | QIODevice::Text);
+  stdErrFile.open(stderr, QIODevice::WriteOnly | QIODevice::Text);
+
+  qDbgStdOut = new QDebug(&stdOutFile);
+  qDbgStdErr = new QDebug(&stdErrFile);
+}
+
+void deinitIo()
+{
+  delete qDbgStdOut;
+  qDbgStdOut = nullptr;
+  delete qDbgStdErr;
+  qDbgStdErr = nullptr;
+}
+
+QDebug& qStdOut()
+{
+  return *qDbgStdOut;
+
+}
+
+QDebug& qStdErr()
+{
+  return *qDbgStdErr;
 }
