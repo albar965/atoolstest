@@ -367,32 +367,32 @@ void FlightplanTest::testSaveQwRte()
   io.saveQwRte(plan, OUTPUT + QDir::separator() + "result_flightplan_qw_EDDH_LIRF.rte");
 }
 
-void FlightplanTest::testSaveMaddogMdx()
+void FlightplanTest::testSaveMaddogMdr()
 {
   {
     Flightplan plan;
     io.load(plan, ":/test/resources/IFR Zurich (LSZH) to Dublin (EIDW).pln");
-    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_LSZH_EIDW.mdx");
+    io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_LSZH_EIDW.mdr");
   }
   {
     Flightplan plan;
     io.load(plan, ":/test/resources/_test_flp_airway.pln");
-    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_airway.mdx");
+    io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_airway.mdr");
   }
   {
     Flightplan plan;
     io.load(plan, ":/test/resources/_test_flp_direct.pln");
-    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_direct.mdx");
+    io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_direct.mdr");
   }
   {
     Flightplan plan;
     io.load(plan, ":/test/resources/_test_flp_mixed.pln");
-    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_mixed.mdx");
+    io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_mixed.mdr");
   }
   {
     Flightplan plan;
     io.load(plan, ":/test/resources/_test_flp_user.pln");
-    io.saveMdx(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_user.mdx");
+    io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_user.mdr");
   }
 }
 
