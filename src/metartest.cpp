@@ -64,7 +64,7 @@ void MetarTest::testMetarAsn()
   metarFile.close();
 
   // Check the number of failed since too many are not readable
-  QCOMPARE(numFailed, 29);
+  QCOMPARE(numFailed, 26);
 }
 
 
@@ -88,5 +88,5 @@ void MetarTest::testMetarSim()
   metarFiles.close();
 
   // Check the number of failed since too many are not readable
-  QCOMPARE(numFailed, 21);
+  QCOMPARE(numFailed, 19);
 }
