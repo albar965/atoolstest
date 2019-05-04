@@ -50,8 +50,8 @@ private slots:
   void testWindDrift_data();
   void testWindDrift();
 
-  void testSunsetSunrise_data();
-  void testSunsetSunrise();
+  void testWindUV_data();
+  void testWindUV();
 
   void testNormalize();
 

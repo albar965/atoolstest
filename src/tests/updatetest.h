@@ -35,11 +35,11 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-  void testUpdateStable();
   void testUpdateBeta();
   void testUpdateDevelop();
   void testUpdateAll();
-  void testUpdateNone();
+  void testUpdateForce();
+  void testUpdateStable();
 
 };
 

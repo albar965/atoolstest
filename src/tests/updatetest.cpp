@@ -43,7 +43,7 @@
 
 using atools::util::UpdateCheck;
 
-static const QLatin1Literal VERSION_URL("http://darkon:4000/versioninfotest");
+static const QLatin1Literal VERSION_URL("https://www.littlenavmap.org/test/littlenavmap-version");
 
 UpdateTest::UpdateTest()
 {
@@ -69,17 +69,22 @@ void UpdateTest::testUpdateStable()
   UpdateCheck check("1.4.3", false);
   check.setUrl(VERSION_URL);
 
+  bool found = false;
   atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates](atools::util::UpdateList updates) -> void
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
   {
     testUpdates = updates;
+    found = true;
   });
 
-  check.checkForUpdates(QString(), false, atools::util::STABLE);
+  check.checkForUpdates(QString(), true, atools::util::STABLE);
 
-  QEventLoop eventLoop;
-  QObject::connect(&check, &UpdateCheck::updateFound, &eventLoop, &QEventLoop::quit);
-  eventLoop.exec();
+  int i = 0;
+  while(found == false && i++ < 20)
+  {
+    QApplication::processEvents();
+    QThread::sleep(1);
+  }
 
   QCOMPARE(testUpdates.size(), 1);
 }
@@ -89,17 +94,22 @@ void UpdateTest::testUpdateBeta()
   UpdateCheck check("1.4.3", false);
   check.setUrl(VERSION_URL);
 
+  bool found = false;
   atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates](atools::util::UpdateList updates) -> void
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
   {
     testUpdates = updates;
+    found = true;
   });
 
-  check.checkForUpdates(QString(), false, atools::util::BETA);
+  check.checkForUpdates(QString(), true, atools::util::BETA);
 
-  QEventLoop eventLoop;
-  QObject::connect(&check, &UpdateCheck::updateFound, &eventLoop, &QEventLoop::quit);
-  eventLoop.exec();
+  int i = 0;
+  while(found == false && i++ < 20)
+  {
+    QApplication::processEvents();
+    QThread::sleep(1);
+  }
 
   QCOMPARE(testUpdates.size(), 1);
 }
@@ -109,17 +119,22 @@ void UpdateTest::testUpdateDevelop()
   UpdateCheck check("1.4.3", false);
   check.setUrl(VERSION_URL);
 
+  bool found = false;
   atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates](atools::util::UpdateList updates) -> void
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
   {
     testUpdates = updates;
+    found = true;
   });
 
-  check.checkForUpdates(QString(), false, atools::util::DEVELOP);
+  check.checkForUpdates(QString(), true, atools::util::DEVELOP);
 
-  QEventLoop eventLoop;
-  QObject::connect(&check, &UpdateCheck::updateFound, &eventLoop, &QEventLoop::quit);
-  eventLoop.exec();
+  int i = 0;
+  while(found == false && i++ < 20)
+  {
+    QApplication::processEvents();
+    QThread::sleep(1);
+  }
 
   QCOMPARE(testUpdates.size(), 1);
 }
@@ -129,37 +144,47 @@ void UpdateTest::testUpdateAll()
   UpdateCheck check("1.4.3", false);
   check.setUrl(VERSION_URL);
 
+  bool found = false;
   atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates](atools::util::UpdateList updates) -> void
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
   {
     testUpdates = updates;
+    found = true;
   });
 
-  check.checkForUpdates({"1.6.0.beta"}, false, atools::util::STABLE | atools::util::BETA | atools::util::DEVELOP);
+  check.checkForUpdates({"1.6.0.beta"}, true, atools::util::STABLE | atools::util::BETA | atools::util::DEVELOP);
 
-  QEventLoop eventLoop;
-  QObject::connect(&check, &UpdateCheck::updateFound, &eventLoop, &QEventLoop::quit);
-  eventLoop.exec();
+  int i = 0;
+  while(found == false && i++ < 20)
+  {
+    QApplication::processEvents();
+    QThread::sleep(1);
+  }
 
   QCOMPARE(testUpdates.size(), 2);
 }
 
-void UpdateTest::testUpdateNone()
+void UpdateTest::testUpdateForce()
 {
-  UpdateCheck check("1.7.0.develop", false);
+  UpdateCheck check("4.4.0.develop", true);
   check.setUrl(VERSION_URL);
 
+  bool found = false;
   atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates](atools::util::UpdateList updates) -> void
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
   {
     testUpdates = updates;
+    found = true;
   });
 
-  check.checkForUpdates(QString(), false, atools::util::STABLE | atools::util::BETA | atools::util::DEVELOP);
+  check.checkForUpdates(QString(), true, atools::util::STABLE | atools::util::BETA | atools::util::DEVELOP);
 
-  QEventLoop eventLoop;
-  QObject::connect(&check, &UpdateCheck::updateFound, &eventLoop, &QEventLoop::quit);
-  eventLoop.exec();
+  int i = 0;
+  while(found == false && i++ < 20)
+  {
+    QApplication::processEvents();
+    QThread::sleep(1);
+  }
 
-  QCOMPARE(testUpdates.size(), 0);
+  QCOMPARE(testUpdates.size(), 3);
 }

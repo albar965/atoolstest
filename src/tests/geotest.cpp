@@ -189,70 +189,50 @@ void GeoTest::testWindDrift()
 
   float hd = atools::geo::windCorrectedHeading(windSpeed, windDirectionDeg, courseDeg, trueAirspeed);
 
-  qDebug() << "hd" << hd
-           << "windSpeed" << windSpeed
-           << "windDirectionDeg" << windDirectionDeg
-           << "courseDeg" << courseDeg
-           << "trueAirspeed" << trueAirspeed;
-
   QCOMPARE(hd, heading);
 }
 
-void GeoTest::testSunsetSunrise_data()
+void GeoTest::testWindUV_data()
 {
-  QTest::addColumn<Pos>("pos");
-  QTest::addColumn<QDate>("date");
-  QTest::addColumn<float>("zenith");
-  QTest::addColumn<QTime>("result");
-  QTest::addColumn<bool>("neverrise");
-  QTest::addColumn<bool>("neverset");
+  // float windCorrectedHeading(float windSpeed, float windDirectionDeg, float courseDeg, float trueAirspeed)
+  QTest::addColumn<float>("v"); // north
+  QTest::addColumn<float>("u"); // east
+  QTest::addColumn<float>("speed");
+  QTest::addColumn<float>("dir");
 
-  float sunriseOfficial = 90.f + 50.f / 60.f;
-  float sunsetOfficial = -(90.f + 50.f / 60.f);
+  // U component of wind; eastward_wind
+  // V component of wind; northward_wind
 
-  // http://edwilliams.org/sunrise_sunset_example.htm
-  QTest::newRow("Example Rising") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunriseOfficial << QTime(9, 26, 29)
-                                  << false << false;
-  QTest::newRow("Example Setting") << Pos(-74.3, 40.9) << QDate(1990, 6, 25) << sunsetOfficial << QTime(0, 33, 0)
-                                   << false << false;
-
-  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << 90.f << QTime(3, 56, 45)
-                             << false << false;
-  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << -90.f << QTime(19, 5, 53)
-                            << false << false;
-
-  QTest::newRow("EDDF Rise") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunriseOfficial << QTime(3, 50, 43)
-                             << false << false;
-  QTest::newRow("EDDF Set") << Pos(8.67972, 50.11361) << QDate(2018, 7, 30) << sunsetOfficial << QTime(19, 11, 54)
-                            << false << false;
-
-  QTest::newRow("YSSY Rise") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunriseOfficial << QTime(20, 50, 0)
-                             << false << false;
-  QTest::newRow("YSSY Set") << Pos(151.177, -33.9461) << QDate(2018, 7, 30) << sunsetOfficial << QTime(7, 13, 46)
-                            << false << false;
-
-  QTest::newRow("SUMU Rise") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunriseOfficial << QTime(10, 40, 07)
-                             << false << false;
-  QTest::newRow("SUMU Set") << Pos(-56.0281, -34.8339) << QDate(2018, 7, 30) << sunsetOfficial << QTime(21, 1, 15)
-                            << false << false;
+  QTest::newRow("No wind") << 0.f << 0.f << 0.f << 0.f;
+  QTest::newRow("Wind to North") << 10.f << 0.f << 10.f << 0.f;
+  QTest::newRow("Wind to South") << -10.f << 0.f << 10.f << 180.f;
+  QTest::newRow("Wind to East") << 0.f << 10.f << 10.f << 90.f;
+  QTest::newRow("Wind to West") << 0.f << -10.f << 10.f << 270.f;
+  QTest::newRow("Wind to North-East") << 10.f << 10.f << 14.1421f << 45.f;
+  QTest::newRow("Wind to North-West") << 10.f << -10.f << 14.1421f << 315.f;
+  QTest::newRow("Wind to South-West") << -10.f << -10.f << 14.1421f << 225.f;
+  QTest::newRow("Wind to South-East") << -10.f << 10.f << 14.1421f << 135.f;
 }
 
-void GeoTest::testSunsetSunrise()
+void GeoTest::testWindUV()
 {
-  QFETCH(Pos, pos);
-  QFETCH(QDate, date);
-  QFETCH(float, zenith);
-  QFETCH(QTime, result);
-  QFETCH(bool, neverrise);
-  QFETCH(bool, neverset);
+  // float windCorrectedHeading(float windSpeed, float windDirectionDeg, float courseDeg, float trueAirspeed)
+  QFETCH(float, v);
+  QFETCH(float, u);
+  QFETCH(float, speed);
+  QFETCH(float, dir);
 
-  bool neverRises, neverSets;
-  QTime time = atools::geo::calculateSunriseSunset(neverRises, neverSets, pos, date, zenith);
-  qDebug() << pos << date << zenith;
-  qDebug() << time << QDateTime(date, time).toLocalTime();
-  QCOMPARE(time, result);
-  QCOMPARE(neverrise, neverRises);
-  QCOMPARE(neverset, neverSets);
+  float speedCalculated = atools::geo::windSpeedFromUV(u, v);
+  float dirCalculated = atools::geo::windDirectionFromUV(u, v);
+
+  QCOMPARE(speedCalculated, speed);
+  QCOMPARE(dirCalculated, dir);
+
+  float vCalculated = atools::geo::windVComponent(speed, dir);
+  float uCalculated = atools::geo::windUComponent(speed, dir);
+
+  QCOMPARE(atools::almostEqual(vCalculated, v, 0.0001f), true);
+  QCOMPARE(atools::almostEqual(uCalculated, u, 0.0001f), true);
 }
 
 void GeoTest::testNormalize()
@@ -423,7 +403,6 @@ void GeoTest::testDistanceToLineAlongHoriz()
   Pos pos(0.f, 0.f);
   // Left to right
   pos.distanceMeterToLine(Pos(-1.f, 0), Pos(1.f, 0), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::ALONG_TRACK);
   QCOMPARE(dist.distance, 0.f);
@@ -438,7 +417,6 @@ void GeoTest::testDistanceToLineAlongVert()
   Pos pos(0.f, 0.f);
   // From top down
   pos.distanceMeterToLine(Pos(0.f, 1.f), Pos(0.f, -1.f), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::ALONG_TRACK);
   QCOMPARE(dist.distance, 0.f);
@@ -453,7 +431,6 @@ void GeoTest::testDistanceToLineAlongVertNorth()
   Pos pos(0.f, 50.f);
   // From top down
   pos.distanceMeterToLine(Pos(0.f, 51.f), Pos(0.f, 49.f), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::ALONG_TRACK);
   QCOMPARE(dist.distance, 0.f);
@@ -468,7 +445,6 @@ void GeoTest::testDistanceToLineBefore()
   Pos pos(-2.f, 0.f);
   // Left to right
   pos.distanceMeterToLine(Pos(-1.f, 0), Pos(1.f, 0), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::BEFORE_START);
   QCOMPARE(dist.distance, 111195.f);
@@ -483,7 +459,6 @@ void GeoTest::testDistanceToLineAfter()
   Pos pos(2.f, 0.f);
   // Left to right
   pos.distanceMeterToLine(Pos(-1.f, 0), Pos(1.f, 0), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::AFTER_END);
   QCOMPARE(dist.distance, 111195.f);
@@ -498,7 +473,6 @@ void GeoTest::testDistanceToLineBeforeLong()
   Pos pos(-10.f, 0.f);
   // Left to right
   pos.distanceMeterToLine(Pos(-1.f, 0), Pos(1.f, 0), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::BEFORE_START);
   // QCOMPARE(dist.distance, 111195.f);
@@ -513,7 +487,6 @@ void GeoTest::testDistanceToLineAfterLong()
   Pos pos(10.f, 0.f);
   // Left to right
   pos.distanceMeterToLine(Pos(-1.f, 0), Pos(1.f, 0), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::AFTER_END);
   // QCOMPARE(dist.distance, 111195.f);
@@ -529,7 +502,6 @@ void GeoTest::testDistanceToLineBug()
   // Left to right
   pos.distanceMeterToLine(Pos(-123.48444366455078f, 48.72694396972656f),
                           Pos(-124.12972259521484f, 49.073055267333984f), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::BEFORE_START);
 }
@@ -542,7 +514,6 @@ void GeoTest::testDistanceToLineBug2()
   // Left to right
   pos.distanceMeterToLine(Pos(-123.48444366455078f + 180.f, 48.72694396972656f),
                           Pos(-124.12972259521484f + 180.f, 49.073055267333984f), dist);
-  qDebug() << dist;
 
   QCOMPARE(dist.status, atools::geo::BEFORE_START);
 }
@@ -639,7 +610,6 @@ void GeoTest::testRectExpandDateBoundary()
     Pos(-160.000000, 53.500000),
     Pos(-153.000000, 56.000000),
   });
-  qDebug() << line.boundingRect();
   QCOMPARE(line.boundingRect(), Rect(130.000000f, 56.750557f, -120.000000f, -5.000000f));
 }
 
@@ -696,8 +666,6 @@ void GeoTest::testRectExpandDateBoundary2()
     Pos(163.000000, -89.999985),
     Pos(75.000000, -6.000000)
   });
-
-  qDebug() << line.boundingRect();
 
   // float leftLonX, float topLatY, float rightLonX, float bottomLatY
   QCOMPARE(line.boundingRect(), Rect(75.000000f, -2.000000f, 163.000000f, -89.999985f));
@@ -813,7 +781,7 @@ void GeoTest::testCoordString()
   QFETCH(Pos, pos);
 
   // qInfo() << QLocale().decimalPoint();
-  qInfo() << coord << atools::fs::util::fromAnyFormat(coord);
+  // qInfo() << coord << atools::fs::util::fromAnyFormat(coord);
   QCOMPARE(atools::fs::util::fromAnyFormat(coord), pos);
 }
 

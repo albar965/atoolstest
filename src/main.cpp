@@ -15,30 +15,49 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include "metartest.h"
-#include "geotest.h"
-#include "updatetest.h"
-#include "dtmtest.h"
-#include "versiontest.h"
-#include "magdectest.h"
-#include "flightplantest.h"
-#include "scenerycfgtest.h"
-#include "stringtest.h"
-#include "onlinetest.h"
-#include "perftest.h"
+#include "tests/metartest.h"
+#include "tests/geotest.h"
+#include "tests/calctest.h"
+#include "tests/dtmtest.h"
+#include "tests/versiontest.h"
+#include "tests/magdectest.h"
+#include "tests/flightplantest.h"
+#include "tests/scenerycfgtest.h"
+#include "tests/stringtest.h"
+#include "tests/onlinetest.h"
+#include "tests/perftest.h"
+#include "tests/gribtest.h"
+#include "tests/updatetest.h"
 
 #include <QString>
 #include <QTimer>
+#include <exception.h>
 #include <QtTest/QtTest>
 
 /*
  * Macros that allow to create and add test classes for command line selection.
  */
-#define RUNTESTEXT(name) \
-  if(parser->isSet( # name) || parser->isSet("RunAll")) \
+#define RUNTESTEXT_COND(name, condition) \
   { \
-    name tst; \
-    runtest(tst, messages, otherOptions); \
+    if(condition) \
+    { \
+      if(parser->isSet( # name) || parser->isSet("RunAll")) \
+      { \
+        name tst; \
+        runtest(tst, messages, otherOptions); \
+      } \
+    } \
+    else \
+      qStdOut() << "Skipping test" << # name << "since condition" << # condition << "is false" << endl; \
+  }
+
+#define RUNTESTEXT(name) \
+  { \
+    if(parser->isSet( # name) || parser->isSet("RunAll")) \
+    { \
+      name tst; \
+      runtest(tst, messages, otherOptions); \
+    } \
   }
 
 #define RUNTEST(name) \
@@ -96,24 +115,34 @@ int main(int argc, char *argv[])
   parser->addHelpOption();
   parser->addVersionOption();
 
-  QCommandLineOption allOpt("RunAll", QObject::tr("Run all test classes."));
+  QCommandLineOption allOpt({"a", "RunAll"}, "Run all test classes.");
   parser->addOption(allOpt);
+
+  QCommandLineOption testFunctions({"f", "TestFunctions"}, "A comma separated list of test <functions>.", "functions");
+  parser->addOption(testFunctions);
 
   DEFINETEST(OnlineTest);
   DEFINETEST(SceneryCfgTest);
   DEFINETEST(MagdecTest);
-  // DEFINETEST(UpdateTest);
+  DEFINETEST(UpdateTest);
   DEFINETEST(StringTest);
   DEFINETEST(PerfTest);
+  DEFINETEST(GribTest);
   DEFINETEST(VersionTest);
   DEFINETEST(GeoTest);
+  DEFINETEST(CalcTest);
   DEFINETEST(FlightplanTest);
   DEFINETEST(MetarTest);
   DEFINETEST(DtmTest);
 
   parser->parse(QCoreApplication::arguments());
   otherOptions.append(QCoreApplication::arguments().first());
-  otherOptions.append(parser->unknownOptionNames());
+
+  QStringList testFuncs;
+  testFuncs.append(parser->value(testFunctions).split(","));
+  testFuncs.removeAll(QString());
+
+  otherOptions.append(testFuncs);
 
   if(parser->optionNames().isEmpty() || parser->isSet("h"))
     // Display help and exit
@@ -131,20 +160,42 @@ int main(int argc, char *argv[])
 
 void test()
 {
+#ifdef Q_OS_LINUX
+  // Attempt to override buggy Qt SSL loading - on some platforms it tries to load newer unsupported versions
+  QLibrary libcrypto, libssl;
+  libcrypto.setFileNameAndVersion(QLatin1String("crypto"), QLatin1String("1.0.0"));
+  libcrypto.load();
+  libssl.setFileNameAndVersion(QLatin1String("ssl"), QLatin1String("1.0.0"));
+  libssl.load();
+#endif
+
+  qStdOut() << "SSL supported" << QSslSocket::supportsSsl()
+            << "build library" << QSslSocket::sslLibraryBuildVersionString()
+            << "library" << QSslSocket::sslLibraryVersionString() << endl;
+
   // status |= QTest::qExec(&tc, argc, argv);
   QVector<std::pair<int, QString> > messages;
 
-  RUNTESTEXT(OnlineTest);
-  RUNTESTEXT(SceneryCfgTest);
-  RUNTESTEXT(MagdecTest);
-  // RUNTESTEXT(UpdateTest);
-  RUNTESTEXT(StringTest);
-  RUNTESTEXT(PerfTest);
-  RUNTESTEXT(VersionTest);
-  RUNTESTEXT(GeoTest);
-  RUNTESTEXT(FlightplanTest);
-  RUNTESTEXT(MetarTest);
-  RUNTESTEXT(DtmTest);
+  try
+  {
+    RUNTESTEXT(OnlineTest);
+    RUNTESTEXT(SceneryCfgTest);
+    RUNTESTEXT(MagdecTest);
+    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl());
+    RUNTESTEXT(StringTest);
+    RUNTESTEXT(PerfTest);
+    RUNTESTEXT(GribTest);
+    RUNTESTEXT(VersionTest);
+    RUNTESTEXT(GeoTest);
+    RUNTESTEXT(CalcTest);
+    RUNTESTEXT(FlightplanTest);
+    RUNTESTEXT(MetarTest);
+    RUNTESTEXT(DtmTest);
+  }
+  catch(std::exception& e)
+  {
+    qStdErr() << "Caught exception" << e.what() << endl;
+  }
 
   bool failed = false;
   for(const std::pair<int, QString>& msg : messages)
@@ -158,7 +209,7 @@ void test()
       qStdOut() << msg.second << "Success" << endl;
   }
 
-  qStdOut() << "exit" << static_cast<int>(failed);
+  qStdOut() << "exit" << static_cast<int>(failed) << endl;
 
   deinitIo();
   QApplication::exit(failed);

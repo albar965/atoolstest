@@ -27,6 +27,10 @@
 # Optional. Path to atools static library. Default is "../build-atools-$${CONF_TYPE}"
 # ("../build-atools-$${CONF_TYPE}/$${CONF_TYPE}" on Windows) if not set.
 #
+# OPENSSL_PATH
+# Required for Windows only. Base path of WinSSL 1.0.1 installation (https://slproweb.com/products/Win32OpenSSL.html).
+# Defaults to "C:\OpenSSL-Win32" if empty.
+#
 # ATOOLS_GIT_PATH
 # Optional. Path to GIT executable. Revision will be set to "UNKNOWN" if not set.
 # Uses "git" on macOS and Linux as default if not set.
@@ -59,6 +63,7 @@ TEMPLATE = app
 
 ATOOLS_INC_PATH=$$(ATOOLS_INC_PATH)
 ATOOLS_LIB_PATH=$$(ATOOLS_LIB_PATH)
+OPENSSL_PATH=$$(OPENSSL_PATH)
 GIT_PATH=$$(ATOOLS_GIT_PATH)
 DEPLOY_BASE=$$(DEPLOY_BASE)
 QUIET=$$(ATOOLS_QUIET)
@@ -74,12 +79,17 @@ isEmpty(DEPLOY_BASE) : DEPLOY_BASE=$$PWD/../deploy
 isEmpty(ATOOLS_INC_PATH) : ATOOLS_INC_PATH=$$PWD/../atools/src
 isEmpty(ATOOLS_LIB_PATH) : ATOOLS_LIB_PATH=$$PWD/../build-atools-$$CONF_TYPE
 
+win32: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=C:\OpenSSL-Win32
+
 # =======================================================================
 # Set compiler flags and paths
 
 unix:!macx {
   isEmpty(GIT_PATH) : GIT_PATH=git
 
+  # Find OpenSSL location
+  exists( /lib/x86_64-linux-gnu/libssl.so.1.0.0 ) :  OPENSSL_PATH=/lib/x86_64-linux-gnu
+  exists( /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 ) : OPENSSL_PATH=/usr/lib/x86_64-linux-gnu
   QMAKE_LFLAGS += -no-pie
 
   # Makes the shell script and setting LD_LIBRARY_PATH redundant
@@ -121,6 +131,7 @@ DEFINES += QT_NO_CAST_TO_ASCII
 message(-----------------------------------)
 message(GIT_PATH: $$GIT_PATH)
 message(GIT_REVISION: $$GIT_REVISION)
+message(OPENSSL_PATH: $$OPENSSL_PATH)
 message(ATOOLS_INC_PATH: $$ATOOLS_INC_PATH)
 message(ATOOLS_LIB_PATH: $$ATOOLS_LIB_PATH)
 message(DEPLOY_BASE: $$DEPLOY_BASE)
@@ -141,41 +152,47 @@ message(-----------------------------------)
 # Files
 
 SOURCES += \
-    src/metartest.cpp \
-    src/geotest.cpp \
-    src/dtmtest.cpp \
-    src/flightplantest.cpp \
-    src/scenerycfgtest.cpp \
-    src/magdectest.cpp \
-    src/updatetest.cpp \
-    src/stringtest.cpp \
-    src/versiontest.cpp \
-    src/onlinetest.cpp \
-    src/perftest.cpp \
-    src/main.cpp
+  src/tests/calctest.cpp \
+  src/tests/gribtest.cpp \
+  src/tests/metartest.cpp \
+  src/tests/geotest.cpp \
+  src/tests/dtmtest.cpp \
+  src/tests/flightplantest.cpp \
+  src/tests/scenerycfgtest.cpp \
+  src/tests/magdectest.cpp \
+  src/tests/updatetest.cpp \
+  src/tests/stringtest.cpp \
+  src/tests/versiontest.cpp \
+  src/tests/onlinetest.cpp \
+  src/tests/perftest.cpp \
+  src/main.cpp
 
 HEADERS += \
-    src/metartest.h \
-    src/geotest.h \
-    src/dtmtest.h \
-    src/flightplantest.h \
-    src/scenerycfgtest.h \
-    src/magdectest.h \
-    src/updatetest.h \
-    src/stringtest.h \
-    src/versiontest.h \
-    src/onlinetest.h \
-    src/perftest.h
+  src/tests/calctest.h \
+  src/tests/gribtest.h \
+  src/tests/metartest.h \
+  src/tests/geotest.h \
+  src/tests/dtmtest.h \
+  src/tests/flightplantest.h \
+  src/tests/scenerycfgtest.h \
+  src/tests/magdectest.h \
+  src/tests/updatetest.h \
+  src/tests/stringtest.h \
+  src/tests/versiontest.h \
+  src/tests/onlinetest.h \
+  src/tests/perftest.h
 
 RESOURCES += \
     resources.qrc
 
 OTHER_FILES += \
-    $$files(testdata/*, true) \
-    uncrustify.cfg \
-    BUILD.txt \
-    README.txt \
-    LICENSE.txt
+  $$files(testdata/*, true) \
+  .travis.yml \
+  .gitignore \
+  uncrustify.cfg \
+  BUILD.txt \
+  README.txt \
+  LICENSE.txt
 
 # =====================================================================
 # Local deployment commands for development
@@ -197,6 +214,8 @@ unix:!macx {
   deploy.commands += cp -vf $$PWD/CHANGELOG.txt $$DEPLOY_DIR &&
   deploy.commands += cp -vf $$PWD/README.txt $$DEPLOY_DIR &&
   deploy.commands += cp -vf $$PWD/LICENSE.txt $$DEPLOY_DIR &&
+  deploy.commands += cp -vfa $$OPENSSL_PATH/libssl.so.1.0.0 $$DEPLOY_DIR_LIB &&
+  deploy.commands += cp -vfa $$OPENSSL_PATH/libcrypto.so.1.0.0 $$DEPLOY_DIR_LIB &&
   deploy.commands += cp -vfa $$[QT_INSTALL_PLUGINS]/sqldrivers/libqsqlite.so*  $$DEPLOY_DIR_LIB/sqldrivers &&
   deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libicudata.so*  $$DEPLOY_DIR_LIB &&
   deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libicui18n.so*  $$DEPLOY_DIR_LIB &&
@@ -216,6 +235,9 @@ win32 {
   deploy.commands = rmdir /s /q $$p($$DEPLOY_BASE/$$TARGET_NAME) &
   deploy.commands += mkdir $$p($$DEPLOY_BASE/$$TARGET_NAME/sqldrivers) &&
   deploy.commands += xcopy $$p($$OUT_PWD/atoolstest.exe) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH/bin/libeay32.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH/bin/ssleay32.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH/libssl32.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/CHANGELOG.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/README.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/LICENSE.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
