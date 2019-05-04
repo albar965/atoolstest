@@ -56,10 +56,6 @@ void FlightplanTest::cleanupTestCase()
   QCOMPARE(flightplan.getEntries().size(), 0);
 }
 
-typedef quint8 byte;
-typedef qint16 WORD;
-typedef qint64 __int64;
-typedef bool boolean;
 
 #ifdef FPR_TEST
 extern "C" {
@@ -168,7 +164,11 @@ void FlightplanTest::testSaveFlpDirect()
   io.load(fp, ":/test/resources/_test_flp_direct.pln");
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_direct.flp");
 
+#ifdef Q_OS_WIN32
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1055);
+#else
   QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1010);
+#endif
 }
 
 void FlightplanTest::testSaveFlpAirway()
@@ -178,7 +178,11 @@ void FlightplanTest::testSaveFlpAirway()
   io.load(fp, ":/test/resources/_test_flp_airway.pln");
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_airway.flp");
 
+#ifdef Q_OS_WIN32
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_airway.flp").size(), 1204);
+#else
   QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_airway.flp").size(), 1130);
+#endif
 }
 
 void FlightplanTest::testSaveFlpMixed()
@@ -188,7 +192,11 @@ void FlightplanTest::testSaveFlpMixed()
   io.load(fp, ":/test/resources/_test_flp_mixed.pln");
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_mixed.flp");
 
+#ifdef Q_OS_WIN32
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 996);
+#else
   QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 943);
+#endif
 }
 
 void FlightplanTest::testSaveFltplanDirect()

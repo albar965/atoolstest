@@ -67,7 +67,8 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK Custom Scenery/Norway ENBN tdg/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("Norway ENBN tdg/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("Norway ENBN tdg") + QDir::separator() +
+                                                        "Earth nav data" + QDir::separator() + "apt.dat"), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, true);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
@@ -75,7 +76,8 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK Custom Scenery/Svalbard1/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("Svalbard1/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("Svalbard1") + QDir::separator() + "Earth nav data" +
+                                                        QDir::separator() + "apt.dat"), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, true);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
@@ -83,7 +85,8 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK Custom Scenery/LNMY Test Intl äöü ÄÖÜß_'/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("LNMY Test Intl äöü ÄÖÜß_'/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("LNMY Test Intl äöü ÄÖÜß_'") + QDir::separator() +
+                                                        "Earth nav data" + QDir::separator() + "apt.dat"), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, true);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
@@ -91,7 +94,8 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK Custom Scenery/WA0B Susi Air Idedua Airstrip/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("WA0B Susi Air Idedua Airstrip/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("WA0B Susi Air Idedua Airstrip") + QDir::separator() +
+                                                        "Earth nav data" + QDir::separator() + "apt.dat"), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, true);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
@@ -99,7 +103,7 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK /home/USER/Projekte/atoolstest/testdata/X-Plane Landmarks - Sydney/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("X-Plane Landmarks - Sydney"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString( "X-Plane Landmarks - Sydney/")), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, false);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), false);
@@ -107,7 +111,8 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK ../X-Plane Landmarks - Sydney/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("X-Plane Landmarks - Sydney/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("X-Plane Landmarks - Sydney") + QDir::separator() +
+                                                        "Earth nav data" + QDir::separator() + "apt.dat"), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, true);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), true);
@@ -115,7 +120,7 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK Custom Scenery/Does not exist/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("Does not exist"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("Does not exist/")), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, false);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), false);
@@ -130,7 +135,8 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK Custom Scenery/ZYYJ_Yanji/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("ZYYJ_Yanji/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("ZYYJ_Yanji") + QDir::separator() + "Earth nav data" +
+                                                        QDir::separator() + "apt.dat"), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx++).valid, true);
 
@@ -140,17 +146,20 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK_DISABLED Custom Scenery/ZYYJ_Yanji/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith("ZYYJ_Yanji/Earth nav data/apt.dat"), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("ZYYJ_Yanji") + QDir::separator() + "Earth nav data" +
+                                                        QDir::separator() + "apt.dat"), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, true);
   QCOMPARE(packs.getEntries().at(idx++).valid, true);
 
   const SceneryPack *entry = packs.getEntryByPath(packs.getEntries().first().filepath);
-  QCOMPARE(entry->filepath.endsWith("Norway ENBN tdg/Earth nav data/apt.dat"), true);
+  QCOMPARE(entry->filepath.endsWith(QString("Norway ENBN tdg") + QDir::separator() + "Earth nav data" +
+                                    QDir::separator() + "apt.dat"), true);
   QCOMPARE(entry->disabled, false);
   QCOMPARE(entry->valid, true);
 
   const SceneryPack *entry2 = packs.getEntryByPath(packs.getEntries().last().filepath);
-  QCOMPARE(entry2->filepath.endsWith("ZYYJ_Yanji/Earth nav data/apt.dat"), true);
+  QCOMPARE(entry2->filepath.endsWith(QString("ZYYJ_Yanji") + QDir::separator() + "Earth nav data" + QDir::separator() +
+                                     "apt.dat"), true);
   QCOMPARE(entry2->disabled, true);
   QCOMPARE(entry2->valid, true);
 
