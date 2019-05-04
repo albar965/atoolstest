@@ -524,13 +524,32 @@ void GribTest::testGribWindRectQuery()
   }
 
   if(!result.isEmpty())
-    QCOMPARE(winds, result);
+  {
+    QCOMPARE(winds.size(), result.size());
+    for(int i = 0; i < winds.size(); i++)
+    {
+      QCOMPARE(winds.at(i).pos.getLonX(), result.at(i).pos.getLonX());
+      QCOMPARE(winds.at(i).pos.getLatY(), result.at(i).pos.getLatY());
+      QCOMPARE(winds.at(i).wind.dir, result.at(i).wind.dir);
+      QCOMPARE(winds.at(i).wind.speed, result.at(i).wind.speed);
+    }
+  }
+
+  QCOMPARE(uCalculated.size(), vCalculated.size());
 
   if(!v.isEmpty())
-    QCOMPARE(v, vCalculated);
+  {
+    QCOMPARE(v.size(), vCalculated.size());
+    for(int i = 0; i < v.size(); i++)
+      QCOMPARE(v.at(i), vCalculated.at(i));
+  }
 
   if(!u.isEmpty())
-    QCOMPARE(u, uCalculated);
+  {
+    QCOMPARE(u.size(), uCalculated.size());
+    for(int i = 0; i < u.size(); i++)
+      QCOMPARE(u.at(i), uCalculated.at(i));
+  }
 }
 
 void GribTest::testGribWindQuery_data()
@@ -605,18 +624,18 @@ void GribTest::testGribDownload()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
-  {
-    testdatasets = datasets;
-    done = true;
-    err = false;
-  });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
+          {
+            testdatasets = datasets;
+            done = true;
+            err = false;
+          });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString&, int, QString) -> void
-  {
-    done = true;
-    err = true;
-  });
+          [&err, &done](const QString &, int, QString)->void
+          {
+            done = true;
+            err = true;
+          });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
@@ -637,18 +656,18 @@ void GribTest::testGribDownloadFail()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
-  {
-    testdatasets = datasets;
-    done = true;
-    err = false;
-  });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
+          {
+            testdatasets = datasets;
+            done = true;
+            err = false;
+          });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString&, int, QString) -> void
-  {
-    done = true;
-    err = true;
-  });
+          [&err, &done](const QString &, int, QString)->void
+          {
+            done = true;
+            err = true;
+          });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
