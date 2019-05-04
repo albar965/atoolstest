@@ -59,7 +59,7 @@ TARGET_NAME=$$TARGET
 TEMPLATE = app
 
 # =======================================================================
-# Copy ennvironment variables into qmake variables
+# Copy environment variables into qmake variables
 
 ATOOLS_INC_PATH=$$(ATOOLS_INC_PATH)
 ATOOLS_LIB_PATH=$$(ATOOLS_LIB_PATH)

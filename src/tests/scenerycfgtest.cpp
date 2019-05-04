@@ -103,7 +103,7 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK /home/USER/Projekte/atoolstest/testdata/X-Plane Landmarks - Sydney/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString( "X-Plane Landmarks - Sydney/")), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.contains(QString( "X-Plane Landmarks - Sydney")), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, false);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), false);
@@ -120,7 +120,7 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK Custom Scenery/Does not exist/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.endsWith(QString("Does not exist/")), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.contains(QString("Does not exist")), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, false);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), false);
