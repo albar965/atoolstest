@@ -20,14 +20,15 @@
 #include "atools.h"
 #include "grib/gribreader.h"
 #include "grib/gribdownloader.h"
-#include "grib/gribwindquery.h"
+#include "grib/windquery.h"
 #include "geo/calculations.h"
 #include "geo/rect.h"
 #include "geo/linestring.h"
+#include "exception.h"
 
 using atools::grib::GribDownloader;
 using atools::grib::GribReader;
-using atools::grib::GribWindQuery;
+using atools::grib::WindQuery;
 using atools::geo::LineString;
 using atools::geo::Pos;
 using atools::geo::Rect;
@@ -51,7 +52,7 @@ void GribTest::runtest(int argc, char *argv[])
 
 void GribTest::initTestCase()
 {
-  query = new GribWindQuery(this, verbose);
+  query = new WindQuery(this, verbose);
   query->initFromFile("testdata/lnm_winds.grib");
   // query->initFromFile("testdata/global_winds.grib");
 }
@@ -59,6 +60,27 @@ void GribTest::initTestCase()
 void GribTest::cleanupTestCase()
 {
   delete query;
+}
+
+void GribTest::testGribReadNoFile()
+{
+  GribReader reader;
+  QVERIFY_EXCEPTION_THROWN(reader.readFile(QString()), atools::Exception);
+}
+
+void GribTest::testGribReadNoData()
+{
+  GribReader reader;
+  QVERIFY_EXCEPTION_THROWN(reader.readData(QByteArray()), atools::Exception);
+}
+
+void GribTest::testGribReadInvalidFile()
+{
+  GribReader reader;
+  reader.readFile("testdata/global_turbulence.grib");
+
+  const atools::grib::GribDatasetVector& datasets = reader.getDatasets();
+  QCOMPARE(datasets.size(), 0);
 }
 
 void GribTest::testGribWindLineStringQuery_data()
@@ -157,9 +179,9 @@ void GribTest::testGribWindRectQuery_data()
 
   /* *INDENT-OFF* */
   QTest::newRow("North 0 ft AGL point") << Rect(-180.f, 90.f, -180.f, 90.f) << 0.f
-    << atools::grib::WindPosVector({{Pos(-180.00000000f, 90.00000000f), Wind({314.26669312f, 8.75289440f})}})
-    << QVector<float>({-3.22488022f})
-    << QVector<float>({3.14337182f});
+    << atools::grib::WindPosVector({{Pos(-180.00000000f, 90.00000000f), Wind({0.f, 0.f})}})
+    << QVector<float>({0.f})
+    << QVector<float>({0.f});
   QTest::newRow("North 260 ft AGL point") << Rect(-180.f, 90.f, -180.f, 90.f) << 260.f
     << atools::grib::WindPosVector({{Pos(-180.00000000f, 90.00000000f), Wind({314.26669312f, 8.75289440f})}})
     << QVector<float>({-3.22488022f})
@@ -515,12 +537,22 @@ void GribTest::testGribWindRectQuery()
   {
     atools::grib::WindPos wp = winds.at(i);
 
-    // qDebug() << wp;
-    // qDebug() << "u" << uCalculated.at(i) << "v" << vCalculated.at(i);
+    qDebug() << wp;
+    qDebug() << "u" << uCalculated.at(i) << "v" << vCalculated.at(i);
 
     QCOMPARE(wp.pos.isValid(), true);
-    QCOMPARE(wp.wind.dir > 0.f, true);
-    QCOMPARE(wp.wind.speed >= 0.f, true);
+
+    if(alt > 0.f)
+    {
+      QCOMPARE(wp.wind.dir > 0.f, true);
+      QCOMPARE(wp.wind.speed >= 0.f, true);
+    }
+    else
+    {
+      QCOMPARE(wp.wind.dir, 0.f);
+      QCOMPARE(wp.wind.speed, 0.f);
+    }
+
   }
 
   if(!result.isEmpty())
@@ -560,7 +592,7 @@ void GribTest::testGribWindQuery_data()
   QTest::addColumn<float>("u"); // east m/s
   QTest::addColumn<float>("v"); // north m/s
 
-  QTest::newRow("North AGL") << Pos(-180.f, 90.f, 0.f) << 0.f << 0.f << -3.22488f << 3.14337f;
+  QTest::newRow("North AGL") << Pos(-180.f, 90.f, 0.f) << 0.f << 0.f << 0.f << 0.f;
   QTest::newRow("North first 80 m layer") << Pos(-180.f, 90.f, 260.f) << 0.f << 0.f << -3.22488f << 3.14337f;
   QTest::newRow("South first 80 m layer") << Pos(-180.f, -90.f, 260.f) << 0.f << 0.f << 0.35512f << -6.01663f;
   QTest::newRow("Pos 0,0 first 80 m layer") << Pos(0.f, 0.f, 260.f) << 0.f << 0.f << -6.75488f << -2.88663f;
@@ -624,18 +656,18 @@ void GribTest::testGribDownload()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
-          {
-            testdatasets = datasets;
-            done = true;
-            err = false;
-          });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
+  {
+    testdatasets = datasets;
+    done = true;
+    err = false;
+  });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString &, int, QString)->void
-          {
-            done = true;
-            err = true;
-          });
+          [&err, &done](const QString&, int, QString) -> void
+  {
+    done = true;
+    err = true;
+  });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
@@ -656,18 +688,18 @@ void GribTest::testGribDownloadFail()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
-          {
-            testdatasets = datasets;
-            done = true;
-            err = false;
-          });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
+  {
+    testdatasets = datasets;
+    done = true;
+    err = false;
+  });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString &, int, QString)->void
-          {
-            done = true;
-            err = true;
-          });
+          [&err, &done](const QString&, int, QString) -> void
+  {
+    done = true;
+    err = true;
+  });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});

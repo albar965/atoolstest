@@ -22,7 +22,7 @@
 
 namespace atools {
 namespace grib {
-class GribWindQuery;
+class WindQuery;
 }
 }
 
@@ -42,6 +42,10 @@ public:
 private slots:
   void initTestCase();
   void cleanupTestCase();
+
+  void testGribReadNoFile();
+  void testGribReadNoData();
+  void testGribReadInvalidFile();
 
   void testGribWindLineStringQuery_data();
   void testGribWindLineStringQuery();
@@ -66,7 +70,7 @@ private:
 
   bool verbose = false;
 
-  atools::grib::GribWindQuery *query = nullptr;
+  atools::grib::WindQuery *query = nullptr;
 
 };
 
