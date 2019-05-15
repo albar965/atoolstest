@@ -43,6 +43,11 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testGribReadTest_data();
+  void testGribReadTest();
+  void testGribReadInterpolate_data();
+  void testGribReadInterpolate();
+
   void testGribReadNoFile();
   void testGribReadNoData();
   void testGribReadInvalidFile();
@@ -50,16 +55,10 @@ private slots:
   void testGribWindLineStringQuery_data();
   void testGribWindLineStringQuery();
 
-  void testGribWindLineQuery_data();
-  void testGribWindLineQuery();
-
   void testGribDownload();
   void testGribDownloadFail();
   void testGribLoadLnm();
   void testGribLoadWinds();
-
-  void testGribWindQuery_data();
-  void testGribWindQuery();
 
   void testGribWindRectQuery_data();
   void testGribWindRectQuery();
@@ -70,7 +69,7 @@ private:
 
   bool verbose = false;
 
-  atools::grib::WindQuery *query = nullptr;
+  atools::grib::WindQuery *queryLnm = nullptr, *queryGlobal2 = nullptr;
 
 };
 

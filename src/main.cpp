@@ -184,7 +184,7 @@ void test()
     RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl());
     RUNTESTEXT(StringTest);
     RUNTESTEXT(PerfTest);
-    RUNTESTEXT(GribTest);
+    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl());
     RUNTESTEXT(VersionTest);
     RUNTESTEXT(GeoTest);
     RUNTESTEXT(CalcTest);
@@ -202,7 +202,7 @@ void test()
   {
     if(msg.first > 0)
     {
-      qStdErr() << msg.second << "FAILED" << msg.first << endl;
+      qStdErr() << "*** " << msg.second << "FAILED" << msg.first << endl;
       failed = true;
     }
     else
