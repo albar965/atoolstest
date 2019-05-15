@@ -103,7 +103,11 @@ int main(int argc, char *argv[])
   QCoreApplication::setApplicationName("atoolstest");
   QCoreApplication::setOrganizationName("ABarthel");
   QCoreApplication::setOrganizationDomain("littlenavmap.org");
-  QCoreApplication::setApplicationVersion("0.9.1.develop"); // VERSION_NUMBER
+  QCoreApplication::setApplicationVersion("0.9.5.develop"); // VERSION_NUMBER
+
+  qStdOut() << "SSL supported" << QSslSocket::supportsSsl()
+            << "build library" << QSslSocket::sslLibraryBuildVersionString()
+            << "library" << QSslSocket::sslLibraryVersionString() << endl;
 
   qStdOut() << "Starting tests ..." << endl;
   qStdOut() << "LANG=" << QProcessEnvironment::systemEnvironment().value("LANG") << endl;
@@ -160,19 +164,6 @@ int main(int argc, char *argv[])
 
 void test()
 {
-#ifdef Q_OS_LINUX
-  // Attempt to override buggy Qt SSL loading - on some platforms it tries to load newer unsupported versions
-  QLibrary libcrypto, libssl;
-  libcrypto.setFileNameAndVersion(QLatin1String("crypto"), QLatin1String("1.0.0"));
-  libcrypto.load();
-  libssl.setFileNameAndVersion(QLatin1String("ssl"), QLatin1String("1.0.0"));
-  libssl.load();
-#endif
-
-  qStdOut() << "SSL supported" << QSslSocket::supportsSsl()
-            << "build library" << QSslSocket::sslLibraryBuildVersionString()
-            << "library" << QSslSocket::sslLibraryVersionString() << endl;
-
   // status |= QTest::qExec(&tc, argc, argv);
   QVector<std::pair<int, QString> > messages;
 
