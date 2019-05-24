@@ -54,9 +54,11 @@ void GribTest::initTestCase()
 {
   queryLnm = new WindQuery(this, verbose);
   queryLnm->initFromFile("testdata/lnm_winds.grib");
+  queryLnm->setSamplesPerDegree(100);
 
   queryGlobal2 = new WindQuery(this, verbose);
   queryGlobal2->initFromFile("testdata/global_winds2.grib");
+  queryGlobal2->setSamplesPerDegree(100);
 }
 
 void GribTest::cleanupTestCase()
@@ -74,16 +76,16 @@ void GribTest::testGribReadTest_data()
 
   QTest::newRow("Pos(0.f,0.f) 0") << queryGlobal2 << Pos(0.f, 0.f, 0.f) << 0.f << 0.f;
   QTest::newRow("Pos(1.f,1.f)") << queryGlobal2 << Pos(1.f, 1.f, 10000) << 22.2137f << 92.5149f;
-  QTest::newRow("Pos(-0.5f,-0.5f)") << queryGlobal2 << Pos(-0.5f, -0.5f, 10000) << 18.0741f << 88.7677f;
+  QTest::newRow("Pos(-0.5f,-0.5f)") << queryGlobal2 << Pos(-0.5f, -0.5f, 10000) << 17.9995f << 89.3592f;
   QTest::newRow("Pos(-1.f,0.f)") << queryGlobal2 << Pos(-1.f, 0.f, 10000) << 18.5741f << 84.845f;
   QTest::newRow("Pos(0.f,0.f)") << queryGlobal2 << Pos(0.f, 0.f, 10000) << 22.296f << 93.6562f;
   QTest::newRow("Pos(0.f,-1.f)") << queryGlobal2 << Pos(0.f, -1.f, 10000) << 17.4816f << 94.4095f;
   QTest::newRow("Pos(-1.f,-1.f)") << queryGlobal2 << Pos(-1.f, -1.f, 10000) << 13.9446f << 82.16f;
-  QTest::newRow("Pos(-0.5f,0.f)") << queryGlobal2 << Pos(-0.5f, 0.f, 10000) << 20.435f << 89.2506f;
-  QTest::newRow("Pos(0.f,-0.5f)") << queryGlobal2 << Pos(0.f, -0.5f, 10000) << 19.8888f << 94.0329f;
-  QTest::newRow("Pos(0.5f,0.f)") << queryGlobal2 << Pos(0.5f, 0.f, 10000) << 20.8918f << 96.5978f;
-  QTest::newRow("Pos(0.f,0.5f)") << queryGlobal2 << Pos(0.f, 0.5f, 10000) << 22.869f << 91.1901f;
-  QTest::newRow("Pos(0.5f,0.5f)") << queryGlobal2 << Pos(0.5f, 0.5f, 10000) << 21.8599f << 93.6086f;
+  QTest::newRow("Pos(-0.5f,0.f)") << queryGlobal2 << Pos(-0.5f, 0.f, 10000) << 20.3751f << 89.6526f;
+  QTest::newRow("Pos(0.f,-0.5f)") << queryGlobal2 << Pos(0.f, -0.5f, 10000) << 19.8884f << 93.9873f;
+  QTest::newRow("Pos(0.5f,0.f)") << queryGlobal2 << Pos(0.5f, 0.f, 10000) << 20.8644f << 96.3999f;
+  QTest::newRow("Pos(0.f,0.5f)") << queryGlobal2 << Pos(0.f, 0.5f, 10000) << 22.8479f << 91.1283f;
+  QTest::newRow("Pos(0.5f,0.5f)") << queryGlobal2 << Pos(0.5f, 0.5f, 10000) << 21.8117f << 93.3538f;
   QTest::newRow("Pos(0.f,0.f)") << queryGlobal2 << Pos(0.f, 0.f, 10000) << 22.296f << 93.6562f;
   QTest::newRow("Pos(43.f,33.f)") << queryGlobal2 << Pos(43.f, 33.f, 10000) << 35.3638f << 221.662f;
   QTest::newRow("Pos(-15.f,46.f)") << queryGlobal2 << Pos(-15.f, 46.f, 10000) << 54.8431f << 287.531f;
@@ -93,8 +95,8 @@ void GribTest::testGribReadTest_data()
   QTest::newRow("Pos(9.f,50.f)") << queryGlobal2 << Pos(9.f, 50.f, 10000) << 29.2664f << 233.567f;
   QTest::newRow("Pos(107.f,-17.f)") << queryGlobal2 << Pos(107.f, -17.f, 10000) << 19.7367f << 81.6838f;
   QTest::newRow("Pos(30.f,-31.f)") << queryGlobal2 << Pos(30.f, -31.f, 10000) << 5.43035f << 352.321f;
-  QTest::newRow("Pos(0.9f,0.9f)") << queryGlobal2 << Pos(0.9f, 0.9f, 10000) << 22.0797f << 92.8173f;
-  QTest::newRow("Pos(0.1f,0.1f)") << queryGlobal2 << Pos(0.1f, 0.1f, 10000) << 22.1455f << 93.7304f;
+  QTest::newRow("Pos(0.9f,0.9f)") << queryGlobal2 << Pos(0.9f, 0.9f, 10000) << 22.062f << 92.7212f;
+  QTest::newRow("Pos(0.1f,0.1f)") << queryGlobal2 << Pos(0.1f, 0.1f, 10000) << 22.1285f << 93.6406f;
   QTest::newRow("Pos(-100.f,66.f)") << queryGlobal2 << Pos(-100.f, 66.f, 10000) << 14.4823f << 29.7474f;
   QTest::newRow("Pos(137.f,66.0f)") << queryGlobal2 << Pos(137.f, 66.0f, 10000) << 23.5245f << 180.584f;
 
@@ -122,11 +124,9 @@ void GribTest::testGribReadInterpolate_data()
   QTest::addColumn<float>("speed");
   QTest::addColumn<float>("dir");
 
-  // QTest::newRow("Pos(0.f,0.f), 30000") << Pos(0.f, 0.f) << 30000.f << 17.7578f << 120.973f;
-  // QTest::newRow("Pos(0.f,0.f), 38000") << Pos(0.f, 0.f) << 38000.f << 14.493f << 109.68f;
-  QTest::newRow("Pos(0.f,0.f), 34000") << Pos(0.f, 0.f, 34000.f)
-                                       << ((14.493f + 17.7578f) / 2.f)
-                                       << ((109.68f + 120.973f) / 2.f);
+  QTest::newRow("Pos(0.f,0.f), 30000") << Pos(0.f, 0.f, 30000.f) << 17.7578f << 120.973f;
+  QTest::newRow("Pos(0.f,0.f), 38000") << Pos(0.f, 0.f, 38000.f) << 14.493f << 109.68f;
+  QTest::newRow("Pos(0.f,0.f), 34000") << Pos(0.f, 0.f, 34000.f) << 16.048f << 115.9f;
 
   QTest::newRow("Pos(-2.f,2.f), 30000") << Pos(-2.f, 2.f, 30000) << 16.9319f << 122.666f;
   QTest::newRow("Pos(-2.f,2.f), 38000") << Pos(-2.f, 2.f, 38000) << 15.7804f << 117.201f;
@@ -135,18 +135,15 @@ void GribTest::testGribReadInterpolate_data()
 
   QTest::newRow("Pos(2.f,2.f), 30000") << Pos(2.f, 2.f, 30000) << 11.4569f << 134.097f;
   QTest::newRow("Pos(2.f,2.f), 38000") << Pos(2.f, 2.f, 38000) << 14.3007f << 101.056f;
-  QTest::newRow("Pos(2.f,2.f), 34000") << Pos(2.f, 2.f, 34000)
-                                       << (11.4569f + 14.3007f) / 2.f << (134.097f + 101.056f) / 2.f;
+  QTest::newRow("Pos(2.f,2.f), 34000") << Pos(2.f, 2.f, 34000) << 12.3537f << 115.701f;
 
   QTest::newRow("Pos(2.f,-2.f), 30000") << Pos(2.f, -2.f, 30000) << 16.1795f << 130.462f;
   QTest::newRow("Pos(2.f,-2.f), 38000") << Pos(2.f, -2.f, 38000) << 15.264f << 118.201f;
-  QTest::newRow("Pos(2.f,-2.f), 34000") << Pos(2.f, -2.f, 34000)
-                                        << (16.1795f + 15.264f) / 2.f << (130.462f + 118.201f) / 2.f;
+  QTest::newRow("Pos(2.f,-2.f), 34000") << Pos(2.f, -2.f, 34000) << 15.6319f << 124.511f;
 
   QTest::newRow("Pos(-2.f,-2.f), 30000") << Pos(-2.f, -2.f, 30000) << 10.5281f << 111.687f;
   QTest::newRow("Pos(-2.f,-2.f), 38000") << Pos(-2.f, -2.f, 38000) << 13.5132f << 110.292f;
-  QTest::newRow("Pos(-2.f,-2.f), 34000") << Pos(-2.f, -2.f, 34000)
-                                         << (10.5281f + 13.5132f) / 2.f << (111.687f + 110.292f) / 2.f;
+  QTest::newRow("Pos(-2.f,-2.f), 34000") << Pos(-2.f, -2.f, 34000) << 12.0198f << 110.903f;
 
 }
 
@@ -160,8 +157,8 @@ void GribTest::testGribReadInterpolate()
   atools::grib::Wind wind2 = {dir, speed};
 
   qInfo() << "result" << wind << "expected" << wind2;
-  QCOMPARE(wind.dir, wind2.dir);
-  QCOMPARE(wind.speed, wind2.speed);
+  QCOMPARE(atools::almostEqual(wind.dir, wind2.dir, 0.5f), true);
+  QCOMPARE(atools::almostEqual(wind.speed, wind2.speed, 0.5f), true);
 }
 
 void GribTest::testGribReadNoFile()
@@ -193,21 +190,20 @@ void GribTest::testGribWindLineStringQuery_data()
 
   /* *INDENT-OFF* */
   QTest::newRow("Point 2, 2 10000 ft") << LineString(Pos(2.f, 2.f, 10000.f), Pos(2.f, 2.f, 10000.f)) << 19.681f << 69.8261f;
-  QTest::newRow("North south 0, 2/0, -2 10000 ft") << LineString(Pos(0.f, 2.f, 10000.f), Pos(0.f, -2.f, 10000.f)) << 23.1353f << 74.6183f;
-  QTest::newRow("North south 0, 2/0, -2 20000 ft") << LineString(Pos(0.f, 2.f, 20000.f), Pos(0.f, -2.f, 20000.f)) << 20.128f << 88.7197f;
-  QTest::newRow("North south 0, -2/0, 2 10000 ft") << LineString(Pos(0.f, -2.f, 10000.f), Pos(0.f, 2.f, 10000.f)) << 23.1353f << 74.6183f;
+  QTest::newRow("North south 0, 2/0, -2 10000 ft") << LineString(Pos(0.f, 2.f, 10000.f), Pos(0.f, -2.f, 10000.f))<< 23.0927f << 74.7271f;
+  QTest::newRow("North south 0, 2/0, -2 20000 ft") << LineString(Pos(0.f, 2.f, 20000.f), Pos(0.f, -2.f, 20000.f)) << 20.0855f << 88.9084f;
+  QTest::newRow("North south 0, -2/0, 2 10000 ft") << LineString(Pos(0.f, -2.f, 10000.f), Pos(0.f, 2.f, 10000.f)) << 23.0927f << 74.7271f;
 
-  QTest::newRow("North south 0, 2/0, 0/0, -2 10000 ft") << LineString({Pos(0.f, 2.f, 10000.f), Pos(0.f, 0.f, 10000.f), Pos(0.f, -2.f, 10000.f)}) << 23.0877f << 74.6639f;
-  QTest::newRow("North south 0, -2/0, 0/0, 2 10000 ft") << LineString({Pos(0.f, -2.f, 10000.f), Pos(0.f, 0.f, 10000.f), Pos(0.f, 2.f, 10000.f)}) << 23.0877f << 74.6639f;
+  QTest::newRow("North south 0, 2/0, 0/0, -2 10000 ft") << LineString({Pos(0.f, 2.f, 10000.f), Pos(0.f, 0.f, 10000.f), Pos(0.f, -2.f, 10000.f)}) << 23.0907f << 74.7288f;
+  QTest::newRow("North south 0, -2/0, 0/0, 2 10000 ft") << LineString({Pos(0.f, -2.f, 10000.f), Pos(0.f, 0.f, 10000.f), Pos(0.f, 2.f, 10000.f)}) << 23.0907f << 74.7288f;
 
-  QTest::newRow("North south 0, 2/0, -2 10000-20000 ft") << LineString(Pos(0.f, 2.f, 10000.f), Pos(0.f, -2.f, 20000.f)) << 21.8372f << 81.1529f;
-  QTest::newRow("North south 0, -2/0, 2 10000-20000 ft") << LineString(Pos(0.f, -2.f, 10000.f), Pos(0.f, 2.f, 20000.f)) << 21.4261f << 82.1851f;
+  QTest::newRow("North south 0, 2/0, -2 10000-20000 ft") << LineString(Pos(0.f, 2.f, 10000.f), Pos(0.f, -2.f, 20000.f)) <<  21.6218f << 80.687f;
+  QTest::newRow("North south 0, -2/0, 2 10000-20000 ft") << LineString(Pos(0.f, -2.f, 10000.f), Pos(0.f, 2.f, 20000.f)) << 21.2304f << 81.9681f;
 
   //w1: Wind(speed 21.1542, dir 72.0618) w2: Wind(speed 7.62563, dir 112.652)
-  QTest::newRow("North south 0, -2/0, 2 10000-40000 ft") << LineString(Pos(0.f, -2.f, 10000.f), Pos(0.f, 2.f, 40000.f)) << 16.857f << 99.5992f;
+  QTest::newRow("North south 0, -2/0, 2 10000-40000 ft") << LineString(Pos(0.f, -2.f, 10000.f), Pos(0.f, 2.f, 40000.f)) << 16.2103f << 96.9579f;
 
-  QTest::newRow("East west anti meridian 4 deg 10000 ft") << LineString({Pos(178.f, 0.f, 10000.f), Pos(-178.f, 0.f, 10000.f)}) << 18.2394f << 97.881f;
-  QTest::newRow("North-west south-east 178 deg 10000 ft") << LineString({Pos(-178.f, 80.f, 10000.f), Pos(0.f, 0.f, 10000.f), Pos(178.f, -80.f, 10000.f)}) << 20.5521f << 202.822f;
+  QTest::newRow("East west anti meridian 4 deg 10000 ft") << LineString({Pos(178.f, 0.f, 10000.f), Pos(-178.f, 0.f, 10000.f)}) << 18.233f << 97.828f;
   /* *INDENT-ON* */
 
 }

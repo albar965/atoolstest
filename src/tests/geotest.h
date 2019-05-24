@@ -53,9 +53,6 @@ private slots:
   void testWindUV_data();
   void testWindUV();
 
-  void testInterpolateDir_data();
-  void testInterpolateDir();
-
   void testNormalize();
 
   void testInterpolate();

@@ -237,56 +237,6 @@ void GeoTest::testWindUV()
   QCOMPARE(atools::almostEqual(uCalculated, u, 0.0001f), true);
 }
 
-void GeoTest::testInterpolateDir_data()
-{
-  QTest::addColumn<float>("f0");
-  QTest::addColumn<float>("f1");
-  QTest::addColumn<float>("x0");
-  QTest::addColumn<float>("x1");
-  QTest::addColumn<float>("x");
-  QTest::addColumn<float>("result");
-
-  QTest::newRow("0 to 0 -> 0") << 0.f << 0.f << 0.f << 1.f << 0.5f << 0.f;
-  QTest::newRow("90 to 270 -> 0") << 0.f << 0.f << 0.f << 1.f << 0.5f << 0.f;
-  QTest::newRow("270 to 90 -> 0") << 0.f << 0.f << 0.f << 1.f << 0.5f << 0.f;
-
-  QTest::newRow("100 to 260 -> 100") << 100.f << 260.f << 0.f << 1.f << 0.f << 100.f;
-  QTest::newRow("100 to 260 -> 140") << 100.f << 260.f << 0.f << 1.f << 0.25f << 140.f;
-  QTest::newRow("100 to 260 -> 180") << 100.f << 260.f << 0.f << 1.f << 0.5f << 180.f;
-  QTest::newRow("100 to 260 -> 220") << 100.f << 260.f << 0.f << 1.f << 0.75f << 220.f;
-  QTest::newRow("100 to 260 -> 260") << 100.f << 260.f << 0.f << 1.f << 1.f << 260.f;
-
-  QTest::newRow("10 to 350 -> 10") << 10.f << 350.f << 0.f << 1.f << 0.f << 10.f;
-  QTest::newRow("10 to 350 -> 5") << 10.f << 350.f << 0.f << 1.f << 0.25f << 5.f;
-  QTest::newRow("10 to 350 -> 0") << 10.f << 350.f << 0.f << 1.f << 0.5f << 0.f;
-  QTest::newRow("10 to 350 -> 355") << 10.f << 350.f << 0.f << 1.f << 0.75f << 355.f;
-  QTest::newRow("10 to 350 -> 350") << 10.f << 350.f << 0.f << 1.f << 1.f << 350.f;
-
-  QTest::newRow("260 to 100 -> 260") << 260.f << 100.f << 0.f << 1.f << 0.f << 260.f;
-  QTest::newRow("260 to 100 -> 220") << 260.f << 100.f << 0.f << 1.f << 0.25f << 220.f;
-  QTest::newRow("260 to 100 -> 180") << 260.f << 100.f << 0.f << 1.f << 0.5f << 180.f;
-  QTest::newRow("260 to 100 -> 140") << 260.f << 100.f << 0.f << 1.f << 0.75f << 140.f;
-  QTest::newRow("260 to 100 -> 100") << 260.f << 100.f << 0.f << 1.f << 1.f << 100.f;
-
-  QTest::newRow("350 to 10 -> 350") << 350.f << 10.f << 0.f << 1.f << 0.f << 350.f;
-  QTest::newRow("350 to 10 -> 355") << 350.f << 10.f << 0.f << 1.f << 0.25f << 355.f;
-  QTest::newRow("350 to 10 -> 0") << 350.f << 10.f << 0.f << 1.f << 0.5f << 0.f;
-  QTest::newRow("350 to 10 -> 5") << 350.f << 10.f << 0.f << 1.f << 0.75f << 5.f;
-  QTest::newRow("350 to 10 -> 10") << 350.f << 10.f << 0.f << 1.f << 1.f << 10.f;
-}
-
-void GeoTest::testInterpolateDir()
-{
-  QFETCH(float, f0);
-  QFETCH(float, f1);
-  QFETCH(float, x0);
-  QFETCH(float, x1);
-  QFETCH(float, x);
-  QFETCH(float, result);
-
-  QCOMPARE(atools::geo::interpolateWindDir(f0, f1, x0, x1, x), result);
-}
-
 void GeoTest::testNormalize()
 {
   /* Normalize course to 0 < course < 360 */
