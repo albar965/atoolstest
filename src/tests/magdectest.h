@@ -18,6 +18,8 @@
 #ifndef ATOOLSTEST_MAGDEC_TEST_H
 #define ATOOLSTEST_MAGDEC_TEST_H
 
+#include "wmm/magdectool.h"
+
 #include <QString>
 #include <QtTest>
 
@@ -42,8 +44,20 @@ private slots:
   void cleanupTestCase();
 
   void testOpen();
-  void testMagdec_data();
-  void testMagdec();
+  void testMagdecBgl_data();
+  void testMagdecBgl();
+
+  void testMagdecWmm_data();
+  void testMagdecWmm();
+
+  void testMagdecDate();
+
+  void testWmmTool_data();
+  void testWmmTool();
+  void testWmm();
+
+private:
+  atools::wmm::MagDecTool tool;
 
 };
 

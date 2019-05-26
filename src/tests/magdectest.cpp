@@ -18,6 +18,7 @@
 #include "magdectest.h"
 
 #include "fs/common/magdecreader.h"
+#include "wmm/magdectool.h"
 #include "geo/pos.h"
 
 using atools::fs::common::MagDecReader;
@@ -36,6 +37,8 @@ void MagdecTest::runtest(int argc, char *argv[])
 
 void MagdecTest::initTestCase()
 {
+  qInfo() << tool.getVersion();
+  tool.init(2019);
 }
 
 void MagdecTest::cleanupTestCase()
@@ -50,7 +53,7 @@ void MagdecTest::testOpen()
   QCOMPARE(reader.isValid(), true);
 }
 
-void MagdecTest::testMagdec_data()
+void MagdecTest::testMagdecBgl_data()
 {
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("magvar");
@@ -60,8 +63,8 @@ void MagdecTest::testMagdec_data()
   QTest::newRow("Last Offset") << Pos(-1.f, 89.99f) << -3.59544f;
   QTest::newRow("First Offset") << Pos(0.f, -89.99f) << -30.3497f;
   QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -5.16357f;
-  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.81784f;
-  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) << -5.16466f;
+  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -5.16357f;
+  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) << -5.16357f;
   QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.4714f; // 17° East
   QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.6735f; // 21° West
   QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.47886f; // 9° West
@@ -78,7 +81,7 @@ void MagdecTest::testMagdec_data()
   QTest::newRow("East South") << Pos(180.f, -89.99f) << 149.627f;
 }
 
-void MagdecTest::testMagdec()
+void MagdecTest::testMagdecBgl()
 {
   MagDecReader reader;
   reader.readFromBgl(":/test/resources/magdec.bgl");
@@ -88,4 +91,105 @@ void MagdecTest::testMagdec()
 
   qDebug() << pos << magvar;
   QCOMPARE(reader.getMagVar(pos), magvar);
+}
+
+void MagdecTest::testMagdecWmm_data()
+{
+  QTest::addColumn<Pos>("pos");
+  QTest::addColumn<float>("magvar");
+
+  QTest::newRow("Atlantic") << Pos(0.5f, 0.5f) << -4.48539f;
+  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -4.82358f;
+  QTest::newRow("Atlantic") << Pos(2.5f, 2.5f) << -3.23948f;
+  QTest::newRow("Atlantic") << Pos(-2.5f, -2.5f) << -6.7297f;
+  QTest::newRow("West Min") << Pos(-180.f, 0.f) << 9.61181f;
+  QTest::newRow("East Max") << Pos(180.f, 0.f) << 9.61181f;
+
+  QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.3121f; // 17° East
+  QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.2194f; // 21° West
+  QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.60491f; // 9° West
+  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.22868f;
+
+  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.82358f;
+  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) <<  -4.82358f;
+}
+
+void MagdecTest::testMagdecWmm()
+{
+  MagDecReader reader;
+  reader.readFromWmm(2019);
+
+  QFETCH(Pos, pos);
+  QFETCH(float, magvar);
+
+  qDebug() << pos << magvar;
+  QCOMPARE(reader.getMagVar(pos), magvar);
+}
+
+void MagdecTest::testMagdecDate()
+{
+  MagDecReader reader;
+  reader.readFromWmm(2019);
+  QCOMPARE(reader.getReferenceDate(), QDate(2019, 1, 1));
+
+  MagDecReader reader2;
+  reader2.readFromWmm(2019, 6);
+  QCOMPARE(reader2.getReferenceDate(), QDate(2019, 6, 1));
+
+  MagDecReader reader3;
+  reader3.readFromWmm();
+  QCOMPARE(reader3.getReferenceDate(), QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
+}
+
+void MagdecTest::testWmmTool_data()
+{
+  QTest::addColumn<Pos>("pos");
+  QTest::addColumn<float>("magvar");
+
+  QTest::newRow("Atlantic") << Pos(0.5f, 0.5f) << -4.48539f;
+  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -4.82358f;
+  QTest::newRow("Atlantic") << Pos(2.5f, 2.5f) << -3.23948f;
+  QTest::newRow("Atlantic") << Pos(-2.5f, -2.5f) << -6.7297f;
+  QTest::newRow("West Min") << Pos(-180.f, 0.f) << 9.61181f;
+  QTest::newRow("East Max") << Pos(180.f, 0.f) << 9.52861f;
+
+  QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.2074f; // 17° East
+  QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.1891f; // 21° West
+  QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.57719f; // 9° West
+  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.166f;
+
+  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.82358f;
+  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) << -4.82358f;
+}
+
+void MagdecTest::testWmmTool()
+{
+  QFETCH(Pos, pos);
+  QFETCH(float, magvar);
+
+  qDebug() << pos << magvar;
+  QCOMPARE(tool.getMagVar(pos), magvar);
+}
+
+void MagdecTest::testWmm()
+{
+  QFile outFile2("wmm.txt");
+  if(outFile2.open(QIODevice::WriteOnly | QIODevice::Text))
+  {
+    QTextStream out(&outFile2);
+    out.setRealNumberNotation(QTextStream::FixedNotation);
+    out.setRealNumberPrecision(2);
+
+    // Same output as wmm_grid program
+    int i = 0;
+    for(float latY = -90.f; latY <= 90.f; latY += 1.f)
+    {
+      for(float lonX = -180.f; lonX < 180.f; lonX += 1.f)
+      {
+        out << i++ << " latY " << latY << " lonX " << lonX
+            << " decl " << tool.getMagVar(atools::geo::Pos(lonX, latY)) << endl;
+      }
+    }
+  }
+  QCOMPARE(outFile2.size(), 2623451);
 }
