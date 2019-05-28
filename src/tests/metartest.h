@@ -35,6 +35,7 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testNoaaDownload();
   void testMetarAsn();
   void testMetarSim();
 
