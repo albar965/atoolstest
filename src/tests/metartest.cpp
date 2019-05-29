@@ -83,6 +83,7 @@ void MetarTest::testNoaaDownload()
   });
 
   downloader.setRequestUrl("https://tgftp.nws.noaa.gov/data/observations/metar/cycles/%1Z.TXT");
+  downloader.startDownload();
 
   atools::fs::weather::MetarResult metar = downloader.getMetar("EDDF", airports.value("EDDF"));
 
