@@ -28,10 +28,10 @@
 #include "tests/perftest.h"
 #include "tests/gribtest.h"
 #include "tests/updatetest.h"
+#include "exception.h"
 
 #include <QString>
 #include <QTimer>
-#include <exception.h>
 #include <QtTest/QtTest>
 
 /*
