@@ -46,6 +46,7 @@
         <file>resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Fiumicino (LIRF).pln</file>
         <file>resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Muenchen Franz-Josef Strauss (EDDM).pln</file>
         <file>resources/IFR Zurich (LSZH) to Dublin (EIDW).pln</file>
+        <file>resources/airspace.txt</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

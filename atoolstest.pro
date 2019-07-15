@@ -162,6 +162,7 @@ message(-----------------------------------)
 # Files
 
 SOURCES += \
+  src/tests/airspacetest.cpp \
   src/tests/calctest.cpp \
   src/tests/gribtest.cpp \
   src/tests/metartest.cpp \
@@ -178,6 +179,7 @@ SOURCES += \
   src/main.cpp
 
 HEADERS += \
+  src/tests/airspacetest.h \
   src/tests/calctest.h \
   src/tests/gribtest.h \
   src/tests/metartest.h \

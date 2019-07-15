@@ -28,6 +28,7 @@
 #include "tests/perftest.h"
 #include "tests/gribtest.h"
 #include "tests/updatetest.h"
+#include "tests/airspacetest.h"
 #include "exception.h"
 
 #include <QString>
@@ -131,6 +132,7 @@ int main(int argc, char *argv[])
   DEFINETEST(UpdateTest);
   DEFINETEST(StringTest);
   DEFINETEST(PerfTest);
+  DEFINETEST(AirspaceTest);
   DEFINETEST(GribTest);
   DEFINETEST(VersionTest);
   DEFINETEST(GeoTest);
@@ -175,6 +177,7 @@ void test()
     RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl());
     RUNTESTEXT(StringTest);
     RUNTESTEXT(PerfTest);
+    RUNTESTEXT(AirspaceTest);
     RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl());
     RUNTESTEXT(VersionTest);
     RUNTESTEXT(GeoTest);
