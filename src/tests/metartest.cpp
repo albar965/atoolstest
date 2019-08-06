@@ -157,6 +157,6 @@ void MetarTest::testMetarSim()
   QCOMPARE(numFailed, 15);
   QCOMPARE(numFailedPressure, 402);
   QCOMPARE(numFailedTemp, 109);
-  QCOMPARE(numFailedDewpoint, 165);
+  QCOMPARE(numFailedDewpoint, 164);
   QCOMPARE(numFailedWind, 137);
 }
