@@ -136,18 +136,27 @@ void MetarTest::testMetarSim()
 
   QTextStream weatherSnapshot(&metarFiles);
 
-  int numFailed = 0;
+  int numFailed = 0, numFailedPressure = 0, numFailedTemp = 0, numFailedDewpoint = 0, numFailedWind = 0;
   QString line;
   while(weatherSnapshot.readLineInto(&line))
   {
-    if(!line.isEmpty())
+    if(!line.isEmpty() && !line.startsWith('#'))
     {
       atools::fs::weather::Metar metar(line, "XXXX", QDateTime(), true);
       numFailed += !metar.isValid();
+
+      numFailedPressure += !(metar.getParsedMetar().getPressureMbar() < atools::fs::weather::INVALID_METAR_VALUE);
+      numFailedTemp += !(metar.getParsedMetar().getTemperatureC() < atools::fs::weather::INVALID_METAR_VALUE);
+      numFailedDewpoint += !(metar.getParsedMetar().getDewpointDegC() < atools::fs::weather::INVALID_METAR_VALUE);
+      numFailedWind += !(metar.getParsedMetar().getWindSpeedKts() < atools::fs::weather::INVALID_METAR_VALUE);
     }
   }
   metarFiles.close();
 
   // Check the number of failed since too many are not readable
-  QCOMPARE(numFailed, 19);
+  QCOMPARE(numFailed, 15);
+  QCOMPARE(numFailedPressure, 403);
+  QCOMPARE(numFailedTemp, 110);
+  QCOMPARE(numFailedDewpoint, 165);
+  QCOMPARE(numFailedWind, 137);
 }
