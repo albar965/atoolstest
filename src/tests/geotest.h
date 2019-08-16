@@ -47,6 +47,12 @@ private slots:
   void testAngleDiff_data();
   void testAngleDiff();
 
+  void testLineParallel_data();
+  void testLineParallel();
+
+  void testLineExtend_data();
+  void testLineExtend();
+
   void testWindDrift_data();
   void testWindDrift();
 

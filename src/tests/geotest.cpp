@@ -26,9 +26,11 @@
 
 using atools::geo::Pos;
 using atools::geo::Rect;
+using atools::geo::Line;
 using atools::geo::LineString;
 using atools::geo::LineDistance;
 using atools::geo::angleAbsDiff;
+using atools::geo::nmToMeter;
 
 namespace QTest {
 template<>
@@ -140,6 +142,95 @@ void GeoTest::testAngleDiff()
   QFETCH(float, angle2);
   QFETCH(float, result);
   QCOMPARE(angleAbsDiff(angle1, angle2), result);
+}
+
+void GeoTest::testLineParallel_data()
+{
+  QTest::addColumn<Line>("line");
+  QTest::addColumn<float>("dist");
+  QTest::addColumn<Line>("expected");
+
+  // float longitudeX1, float latitudeY1, float longitudeX2, float latitudeY2
+  QTest::newRow("") << Line(0.f, 1.f, 0.f, -1.f) << 0.f << Line(0.f, 1.f, 0.f, -1.f);
+  QTest::newRow("South/north to right") << Line(0.f, -1.f, 0.f, 1.f) << nmToMeter(60.f)
+                                        << Line(1.000152f, -0.999848f, 1.000152f, 0.999848f);
+  QTest::newRow("South/north to left") << Line(0.f, -1.f, 0.f, 1.f) << nmToMeter(-60.f)
+                                       << Line(-1.000152f, -0.999848f, -1.000152f, 0.999848f);
+
+  QTest::newRow("North/south to left") << Line(0.f, 1.f, 0.f, -1.f) << nmToMeter(60.f)
+                                       << Line(-1.000152f, 0.999848f, -1.000152f, -0.999848f);
+  QTest::newRow("North/south to right") << Line(0.f, 1.f, 0.f, -1.f) << nmToMeter(-60.f)
+                                        << Line(1.000152f, 0.999848f, 1.000152f, -0.999848f);
+
+  QTest::newRow("NW SE to right") << Line(-1.f, 1.f, 1.f, -1.f) << nmToMeter(60.f)
+                                  << Line(-1.707044f, 0.292781f, 0.292664f, -1.707067f);
+  QTest::newRow("NW SE to left") << Line(-1.f, 1.f, 1.f, -1.f) << nmToMeter(-60.f)
+                                 << Line(-0.292651f, 1.707067f, 1.707031f, -0.292781f);
+
+  QTest::newRow("West/east down") << Line(9.f, 50.f, 11.f, 50.f) << nmToMeter(60.f)
+                                  << Line(9.020386f, 49.000088f, 11.020386f, 49.000088f);
+  QTest::newRow("West/east up") << Line(9.f, 50.f, 11.f, 50.f) << nmToMeter(-60.f)
+                                << Line(8.978760f, 50.999908f, 10.978760f, 50.999908f);
+}
+
+void GeoTest::testLineParallel()
+{
+  QFETCH(Line, line);
+  QFETCH(float, dist);
+  QFETCH(Line, expected);
+
+  Line result = line.parallel(dist);
+  // qDebug() << line << dist << "result" << result << "expected" << expected;
+  // qDebug() << line .angleDeg()<<result.angleDeg();
+  qDebug() << line.lengthMeter() << result.lengthMeter();
+  QCOMPARE(result.getPos1().getLonX(), expected.getPos1().getLonX());
+  QCOMPARE(result.getPos1().getLatY(), expected.getPos1().getLatY());
+  QCOMPARE(result.getPos2().getLonX(), expected.getPos2().getLonX());
+  QCOMPARE(result.getPos2().getLatY(), expected.getPos2().getLatY());
+  QCOMPARE(atools::almostEqual(line.angleDeg(), result.angleDeg(), 0.1f), true);
+}
+
+void GeoTest::testLineExtend_data()
+{
+  QTest::addColumn<Line>("line");
+  QTest::addColumn<float>("dist1");
+  QTest::addColumn<float>("dist2");
+  QTest::addColumn<Line>("expected");
+
+  // float longitudeX1, float latitudeY1, float longitudeX2, float latitudeY2
+  QTest::newRow("") << Line(0.f, 1.f, 0.f, -1.f) << 0.f << 0.f << Line(0.f, 1.f, 0.f, -1.f);
+
+  QTest::newRow("South/north extend") << Line(0.f, -1.f, 0.f, 1.f) << nmToMeter(60.f) << nmToMeter(60.f)
+                                      << Line(0.f, -2.f, 0.f, 2.f);
+  QTest::newRow("South/north shrink") << Line(0.f, -1.f, 0.f, 1.f) << nmToMeter(-30.f) << nmToMeter(-30.f)
+                                      << Line(0.f, -0.5f, 0.f, 0.5f);
+
+  QTest::newRow("North/south to extend") << Line(0.f, 1.f, 0.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f)
+                                         << Line(0.f, 2.f, 0.f, -2.f);
+  QTest::newRow("North/south to shrink") << Line(0.f, 1.f, 0.f, -1.f) << nmToMeter(-30.f) << nmToMeter(-30.f)
+                                         << Line(0.f, 0.5f, 0.f, -0.5f);
+
+  QTest::newRow("NW SE to right") << Line(-1.f, 1.f, 1.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f)
+                                  << Line(-1.707457f, 1.706959f, 1.707458f, -1.706959f);
+}
+
+void GeoTest::testLineExtend()
+{
+  QFETCH(Line, line);
+  QFETCH(float, dist1);
+  QFETCH(float, dist2);
+  QFETCH(Line, expected);
+
+  Line result = line.extended(dist1, dist2);
+  qDebug() << line << dist1 << dist2 << "result" << result << "expected" << expected;
+  // qDebug() << line .angleDeg()<<result.angleDeg();
+  qDebug() << line.lengthMeter() << result.lengthMeter();
+  QCOMPARE(result.getPos1().getLonX(), expected.getPos1().getLonX());
+  QCOMPARE(result.getPos1().getLatY(), expected.getPos1().getLatY());
+  QCOMPARE(result.getPos2().getLonX(), expected.getPos2().getLonX());
+  QCOMPARE(result.getPos2().getLatY(), expected.getPos2().getLatY());
+  QCOMPARE(atools::almostEqual(line.angleDeg(), result.angleDeg(), 0.1f), true);
+
 }
 
 void GeoTest::testWindDrift_data()
