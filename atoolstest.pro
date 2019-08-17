@@ -28,12 +28,9 @@
 # ("../build-atools-$${CONF_TYPE}/$${CONF_TYPE}" on Windows) if not set.
 #
 # OPENSSL_PATH
-# Windows: Base path of WinSSL 1.0.1 installation (https://slproweb.com/products/Win32OpenSSL.html).
-#          Defaults to "C:\OpenSSL-Win32" if empty.
-# Linux:   If your Linux distribution does not come with OpenSSL 1.0.0 download and compile it yourself and
-#          adjust this path to point to the OpenSSL base directory, i.e. the result of "make install".
-#          Default in this case (not found in system) is ../build-openssl-$$CONF_TYPE
-#          ./config --prefix=../build-openssl-$$CONF_TYPE --openssldir=../build-openssl-$$CONF_TYPE/openssl shared -fPIC
+# Windows: Base path of WinSSL 1.1.1 installation (https://slproweb.com/products/Win32OpenSSL.html).
+#          Defaults to "C:\Program Files (x86)\OpenSSL-Win32" if empty.
+# Linux:   Not used.
 # macOS:   Not used.
 #
 # ATOOLS_GIT_PATH
@@ -84,8 +81,7 @@ isEmpty(DEPLOY_BASE) : DEPLOY_BASE=$$PWD/../deploy
 isEmpty(ATOOLS_INC_PATH) : ATOOLS_INC_PATH=$$PWD/../atools/src
 isEmpty(ATOOLS_LIB_PATH) : ATOOLS_LIB_PATH=$$PWD/../build-atools-$$CONF_TYPE
 
-win32: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=C:\OpenSSL-Win32
-unix:!macx: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=$$PWD/../build-openssl-$$CONF_TYPE/lib
+win32: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=C:\Program Files (x86)\OpenSSL-Win32
 
 # =======================================================================
 # Set compiler flags and paths
@@ -93,12 +89,7 @@ unix:!macx: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=$$PWD/../build-openssl-$$CONF_T
 unix:!macx {
   isEmpty(GIT_PATH) : GIT_PATH=git
 
-  # Find OpenSSL location
-  exists( /lib/x86_64-linux-gnu/libssl.so.1.0.0 ) :  OPENSSL_PATH=/lib/x86_64-linux-gnu
-  exists( /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 ) : OPENSSL_PATH=/usr/lib/x86_64-linux-gnu
   QMAKE_LFLAGS += -no-pie
-
-  LIBS += -L$$OPENSSL_PATH
 
   # Makes the shell script and setting LD_LIBRARY_PATH redundant
   QMAKE_RPATHDIR=.
@@ -226,8 +217,6 @@ unix:!macx {
   deploy.commands += cp -vf $$PWD/CHANGELOG.txt $$DEPLOY_DIR &&
   deploy.commands += cp -vf $$PWD/README.txt $$DEPLOY_DIR &&
   deploy.commands += cp -vf $$PWD/LICENSE.txt $$DEPLOY_DIR &&
-  deploy.commands += cp -vfa $$OPENSSL_PATH/libssl.so.1.0.0 $$DEPLOY_DIR_LIB &&
-  deploy.commands += cp -vfa $$OPENSSL_PATH/libcrypto.so.1.0.0 $$DEPLOY_DIR_LIB &&
   deploy.commands += cp -vfa $$[QT_INSTALL_PLUGINS]/sqldrivers/libqsqlite.so*  $$DEPLOY_DIR_LIB/sqldrivers &&
   deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libicudata.so*  $$DEPLOY_DIR_LIB &&
   deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libicui18n.so*  $$DEPLOY_DIR_LIB &&
@@ -247,9 +236,8 @@ win32 {
   deploy.commands = rmdir /s /q $$p($$DEPLOY_BASE/$$TARGET_NAME) &
   deploy.commands += mkdir $$p($$DEPLOY_BASE/$$TARGET_NAME/sqldrivers) &&
   deploy.commands += xcopy $$p($$OUT_PWD/atoolstest.exe) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
-  deploy.commands += xcopy $$p($$OPENSSL_PATH/bin/libeay32.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
-  deploy.commands += xcopy $$p($$OPENSSL_PATH/bin/ssleay32.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
-  deploy.commands += xcopy $$p($$OPENSSL_PATH/libssl32.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH/libcrypto-1_1.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH/libssl-1_1.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/CHANGELOG.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/README.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/LICENSE.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
