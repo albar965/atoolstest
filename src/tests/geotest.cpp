@@ -816,12 +816,16 @@ void GeoTest::testCoordString_data()
   ROW("4", atools::geo::EMPTY_POS);
   ROW("N3E", atools::geo::EMPTY_POS);
   ROW("NE3", atools::geo::EMPTY_POS);
-  ROW("49 34", atools::geo::EMPTY_POS);
   ROW("49N 34", atools::geo::EMPTY_POS);
   ROW("N49 34", atools::geo::EMPTY_POS);
   ROW("49 34E", atools::geo::EMPTY_POS);
   ROW("49 E34", atools::geo::EMPTY_POS);
   ROW("4934", atools::geo::EMPTY_POS);
+
+  ROW("49 34", atools::geo::Pos(34.f, 49.f));
+  ROW("+49 +34", atools::geo::Pos(34.f, 49.f));
+  ROW("-49 -34", atools::geo::Pos(-34.f, -49.f));
+  ROW("-49 +34", atools::geo::Pos(34.f, -49.f));
 
   ROW("n 50 W10", atools::geo::Pos(-10.f, 50.f));
   ROW("n 50 e10", atools::geo::Pos(10.f, 50.f));
