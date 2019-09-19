@@ -45,6 +45,12 @@ void MagdecTest::cleanupTestCase()
 {
 }
 
+void MagdecTest::testTool()
+{
+  atools::wmm::MagDecTool magDecTool;
+  magDecTool.init(2019);
+}
+
 void MagdecTest::testOpen()
 {
   MagDecReader reader;
@@ -191,5 +197,9 @@ void MagdecTest::testWmm()
       }
     }
   }
+#if defined(Q_OS_WIN32)
+  QCOMPARE(outFile2.size(), 2688611);
+#else
   QCOMPARE(outFile2.size(), 2623451);
+#endif
 }

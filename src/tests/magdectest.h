@@ -43,6 +43,8 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testTool();
+
   void testOpen();
   void testMagdecBgl_data();
   void testMagdecBgl();

@@ -43,6 +43,8 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testLoadSpecialCharPath();
+
   void testGribReadTest_data();
   void testGribReadTest();
   void testGribReadInterpolate_data();

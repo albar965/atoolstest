@@ -67,6 +67,14 @@ void GribTest::cleanupTestCase()
   delete queryGlobal2;
 }
 
+void GribTest::testLoadSpecialCharPath()
+{
+  WindQuery wq(this, verbose);
+  wq.initFromFile("testdata/lnm_winds äöüß.grib");
+  wq.setSamplesPerDegree(100);
+  QCOMPARE(wq.hasWindData(), true);
+}
+
 void GribTest::testGribReadTest_data()
 {
   QTest::addColumn<atools::grib::WindQuery *>("query");
@@ -313,18 +321,18 @@ void GribTest::testGribDownload()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
-  {
-    testdatasets = datasets;
-    done = true;
-    err = false;
-  });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
+          {
+            testdatasets = datasets;
+            done = true;
+            err = false;
+          });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString&, int, QString) -> void
-  {
-    done = true;
-    err = true;
-  });
+          [&err, &done](const QString &, int, QString)->void
+          {
+            done = true;
+            err = true;
+          });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
@@ -345,18 +353,18 @@ void GribTest::testGribDownloadFail()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
-  {
-    testdatasets = datasets;
-    done = true;
-    err = false;
-  });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
+          {
+            testdatasets = datasets;
+            done = true;
+            err = false;
+          });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString&, int, QString) -> void
-  {
-    done = true;
-    err = true;
-  });
+          [&err, &done](const QString &, int, QString)->void
+          {
+            done = true;
+            err = true;
+          });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
