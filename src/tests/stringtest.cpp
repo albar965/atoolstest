@@ -57,7 +57,6 @@ void StringTest::testCapAirport()
   QFETCH(QString, capname);
 
   QCOMPARE(atools::fs::util::capAirportName(name), capname);
-
 }
 
 void StringTest::testPath_data()

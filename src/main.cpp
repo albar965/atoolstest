@@ -19,6 +19,7 @@
 #include "tests/geotest.h"
 #include "tests/calctest.h"
 #include "tests/dtmtest.h"
+#include "tests/spatialtest.h"
 #include "tests/versiontest.h"
 #include "tests/magdectest.h"
 #include "tests/flightplantest.h"
@@ -49,7 +50,7 @@
       } \
     } \
     else \
-      qStdOut() << "Skipping test" << # name << "since condition" << # condition << "is false" << endl; \
+    qStdOut() << "Skipping test" << # name << "since condition" << # condition << "is false" << endl; \
   }
 
 #define RUNTESTEXT(name) \
@@ -70,7 +71,7 @@
 #define DEFINETEST(name) \
   { \
     addOption(parser, # name); \
-  };
+  }
 
 // Forward declarations
 void test();
@@ -104,7 +105,7 @@ int main(int argc, char *argv[])
   QCoreApplication::setApplicationName("atoolstest");
   QCoreApplication::setOrganizationName("ABarthel");
   QCoreApplication::setOrganizationDomain("littlenavmap.org");
-  QCoreApplication::setApplicationVersion("0.9.6.develop"); // VERSION_NUMBER
+  QCoreApplication::setApplicationVersion("0.9.7.develop"); // VERSION_NUMBER
 
   qStdOut() << "SSL supported" << QSslSocket::supportsSsl()
             << "build library" << QSslSocket::sslLibraryBuildVersionString()
@@ -123,26 +124,40 @@ int main(int argc, char *argv[])
   QCommandLineOption allOpt({"a", "RunAll"}, "Run all test classes.");
   parser->addOption(allOpt);
 
-  QCommandLineOption testFunctions({"f", "TestFunctions"}, "A comma separated list of test <functions>.", "functions");
+  QCommandLineOption maxWarningsOpt({"w", "MaxWarnings"},
+                                    "Maximum number of <warnings> or debug output lines.",
+                                    "warnings");
+  parser->addOption(maxWarningsOpt);
+
+  QCommandLineOption testFunctions({"f", "TestFunctions"},
+                                   "A comma separated list of test <functions>.",
+                                   "functions");
   parser->addOption(testFunctions);
 
-  DEFINETEST(OnlineTest);
-  DEFINETEST(SceneryCfgTest);
-  DEFINETEST(MagdecTest);
-  DEFINETEST(UpdateTest);
-  DEFINETEST(StringTest);
-  DEFINETEST(PerfTest);
-  DEFINETEST(AirspaceTest);
-  DEFINETEST(GribTest);
-  DEFINETEST(VersionTest);
-  DEFINETEST(GeoTest);
-  DEFINETEST(CalcTest);
-  DEFINETEST(FlightplanTest);
-  DEFINETEST(MetarTest);
-  DEFINETEST(DtmTest);
+  DEFINETEST(OnlineTest)
+  DEFINETEST(SceneryCfgTest)
+  DEFINETEST(MagdecTest)
+  DEFINETEST(UpdateTest)
+  DEFINETEST(StringTest)
+  DEFINETEST(PerfTest)
+  DEFINETEST(AirspaceTest)
+  DEFINETEST(GribTest)
+  DEFINETEST(VersionTest)
+  DEFINETEST(GeoTest)
+  DEFINETEST(CalcTest)
+  DEFINETEST(FlightplanTest)
+  DEFINETEST(MetarTest)
+  DEFINETEST(DtmTest)
+  DEFINETEST(SpatialTest)
 
   parser->parse(QCoreApplication::arguments());
   otherOptions.append(QCoreApplication::arguments().first());
+
+  if(parser->isSet(maxWarningsOpt))
+  {
+    otherOptions.append("-maxwarnings");
+    otherOptions.append(parser->value(maxWarningsOpt));
+  }
 
   QStringList testFuncs;
   testFuncs.append(parser->value(testFunctions).split(","));
@@ -171,20 +186,21 @@ void test()
 
   try
   {
-    RUNTESTEXT(OnlineTest);
-    RUNTESTEXT(SceneryCfgTest);
-    RUNTESTEXT(MagdecTest);
-    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl());
-    RUNTESTEXT(StringTest);
-    RUNTESTEXT(PerfTest);
-    RUNTESTEXT(AirspaceTest);
-    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl());
-    RUNTESTEXT(VersionTest);
-    RUNTESTEXT(GeoTest);
-    RUNTESTEXT(CalcTest);
-    RUNTESTEXT(FlightplanTest);
-    RUNTESTEXT(MetarTest);
-    RUNTESTEXT(DtmTest);
+    RUNTESTEXT(OnlineTest)
+    RUNTESTEXT(SceneryCfgTest)
+    RUNTESTEXT(MagdecTest)
+    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
+    RUNTESTEXT(StringTest)
+    RUNTESTEXT(PerfTest)
+    RUNTESTEXT(AirspaceTest)
+    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
+    RUNTESTEXT(VersionTest)
+    RUNTESTEXT(GeoTest)
+    RUNTESTEXT(CalcTest)
+    RUNTESTEXT(FlightplanTest)
+    RUNTESTEXT(MetarTest)
+    RUNTESTEXT(DtmTest)
+    RUNTESTEXT(SpatialTest)
   }
   catch(std::exception& e)
   {

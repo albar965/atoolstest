@@ -92,6 +92,59 @@ void GeoTest::testCenter()
   QCOMPARE(Rect(-100.f, 10.f, 100.f, -10.f).getCenter(), Pos(-0.f, 0.f));
 }
 
+void GeoTest::testCartesian_data()
+{
+  /* *INDENT-OFF* */
+  //   | Z
+  //   |
+  //   |___ Y
+  //  /
+  // / X
+  /* *INDENT-ON* */
+
+  QTest::addColumn<Pos>("pos");
+  QTest::addColumn<float>("x"); // in/out equator plain
+  QTest::addColumn<float>("y"); // left/right equator plain
+  QTest::addColumn<float>("z"); // up/down
+
+  QTest::newRow("Pos(0.f, 0.f)") << Pos(0.f, 0.f) << 6371000.f << 0.f << 0.f;
+  QTest::newRow("Pos(90.f, 0.f)") << Pos(90.f, 0.f) << 0.f << 6371000.f << 0.f;
+  QTest::newRow("Pos(-90.f, 0.f)") << Pos(-90.f, 0.f) << 0.f << -6371000.f << 0.f;
+
+  QTest::newRow("Pos(180.f, 0.f)") << Pos(180.f, 0.f) << -6371000.f << 0.f << 0.f;
+  QTest::newRow("Pos(-180.f, 0.f)") << Pos(-180.f, 0.f) << -6371000.f << 0.f << 0.f;
+
+  QTest::newRow("Pos(0.f, 90.f)") << Pos(0.f, 90.f) << 0.f << 0.f << 6371000.f;
+  QTest::newRow("Pos(0.f, -90.f)") << Pos(0.f, -90.f) << 0.f << 0.f << -6371000.f;
+
+  QTest::newRow("Pos(0.f, 45.f)") << Pos(0.f, 45.f) << 4504980.f << 0.f << 4504980.f;
+  QTest::newRow("Pos(0.f, -45.f)") << Pos(0.f, -45.f) << 4504980.f << 0.f << -4504980.f;
+
+  QTest::newRow("Pos(45.f, 0.f)") << Pos(45.f, 0.f) << 4504980.f << 4504980.f << 0.f;
+  QTest::newRow("Pos(-45.f, 0.f)") << Pos(-45.f, 0.f) << 4504980.f << -4504980.f << 0.f;
+
+  QTest::newRow("Pos(135.f, 0.f)") << Pos(135.f, 0.f) << -4504980.f << 4504980.f << 0.f;
+  QTest::newRow("Pos(-135.f, 0.f)") << Pos(-135.f, 0.f) << -4504980.f << -4504980.f << 0.f;
+}
+
+void GeoTest::testCartesian()
+{
+  QFETCH(Pos, pos);
+  QFETCH(float, x);
+  QFETCH(float, y);
+  QFETCH(float, z);
+
+  float xResult, yResult, zResult;
+  pos.toCartesian(xResult, yResult, zResult);
+  qDebug() << pos << xResult << yResult << zResult;
+
+  // Add one for qFuzzyCompare where the two numbers are compared in a relative way,
+  // where the exactness is stronger the smaller the numbers are.
+  QCOMPARE(xResult + 1.f, x + 1.f);
+  QCOMPARE(yResult + 1.f, y + 1.f);
+  QCOMPARE(zResult + 1.f, z + 1.f);
+}
+
 void GeoTest::testAngleDiff_data()
 {
   QTest::addColumn<float>("angle1");
@@ -807,7 +860,7 @@ void GeoTest::testRectOverlap()
 void GeoTest::testCoordString_data()
 {
 
-#define ROW(a, b) QTest::newRow(a) << a << b;
+#define ROW(a, b) QTest::newRow(a) << a << b
 
   QTest::addColumn<QString>("coord");
   QTest::addColumn<Pos>("pos");

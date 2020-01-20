@@ -38,6 +38,9 @@ private slots:
   void testScale();
   void testCenter();
 
+  void testCartesian_data();
+  void testCartesian();
+
   void testRectInflate_data();
   void testRectInflate();
 

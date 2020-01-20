@@ -162,6 +162,7 @@ SOURCES += \
   src/tests/flightplantest.cpp \
   src/tests/scenerycfgtest.cpp \
   src/tests/magdectest.cpp \
+  src/tests/spatialtest.cpp \
   src/tests/updatetest.cpp \
   src/tests/stringtest.cpp \
   src/tests/versiontest.cpp \
@@ -179,6 +180,7 @@ HEADERS += \
   src/tests/flightplantest.h \
   src/tests/scenerycfgtest.h \
   src/tests/magdectest.h \
+  src/tests/spatialtest.h \
   src/tests/updatetest.h \
   src/tests/stringtest.h \
   src/tests/versiontest.h \
