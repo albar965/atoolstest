@@ -160,6 +160,7 @@ SOURCES += \
   src/tests/geotest.cpp \
   src/tests/dtmtest.cpp \
   src/tests/flightplantest.cpp \
+  src/tests/routetest.cpp \
   src/tests/scenerycfgtest.cpp \
   src/tests/magdectest.cpp \
   src/tests/spatialtest.cpp \
@@ -178,6 +179,7 @@ HEADERS += \
   src/tests/geotest.h \
   src/tests/dtmtest.h \
   src/tests/flightplantest.h \
+  src/tests/routetest.h \
   src/tests/scenerycfgtest.h \
   src/tests/magdectest.h \
   src/tests/spatialtest.h \

@@ -20,6 +20,7 @@
 #include "tests/calctest.h"
 #include "tests/dtmtest.h"
 #include "tests/spatialtest.h"
+#include "tests/routetest.h"
 #include "tests/versiontest.h"
 #include "tests/magdectest.h"
 #include "tests/flightplantest.h"
@@ -149,6 +150,7 @@ int main(int argc, char *argv[])
   DEFINETEST(MetarTest)
   DEFINETEST(DtmTest)
   DEFINETEST(SpatialTest)
+  DEFINETEST(RouteTest)
 
   parser->parse(QCoreApplication::arguments());
   otherOptions.append(QCoreApplication::arguments().first());
@@ -201,6 +203,7 @@ void test()
     RUNTESTEXT(MetarTest)
     RUNTESTEXT(DtmTest)
     RUNTESTEXT(SpatialTest)
+    RUNTESTEXT(RouteTest)
   }
   catch(std::exception& e)
   {
