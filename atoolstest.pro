@@ -205,7 +205,7 @@ OTHER_FILES += \
 # Local deployment commands for development
 
 unix:!macx {
-  copydata.commands = cp -avfu $$PWD/testdata $$OUT_PWD
+  copydata.commands = cp -Rvf $$PWD/testdata $$OUT_PWD
 }
 
 # Linux specific deploy target

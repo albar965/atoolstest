@@ -117,7 +117,7 @@ void SpatialTest::initTestCase()
   else
     throw atools::Exception(QString("Cannot open file \"%1\". Reason: %2.").arg(filepath).arg(file.errorString()));
 
-  index->buildIndex();
+  index->updateIndex();
 }
 
 void SpatialTest::cleanupTestCase()

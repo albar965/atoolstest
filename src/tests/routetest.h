@@ -21,6 +21,8 @@
 #include <QString>
 #include <QtTest>
 
+#include "routing/routenetwork.h"
+
 namespace atools {
 namespace sql {
 class SqlDatabase;
@@ -45,12 +47,17 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-  void testRouteRadio_data();
-  void testRouteRadio();
+  void testRouteFinder_data();
+  void testRouteFinder();
+
+  void testRouteNetwork();
 
 private:
   atools::sql::SqlDatabase *db = nullptr;
-  atools::routing::RouteNetwork *radioNet = nullptr, *airwayNet = nullptr;
+  QHash<int, atools::routing::RouteNetwork *> networks;
+  void printNearestResult(const QVector<atools::routing::Node>& neighbours,
+                          const QVector<atools::routing::Edge>& edges);
+
 };
 
 #endif // ATOOLSTEST_ROUTE_TEST_H
