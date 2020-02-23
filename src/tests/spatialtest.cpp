@@ -233,7 +233,7 @@ void SpatialTest::testSpatialRadiusDest_data()
   QTest::newRow("Pos(10.7952, 50.1669), 8000 nm")
     << Pos(10.7952, 50.1669) << Pos(10.7952f, 70.f) << 0.f << 8000.f << 454;
   QTest::newRow("Pos(10.7952, 50.1669), 1000-8000 nm")
-    << Pos(10.7952, 50.1669) << Pos(10.7952f, 70.f) << 1000.f << 8000.f << 59;
+    << Pos(10.7952, 50.1669) << Pos(10.7952f, 70.f) << 1000.f << 8000.f << 58;
 }
 
 void SpatialTest::testSpatialRadiusDest()
