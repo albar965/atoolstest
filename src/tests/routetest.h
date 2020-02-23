@@ -51,6 +51,7 @@ private slots:
   void testRouteFinder();
 
   void testRouteNetwork();
+  void testRouteNeighbors();
 
 private:
   atools::sql::SqlDatabase *db = nullptr;

@@ -202,7 +202,7 @@ void SpatialTest::testSpatialRadius()
   timer.start();
 
   QVector<Data> objects;
-  index->getRadius(objects, pos, 0.f, atools::geo::nmToMeter(radius));
+  index->getRadius(objects, pos, 0.f, atools::geo::nmToMeter(radius), 0.f);
   qDebug() << Q_FUNC_INFO << timer.restart() << "ms";
 
   printObjects(objects, pos);
@@ -248,7 +248,7 @@ void SpatialTest::testSpatialRadiusDest()
   timer.start();
 
   QVector<Data> objects;
-  index->getRadius(objects, origin, atools::geo::nmToMeter(radiusMin), atools::geo::nmToMeter(radiusMax), true, &dest);
+  index->getRadius(objects, origin, atools::geo::nmToMeter(radiusMin), atools::geo::nmToMeter(radiusMax), 0.f, true, &dest);
   qDebug() << Q_FUNC_INFO << timer.restart() << "ms";
 
   printObjects(objects, origin);
