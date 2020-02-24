@@ -60,6 +60,7 @@
     { \
       name tst; \
       runtest(tst, messages, otherOptions); \
+      qStdOut() << "Execution time for" << # name << timer.restart() << "ms" << endl; \
     } \
   }
 
@@ -185,9 +186,14 @@ void test()
 {
   // status |= QTest::qExec(&tc, argc, argv);
   QVector<std::pair<int, QString> > messages;
-
   try
   {
+    QElapsedTimer timerTotal;
+    timerTotal.start();
+
+    QElapsedTimer timer;
+    timer.start();
+
     RUNTESTEXT(OnlineTest)
     RUNTESTEXT(SceneryCfgTest)
     RUNTESTEXT(MagdecTest)
@@ -204,10 +210,12 @@ void test()
     RUNTESTEXT(DtmTest)
     RUNTESTEXT(SpatialTest)
     RUNTESTEXT(RouteTest)
+
+    qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << endl;
   }
   catch(std::exception& e)
   {
-    qStdErr() << "Caught exception" << e.what() << endl;
+    qStdErr() << "*** Caught exception" << e.what() << endl;
   }
 
   bool failed = false;

@@ -202,7 +202,7 @@ void SpatialTest::testSpatialRadius()
   timer.start();
 
   QVector<Data> objects;
-  index->getRadius(objects, pos, 0.f, atools::geo::nmToMeter(radius), 0.f);
+  index->getRadius(objects, pos, atools::geo::nmToMeter(radius));
   qDebug() << Q_FUNC_INFO << timer.restart() << "ms";
 
   printObjects(objects, pos);
@@ -213,34 +213,20 @@ void SpatialTest::testSpatialRadius()
 void SpatialTest::testSpatialRadiusDest_data()
 {
   QTest::addColumn<Pos>("origin");
-  QTest::addColumn<Pos>("dest");
-  QTest::addColumn<float>("radiusMin");
   QTest::addColumn<float>("radiusMax");
   QTest::addColumn<int>("result");
 
-  QTest::newRow("Pos(10.7952, 50.1669), 200 nm")
-    << Pos(10.7952f, 50.1669f) << Pos(10.7952f, 70.f) << 0.f << 200.f << 29;
-  QTest::newRow("Pos(10.7952, 50.1669), 500 nm")
-    << Pos(10.7952f, 50.1669f) << Pos(10.7952f, 70.f) << 0.f << 500.f << 149;
-  QTest::newRow("Pos(10.7952, 50.1669), 800 nm")
-    << Pos(10.7952f, 50.1669f) << Pos(10.7952f, 70.f) << 0.f << 800.f << 241;
-  QTest::newRow("Pos(10.7952, 50.1669), 2000 nm")
-    << Pos(10.7952f, 50.1669f) << Pos(10.7952f, 70.f) << 0.f << 2000.f << 436;
-
-  QTest::newRow("Pos(0.f, 0.f), 8000 nm") << Pos(0.f, 0.f) << Pos(0.f, 45.f) << 0.f << 8000.f << 1628;
-  QTest::newRow("Pos(0.f, 0.f), 1000-8000 nm") << Pos(0.f, 0.f) << Pos(0.f, 45.f) << 1000.f << 8000.f << 1563;
-
-  QTest::newRow("Pos(10.7952, 50.1669), 8000 nm")
-    << Pos(10.7952, 50.1669) << Pos(10.7952f, 70.f) << 0.f << 8000.f << 454;
-  QTest::newRow("Pos(10.7952, 50.1669), 1000-8000 nm")
-    << Pos(10.7952, 50.1669) << Pos(10.7952f, 70.f) << 1000.f << 8000.f << 58;
+  QTest::newRow("Pos(10.7952, 50.1669), 200 nm") << Pos(10.7952f, 50.1669f) << 200.f << 70;
+  QTest::newRow("Pos(10.7952, 50.1669), 500 nm") << Pos(10.7952f, 50.1669f) << 500.f << 302;
+  QTest::newRow("Pos(10.7952, 50.1669), 800 nm") << Pos(10.7952f, 50.1669f) << 800.f << 532;
+  QTest::newRow("Pos(10.7952, 50.1669), 2000 nm") << Pos(10.7952f, 50.1669f) << 2000.f << 1184;
+  QTest::newRow("Pos(0.f, 0.f), 8000 nm") << Pos(0.f, 0.f) << 8000.f << 2849;
+  QTest::newRow("Pos(10.7952, 50.1669), 8000 nm") << Pos(10.7952, 50.1669) << 8000.f << 4198;
 }
 
 void SpatialTest::testSpatialRadiusDest()
 {
   QFETCH(Pos, origin);
-  QFETCH(Pos, dest);
-  QFETCH(float, radiusMin);
   QFETCH(float, radiusMax);
   QFETCH(int, result);
 
@@ -248,7 +234,7 @@ void SpatialTest::testSpatialRadiusDest()
   timer.start();
 
   QVector<Data> objects;
-  index->getRadius(objects, origin, atools::geo::nmToMeter(radiusMin), atools::geo::nmToMeter(radiusMax), 0.f, true, &dest);
+  index->getRadius(objects, origin, atools::geo::nmToMeter(radiusMax));
   qDebug() << Q_FUNC_INFO << timer.restart() << "ms";
 
   printObjects(objects, origin);

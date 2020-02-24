@@ -88,9 +88,9 @@ void RouteTest::testRouteFinder_data()
 
   // Radio navaids - new
   QTest::newRow("LEVX to LPMA Radio New")
-    << Pos(-8.6275, 42.2292) << Pos(-16.7781, 32.6942) << 745.f << 3 << int(NET_RADIO) << true;
+    << Pos(-8.6275, 42.2292) << Pos(-16.7781, 32.6942) << 723.f << 3 << int(NET_RADIO) << true;
   QTest::newRow("LEVX to LPFL Radio New")
-    << Pos(-8.6275, 42.2292) << Pos(-31.1322, 39.4581) << 1883.73f << 5 << int(NET_RADIO) << true;
+    << Pos(-8.6275, 42.2292) << Pos(-31.1322, 39.4581) << 1252.73f << 4 << int(NET_RADIO) << true;
   QTest::newRow("EDDF to LIRF Radio New")
     << Pos(8.57046, 50.0333) << Pos(12.2389, 41.8003) << 520.505f << 4 << int(NET_RADIO) << true;
   QTest::newRow("EGAA to LGAV Radio New")
@@ -106,7 +106,7 @@ void RouteTest::testRouteFinder_data()
   QTest::newRow("EGAA to LGAV Airway New")
     << Pos(-6.21583, 54.6575) << Pos(23.9445, 37.9367) << 1626.28f << 53 << int(NET_AIRWAY) << true;
   QTest::newRow("ESNQ to FEFF Airway New")
-    << Pos(20.3356, 67.8213) << Pos(18.5197, 4.39778) << 4009.69f << 91 << int(NET_AIRWAY) << true;
+    << Pos(20.3356, 67.8213) << Pos(18.5197, 4.39778) << 3974.f << 103 << int(NET_AIRWAY) << true;
 }
 
 void RouteTest::testRouteFinder()
@@ -125,19 +125,21 @@ void RouteTest::testRouteFinder()
     return true;
   });
 
-  bool res = router.calculateRoute(from, to, 0,
-                                   network ==
-                                   NET_RADIO ? atools::routing::MODE_RADIONAV : atools::routing::MODE_JET);
+  bool actualResult = router.calculateRoute(from, to, 0,
+                                            network ==
+                                            NET_RADIO ? atools::routing::MODE_RADIONAV : atools::routing::MODE_JET_AND_WAYPOINT);
 
-  float distance;
+  float actualDistance;
   QVector<atools::routing::RouteLeg> routeLegs;
-  router.extractLegs(routeLegs, distance);
+  router.extractLegs(routeLegs, actualDistance);
 
-  qDebug() << "res" << res << "distance" << atools::geo::meterToNm(distance) << "size" << routeLegs.size();
+  qDebug() << "res" << actualResult
+           << "distance" << atools::geo::meterToNm(actualDistance) << "expected" << dist
+           << "size" << routeLegs.size() << "expected" << num;
 
-  QCOMPARE(res, result);
+  QCOMPARE(actualResult, result);
 
-  QVERIFY(atools::almostEqual(atools::geo::meterToNm(distance), dist, 10.f));
+  QVERIFY(atools::almostEqual(atools::geo::meterToNm(actualDistance), dist, 10.f));
   QVERIFY(atools::almostEqual(routeLegs.size(), num, 5));
 }
 
@@ -187,14 +189,14 @@ void RouteTest::testRouteNeighbors()
     airwayNet->getNeighbours(result, airwayNet->getNearestNode(Pos(9.947, 49.7175) /* WUR */));
     qDebug() << "EDDH - LIQW result.nodes.size() no destination" << result.nodes.size();
     QVERIFY(result.nodes.size() == result.edges.size());
-    QCOMPARE(result.nodes.size(), 2955);
+    QCOMPARE(result.nodes.size(), 2951);
   }
 
   {
     atools::routing::Result result;
     airwayNet->setParameters(Pos(9.98823, 53.6304), Pos(9.98889, 44.0889), 0,
                              atools::routing::MODE_AIRWAY_AND_WAYPOINT);
-    airwayNet->setDirectDistanceFactor(0.f);
+    airwayNet->setDirectDistanceFactorWp(0.f);
     airwayNet->getNeighbours(result, airwayNet->getNearestNode(Pos(9.947, 49.7175) /* WUR */));
     qDebug() << "EDDH - LIQW result.nodes.size() destination and no distance filter" << result.nodes.size();
     for(int idx : result.nodes)
@@ -203,14 +205,14 @@ void RouteTest::testRouteNeighbors()
       QVERIFY(n.pos.getLatY() < 49.7175);
     }
     QVERIFY(result.nodes.size() == result.edges.size());
-    QCOMPARE(result.nodes.size(), 1010);
+    QCOMPARE(result.nodes.size(), 1009);
   }
 
   {
     atools::routing::Result result;
     airwayNet->setParameters(Pos(9.98823, 53.6304), Pos(9.98889, 44.0889), 0,
                              atools::routing::MODE_AIRWAY_AND_WAYPOINT);
-    airwayNet->setDirectDistanceFactor(1.02f);
+    airwayNet->setDirectDistanceFactorWp(1.02f);
     airwayNet->getNeighbours(result, airwayNet->getNearestNode(Pos(9.947, 49.7175) /* WUR */));
     qDebug() << "EDDH - LIQW result.nodes.size() destination and distance filter" << result.nodes.size();
     for(int idx : result.nodes)
@@ -219,7 +221,7 @@ void RouteTest::testRouteNeighbors()
       QVERIFY(n.pos.getLatY() < 49.7175);
     }
     QVERIFY(result.nodes.size() == result.edges.size());
-    QCOMPARE(result.nodes.size(), 175);
+    QCOMPARE(result.nodes.size(), 174);
   }
 
   {
