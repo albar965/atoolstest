@@ -51,13 +51,15 @@ private slots:
   void testRouteFinder();
 
   void testRouteNetwork();
+
+  void testRouteNeighbors_data();
   void testRouteNeighbors();
 
 private:
   atools::sql::SqlDatabase *db = nullptr;
   QHash<int, atools::routing::RouteNetwork *> networks;
-  void printNearestResult(const QVector<atools::routing::Node>& neighbours,
-                          const QVector<atools::routing::Edge>& edges);
+  void printNearestResult(atools::routing::RouteNetwork *net, const atools::geo::Pos& origin,
+                          const atools::geo::Pos& dest, const atools::routing::Result& result);
 
 };
 
