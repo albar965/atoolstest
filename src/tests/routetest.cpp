@@ -92,22 +92,22 @@ void RouteTest::testRouteFinder_data()
 
   // Airway - new
   QTest::newRow("KLAS to LPAZ MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4249.f << 71
+    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4260.f << 55
     << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
   QTest::newRow("MMSD to NTTO MODE_WAYPOINT")
-    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3114.f << 7
+    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3143.f << 10
     << int(NET_AIRWAY) << int(atools::routing::MODE_WAYPOINT) << true;
   QTest::newRow("MMSD to NTTO MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3223.f << 11
+    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3297.f << 15
     << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
   QTest::newRow("LPAZ to TXKF MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-25.1711, 36.9739) << Pos(-64.6787, 32.364) << 1994.f << 13
+    << Pos(-25.1711, 36.9739) << Pos(-64.6787, 32.364) << 2015.f << 13
     << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
   QTest::newRow("LEVX to LPFL MODE_AIRWAY_AND_WAYPOINT")
     << Pos(-8.6275, 42.2292) << Pos(-31.1322, 39.4581) << 1088.f << 8
     << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
   QTest::newRow("EDDF to LIRF MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(8.57046, 50.0333) << Pos(12.2389, 41.8003) << 527.008f << 22
+    << Pos(8.57046, 50.0333) << Pos(12.2389, 41.8003) << 570.008f << 27
     << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
   QTest::newRow("EGAA to LGAV MODE_AIRWAY_AND_WAYPOINT")
     << Pos(-6.21583, 54.6575) << Pos(23.9445, 37.9367) << 1626.28f << 53
@@ -218,7 +218,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(-25.1711, 36.9739) << Pos(-64.6787, 32.364)
     << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT)
     << int(NET_AIRWAY)
-    << 7
+    << 16
     << Rect(Pos(-45., 36.), nmToMeter(600.f));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY far from destination")
@@ -234,7 +234,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
     << int(atools::routing::MODE_WAYPOINT)
     << int(NET_AIRWAY)
-    << 123
+    << 194
     << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY_AND_WAYPOINT near destination")
@@ -242,7 +242,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
     << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT)
     << int(NET_AIRWAY)
-    << 9
+    << 24
     << Rect(LineString({Pos(6, 45.4781), Pos(16, 44.0889)}));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY_AND_WAYPOINT far from destination")
