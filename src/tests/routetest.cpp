@@ -21,6 +21,7 @@
 #include "routing/routenetwork.h"
 #include "sql/sqldatabase.h"
 #include "geo/calculations.h"
+#include "testutil/testutil.h"
 
 #include "geo/rect.h"
 #include "geo/linestring.h"
@@ -50,10 +51,7 @@ enum RouteNetworkType
 
 void RouteTest::initTestCase()
 {
-  SqlDatabase::addDatabase("QSQLITE", "TESTDBROUTE");
-  db = new SqlDatabase("TESTDBROUTE");
-  db->setDatabaseName("testdata/test_route.sqlite");
-  db->open();
+  db = testutil::createDb("TESTDBROUTE", "testdata/test_route.sqlite");
 
   atools::routing::RouteNetwork *net =
     new atools::routing::RouteNetwork(db, atools::routing::SOURCE_RADIO);
@@ -70,14 +68,7 @@ void RouteTest::cleanupTestCase()
   qDeleteAll(networks);
   networks.clear();
 
-  if(db != nullptr)
-  {
-    db->close();
-    delete db;
-    db = nullptr;
-  }
-
-  SqlDatabase::removeDatabase("TESTDBROUTE");
+  testutil::removeDb(db, "TESTDBROUTE");
 }
 
 void RouteTest::testRouteFinder_data()
@@ -90,10 +81,13 @@ void RouteTest::testRouteFinder_data()
   QTest::addColumn<int>("mode");
   QTest::addColumn<bool>("result");
 
-  // Airway - new
-  QTest::newRow("KLAS to LPAZ MODE_AIRWAY_AND_WAYPOINT")
+#ifndef QT_DEBUG
+  // Too slow for debug mode
+  QTest::newRow("KLAS to LPAZ MODE_AIRWAY_AND_WAYPOINT SLOW")
     << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4260.f << 55
     << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+#endif
+
   QTest::newRow("MMSD to NTTO MODE_WAYPOINT")
     << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3143.f << 10
     << int(NET_AIRWAY) << int(atools::routing::MODE_WAYPOINT) << true;

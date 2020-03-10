@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+<html>
+<HEAD>
+
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<META name="GENERATOR" content="IBM Software Development Platform">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK href="theme/naimes.css" rel="stylesheet" type="text/css">
+<SCRIPT language="JavaScript" src="javascript/common.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="javascript/save.js"></SCRIPT>
+
+<TITLE>Defense Internet NOTAM Service</TITLE>
+<script>
+window.focus();
+</script>
+<script>bazadebezolkohpepadr="289637672"</script><script type="text/javascript" src="https://www.notams.faa.gov/akam/11/114384b0" defer></script></HEAD>
+
+
+<BODY>
+
+<A name="top"></A>
+<!-- begin of banner -->
+<TABLE width="100%" cellpadding="0" cellspacing="0" class="noprint" >
+	<TBODY>
+		<TR>
+			<TD align="left" background="images/n_gradiant_back.gif"><IMG	src="images/n_seal_af.gif" width="99" height="104" border="0"></TD>
+			<TD align="left" background="images/n_gradiant_back.gif"><IMG	src="images/n_seal_army.gif" width="99" height="104" border="0"></TD>
+			<TD align="center" background="images/n_gradiant_back.gif"><IMG	src="images/n_logo_dins.gif" width="367" height="104" border="0"></TD>
+			<TD align="center" background="images/n_gradiant_back.gif"><IMG	src="images/n_seal_navy.gif" width="99" height="104" border="0"></TD>
+			<TD align="right" background="images/n_gradiant_back.gif"><IMG src="images/n_seal_marines.gif" width="99" height="104" border="0"></TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+<TABLE border="0" cellpadding="0" cellspacing="0" bgcolor="white" 
+	width="100%" class="noprint">
+
+
+	<TBODY>
+		<TR bgcolor="black">
+		
+			<TD width="33%" align="left" nowrap >
+			<FONT color="white" size="1">
+			<IMG	border="0" src="images/spacer.gif" width="10" height="11"> 
+			<span	id="DINSClock"></span></FONT></TD>
+
+<td><IMG	border="0" src="images/spacer.gif" width="10" > </td>
+			<TD width="33%"  class="dodWarningRed11" align="center"  bgcolor="black" nowrap>
+						~ For DoD Flight Only ~
+			</TD>
+
+			<TD width="33%"  align="right"  id="MenuTop" nowrap >
+			<FONT	 color="#000000">xxxxxxxxx</FONT> 
+			<A	href="#" class="MenuTop" title="Close" onclick="window.close()"> 
+			<FONT	color="#FFFFFF">Close</FONT></A>
+         <FONT	 color="#000000">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</FONT> 
+		
+		
+				</TD>
+
+	</TBODY>
+</TABLE>
+
+<!-- end of menu line one -->
+<!-- end of banner -->
+<!-- end of menu line one -->
+
+<!-- END LINKS -->
+
+<style media="print">
+#noprint {
+	display: none;
+}
+input, button {
+	display: none;
+}
+.noprint {
+	display: none;
+}
+.toggle {
+	display: block;
+}
+text {
+display: block;
+}
+</style>
+
+<style media="screen">
+#noshow {
+	display: none;
+}
+.noshow {
+	display: none;
+}
+</style>
+
+<form name="NotamRetrievalForm" method="post" action="/dinsQueryWeb/printRetrievalMapAction.do" id="form1">
+
+<input type=hidden name="locidStr"  value="KZAK RJJJ"  />
+<input type=hidden name="save"  value="" />	
+
+
+
+
+
+
+<script>
+function submitForm(action) {
+	var oldAction = "printRetrievalMapAction.do";
+	if (action == "saveAsPDF") {
+		document.NotamRetrievalForm.action = 'saveNotamAsPDF?sel=false&geo=false';
+		}
+	else {
+		document.NotamRetrievalForm.action = oldAction;
+	}
+}
+</script>
+
+<DIV align="left">
+			<TABLE width="100%" cellpadding="5">
+				<TR>
+					<TD>
+					<TABLE>
+
+						<TR>
+							<TD><input type="submit" name="submit" value="Display/Print Selected NOTAMs" onclick="this.form.save.value =' '; submitForm();" style="width: 162px; font-size: 10px;"></TD>
+
+						</TR>
+
+						<TR>
+							<TD>
+								<input type="button" name="button" value="Print all NOTAMs" onclick="loadAPDImagesForPrint('print');" style="width: 115px; font-size: 09px;">
+								&nbsp;&nbsp;
+								<!-- <input type="submit" name="button" value="Save all NOTAMs " onclick="this.form.save.value ='saveall';submitForm();" style="width: 115px; font-size: 09px;"> -->
+								<input type="submit" name="button" value="Save all NOTAMs " onclick="submitForm('saveAsPDF');" style="width: 115px; font-size: 09px;">
+							</TD>
+
+
+							<td class="textBlack14" width="25%" align="right" >Sort By: <select name="sortOrder"><!--  onchange="sortNotamListing(this.value); "-->
+								
+								<option value="1" selected="selected">Default Report</option>
+								<option value="2">Effective Date</option>
+								<option value="3">Expiration Date</option>
+								<option value="4">Created Date</option></select>
+							
+							</td>							
+						</TR>
+					<tr>
+					<td class="toggle"> </td>
+					</tr>
+						<TR >
+						<TD ><input style="width: 115px; font-size: 09px;" type="button" onClick="checkedAll('form1', true)" value="Check All NOTAMs">
+							&nbsp;&nbsp;
+							<input style="width: 115px; font-size: 09px;" type="button" onClick="checkedAll('form1', false)" value="UnCheck All NOTAMs">
+						</TD>	
+						<td nowrap="nowrap" class="textBlack14" width="25%" align="right" >
+							Keyword Sort: <input type="text" name="sortKeyword" maxlength="20" size="15" value="" style="display:inline">						
+							<input  type="button" onClick="sortNotamListing(document.NotamRetrievalForm.sortOrder.value,document.NotamRetrievalForm.sortKeyword.value);" value="Go">
+							
+						</td>					
+						</TR>
+
+						
+							<TR>
+								<TD height="3">&nbsp;</TD>
+							</TR>
+							<TR>
+									<TD class="textBlack14"><tt> The following are active Pacific Tracks issued by Oakland OCA/FIR (KZAK) and FUKUOKA/JCAB Air Traffic Flow Management Centre (RJJJ).  Any addtional NOTAMs pertaining to these tracks (waypoint changes, procedures etc) will be found by seaching the ARTCC NOTAMs under the appropriate ARTCC (KZAK &amp; RJJJ).</tt></TD>
+							</TR>
+
+						
+							
+	
+
+
+						<TR>
+							<TD height="3" class="textRed12" align="center">
+						
+							
+							
+							</TD>
+						</TR>
+
+						<TR>
+							<TD nowrap="nowrap" class="textBlack16Bold">Locations:</TD>							
+						</TR>
+						<TR>
+							<TD WIDTH=800 class="textBlack12Bold">
+
+							  <A HREF='#KZAK' class='A1'>KZAK,</A> &nbsp;  <A HREF='#RJJJ' class='A1'>RJJJ</A> &nbsp; </TD>
+						</TR>
+						<TR>
+							<TD colspan="2">
+							<HR>
+							</TD>
+						</TR>
+
+						<TR>
+							<TD class="textBlack14"><tt>Data Current as of: &nbsp; <span
+								class="textRed12">Sat, 07 Mar 2020 16:16:00 GMT</span></tt></TD>
+						</TR>
+
+
+					</TABLE>
+					 
+					
+						
+							<TABLE>
+								<TR>
+									<TD colspan="2" width="1070">
+
+									<HR>
+
+									</TD>
+								</TR>
+								<TR>
+
+									<TD nowrap class="textBlack12Bu" width="350" valign="top"><A
+										name="KZAK">
+										 KZAK&nbsp;&nbsp; OAKLAND OCA/FIR</TD>
+									
+									
+									<TD ALIGN="right" id="noprint"><A href="#top"><U>[Back to Top]</U></A>
+									<br>
+									</TD>
+									
+								</TR>
+							</TABLE>
+
+							
+
+
+							
+								
+
+									<TABLE>
+
+										
+										
+										
+											<tr>
+												<td colspan="2"><!--  keep until we are sure that the customer perfers links over buttons.
+											<a href="javascript:icaoCheckAll(document.NotamRetrievalForm.KZAK, KZAK)" > Check All KZAK </a>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="javascript:icaoUnCheckAll(document.NotamRetrievalForm.KZAK, KZAK)" > UnCheck All KZAK </a>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											</td> --> <input type="button"
+													style="width: 90px; font-size: 09px;" name="CheckAll"
+													value="Check All KZAK"
+													onClick="icaoCheckAll(document.NotamRetrievalForm.KZAK, KZAK ); ">
+												&nbsp; <input type="button"
+													style="width: 100px; font-size: 09px;" name="unCheckAll"
+													value="UnCheck All KZAK"
+													onClick="icaoUnCheckAll(document.NotamRetrievalForm.KZAK, KZAK ); ">
+												
+										
+												</TD>
+											</tr>
+																						
+										
+
+										
+
+
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0903/20%0" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0903/20%0" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0903/20</b> - (TDM TRK 8 200307070001 
+2003070700 2003072100 
+EMRON 41N160E 45N170E 48N180E 50N170W 49N160W 46N150W 43N140W 
+41N130W TRYSH 
+RTS/ADNAP OTR7 EMRON 
+TRYSH UPR KDFW 
+RMK/0). 07 MAR 07:00 2020 UNTIL 07 MAR 21:00 2020. CREATED: 06 MAR 20:03 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0904/20%1" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0904/20%1" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0904/20</b> - (TDM TRK J 200307050001 
+2003070500 2003072100 
+ALCOA CEPAS COBAD 39N140W 39N150W 38N160W 38N170W 39N180E 40N170E 
+41N160E KALNA 
+RTS/KSFO GNNRR ALCOA 
+KLAX MCKEY LIBBO BRINY ALCOA 
+KALNA OTR5 ADNAP 
+RMK/TRK ADVISORY IN EFFECT FOR TRK J 
+). 07 MAR 05:00 2020 UNTIL 07 MAR 21:00 2020. CREATED: 06 MAR 20:03 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0905/20%2" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0905/20%2" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0905/20</b> - (TDM TRK K 200307050001 
+2003070500 2003072100 
+AUDIA 36N130W 36N140W 36N150W 36N160W 37N170W 38N180E 39N170E 
+40N160E EMRON 
+RTS/KLAX AUDIA 
+EMRON OTR9 AVBET 
+RMK/NO TRK ADVISORY FOR TRK K TONIGHT 
+ALTITUDE MAY BE RESTRICTED WHILE CROSSING ATS ROUTES 
+). 07 MAR 05:00 2020 UNTIL 07 MAR 21:00 2020. CREATED: 06 MAR 20:03 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0909/20%3" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0909/20%3" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0909/20</b> - (TDM TRK A 200307190001 
+2003071900 2003080800 
+DANNO ECEDO 27N170W 30N180E 32N170E 34N160E 35N150E MORAY 
+RTS/PHNL KEOLA SOK DANNO 
+MORAY OTR15 POVAL 
+RMK/TRK B NOT AVAILABLE 
+). 07 MAR 19:00 2020 UNTIL 08 MAR 08:00 2020. CREATED: 07 MAR 02:14 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0910/20%4" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0910/20%4" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0910/20</b> - (TDM TRK C 200307190001 
+2003071900 2003080800 
+JOWEN LOHNE ARCAL 60N160W NOLTI NAYLD NULUK NANDY NATES NIKLL 
+NYMPH NUZAN NRKEY NIPPI 
+RTS/CYVR QQ JOWEN 
+KSEA TOU FINGS JOWEN 
+KPDX TOU FINGS JOWEN 
+KSFO TOU FINGS JOWEN 
+KLAX TOU FINGS JOWEN 
+NIPPI R220 NANAC 
+RMK/TRK ADVISORY IN EFFECT FOR TRK C 
+). 07 MAR 19:00 2020 UNTIL 08 MAR 08:00 2020. CREATED: 07 MAR 02:14 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0911/20%5" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0911/20%5" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0911/20</b> - (TDM TRK E 200307190001 
+2003071900 2003080800 
+REDWD UNVER 42N130W 44N140W 43N150W 42N160W 42N170W 42N180E 
+43N170E 42N160E EMRON 
+RTS/KSFO GNNRR STINS AMAKR REDWD 
+KLAX MCKEY LIBBO BRINY BOARS AMAKR REDWD 
+EMRON OTR9 AVBET 
+RMK/TRK ADVISORY IN EFFECT FOR TRK E 
+). 07 MAR 19:00 2020 UNTIL 08 MAR 08:00 2020. CREATED: 07 MAR 02:15 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0912/20%6" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0912/20%6" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0912/20</b> - (TDM TRK F 200307190001 
+2003071900 2003080800 
+ALCOA DACEM 40N130W 43N140W 42N150W 41N160W 41N170W 41N180E 
+42N170E 40N160E 36N150E SEALS 
+RTS/KSFO GNNRR ALCOA 
+KLAX MCKEY LIBBO BRINY ALCOA 
+SEALS OTR13 LAPIL 
+RMK/TRK ADVISORY IN EFFECT FOR TRK F 
+). 07 MAR 19:00 2020 UNTIL 08 MAR 08:00 2020. CREATED: 07 MAR 02:15 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0913/20%7" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0913/20%7" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0913/20</b> - (TDM TRK H 200307190001 
+2003071900 2003080800 
+ALCOA CEPAS COBAD 42N140W 41N150W 40N160W 40N170W 40N180E 41N170E 
+39N160E 34N150E 29N140E CANAI 
+RTS/KSFO GNNRR ALCOA 
+KLAX MCKEY LIBBO BRINY ALCOA 
+CANAI V75 NHC 
+RMK/TRK ADVISORY IN EFFECT FOR TRK H 
+TRK H ONLY AVAILABLE TO ACFT LANDING RCTP OR SOUTH 
+TRK I NOT AVAILABLE DUE TO WINDS 
+). 07 MAR 19:00 2020 UNTIL 08 MAR 08:00 2020. CREATED: 07 MAR 02:15 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="KZAK%A0914/20%8" id="KZAK">
+												<input type=hidden name="saveall" value="KZAK%A0914/20%8" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>A0914/20</b> - (TDM TRK M 200307190001 
+2003071900 2003080800 
+60N150W 60N160W NOLTI NAYLD NULUK NANDY NATES NIKLL NYMPH NUZAN 
+NRKEY NIPPI 
+RTS/KDFW UPR 60N150W 
+NIPPI R220 NANAC 
+RMK/0). 07 MAR 19:00 2020 UNTIL 08 MAR 08:00 2020. CREATED: 07 MAR 02:15 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+									</TABLE>
+								
+								
+
+								
+							
+						
+							<TABLE>
+								<TR>
+									<TD colspan="2" width="1070">
+
+									<HR>
+
+									</TD>
+								</TR>
+								<TR>
+
+									<TD nowrap class="textBlack12Bu" width="350" valign="top"><A
+										name="RJJJ">
+										 RJJJ&nbsp;&nbsp; FUKUOKA/JCAB AIR TRAFFIC FLOW MANAGEMENT CENTRE</TD>
+									
+									
+									<TD ALIGN="right" id="noprint"><A href="#top"><U>[Back to Top]</U></A>
+									<br>
+									</TD>
+									
+								</TR>
+							</TABLE>
+
+							
+
+
+							
+								
+
+									<TABLE>
+
+										
+										
+										
+											<tr>
+												<td colspan="2"><!--  keep until we are sure that the customer perfers links over buttons.
+											<a href="javascript:icaoCheckAll(document.NotamRetrievalForm.RJJJ, RJJJ)" > Check All RJJJ </a>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="javascript:icaoUnCheckAll(document.NotamRetrievalForm.RJJJ, RJJJ)" > UnCheck All RJJJ </a>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											</td> --> <input type="button"
+													style="width: 90px; font-size: 09px;" name="CheckAll"
+													value="Check All RJJJ"
+													onClick="icaoCheckAll(document.NotamRetrievalForm.RJJJ, RJJJ ); ">
+												&nbsp; <input type="button"
+													style="width: 100px; font-size: 09px;" name="unCheckAll"
+													value="UnCheck All RJJJ"
+													onClick="icaoUnCheckAll(document.NotamRetrievalForm.RJJJ, RJJJ ); ">
+												
+										
+												</TD>
+											</tr>
+																						
+										
+
+										
+
+
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="RJJJ%Q0328/20%0" id="RJJJ">
+												<input type=hidden name="saveall" value="RJJJ%Q0328/20%0" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>Q0328/20</b> - EASTBOUND PACOTS TRACKS BETWEEN JAPAN AND NORTH AMERICA,
+TRACK 1.
+ FLEX ROUTE : KALNA G344 CRYPT A342 CDB 55N160W 54N150W 52N140W ORNAI
+JAPAN ROUTE : ADNAP OTR5 KALNA
+  NAR ROUTE : ACFT LDG KSEA--ORNAI SIMLU KEPKO TOU MARNR KSEA
+              ACFT LDG KPDX--ORNAI SIMLU KEPKO TOU KEIKO KPDX
+              ACFT LDG CYVR--ORNAI SIMLU KEPKO YAZ CYVR
+        RMK : ACFT LDG OTHER DEST--ORNAI SIMLU KEPKO UPR TO DEST
+TRACK 2.
+ FLEX ROUTE : EMRON 41N160E 45N170E 48N180E 50N170W 49N160W 46N150W
+              43N140W 41N130W TRYSH
+JAPAN ROUTE : ADNAP OTR7 EMRON
+  NAR ROUTE : ACFT LDG KSFO--TRYSH AMAKR BGGLO KSFO
+              ACFT LDG KLAX--TRYSH ENI OAK BURGL IRNMN KLAX
+TRACK 3.
+ FLEX ROUTE : LEPKI 40N160E 44N170E 47N180E 49N170W 48N160W 45N150W
+              42N140W 39N130W DACEM
+JAPAN ROUTE : AVBET OTR11 LEPKI
+  NAR ROUTE : ACFT LDG KLAX--DACEM PAINT PIRAT BURGL IRNMN KLAX
+              ACFT LDG KSFO--DACEM PAINT PIRAT OSI KSFO
+        RMK : ATM CENTER TEL:81-92-608-8870. 07 MAR 07:00 2020 UNTIL 07 MAR
+21:00 2020. CREATED: 06 MAR 18:43 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="RJJJ%Q0329/20%1" id="RJJJ">
+												<input type=hidden name="saveall" value="RJJJ%Q0329/20%1" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>Q0329/20</b> - EASTBOUND PACOTS TRACKS BETWEEN JAPAN AND HAWAII,
+TRACK 11.
+ FLEX ROUTE : MORAY 33N150E 30N160E 28N170E 26N180E 24N170W LILIA
+JAPAN ROUTE : POVAL OTR15 MORAY
+ PHNL ROUTE : LILIA BOOKE PHNL
+        RMK : TRK 12 NOT AVAILABLE
+              ATM CENTER TEL:81-92-608-8870. 07 MAR 10:00 2020 UNTIL 07 MAR
+21:00 2020. CREATED: 06 MAR 18:45 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+											<TR>
+
+												<TD width="12" class="textBlack12" valign="top">
+												<input type="checkbox" name="notamSelect" value="RJJJ%Q0330/20%2" id="RJJJ">
+												<input type=hidden name="saveall" value="RJJJ%Q0330/20%2" />
+												</td>
+
+												<TD class="textBlack12" valign="top"><PRE><b>Q0330/20</b> - EASTBOUND PACOTS TRACKS BETWEEN SOUTHEAST ASIA AND NORTH AMERICA,
+TRACK 14.
+     FLEX ROUTE : DOVAG 30N140E NOGAK 34N150E 39N160E 43N170E 45N180E
+                  47N170W 46N160W 43N150W 41N140W 38N130W ALLBE
+RCTP/VHHH ROUTE : BORDO Y74 AZAMA Y57 TAMAK V73 DOVAG
+      NAR ROUTE : ACFT LDG KSFO--ALLBE PIRAT OSI KSFO
+                  ACFT LDG KLAX--ALLBE PIRAT BURGL IRNMN KLAX
+            RMK : TRK 15 NOT AVAILABLE
+                  ATM CENTER TEL:81-92-608-8870. 07 MAR 07:00 2020 UNTIL 07
+MAR 21:00 2020. CREATED: 06 MAR 18:47 2020
+</PRE></TD>
+
+											</TR> 
+											
+										
+
+									</TABLE>
+								
+								
+
+								
+							
+						
+					 
+
+						<table>
+							<tr>
+								<td height="4">&nbsp;</td>
+							</tr>
+							<TR>
+								<TD class="textRed12"><TT>Number of NOTAMs: 12
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End of Report <br>
+								<br>
+								</TT></TD>
+							</TR>
+						</table>
+					
+					
+				<TR>
+
+					<TD bgcolor="silver"><input type="submit" name="submit" value="Display/Print Selected NOTAMs" onclick="this.form.save.value =' '; submitForm();" style="width: 162px; font-size: 10px;">
+					&nbsp;&nbsp; 
+					
+					<input type="button" name="button" value="Print all NOTAMs" onclick="loadAPDImagesForPrint('print')" style="width: 115px; font-size: 09px;">
+								&nbsp;&nbsp;
+								<!-- <input type="submit" name="button" value="Save all NOTAMs " onclick="this.form.save.value ='saveall'; submitForm();" style="width: 115px; font-size: 09px;"> -->
+								<input type="submit" name="button" value="Save all NOTAMs " onclick="submitForm('saveAsPDF');" style="width: 115px; font-size: 09px;">
+						
+						
+					&nbsp;&nbsp; <input style="width: 115px; font-size: 09px;"
+						type="button" onClick="checkedAll('form1', true)"
+						value="Check All NOTAMs"> &nbsp;&nbsp; <input
+						style="width: 115px; font-size: 09px;" type="button"
+						onClick="checkedAll('form1', false)" value="UnCheck All NOTAMs"></TD>
+				</TR>
+
+			</TABLE>
+</DIV>
+			
+</form>
+
+	
+
+
+
+<!-- START Bottom LINKS -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" bgcolor="#5487C4" class="noprint">
+      <tbody>
+      <tr align="left">
+       
+        <td align="left"><img src="images/spacer.gif" alt="" width="20" height="15"></td>
+        <td height="15" align="left" ><a href="http://www.faa.gov/privacy/" target="_blank" class="MenuBottom" title="Privacy and Website Policy"><font color="#FFFFFF">Privacy and Web site Policy</font></A></td>
+
+        <td align="left">
+<a href="#" class="MenuBottom" title="About Defense Internet NOTAM Service" onClick="aboutWindow=window.open('../about.html','aboutWindow','toolbar=yes,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,width=550,height=400,left=150,top=50'); return false;"><font color="#FFFFFF">About DINS</font></a></td>
+
+      
+<td align="left">
+<a href="#" class="MenuBottom" title="DINS Disclaimer" onClick="discWindow=window.open('../disclaim.html','discWindow','toolbar=yes,location=no,directories=no,status=no,menubar=yes,scrollbars=yes,resizable=yes,width=550,height=400,left=150,top=50'); return false;"><font color="#FFFFFF">DINS Disclaimer</font></a></td>
+             
+<TD  VALIGN="top"><IMG SRC="images/spacer.gif" ALT="" TITLE="" WIDTH="200" HEIGHT="15"></TD>
+ <TD  VALIGN="top"><IMG SRC="images/spacer.gif" ALT="" TITLE="" WIDTH="100" HEIGHT="15">
+  </TD>       
+          
+      </TR>
+   </tbody>   
+  </TABLE>
+	<!-- END LINKS -->
+	<noscript><img src="https://www.notams.faa.gov/akam/11/pixel_114384b0?a=dD1jMGEwYzNmOTU4NmZiMjNjNjc5NTYwN2MyNDE0MDdmYWM0NGM1M2VlJmpzPW9mZg==" style="visibility: hidden; position: absolute; left: -999px; top: -999px;" /></noscript></BODY>
+</html>
+

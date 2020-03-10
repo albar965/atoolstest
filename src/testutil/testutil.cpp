@@ -15,32 +15,46 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_CALCTEST_H
-#define ATOOLSTEST_CALCTEST_H
+#include "testutil/testutil.h"
 
-#include <QString>
-#include <QtTest>
+#include "sql/sqldatabase.h"
 
-class CalcTest :
-  public QObject
+#include <QApplication>
+#include <QThread>
+
+namespace testutil {
+
+void waitForValue(bool& done, int seconds)
 {
-  Q_OBJECT
+  int ti = 200;
 
-public:
-  CalcTest();
+  int i = 0;
+  while(done == false && i++ < (seconds * 1000 / ti))
+  {
+    QApplication::processEvents();
+    QThread::msleep(static_cast<unsigned long>(ti));
+  }
+}
 
-  static void runtest(int argc, char *argv[]);
+atools::sql::SqlDatabase *createDb(const QString& name, const QString& file)
+{
+  atools::sql::SqlDatabase::addDatabase("QSQLITE", name);
+  atools::sql::SqlDatabase *db = new atools::sql::SqlDatabase(name);
+  db->setDatabaseName(file);
+  db->open();
+  return db;
+}
 
-private slots:
-  void initTestCase();
-  void cleanupTestCase();
+void removeDb(atools::sql::SqlDatabase *& db, const QString& name)
+{
+  if(db != nullptr)
+  {
+    db->close();
+    delete db;
+    db = nullptr;
+  }
 
-  void testAltitudePressure_data();
-  void testAltitudePressure();
+  atools::sql::SqlDatabase::removeDatabase(name);
+}
 
-  void testSunsetSunrise_data();
-  void testSunsetSunrise();
-
-};
-
-#endif // ATOOLSTEST_CALCTEST_H
+} // namespace testutil

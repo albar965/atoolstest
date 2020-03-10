@@ -15,23 +15,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include "tests/metartest.h"
-#include "tests/geotest.h"
+#include "exception.h"
+#include "tests/airspacetest.h"
 #include "tests/calctest.h"
 #include "tests/dtmtest.h"
-#include "tests/spatialtest.h"
-#include "tests/routetest.h"
-#include "tests/versiontest.h"
-#include "tests/magdectest.h"
 #include "tests/flightplantest.h"
-#include "tests/scenerycfgtest.h"
-#include "tests/stringtest.h"
+#include "tests/geotest.h"
+#include "tests/gribtest.h"
+#include "tests/magdectest.h"
+#include "tests/metartest.h"
 #include "tests/onlinetest.h"
 #include "tests/perftest.h"
-#include "tests/gribtest.h"
+#include "tests/routetest.h"
+#include "tests/scenerycfgtest.h"
+#include "tests/spatialtest.h"
+#include "tests/stringtest.h"
+#include "tests/tracktest.h"
 #include "tests/updatetest.h"
-#include "tests/airspacetest.h"
-#include "exception.h"
+#include "tests/versiontest.h"
 
 #include <QString>
 #include <QTimer>
@@ -136,22 +137,23 @@ int main(int argc, char *argv[])
                                    "functions");
   parser->addOption(testFunctions);
 
-  DEFINETEST(OnlineTest)
-  DEFINETEST(SceneryCfgTest)
-  DEFINETEST(MagdecTest)
-  DEFINETEST(UpdateTest)
-  DEFINETEST(StringTest)
-  DEFINETEST(PerfTest)
   DEFINETEST(AirspaceTest)
-  DEFINETEST(GribTest)
-  DEFINETEST(VersionTest)
-  DEFINETEST(GeoTest)
   DEFINETEST(CalcTest)
-  DEFINETEST(FlightplanTest)
-  DEFINETEST(MetarTest)
   DEFINETEST(DtmTest)
-  DEFINETEST(SpatialTest)
+  DEFINETEST(FlightplanTest)
+  DEFINETEST(GeoTest)
+  DEFINETEST(GribTest)
+  DEFINETEST(MagdecTest)
+  DEFINETEST(MetarTest)
+  DEFINETEST(OnlineTest)
+  DEFINETEST(PerfTest)
   DEFINETEST(RouteTest)
+  DEFINETEST(SceneryCfgTest)
+  DEFINETEST(SpatialTest)
+  DEFINETEST(StringTest)
+  DEFINETEST(TrackTest)
+  DEFINETEST(UpdateTest)
+  DEFINETEST(VersionTest)
 
   parser->parse(QCoreApplication::arguments());
   otherOptions.append(QCoreApplication::arguments().first());
@@ -194,22 +196,23 @@ void test()
     QElapsedTimer timer;
     timer.start();
 
-    RUNTESTEXT(OnlineTest)
-    RUNTESTEXT(SceneryCfgTest)
-    RUNTESTEXT(MagdecTest)
-    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
-    RUNTESTEXT(StringTest)
-    RUNTESTEXT(PerfTest)
     RUNTESTEXT(AirspaceTest)
-    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
-    RUNTESTEXT(VersionTest)
-    RUNTESTEXT(GeoTest)
     RUNTESTEXT(CalcTest)
-    RUNTESTEXT(FlightplanTest)
-    RUNTESTEXT(MetarTest)
     RUNTESTEXT(DtmTest)
-    RUNTESTEXT(SpatialTest)
+    RUNTESTEXT(FlightplanTest)
+    RUNTESTEXT(GeoTest)
+    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
+    RUNTESTEXT(MagdecTest)
+    RUNTESTEXT(MetarTest)
+    RUNTESTEXT(OnlineTest)
+    RUNTESTEXT(PerfTest)
     RUNTESTEXT(RouteTest)
+    RUNTESTEXT(SceneryCfgTest)
+    RUNTESTEXT(SpatialTest)
+    RUNTESTEXT(StringTest)
+    RUNTESTEXT(TrackTest)
+    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
+    RUNTESTEXT(VersionTest)
 
     qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << endl;
   }

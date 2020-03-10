@@ -18,6 +18,7 @@
 #include "updatetest.h"
 
 #include "util/updatecheck.h"
+#include "testutil/testutil.h"
 
 /* Test file
  *
@@ -104,12 +105,7 @@ void UpdateTest::testUpdateBeta()
 
   check.checkForUpdates(QString(), true, atools::util::BETA);
 
-  int i = 0;
-  while(found == false && i++ < 20)
-  {
-    QApplication::processEvents();
-    QThread::sleep(1);
-  }
+  testutil::waitForValue(found, 30);
 
   QCOMPARE(testUpdates.size(), 1);
 }
@@ -129,12 +125,7 @@ void UpdateTest::testUpdateDevelop()
 
   check.checkForUpdates(QString(), true, atools::util::DEVELOP);
 
-  int i = 0;
-  while(found == false && i++ < 20)
-  {
-    QApplication::processEvents();
-    QThread::sleep(1);
-  }
+  testutil::waitForValue(found, 30);
 
   QCOMPARE(testUpdates.size(), 1);
 }
@@ -154,12 +145,7 @@ void UpdateTest::testUpdateAll()
 
   check.checkForUpdates({"1.6.0.beta"}, true, atools::util::STABLE | atools::util::BETA | atools::util::DEVELOP);
 
-  int i = 0;
-  while(found == false && i++ < 20)
-  {
-    QApplication::processEvents();
-    QThread::sleep(1);
-  }
+  testutil::waitForValue(found, 30);
 
   QCOMPARE(testUpdates.size(), 2);
 }
@@ -179,12 +165,7 @@ void UpdateTest::testUpdateForce()
 
   check.checkForUpdates(QString(), true, atools::util::STABLE | atools::util::BETA | atools::util::DEVELOP);
 
-  int i = 0;
-  while(found == false && i++ < 20)
-  {
-    QApplication::processEvents();
-    QThread::sleep(1);
-  }
+  testutil::waitForValue(found, 30);
 
   QCOMPARE(testUpdates.size(), 3);
 }

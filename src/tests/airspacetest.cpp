@@ -18,6 +18,7 @@
 #include "airspacetest.h"
 
 #include "fs/userdata/airspacereaderopenair.h"
+#include "testutil/testutil.h"
 
 #include "sql/sqldatabase.h"
 #include "sql/sqlutil.h"
@@ -40,10 +41,7 @@ void AirspaceTest::runtest(int argc, char *argv[])
 
 void AirspaceTest::initTestCase()
 {
-  SqlDatabase::addDatabase("QSQLITE", "TESTDBAIRSPACE");
-  db = new SqlDatabase("TESTDBAIRSPACE");
-  db->setDatabaseName("online_test_airspaces.sqlite");
-  db->open();
+  db = testutil::createDb("TESTDBAIRSPACE", "online_test_airspaces.sqlite");
 
   SqlScript script(db, true /* options->isVerbose()*/);
   script.executeScript(":/atools/resources/sql/fs/db/drop_meta.sql");
@@ -56,14 +54,7 @@ void AirspaceTest::initTestCase()
 
 void AirspaceTest::cleanupTestCase()
 {
-  if(db != nullptr)
-  {
-    db->close();
-    delete db;
-    db = nullptr;
-  }
-
-  SqlDatabase::removeDatabase("TESTDBAIRSPACE");
+  testutil::removeDb(db, "TESTDBAIRSPACE");
 }
 
 void AirspaceTest::testLoadOpenAir()

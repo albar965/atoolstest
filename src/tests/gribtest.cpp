@@ -24,6 +24,7 @@
 #include "geo/calculations.h"
 #include "geo/rect.h"
 #include "geo/linestring.h"
+#include "testutil/testutil.h"
 #include "exception.h"
 
 using atools::grib::GribDownloader;
@@ -321,24 +322,24 @@ void GribTest::testGribDownload()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
-          {
-            testdatasets = datasets;
-            done = true;
-            err = false;
-          });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
+  {
+    testdatasets = datasets;
+    done = true;
+    err = false;
+  });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString &, int, QString)->void
-          {
-            done = true;
-            err = true;
-          });
+          [&err, &done](const QString&, int, QString) -> void
+  {
+    done = true;
+    err = true;
+  });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
   downloader.startDownload();
 
-  waitForValue(done, 30);
+  testutil::waitForValue(done, 30);
 
   QCOMPARE(err, false);
   QCOMPARE(testdatasets.size(), 10);
@@ -353,24 +354,24 @@ void GribTest::testGribDownloadFail()
 
   atools::grib::GribDatasetVector testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector & datasets, QString)->void
-          {
-            testdatasets = datasets;
-            done = true;
-            err = false;
-          });
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
+  {
+    testdatasets = datasets;
+    done = true;
+    err = false;
+  });
   connect(&downloader, &GribDownloader::gribDownloadFailed,
-          [&err, &done](const QString &, int, QString)->void
-          {
-            done = true;
-            err = true;
-          });
+          [&err, &done](const QString&, int, QString) -> void
+  {
+    done = true;
+    err = true;
+  });
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
   downloader.startDownload(QDateTime(QDate(2020, 04, 26), QTime(12, 0, 0), Qt::UTC));
 
-  waitForValue(done, 30);
+  testutil::waitForValue(done, 30);
 
   QCOMPARE(err, true);
   QCOMPARE(testdatasets.size(), 0);
@@ -507,17 +508,4 @@ void GribTest::lnmDatasetTest(const atools::grib::GribDatasetVector& datasets, c
   QCOMPARE(datasets.at(i).getAltFeetRounded(), 38000.f);
   QCOMPARE(datasets.at(i).getParameterType(), atools::grib::V_WIND);
   QCOMPARE(datasets.at(i).getDatetime(), datetime);
-}
-
-void GribTest::waitForValue(bool& done, int seconds)
-{
-  int ti = 200;
-
-  int i = 0;
-  while(done == false && i++ < (seconds * 1000 / ti))
-  {
-    QApplication::processEvents();
-    QThread::msleep(static_cast<unsigned long>(ti));
-  }
-
 }

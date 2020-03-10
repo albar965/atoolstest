@@ -17,8 +17,10 @@
 
 #include "onlinetest.h"
 
+#include "testutil/testutil.h"
 #include "sql/sqldatabase.h"
 #include "sql/sqlutil.h"
+#include "atools.h"
 #include "fs/online/onlinedatamanager.h"
 
 using atools::sql::SqlDatabase;
@@ -38,45 +40,16 @@ void OnlineTest::runtest(int argc, char *argv[])
 
 void OnlineTest::initTestCase()
 {
-  SqlDatabase::addDatabase("QSQLITE", "TESTDBIVAO");
-  dbIvao = new SqlDatabase("TESTDBIVAO");
-  dbIvao->setDatabaseName("online_test_ivao.sqlite");
-  dbIvao->open();
-
-  SqlDatabase::addDatabase("QSQLITE", "TESTDBVATSIM");
-  dbVatsim = new SqlDatabase("TESTDBVATSIM");
-  dbVatsim->setDatabaseName("online_test_vatsim.sqlite");
-  dbVatsim->open();
-
-  SqlDatabase::addDatabase("QSQLITE", "TESTDBCUSTOM");
-  dbCustom = new SqlDatabase("TESTDBCUSTOM");
-  dbCustom->setDatabaseName("online_test_custom.sqlite");
-  dbCustom->open();
+  dbIvao = testutil::createDb("TESTDBIVAO", "online_test_ivao.sqlite");
+  dbVatsim = testutil::createDb("TESTDBVATSIM", "online_test_vatsim.sqlite");
+  dbCustom = testutil::createDb("TESTDBCUSTOM", "online_test_custom.sqlite");
 }
 
 void OnlineTest::cleanupTestCase()
 {
-  if(dbIvao != nullptr)
-  {
-    dbIvao->close();
-    delete dbIvao;
-    dbIvao = nullptr;
-  }
-  if(dbVatsim != nullptr)
-  {
-    dbVatsim->close();
-    delete dbVatsim;
-    dbVatsim = nullptr;
-  }
-  if(dbCustom != nullptr)
-  {
-    dbCustom->close();
-    delete dbCustom;
-    dbCustom = nullptr;
-  }
-  SqlDatabase::removeDatabase("TESTDBIVAO");
-  SqlDatabase::removeDatabase("TESTDBVATSIM");
-  SqlDatabase::removeDatabase("TESTDBCUSTOM");
+  testutil::removeDb(dbIvao, "TESTDBIVAO");
+  testutil::removeDb(dbVatsim, "TESTDBVATSIM");
+  testutil::removeDb(dbCustom, "TESTDBCUSTOM");
 }
 
 void OnlineTest::testCreateSchemaVatsim()
@@ -109,7 +82,7 @@ void OnlineTest::testCreateSchemaCustom()
 void OnlineTest::testOpenStatusVatsim()
 {
   OnlinedataManager odm(dbVatsim, true);
-  odm.readFromStatus(strFromFile(":/test/resources/vatsim-status.txt"));
+  odm.readFromStatus(atools::strFromFile(":/test/resources/vatsim-status.txt"));
 
   QCOMPARE(odm.getMessageFromStatus(), QString("VATSIM TEST message"));
 
@@ -129,7 +102,7 @@ void OnlineTest::testOpenStatusVatsim()
 void OnlineTest::testOpenStatusIvao()
 {
   OnlinedataManager odm(dbIvao, true);
-  odm.readFromStatus(strFromFile(":/test/resources/ivao-status.txt"));
+  odm.readFromStatus(atools::strFromFile(":/test/resources/ivao-status.txt"));
 
   QCOMPARE(odm.getMessageFromStatus(), QString("IVAO TEST message"));
 
@@ -150,7 +123,7 @@ void OnlineTest::testOpenWhazzupVatsim()
 {
   OnlinedataManager odm(dbVatsim, true);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(":/test/resources/vatsim-whazzup.txt"), atools::fs::online::VATSIM,
+  odm.readFromWhazzup(atools::strFromFile(":/test/resources/vatsim-whazzup.txt"), atools::fs::online::VATSIM,
                       QDateTime(QDate(2018, 3, 22), QTime(16, 0, 00)));
   dbVatsim->commit();
 
@@ -168,8 +141,7 @@ void OnlineTest::testOpenWhazzupIvao()
 {
   OnlinedataManager odm(dbIvao, true);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(
-                        ":/test/resources/ivao-whazzup.txt"), atools::fs::online::IVAO,
+  odm.readFromWhazzup(atools::strFromFile(":/test/resources/ivao-whazzup.txt"), atools::fs::online::IVAO,
                       QDateTime(QDate(2018, 3, 21), QTime(14, 0, 0)));
 
   QCOMPARE(odm.hasSchema(), true);
@@ -186,7 +158,7 @@ void OnlineTest::testOpenServersVatsim()
 {
   OnlinedataManager odm(dbVatsim, true);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(
+  odm.readFromWhazzup(atools::strFromFile(
                         ":/test/resources/vatsim-servers.txt"), atools::fs::online::IVAO,
                       QDateTime(QDate(2018, 3, 22), QTime(16, 0, 00)));
 
@@ -201,7 +173,7 @@ void OnlineTest::testOpenServersIvao()
 {
   OnlinedataManager odm(dbIvao, true);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(
+  odm.readFromWhazzup(atools::strFromFile(
                         ":/test/resources/ivao-servers.txt"), atools::fs::online::IVAO,
                       QDateTime(QDate(2018, 3, 21), QTime(14, 0, 0)));
 
@@ -216,7 +188,7 @@ void OnlineTest::testOpenWhazzupCustom()
 {
   OnlinedataManager odm(dbCustom, true);
   odm.initQueries();
-  odm.readFromWhazzup(strFromFile(
+  odm.readFromWhazzup(atools::strFromFile(
                         ":/test/resources/custom-whazzup.txt"), atools::fs::online::VATSIM,
                       QDateTime(QDate(2017, 9, 26), QTime(20, 0, 0)));
 
@@ -261,15 +233,4 @@ void OnlineTest::testDropSchemaCustom()
   QCOMPARE(odm.hasSchema(), false);
   QCOMPARE(odm.hasData(), false);
 #endif
-}
-
-QString OnlineTest::strFromFile(const QString& filename)
-{
-  QFile file(filename);
-  if(file.open(QIODevice::ReadOnly | QIODevice::Text))
-  {
-    QTextStream stream(&file);
-    return stream.readAll();
-  }
-  return QString();
 }

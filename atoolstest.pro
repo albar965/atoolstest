@@ -164,12 +164,14 @@ SOURCES += \
   src/tests/scenerycfgtest.cpp \
   src/tests/magdectest.cpp \
   src/tests/spatialtest.cpp \
+  src/tests/tracktest.cpp \
   src/tests/updatetest.cpp \
   src/tests/stringtest.cpp \
   src/tests/versiontest.cpp \
   src/tests/onlinetest.cpp \
   src/tests/perftest.cpp \
-  src/main.cpp
+  src/main.cpp \
+  src/testutil/testutil.cpp
 
 HEADERS += \
   src/tests/airspacetest.h \
@@ -183,11 +185,13 @@ HEADERS += \
   src/tests/scenerycfgtest.h \
   src/tests/magdectest.h \
   src/tests/spatialtest.h \
+  src/tests/tracktest.h \
   src/tests/updatetest.h \
   src/tests/stringtest.h \
   src/tests/versiontest.h \
   src/tests/onlinetest.h \
-  src/tests/perftest.h
+  src/tests/perftest.h \
+  src/testutil/testutil.h
 
 RESOURCES += \
     resources.qrc

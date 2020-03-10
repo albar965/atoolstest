@@ -67,7 +67,6 @@ private slots:
 
 private:
   void lnmDatasetTest(const atools::grib::GribDatasetVector& datasets, const QDateTime& datetime);
-  void waitForValue(bool& done, int seconds);
 
   bool verbose = false;
 

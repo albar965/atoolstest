@@ -15,25 +15,21 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_ONLINE_TEST_H
-#define ATOOLSTEST_ONLINE_TEST_H
+#ifndef ATOOLSTEST_TRACKTEST_H
+#define ATOOLSTEST_TRACKTEST_H
+
+#include "track/tracktypes.h"
 
 #include <QString>
 #include <QtTest>
 
-namespace atools {
-namespace sql {
-class SqlDatabase;
-}
-}
-
-class OnlineTest :
+class TrackTest :
   public QObject
 {
   Q_OBJECT
 
 public:
-  OnlineTest();
+  TrackTest();
 
   static void runtest(int argc, char *argv[]);
 
@@ -41,30 +37,15 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-  void testCreateSchemaVatsim();
-  void testCreateSchemaIvao();
-  void testCreateSchemaCustom();
+  void testTrackReader_data();
+  void testTrackReader();
 
-  void testOpenStatusVatsim();
-  void testOpenStatusIvao();
-
-  void testOpenWhazzupVatsim();
-  void testOpenWhazzupIvao();
-
-  void testOpenServersVatsim();
-  void testOpenServersIvao();
-
-  void testOpenWhazzupCustom();
-
-  void testDropSchemaVatsim();
-  void testDropSchemaIvao();
-  void testDropSchemaCustom();
+  void testDownload_data();
+  void testDownload();
 
 private:
-  atools::sql::SqlDatabase *dbCustom = nullptr;
-  atools::sql::SqlDatabase *dbIvao = nullptr;
-  atools::sql::SqlDatabase *dbVatsim = nullptr;
+  void verifyTracks(const atools::track::TrackVectorType& resultTracks, atools::track::TrackType type);
 
 };
 
-#endif // ATOOLSTEST_ONLINE_TEST_H
+#endif // ATOOLSTEST_TRACKTEST_H

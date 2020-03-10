@@ -15,11 +15,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_ONLINE_TEST_H
-#define ATOOLSTEST_ONLINE_TEST_H
+#ifndef ATOOLSTEST_TESTUTIL_H
+#define ATOOLSTEST_TESTUTIL_H
 
-#include <QString>
-#include <QtTest>
+class QString;
 
 namespace atools {
 namespace sql {
@@ -27,44 +26,14 @@ class SqlDatabase;
 }
 }
 
-class OnlineTest :
-  public QObject
-{
-  Q_OBJECT
+namespace testutil {
 
-public:
-  OnlineTest();
+void waitForValue(bool& done, int seconds);
 
-  static void runtest(int argc, char *argv[]);
+atools::sql::SqlDatabase *createDb(const QString& name, const QString& file);
 
-private slots:
-  void initTestCase();
-  void cleanupTestCase();
+void removeDb(atools::sql::SqlDatabase *& db, const QString& name);
 
-  void testCreateSchemaVatsim();
-  void testCreateSchemaIvao();
-  void testCreateSchemaCustom();
+} // namespace testutil
 
-  void testOpenStatusVatsim();
-  void testOpenStatusIvao();
-
-  void testOpenWhazzupVatsim();
-  void testOpenWhazzupIvao();
-
-  void testOpenServersVatsim();
-  void testOpenServersIvao();
-
-  void testOpenWhazzupCustom();
-
-  void testDropSchemaVatsim();
-  void testDropSchemaIvao();
-  void testDropSchemaCustom();
-
-private:
-  atools::sql::SqlDatabase *dbCustom = nullptr;
-  atools::sql::SqlDatabase *dbIvao = nullptr;
-  atools::sql::SqlDatabase *dbVatsim = nullptr;
-
-};
-
-#endif // ATOOLSTEST_ONLINE_TEST_H
+#endif // ATOOLSTEST_TESTUTIL_H
