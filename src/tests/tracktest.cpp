@@ -88,9 +88,9 @@ void TrackTest::testDownload_data()
   QTest::addColumn<int>("downloadType");
   QTest::addColumn<int>("downloadNumber");
 
-  QTest::newRow("NATS") << int(atools::track::NATS) << 5;
-  QTest::newRow("AUSOTS") << int(atools::track::AUSOTS) << 10;
-  QTest::newRow("PACOTS") << int(atools::track::PACOTS) << 10;
+  QTest::newRow("NATS") << int(atools::track::NATS) << 4;
+  QTest::newRow("AUSOTS") << int(atools::track::AUSOTS) << 8;
+  QTest::newRow("PACOTS") << int(atools::track::PACOTS) << 8;
 }
 
 void TrackTest::testDownload()
@@ -133,7 +133,7 @@ void TrackTest::testDownload()
   QCOMPARE(err, false);
   QCOMPARE(done, true);
   QCOMPARE(resultType, downloadTrackType);
-  QVERIFY(resultTracks.size() > downloadNumber);
+  QVERIFY(resultTracks.size() >= downloadNumber);
   QVERIFY(downloader.hasTracks(downloadTrackType));
   QVERIFY(downloader.hasAnyTracks());
 
