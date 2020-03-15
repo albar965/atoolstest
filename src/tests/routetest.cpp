@@ -84,7 +84,7 @@ void RouteTest::testRouteFinder_data()
 #ifndef QT_DEBUG
   // Too slow for debug mode
   QTest::newRow("KLAS to LPAZ MODE_AIRWAY_AND_WAYPOINT SLOW")
-    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4260.f << 55
+    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4251.f << 74
     << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
 #endif
 
@@ -212,7 +212,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(-25.1711, 36.9739) << Pos(-64.6787, 32.364)
     << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT)
     << int(NET_AIRWAY)
-    << 16
+    << 10
     << Rect(Pos(-45., 36.), nmToMeter(600.f));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY far from destination")
@@ -228,7 +228,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
     << int(atools::routing::MODE_WAYPOINT)
     << int(NET_AIRWAY)
-    << 194
+    << 142
     << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY_AND_WAYPOINT near destination")
@@ -236,7 +236,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
     << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT)
     << int(NET_AIRWAY)
-    << 24
+    << 16
     << Rect(LineString({Pos(6, 45.4781), Pos(16, 44.0889)}));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY_AND_WAYPOINT far from destination")
