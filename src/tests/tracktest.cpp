@@ -45,7 +45,7 @@ void TrackTest::cleanupTestCase()
 
 void TrackTest::testTrackReader_data()
 {
-  // curl  "https://notams.aim.faa.gov/nat.html" > NATS.html
+  // curl  "https://notams.aim.faa.gov/nat.html" > NAT.html
   // curl --data "queryType=pacificTracks&actionType=advancedNOTAMFunctions" https://www.notams.faa.gov/dinsQueryWeb/advancedNotamMapAction.do >PACOTS.html
   // curl  "https://www.airservicesaustralia.com/flextracks/text.asp?ver=1" > AUSOTS.html
 
@@ -58,8 +58,8 @@ void TrackTest::testTrackReader_data()
   QTest::newRow("AUSOTS 2") << "testdata/AUSOTS2.html" << int(atools::track::AUSOTS) << 19 << 0;
   QTest::newRow("PACOTS") << "testdata/PACOTS.html" << int(atools::track::PACOTS) << 14 << 0;
   QTest::newRow("PACOTS 2") << "testdata/PACOTS2.html" << int(atools::track::PACOTS) << 16 << 0;
-  QTest::newRow("NATS (2 invalid)") << "testdata/NATS.html" << int(atools::track::NATS) << 13 << 2;
-  QTest::newRow("NATS 2") << "testdata/NATS2.html" << int(atools::track::NATS) << 9 << 0;
+  QTest::newRow("NAT (2 invalid)") << "testdata/NAT.html" << int(atools::track::NAT) << 13 << 2;
+  QTest::newRow("NAT 2") << "testdata/NAT2.html" << int(atools::track::NAT) << 9 << 0;
 }
 
 void TrackTest::testTrackReader()
@@ -88,7 +88,7 @@ void TrackTest::testDownload_data()
   QTest::addColumn<int>("downloadType");
   QTest::addColumn<int>("downloadNumber");
 
-  QTest::newRow("NATS") << int(atools::track::NATS) << 1;
+  QTest::newRow("NAT") << int(atools::track::NAT) << 1;
   QTest::newRow("AUSOTS") << int(atools::track::AUSOTS) << 0;
   QTest::newRow("PACOTS") << int(atools::track::PACOTS) << 8;
 }
