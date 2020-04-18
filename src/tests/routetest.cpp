@@ -19,6 +19,7 @@
 
 #include "routing/routefinder.h"
 #include "routing/routenetwork.h"
+#include "routing/routenetworkloader.h"
 #include "sql/sqldatabase.h"
 #include "geo/calculations.h"
 #include "testutil/testutil.h"
@@ -28,6 +29,7 @@
 
 using atools::sql::SqlDatabase;
 using namespace atools::geo;
+using namespace atools::routing;
 
 RouteTest::RouteTest()
 {
@@ -46,21 +48,31 @@ void RouteTest::runtest(int argc, char *argv[])
 enum RouteNetworkType
 {
   NET_AIRWAY,
+  NET_TRACK,
+  NET_AIRWAY_TRACK,
   NET_RADIO
 };
 
 void RouteTest::initTestCase()
 {
-  db = testutil::createDb("TESTDBROUTE", "testdata/test_route.sqlite");
+  dbNav = testutil::createDb("TESTDBROUTE", "testdata/test_route.sqlite");
+  dbTrack = testutil::createDb("TESTDBTRACK", "testdata/test_track.sqlite");
 
-  atools::routing::RouteNetwork *net =
-    new atools::routing::RouteNetwork(db, atools::routing::SOURCE_RADIO);
-  net->ensureLoaded();
+  RouteNetwork *net = new RouteNetwork(SOURCE_RADIO);
+  RouteNetworkLoader(dbNav, nullptr).load(net);
   networks.insert(NET_RADIO, net);
 
-  net = new atools::routing::RouteNetwork(db, atools::routing::SOURCE_AIRWAY);
-  net->ensureLoaded();
+  net = new RouteNetwork(SOURCE_AIRWAY);
+  RouteNetworkLoader(dbNav, nullptr).load(net);
   networks.insert(NET_AIRWAY, net);
+
+  net = new RouteNetwork(SOURCE_AIRWAY);
+  RouteNetworkLoader(nullptr, dbTrack).load(net);
+  networks.insert(NET_TRACK, net);
+
+  net = new RouteNetwork(SOURCE_AIRWAY);
+  RouteNetworkLoader(dbNav, dbTrack).load(net);
+  networks.insert(NET_AIRWAY_TRACK, net);
 }
 
 void RouteTest::cleanupTestCase()
@@ -68,7 +80,190 @@ void RouteTest::cleanupTestCase()
   qDeleteAll(networks);
   networks.clear();
 
-  testutil::removeDb(db, "TESTDBROUTE");
+  testutil::removeDb(dbNav, "TESTDBROUTE");
+  testutil::removeDb(dbTrack, "TESTDBTRACK");
+}
+
+void RouteTest::testRouteNetworkRadio()
+{
+  RouteNetwork *net = networks.value(NET_RADIO);
+
+  net->clearParameters();
+
+  QCOMPARE(net->getNodes().size(), 9073);
+
+  for(const Node& n : net->getNodes())
+  {
+    QCOMPARE(net->getNode(n.index).id, n.id);
+    if(!n.pos.isPole())
+      QVERIFY(n.pos.almostEqual(net->getNearestNode(n.pos).pos, Pos::POS_EPSILON_1M));
+
+    QCOMPARE(n.edges.size(), 0);
+    QVERIFY(n.id > 0);
+    QVERIFY(n.pos.isValid());
+    QVERIFY(n.index >= 0);
+    QVERIFY(n.con == CONNECTION_NONE);
+    QVERIFY(n.type == NODE_VOR || n.type == NODE_NDB || n.type == NODE_VORDME);
+    QVERIFY(!n.hasAnyAirway());
+  }
+
+}
+
+void RouteTest::testRouteNetworkAirway()
+{
+  RouteNetwork *net = networks.value(NET_AIRWAY);
+
+  net->clearParameters();
+
+  QCOMPARE(net->getNodes().size(), 156801);
+
+  for(const Node& n : net->getNodes())
+  {
+    QCOMPARE(net->getNode(n.index).id, n.id);
+    if(!n.pos.isPole())
+      QVERIFY(n.pos.almostEqual(net->getNearestNode(n.pos).pos, Pos::POS_EPSILON_1M));
+
+    QVERIFY(n.edges.size() >= 0);
+    QVERIFY(n.id > 0);
+    QVERIFY(n.pos.isValid());
+    QVERIFY(n.index >= 0);
+    QVERIFY(n.con != CONNECTION_TRACK);
+    QVERIFY(n.type == NODE_WAYPOINT);
+
+    if(n.edges.isEmpty())
+      QVERIFY(n.con == CONNECTION_NONE);
+
+    for(const Edge& e : n.edges)
+    {
+      QVERIFY(e.isAnyAirway());
+      QVERIFY(e.airwayHash > 0);
+      QVERIFY(e.id > 0);
+      QVERIFY(e.toIndex >= 0);
+      QVERIFY(e.lengthMeter >= 0);
+      QVERIFY(e.toIndex < net->getNodes().size());
+    }
+  }
+}
+
+void RouteTest::testRouteNetworkTrack()
+{
+  RouteNetwork *net = networks.value(NET_TRACK);
+
+  net->clearParameters();
+
+  QCOMPARE(net->getNodes().size(), 269);
+
+  int numWestLevels = 0, numEastLevels = 0;
+
+  for(const Node& n : net->getNodes())
+  {
+    QCOMPARE(net->getNode(n.index).id, n.id);
+    if(!n.pos.isPole())
+      QVERIFY(n.pos.almostEqual(net->getNearestNode(n.pos).pos, Pos::POS_EPSILON_1M));
+
+    QVERIFY(n.edges.size() >= 0 && n.edges.size() <= 4);
+    QVERIFY(n.id > 0);
+    QVERIFY(n.index >= 0);
+    QVERIFY(n.type == NODE_WAYPOINT);
+
+    if(n.edges.isEmpty())
+    {
+      QVERIFY(n.con == CONNECTION_NONE || n.con == CONNECTION_TRACK_START_END);
+      QVERIFY(!n.hasTracks());
+    }
+    else
+    {
+      QVERIFY(n.con & CONNECTION_TRACK);
+      QVERIFY(n.hasTracks());
+    }
+
+    for(const Edge& e : n.edges)
+    {
+      if(e.hasAltLevels)
+      {
+        QVERIFY(net->getAltitudeLevelsEast(e.id).size() + net->getAltitudeLevelsWest(e.id).size() > 0);
+        numEastLevels += net->getAltitudeLevelsEast(e.id).size();
+        numWestLevels += net->getAltitudeLevelsWest(e.id).size();
+      }
+      else
+      {
+        QCOMPARE(net->getAltitudeLevelsEast(e.id).size(), 0);
+        QCOMPARE(net->getAltitudeLevelsWest(e.id).size(), 0);
+      }
+
+      QVERIFY(e.isTrack());
+      QVERIFY(e.airwayHash > 0);
+      QVERIFY(e.id >= 0);
+      QVERIFY(e.toIndex >= 0);
+      QVERIFY(e.lengthMeter > 1000);
+      QVERIFY(e.toIndex < net->getNodes().size());
+    }
+  }
+
+  // Z -> 350, 370, 380, 390, 400 * 6
+  QCOMPARE(numEastLevels, 30);
+  // A <- 340, 350, 360, 370, 380, 390 * 5
+  QCOMPARE(numWestLevels, 30);
+}
+
+void RouteTest::testRouteNetworkAirwayTrack()
+{
+  RouteNetwork *net = networks.value(NET_AIRWAY_TRACK);
+
+  net->clearParameters();
+
+  QCOMPARE(net->getNodes().size(), 156882);
+
+  for(const Node& n : net->getNodes())
+  {
+    QCOMPARE(net->getNode(n.index).id, n.id);
+    if(!n.pos.isPole())
+      QVERIFY(n.pos.almostEqual(net->getNearestNode(n.pos).pos, Pos::POS_EPSILON_1M));
+
+    QVERIFY(n.edges.size() >= 0);
+    QVERIFY(n.id > 0);
+    QVERIFY(n.index >= 0);
+    QVERIFY(n.type == NODE_WAYPOINT);
+
+    if(n.edges.isEmpty())
+    {
+      QVERIFY(n.con == CONNECTION_NONE || n.con == CONNECTION_TRACK_START_END);
+      QVERIFY(!n.hasTracks());
+    }
+    else
+    {
+      QVERIFY(n.con & CONNECTION_AIRWAY_TRACK);
+      QVERIFY(n.hasTracks() || n.hasAnyAirway());
+    }
+
+    for(const Edge& e : n.edges)
+    {
+      QVERIFY(e.isTrack() || e.isAnyAirway());
+      QVERIFY(e.airwayHash > 0);
+      QVERIFY(e.id >= 0);
+      QVERIFY(e.toIndex >= 0);
+      QVERIFY(e.lengthMeter >= 0);
+      QVERIFY(e.toIndex < net->getNodes().size());
+    }
+  }
+
+  // << Pos(-55.8333, 52.4)    /* NEEKO */
+  Node node = net->getNearestNode(Pos(-55.8333, 52.4));
+  QCOMPARE(node.getConnections() & CONNECTION_TRACK_START_END, CONNECTION_TRACK_START_END);
+  QCOMPARE(node.getConnections() & CONNECTION_TRACK, CONNECTION_TRACK);
+  QCOMPARE(node.getConnections() & CONNECTION_JET, CONNECTION_JET);
+
+  // << Pos(-14, 55)    /* NETKI */
+  node = net->getNearestNode(Pos(-14., 55.));
+  QCOMPARE(node.getConnections() & CONNECTION_TRACK_START_END, CONNECTION_TRACK_START_END);
+  QCOMPARE(node.getConnections() & CONNECTION_TRACK, CONNECTION_NONE);
+  QCOMPARE(node.getConnections() & CONNECTION_AIRWAY, CONNECTION_NONE);
+
+  // << Pos(-30, 56) /* 5630N */
+  node = net->getNearestNode(Pos(-30., 56.));
+  QCOMPARE(node.getConnections() & CONNECTION_TRACK_START_END, CONNECTION_NONE);
+  QCOMPARE(node.getConnections() & CONNECTION_TRACK, CONNECTION_TRACK);
+  QCOMPARE(node.getConnections() & CONNECTION_AIRWAY, CONNECTION_NONE);
 }
 
 void RouteTest::testRouteFinder_data()
@@ -81,51 +276,74 @@ void RouteTest::testRouteFinder_data()
   QTest::addColumn<int>("mode");
   QTest::addColumn<bool>("result");
 
+  QTest::newRow("RJAA to Pos(176.392, 26.116) MODE_AIRWAY_WAYPOINT_TRACK PACOTS avoid")
+    << Pos(140.386, 35.7653) << Pos(176.392, 26.116) << 1959.f << 11
+    << int(NET_AIRWAY_TRACK) << int(MODE_AIRWAY_WAYPOINT_TRACK) << true;
+
+  QTest::newRow("Pos(176.392, 26.116) to RJAA MODE_AIRWAY_WAYPOINT_TRACK PACOTS avoid")
+    << Pos(176.392, 26.116) << Pos(140.386, 35.7653) << 1959.f << 11
+    << int(NET_AIRWAY_TRACK) << int(MODE_AIRWAY_WAYPOINT_TRACK) << true;
+
+  QTest::newRow("RJAA to Pos(176.392, 26.116) MODE_AIRWAY_WAYPOINT_TRACK PACOTS use")
+    << Pos(140.386, 35.7653) << Pos(-161.033, 22.0198) << 3175.f << 11
+    << int(NET_AIRWAY_TRACK) << int(MODE_AIRWAY_WAYPOINT_TRACK) << true;
+
+  QTest::newRow("Pos(176.392, 26.116) to RJAA MODE_AIRWAY_WAYPOINT_TRACK PACOTS use")
+    << Pos(-161.033, 22.0198) << Pos(140.386, 35.7653) << 3314.f << 17
+    << int(NET_AIRWAY_TRACK) << int(MODE_AIRWAY_WAYPOINT_TRACK) << true;
+
+  QTest::newRow("RJTO to KSFO MODE_AIRWAY_WAYPOINT_TRACK")
+    << Pos(139.36, 34.7819) << Pos(-122.375, 37.6188) << 4592.f << 24
+    << int(NET_AIRWAY_TRACK) << int(MODE_AIRWAY_WAYPOINT_TRACK) << true;
+  QTest::newRow("CYML to EIDW MODE_AIRWAY_WAYPOINT_TRACK")
+    << Pos(-70.2239, 47.5976) << Pos(-6.27, 53.4214) << 2398.f << 12
+    << int(NET_AIRWAY_TRACK) << int(MODE_AIRWAY_WAYPOINT_TRACK) << true;
+
 #ifndef QT_DEBUG
   // Too slow for debug mode
-  QTest::newRow("KLAS to LPAZ MODE_AIRWAY_AND_WAYPOINT SLOW")
-    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4251.f << 74
-    << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+  QTest::newRow("KLAS to LPAZ MODE_AIRWAY_WAYPOINT SLOW")
+    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4210.f << 57
+    << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
 #endif
 
   QTest::newRow("MMSD to NTTO MODE_WAYPOINT")
     << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3143.f << 10
-    << int(NET_AIRWAY) << int(atools::routing::MODE_WAYPOINT) << true;
+    << int(NET_AIRWAY) << int(MODE_WAYPOINT) << true;
   QTest::newRow("MMSD to NTTO MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3297.f << 15
-    << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3276.f << 16
+    << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
   QTest::newRow("LPAZ to TXKF MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-25.1711, 36.9739) << Pos(-64.6787, 32.364) << 2015.f << 13
-    << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+    << Pos(-25.1711, 36.9739) << Pos(-64.6787, 32.364) << 1991.f << 14
+    << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
   QTest::newRow("LEVX to LPFL MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-8.6275, 42.2292) << Pos(-31.1322, 39.4581) << 1088.f << 8
-    << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+    << Pos(-8.6275, 42.2292) << Pos(-31.1322, 39.4581) << 1132.f << 11
+    << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
   QTest::newRow("EDDF to LIRF MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(8.57046, 50.0333) << Pos(12.2389, 41.8003) << 570.008f << 27
-    << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+    << Pos(8.57046, 50.0333) << Pos(12.2389, 41.8003) << 528.f << 22
+    << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
   QTest::newRow("EGAA to LGAV MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-6.21583, 54.6575) << Pos(23.9445, 37.9367) << 1626.28f << 53
-    << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+    << Pos(-6.21583, 54.6575) << Pos(23.9445, 37.9367) << 1625.28f << 52
+    << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
   QTest::newRow("ESNQ to FEFF MODE_AIRWAY_AND_WAYPOINT")
     << Pos(20.3356, 67.8213) << Pos(18.5197, 4.39778) << 3974.f << 102
-    << int(NET_AIRWAY) << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT) << true;
+    << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
 
-  // Radio navaids - new
+  // Radio navaids
   QTest::newRow("LEVX to LPMA MODE_RADIONAV")
     << Pos(-8.6275, 42.2292) << Pos(-16.7781, 32.6942) << 723.f << 3
-    << int(NET_RADIO) << int(atools::routing::MODE_RADIONAV) << true;
+    << int(NET_RADIO) << int(MODE_RADIONAV) << true;
   QTest::newRow("LEVX to LPFL MODE_RADIONAV")
     << Pos(-8.6275, 42.2292) << Pos(-31.1322, 39.4581) << 1252.73f << 4
-    << int(NET_RADIO) << int(atools::routing::MODE_RADIONAV) << true;
+    << int(NET_RADIO) << int(MODE_RADIONAV) << true;
   QTest::newRow("EDDF to LIRF MODE_RADIONAV")
     << Pos(8.57046, 50.0333) << Pos(12.2389, 41.8003) << 520.505f << 4
-    << int(NET_RADIO) << int(atools::routing::MODE_RADIONAV) << true;
+    << int(NET_RADIO) << int(MODE_RADIONAV) << true;
   QTest::newRow("EGAA to LGAV MODE_RADIONAV")
     << Pos(-6.21583, 54.6575) << Pos(23.9445, 37.9367) << 1584.73f << 9
-    << int(NET_RADIO) << int(atools::routing::MODE_RADIONAV) << true;
+    << int(NET_RADIO) << int(MODE_RADIONAV) << true;
   QTest::newRow("ESNQ to FEFF MODE_RADIONAV")
     << Pos(20.3356, 67.8213) << Pos(18.5197, 4.39778) << 3948.21f << 21
-    << int(NET_RADIO) << int(atools::routing::MODE_RADIONAV) << true;
+    << int(NET_RADIO) << int(MODE_RADIONAV) << true;
 }
 
 void RouteTest::testRouteFinder()
@@ -139,7 +357,7 @@ void RouteTest::testRouteFinder()
   QFETCH(bool, result);
 
   int numCalled = 0;
-  atools::routing::RouteFinder router(networks.value(network));
+  RouteFinder router(networks.value(network));
   router.setProgressCallback([&numCalled](int distMeterToDest, int currentDistMeterToDest) -> bool {
     Q_UNUSED(distMeterToDest)
     Q_UNUSED(currentDistMeterToDest)
@@ -149,52 +367,22 @@ void RouteTest::testRouteFinder()
     return true;
   });
 
-  bool actualResult = router.calculateRoute(from, to, 0, atools::routing::Mode(mode));
+  bool actualResult = router.calculateRoute(from, to, 0, Mode(mode));
 
   float actualDistance;
-  QVector<atools::routing::RouteLeg> routeLegs;
+  QVector<RouteLeg> routeLegs;
   router.extractLegs(routeLegs, actualDistance);
 
   qDebug() << "res" << actualResult
            << "distance" << meterToNm(actualDistance) << "expected" << dist
            << "size" << routeLegs.size() << "expected" << num << "numCalled" << numCalled;
 
+  // qDebug() << routeLegs;
+
   QCOMPARE(actualResult, result);
 
   QVERIFY(atools::almostEqual(meterToNm(actualDistance), dist, 10.f));
   QVERIFY(atools::almostEqual(routeLegs.size(), num, 5));
-}
-
-void RouteTest::testRouteNetwork()
-{
-  atools::routing::RouteNetwork *radioNet = networks.value(NET_RADIO),
-                                *airwayNet = networks.value(NET_AIRWAY);
-
-  airwayNet->clearParameters();
-  radioNet->clearParameters();
-
-  QCOMPARE(airwayNet->getNodes().size(), 156801);
-  QCOMPARE(radioNet->getNodes().size(), 9073);
-
-  for(const atools::routing::Node& n : radioNet->getNodes())
-  {
-    QCOMPARE(n.edges.size(), 0);
-    QVERIFY(n.id > 0);
-    QVERIFY(n.index >= 0);
-    QVERIFY(!n.isAnyAirway());
-  }
-
-  for(const atools::routing::Node& n : airwayNet->getNodes())
-  {
-    for(const atools::routing::Edge& e : n.edges)
-    {
-      QVERIFY(e.isAnyAirway());
-      QVERIFY(e.airwayHash > 0);
-      QVERIFY(e.airwayId > 0);
-      QVERIFY(e.toIndex >= 0);
-      QVERIFY(e.toIndex < airwayNet->getNodes().size());
-    }
-  }
 }
 
 void RouteTest::testRouteNeighbors_data()
@@ -207,10 +395,78 @@ void RouteTest::testRouteNeighbors_data()
   QTest::addColumn<int>("num");
   QTest::addColumn<Rect>("rect");
 
-  QTest::newRow("LPAZ to TXKF MODE_AIRWAY_AND_WAYPOINT center of route")
+  // << Pos(-55.8333, 52.4)    /* NEEKO */
+  // << Pos(-14, 55)    /* NETKI */
+  // << Pos(-30, 56) /* 5630N */
+  // << Pos(-56.2841, 52.2143)    /* Near NEEKO */
+  // << Pos(-13.1078, 54.9997)    /* Near NETKI */
+
+  // N555A
+  // EBONY/K6 Pos(-67.1566, 44.9024) -> NEEKO/CY Pos(-55.8333, 52.4)
+  // airway_id = 26718
+
+  QTest::newRow("NAT MODE_AIRWAY_WAYPOINT_TRACK NET_AIRWAY_TRACK EBONY West")
+    << Pos(-67.1566, 44.9024)      /* EBONY */
+    << Pos(-67.1726, 44.8967) << Pos(-13.1078, 54.9997)
+    << int(MODE_AIRWAY_WAYPOINT_TRACK)
+    << int(NET_AIRWAY_TRACK)
+    << 18
+    << Rect();    /* Do not test */
+
+  QTest::newRow("NAT MODE_AIRWAY_TRACK NET_AIRWAY_TRACK NETKI East")
+    << Pos(-13.1078, 54.9997)      /* NETKI */
+    << Pos(-56.2841, 52.2143) << Pos(-13.1078, 54.9997)
+    << int(MODE_AIRWAY_WAYPOINT_TRACK)
+    << int(NET_AIRWAY_TRACK)
+    << 1
+    << Rect(-13.1078, 54.9997);
+
+  QTest::newRow("NAT MODE_AIRWAY_TRACK NET_AIRWAY_TRACK 5630N Center")
+    << Pos(-30., 56.)    /* 5630N */
+    << Pos(-56.2841, 52.2143) << Pos(-13.1078, 54.9997)
+    << int(MODE_AIRWAY_TRACK)
+    << int(NET_AIRWAY_TRACK)
+    << 1
+    << Rect(-20., 56.); /* 5620N */
+
+  QTest::newRow("NAT MODE_AIRWAY_TRACK NET_AIRWAY_TRACK NEEKO West")
+    << Pos(-55.8333, 52.4)    /* NEEKO */
+    << Pos(-56.2841, 52.2143) << Pos(-13.1078, 54.9997)
+    << int(MODE_AIRWAY_TRACK)
+    << int(NET_AIRWAY_TRACK)
+    << 1
+    << Rect(-50., 54.);  /* 5450N */
+
+  // *************************************************
+  QTest::newRow("NAT MODE_AIRWAY_TRACK NEEKO West")
+    << Pos(-55.8333, 52.4)   /* NEEKO */
+    << Pos(-56.2841, 52.2143) << Pos(-13.1078, 54.9997)
+    << int(MODE_AIRWAY_TRACK)
+    << int(NET_TRACK)
+    << 1
+    << Rect(-50., 54.); /* 5450N */
+
+  QTest::newRow("NAT MODE_AIRWAY_TRACK NETKI East")
+    << Pos(-13.1078, 54.9997)      /* NETKI */
+    << Pos(-56.2841, 52.2143) << Pos(-13.1078, 54.9997)
+    << int(MODE_AIRWAY_TRACK)
+    << int(NET_TRACK)
+    << 1
+    << Rect(-13.1078, 54.9997);
+
+  QTest::newRow("NAT MODE_AIRWAY_TRACK 5630N Center")
+    << Pos(-30., 56.)    /* 5630N */
+    << Pos(-56.2841, 52.2143) << Pos(-13.1078, 54.9997)
+    << int(MODE_AIRWAY_TRACK)
+    << int(NET_TRACK)
+    << 1
+    << Rect(-20., 56.); /* 5620N */
+
+  // *************************************************
+  QTest::newRow("LPAZ to TXKF MODE_AIRWAY_WAYPOINT center of route")
     << Pos(-45., 36.)    /* Waypoint: 3645N */
     << Pos(-25.1711, 36.9739) << Pos(-64.6787, 32.364)
-    << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT)
+    << int(MODE_AIRWAY_WAYPOINT)
     << int(NET_AIRWAY)
     << 10
     << Rect(Pos(-45., 36.), nmToMeter(600.f));
@@ -218,7 +474,7 @@ void RouteTest::testRouteNeighbors_data()
   QTest::newRow("EDDH - LIQW MODE_AIRWAY far from destination")
     << Pos(9.947, 49.7175)     /* WUR */
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
-    << int(atools::routing::MODE_AIRWAY)
+    << int(MODE_AIRWAY)
     << int(NET_AIRWAY)
     << 3
     << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
@@ -226,23 +482,23 @@ void RouteTest::testRouteNeighbors_data()
   QTest::newRow("EDDH - LIQW MODE_WAYPOINT far from destination")
     << Pos(9.947, 49.7175)       /* WUR */
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
-    << int(atools::routing::MODE_WAYPOINT)
+    << int(MODE_WAYPOINT)
     << int(NET_AIRWAY)
-    << 142
+    << 308
     << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
 
-  QTest::newRow("EDDH - LIQW MODE_AIRWAY_AND_WAYPOINT near destination")
+  QTest::newRow("EDDH - LIQW MODE_AIRWAY_WAYPOINT near destination")
     << Pos(10, 45.4781) /* VAKON */
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
-    << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT)
+    << int(MODE_AIRWAY_WAYPOINT)
     << int(NET_AIRWAY)
-    << 16
+    << 21
     << Rect(LineString({Pos(6, 45.4781), Pos(16, 44.0889)}));
 
-  QTest::newRow("EDDH - LIQW MODE_AIRWAY_AND_WAYPOINT far from destination")
+  QTest::newRow("EDDH - LIQW MODE_AIRWAY_WAYPOINT far from destination")
     << Pos(9.947, 49.7175)     /* WUR */
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
-    << int(atools::routing::MODE_AIRWAY_AND_WAYPOINT)
+    << int(MODE_AIRWAY_WAYPOINT)
     << int(NET_AIRWAY)
     << 3
     << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
@@ -258,10 +514,10 @@ void RouteTest::testRouteNeighbors()
   QFETCH(int, num);
   QFETCH(Rect, rect);
 
-  atools::routing::RouteNetwork *net = networks.value(network);
-  net->setParameters(departure, destination, 0, atools::routing::Mode(mode));
+  RouteNetwork *net = networks.value(network);
+  net->setParameters(departure, destination, 0, Mode(mode));
 
-  atools::routing::Result result;
+  Result result;
   net->getNeighbours(result, origin);
 
   // printNearestResult(net, origin, destination, result);
@@ -269,16 +525,19 @@ void RouteTest::testRouteNeighbors()
   QVERIFY(result.nodes.size() == result.edges.size());
   QCOMPARE(result.nodes.size(), num);
 
-  for(int idx : result.nodes)
+  if(rect.isValid())
   {
-    const atools::routing::Node& n = net->getNode(idx);
-    QVERIFY(rect.contains(n.getPosition()));
+    for(int idx : result.nodes)
+    {
+      const Node& n = net->getNode(idx);
+      QVERIFY(rect.contains(n.getPosition()));
+    }
   }
 }
 
-void RouteTest::printNearestResult(atools::routing::RouteNetwork *net,
+void RouteTest::printNearestResult(RouteNetwork *net,
                                    const Pos& origin, const Pos& dest,
-                                   const atools::routing::Result& result)
+                                   const Result& result)
 {
   qDebug() << "==========================================================";
   qDebug() << "neighbours.size()" << result.size()
@@ -286,10 +545,10 @@ void RouteTest::printNearestResult(atools::routing::RouteNetwork *net,
 
   for(int i = 0; i < result.size(); i++)
   {
-    const atools::routing::Node& node = net->getNode(result.nodes.at(i));
+    const Node& node = net->getNode(result.nodes.at(i));
     qDebug() << "to origin" << meterToNm(node.getPosition().distanceMeterTo(origin)) << "nm"
-             << "to dest" << meterToNm(node.getPosition().distanceMeterTo(dest)) << "nm"
-             << "index" << result.nodes.at(i) << node;
+             << "to dest" << meterToNm(node.getPosition().distanceMeterTo(dest)) << "nm" << endl
+             << "#" << i << "index" << result.nodes.at(i) << node;
     qDebug() << result.edges.at(i);
   }
 }

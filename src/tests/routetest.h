@@ -50,13 +50,16 @@ private slots:
   void testRouteFinder_data();
   void testRouteFinder();
 
-  void testRouteNetwork();
-
   void testRouteNeighbors_data();
   void testRouteNeighbors();
 
+  void testRouteNetworkRadio();
+  void testRouteNetworkAirway();
+  void testRouteNetworkTrack();
+  void testRouteNetworkAirwayTrack();
+
 private:
-  atools::sql::SqlDatabase *db = nullptr;
+  atools::sql::SqlDatabase *dbNav = nullptr, *dbTrack = nullptr;
   QHash<int, atools::routing::RouteNetwork *> networks;
   void printNearestResult(atools::routing::RouteNetwork *net, const atools::geo::Pos& origin,
                           const atools::geo::Pos& dest, const atools::routing::Result& result);
