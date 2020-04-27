@@ -341,6 +341,7 @@ void GribTest::testGribDownload()
 
   testutil::waitForValue(done, 30);
 
+  QCOMPARE(done, true);
   QCOMPARE(err, false);
   QCOMPARE(testdatasets.size(), 10);
   lnmDatasetTest(testdatasets, downloader.getDatetime());
@@ -369,7 +370,7 @@ void GribTest::testGribDownloadFail()
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
-  downloader.startDownload(QDateTime(QDate(2020, 04, 26), QTime(12, 0, 0), Qt::UTC));
+  downloader.startDownload(QDateTime(QDate(2000, 01, 01), QTime(12, 0, 0), Qt::UTC));
 
   testutil::waitForValue(done, 30);
 
