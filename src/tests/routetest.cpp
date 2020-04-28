@@ -302,7 +302,7 @@ void RouteTest::testRouteFinder_data()
 #ifndef QT_DEBUG
   // Too slow for debug mode
   QTest::newRow("KLAS to LPAZ MODE_AIRWAY_WAYPOINT SLOW")
-    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4210.f << 57
+    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4248.f << 53
     << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
 #endif
 
@@ -322,10 +322,10 @@ void RouteTest::testRouteFinder_data()
     << Pos(8.57046, 50.0333) << Pos(12.2389, 41.8003) << 528.f << 22
     << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
   QTest::newRow("EGAA to LGAV MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(-6.21583, 54.6575) << Pos(23.9445, 37.9367) << 1625.28f << 52
+    << Pos(-6.21583, 54.6575) << Pos(23.9445, 37.9367) << 1655.28f << 69
     << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
   QTest::newRow("ESNQ to FEFF MODE_AIRWAY_AND_WAYPOINT")
-    << Pos(20.3356, 67.8213) << Pos(18.5197, 4.39778) << 3974.f << 102
+    << Pos(20.3356, 67.8213) << Pos(18.5197, 4.39778) << 3932.f << 82
     << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
 
   // Radio navaids
