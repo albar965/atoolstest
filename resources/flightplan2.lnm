@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flightplan>
+  <Header>
+    <Type>IFR</Type>
+    <CruisingAlt>27000</CruisingAlt>
+    <Comment>
+    This is a flightplan.
+    </Comment>
+    <CreationDate></CreationDate>
+    <FileVersion></FileVersion>
+    <ProgramVersion></ProgramVersion>
+    <DataCycle></DataCycle>
+    <Simulator></Simulator>
+
+    <!-- ================================================= -->
+    <Departure>
+      <Name>Frankfurt</Name>
+      <Ident>EDDF</Ident>
+      <Pos Lon="" Lat=""/>
+      <Type>AIRPORT</Type>
+      <Start>07R</Start>
+    </Departure>
+
+    <!-- ================================================= -->
+    <Destination>
+      <Name>Rom</Name>
+      <Ident>EDDF</Ident>
+      <Pos Lon="" Lat=""/>
+      <Type>AIRPORT</Type>
+    </Destination>
+
+    <Alternate>
+    <Name>Rom</Name>
+    <Ident>EDDF</Ident>
+    <Pos Lon="" Lat=""/>
+    <Type>AIRPORT</Type>
+    </Alternate>
+
+    <!-- ================================================= -->
+    <AircraftPerformance>
+      <FilePath></FilePath>
+      <Type></Type>
+    </AircraftPerformance>
+
+    <!-- ================================================= -->
+    <Procedures>
+      <SID>
+        <Name></Name>
+        <Runway></Runway>
+        <Transition>
+        </Transition>
+      </SID>
+      <STAR>
+        <Name></Name>
+        <Runway></Runway>
+        <Transition>
+        </Transition>
+      </STAR>
+      <Approach>
+        <Arinc></Arinc>
+        <Name></Name>
+        <Type></Type>
+        <Runway></Runway>
+        <Suffix></Suffix>
+        <Transition>
+        </Transition>
+      </Approach>
+    </Procedures>
+  </Header>
+
+  <!-- ================================================= -->
+  <Waypoints>
+    <!-- ================= -->
+    <Waypoint>
+      <Name>Rom</Name>
+      <Type>AIRPORT</Type>
+      <Ident>EDDF</Ident>
+      <Pos Lon="" Lat=""/>
+    </Waypoint>
+    <!-- ================= -->
+    <Waypoint>
+      <Ident>BOMBI</Ident>
+      <Type>WAYPOINT</Type>
+      <Pos Lon="" Lat=""/>
+    </Waypoint>
+    <!-- ================= -->
+    <Waypoint>
+      <Ident>TAU</Ident>
+      <Type>VOR</Type>
+      <Pos Lon="" Lat=""/>
+    </Waypoint>
+    <!-- ================= -->
+    <Waypoint>
+      <Ident>WP1</Ident>
+      <Type>CUSTOM</Type>
+      <Name>My Waypoint</Name>
+      <Comment>My very own Waypoint</Comment>
+      <Pos Lon="" Lat=""/>
+    </Waypoint>
+  </Waypoints>
+</Flightplan>

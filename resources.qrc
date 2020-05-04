@@ -47,6 +47,9 @@
         <file>resources/IFR Hamburg - Fuhlsbuettel (EDDH) to Muenchen Franz-Josef Strauss (EDDM).pln</file>
         <file>resources/IFR Zurich (LSZH) to Dublin (EIDW).pln</file>
         <file>resources/airspace.txt</file>
+        <file>resources/IFR Yakima Air  Mcallister Field (KYKM) to Kelowna (CYLW).pln</file>
+        <file>resources/flightplan_all_broken.lnmpln</file>
+        <file>resources/flightplan.lnmpln</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <!-- LNMDATA
+         _lnm=Created by Little Navmap Version 2.5.0.develop (revision acd3961) on 2020 04 29T22:01:01|
+         aircraftperffile=/home/alex/Downloads/FJS 722v3.lnmperf|
+         aircraftperfname=FJS 722v3|
+         aircraftperftype=B722|
+         alternates=CYYF#CZGF|
+         approach=TATVI|
+         approacharinc=I16-Z|
+         approachdistance=17.3|
+         approachrw=16|
+         approachsize=7|
+         approachsuffix=Z|
+         approachtype=ILS|
+         cycle=2005|
+         navdata=NAVIGRAPH|
+         sidappr=WENAS7|
+         sidapprdistance=9.4|
+         sidapprrw=09|
+         sidapprsize=3|
+         sidtrans=PERTT|
+         sidtransdistance=23.1|
+         sidtranssize=4|
+         simdata=XP11|
+         star=PIGLU4|
+         stardistance=45.0|
+         starrw=16|
+         starsize=5|
+         startrans=YDC|
+         startransdistance=35.1|
+         startranssize=4|
+         transition=HUMEK|
+         transitiondistance=7.5|
+         transitionsize=2|
+         transitiontype=F
+-->
+    <FlightPlan.FlightPlan>
+        <Title>KYKM to CYLW</Title>
+        <FPType>IFR</FPType>
+        <RouteType>HighAlt</RouteType>
+        <CruisingAlt>38000</CruisingAlt>
+        <DepartureID>KYKM</DepartureID>
+        <DepartureLLA>N46° 34' 11.61",W120° 32' 26.34",+001099.00</DepartureLLA>
+        <DestinationID>CYLW</DestinationID>
+        <DestinationLLA>N49° 57' 26.00",W119° 22' 40.00",+001409.00</DestinationLLA>
+        <Descr>KYKM, CYLW</Descr>
+        <DeparturePosition>Gate 1</DeparturePosition>
+        <DepartureName>Yakima Air / Mcallister Field</DepartureName>
+        <DestinationName>Kelowna</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>10</AppVersionMajor>
+            <AppVersionBuild>61472</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="KYKM">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N46° 34' 5.38",W120° 32' 38.59",+001099.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>KYKM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="COBDI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N47° 7' 11.03",W120° 39' 44.69",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>COBDI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="User Waypo">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N47° 40' 35.78",W120° 50' 52.44",+000000.00</WorldPosition>
+        </ATCWaypoint>
+        <ATCWaypoint id="ROZSE">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 13' 22.57",W121° 1' 45.72",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>ROZSE</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DIABO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 50' 1.53",W120° 56' 13.49",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>DIABO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IWACK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N48° 55' 55.71",W120° 50' 13.44",+000000.00</WorldPosition>
+            <ATCAirway>J503</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>IWACK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CFKNF">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 0' 0.00",W120° 46' 3.94",+000000.00</WorldPosition>
+            <ATCAirway>J503</ATCAirway>
+            <ICAO>
+                <ICAORegion>K1</ICAORegion>
+                <ICAOIdent>CFKNF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="FOLDY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 3' 5.70",W120° 42' 42.81",+000000.00</WorldPosition>
+            <ATCAirway>J503</ATCAirway>
+            <ICAO>
+                <ICAORegion>CY</ICAORegion>
+                <ICAOIdent>FOLDY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CYLW">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N49° 57' 26.00",W119° 22' 40.00",+000000.00</WorldPosition>
+            <ICAO>
+                <ICAOIdent>CYLW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

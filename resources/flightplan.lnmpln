@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LittleNavmap>
+<Flightplan>
+  <Header>
+    <FlightplanType>IFR</FlightplanType>
+    <RouteType>HighAlt</RouteType>
+    <CruisingAlt>38000</CruisingAlt>
+    <CreationDate>2020-04-30T14:32:59</CreationDate>
+    <FileVersion>0.1</FileVersion>
+    <ProgramName>atoolstest</ProgramName>
+    <ProgramVersion>0.9.7.develop</ProgramVersion>
+  </Header>
+  <SimData>XP11</SimData>
+  <NavData>NAVIGRAPH</NavData>
+  <AircraftPerformance>
+    <FilePath>/home/alex/Downloads/FJS 722v3.lnmperf</FilePath>
+    <Type>B722</Type>
+    <Name>FJS 722v3</Name>
+  </AircraftPerformance>
+  <Departure>
+    <Pos Lon="-120.541" Lat="46.5699"/>
+    <Start>Gate 1</Start>
+  </Departure>
+  <Procedures>
+    <SID>
+      <Name>WENAS7</Name>
+      <Runway>09</Runway>
+      <Transition>PERTT</Transition>
+    </SID>
+    <STAR>
+      <Name>PIGLU4</Name>
+      <Runway>16</Runway>
+      <Transition>YDC</Transition>
+    </STAR>
+    <Approach>
+      <Name>TATVI</Name>
+      <ARINC>I16-Z</ARINC>
+      <Runway>16</Runway>
+      <Type>ILS</Type>
+      <Suffix>Z</Suffix>
+      <Transition>HUMEK</Transition>
+      <TransitionType>F</TransitionType>
+    </Approach>
+  </Procedures>
+  <Alternates>
+    <Alternate>
+      <Ident>CYYF</Ident>
+    </Alternate>
+    <Alternate>
+      <Ident>CZGF</Ident>
+    </Alternate>
+  </Alternates>
+  <Waypoints>
+    <Waypoint>
+      <Ident>KYKM</Ident>
+      <Type>AIRPORT</Type>
+      <Pos Lon="-120.544" Lat="46.5682"/>
+    </Waypoint>
+    <Waypoint>
+      <Ident>COBDI</Ident>
+      <Region>K1</Region>
+      <Type>WAYPOINT</Type>
+      <Pos Lon="-120.662" Lat="47.1197"/>
+    </Waypoint>
+    <Waypoint>
+      <Type>USER</Type>
+      <Pos Lon="-120.848" Lat="47.6766"/>
+    </Waypoint>
+    <Waypoint>
+      <Ident>ROZSE</Ident>
+      <Region>K1</Region>
+      <Type>WAYPOINT</Type>
+      <Pos Lon="-121.029" Lat="48.2229"/>
+    </Waypoint>
+    <Waypoint>
+      <Ident>DIABO</Ident>
+      <Region>K1</Region>
+      <Type>WAYPOINT</Type>
+      <Pos Lon="-120.937" Lat="48.8338"/>
+    </Waypoint>
+    <Waypoint>
+      <Ident>IWACK</Ident>
+      <Region>K1</Region>
+      <Airway>J503</Airway>
+      <Type>WAYPOINT</Type>
+      <Pos Lon="-120.837" Lat="48.9321"/>
+    </Waypoint>
+    <Waypoint>
+      <Ident>CFKNF</Ident>
+      <Region>K1</Region>
+      <Airway>J503</Airway>
+      <Type>WAYPOINT</Type>
+      <Pos Lon="-120.768" Lat="49"/>
+    </Waypoint>
+    <Waypoint>
+      <Ident>FOLDY</Ident>
+      <Region>CY</Region>
+      <Airway>J503</Airway>
+      <Type>WAYPOINT</Type>
+      <Pos Lon="-120.712" Lat="49.0516"/>
+    </Waypoint>
+    <Waypoint>
+      <Ident>CYLW</Ident>
+      <Type>AIRPORT</Type>
+      <Pos Lon="-119.378" Lat="49.9572"/>
+    </Waypoint>
+  </Waypoints>
+</Flightplan>
+</LittleNavmap>

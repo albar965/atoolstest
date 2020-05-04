@@ -61,12 +61,16 @@ private slots:
   void testSaveFltplanAirway();
   void testSaveFltplanMixed();
 
-  void testSave();
-  void testSaveClean();
+  void testSavePln();
+  void testSavePlnAnnotated();
   void testSaveRte();
   void testSaveFlp();
-  void testSaveFms();
+  void testSaveFms3();
+  void testSaveFms11();
   void testSaveGpx();
+
+  void testSaveLnm();
+  void testReadLnmBroken();
 
   void testSaveGarminGns();
 
@@ -94,7 +98,7 @@ private slots:
   void testSaveMaddogMdr();
 
 private:
-  atools::fs::pln::Flightplan flightplan, flightplanUser;
+  atools::fs::pln::Flightplan flightplan, flightplanUser, flightplanAll;
   atools::fs::pln::FlightplanIO io;
 };
 

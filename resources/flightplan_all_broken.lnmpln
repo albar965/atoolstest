@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LittleNavmapFlightplan>
+  <Header>
+    <FlightplanType>IFR</FlightplanType>
+    <RouteType>HighAlt</RouteType>
+    <CruisingAlt>38000</CruisingAlt>
+    <CreationDate>2020-04-30T13:24:37</CreationDate>
+    <FileVersion>0.1</FileVersion>
+    <ProgramName>atoolstest</ProgramName>
+    <ProgramVersion>0.9.7.develop</ProgramVersion>
+  </Header>
+  <SimData>XP11</SimData>
+  <NavData>NAVIGRAPH</NavData>
+  <AircraftPerformance>
+    <FilePath>/home/alex/Downloads/FJS 722v3.lnmperf</FilePath>
+    <Type>B722</Type>
+    <Name>FJS 722v3</Name>
+  </AircraftPerformance>
+  <Departure>
+    <Pos Lon="-120.541" Lat="46.5699"/>
+    <Start>Gate 1</Start>
+  </Departure>
+  <Procedures>
+    <SID>
+      <Name>WENAS7</Name>
+      <Runway>09</Runway>
+      <Transition>PERTT</Transition>
+    </SID>
+    <STAR>
+      <Name>PIGLU4</Name>
+      <Runway>16</Runway>
+      <Transition>YDC</Transition>
+    </STAR>
+    <Approach>
+      <Name>TATVI</Name>
+      <ARINC>I16-Z</ARINC>
+      <Runway>16</Runway>
+      <Type>ILS</Type>
+      <Suffix>Z</Suffix>
+      <Transition>HUMEK</Transition>
+      <TransitionType>F</TransitionType>
+    </Approach>
+  </Procedures>
+  <Alterna
+
+
+    oint>
+      <Ident>CYLW</Ident>
+      <Type>AIRPORT</Type>
+      <Pos Lon="-119.378" Lat="49.9572"/>
+    </Waypoint>
+  </Waypoints>
+</LittleNavmapFlightplan>
