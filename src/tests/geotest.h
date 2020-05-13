@@ -41,6 +41,9 @@ private slots:
   void testCartesian_data();
   void testCartesian();
 
+  void testAntiMeridian_data();
+  void testAntiMeridian();
+
   void testRectInflate_data();
   void testRectInflate();
 

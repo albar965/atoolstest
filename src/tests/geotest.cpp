@@ -145,6 +145,33 @@ void GeoTest::testCartesian()
   QCOMPARE(zResult + 1.f, z + 1.f);
 }
 
+void GeoTest::testAntiMeridian_data()
+{
+  QTest::addColumn<float>("lonx1");
+  QTest::addColumn<float>("lonx2");
+  QTest::addColumn<bool>("result");
+
+  QTest::newRow("-177 to 177") << -177.f << 177.f << true;
+  QTest::newRow("-180 to 180") << -180.f << 180.f << true;
+  QTest::newRow("-91 to 91") << -91.f << 91.f << true
+  ;
+  QTest::newRow("-90 to 90") << -90.f << 90.f << false;
+  QTest::newRow("-89 to 89") << -89.f << 89.f << false;
+  QTest::newRow("-45 to 45") << -45.f << 45.f << false;
+  QTest::newRow("-1 to 1") << -1.f << 1.f << false;
+  QTest::newRow("0 to 0") << 0.f << 0.f << false;
+}
+
+void GeoTest::testAntiMeridian()
+{
+  QFETCH(float, lonx1);
+  QFETCH(float, lonx2);
+  QFETCH(bool, result);
+
+  QCOMPARE(atools::geo::crossesAntiMeridian(lonx1, lonx2), result);
+  QCOMPARE(atools::geo::crossesAntiMeridian(lonx2, lonx1), result);
+}
+
 void GeoTest::testAngleDiff_data()
 {
   QTest::addColumn<float>("angle1");
