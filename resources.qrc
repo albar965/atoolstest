@@ -50,6 +50,9 @@
         <file>resources/IFR Yakima Air  Mcallister Field (KYKM) to Kelowna (CYLW).pln</file>
         <file>resources/flightplan_all_broken.lnmpln</file>
         <file>resources/flightplan.lnmpln</file>
+        <file>resources/Laminar Research King Air C90.lnmperf</file>
+        <file>resources/ToLiss A319.lnmperf</file>
+        <file>resources/Just Flight PA28 Arrow.lnmperf</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

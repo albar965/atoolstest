@@ -42,6 +42,10 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testPerfSaveLoadIni();
+  void testPerfSaveLoadXml();
+
+  void testPerfSaveLoad_data();
   void testPerfSaveLoad();
 
 };

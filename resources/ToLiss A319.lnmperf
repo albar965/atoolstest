@@ -1,0 +1,28 @@
+[Options]
+AircraftType=A319
+Description=Cost index 50\nCruise: FL320 - FL360\n\nUse this profile only for the first fuel estimation. \nLook at the MCDU and adjust fuel as needed in the aircraft.\n\nhttps://www.littlenavmap.org
+FormatVersion=2.4.0
+FuelAsVolume=false
+JetFuel=true
+Metadata=Erstellt mit Little Navmap Version 2.4.4 (Revision b96521a) am 2020 02 16T21:16:17
+Name=A319 by ToLiss
+ProgramVersion=2.4.4
+
+[Perf]
+AlternateFuelFlow=5000
+AlternateSpeed=390
+ClimbFuelFlowLbsGalPerHour=9729
+ClimbSpeedKtsTAS=400
+ClimbVertSpeedFtPerMin=1509
+ContingencyFuelPercent=5
+CruiseFuelFlowLbsGalPerHour=5500
+CruiseSpeedKtsTAS=453
+DescentFuelFlowLbsGalPerHour=1612
+DescentSpeedKtsTAS=300
+DescentVertSpeedFtPerMin=1500
+ExtraFuelLbsGal=0
+MinRunwayLength=6000
+ReserveFuelLbsGal=4409
+RunwayType=Hard
+TaxiFuelLbsGal=624
+UsableFuel=42080

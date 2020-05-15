@@ -37,7 +37,7 @@ void PerfTest::runtest(int argc, char *argv[])
 
 void PerfTest::initTestCase()
 {
-  perf.setDescription("Slow climber");
+  perf.setDescription("Slow climber <XML>\"\nLineFEED[]äöüß\\");
   perf.setName("Boeing 737-200");
   perf.setAircraftType("B732");
 
@@ -64,31 +64,45 @@ void PerfTest::cleanupTestCase()
 
 }
 
+void PerfTest::testPerfSaveLoadIni()
+{
+  perf.saveIni("aircraft_performance_ini.lnmperf");
+
+  AircraftPerf loadedPerf;
+  loadedPerf.load("aircraft_performance_ini.lnmperf");
+
+  QCOMPARE(loadedPerf, perf);
+}
+
+void PerfTest::testPerfSaveLoadXml()
+{
+  perf.saveXml("aircraft_performance_xml.lnmperf");
+
+  AircraftPerf loadedPerf;
+  loadedPerf.load("aircraft_performance_xml.lnmperf");
+
+  QCOMPARE(loadedPerf, perf);
+}
+
+void PerfTest::testPerfSaveLoad_data()
+{
+  QTest::addColumn<QString>("filename");
+
+  QTest::newRow("Laminar Research King Air C90.lnmperf") << ":/test/resources/Laminar Research King Air C90.lnmperf";
+  QTest::newRow("ToLiss A319.lnmperf") << ":/test/resources/ToLiss A319.lnmperf";
+  QTest::newRow("Just Flight PA28 Arrow.lnmperf") << ":/test/resources/Just Flight PA28 Arrow.lnmperf";
+}
+
 void PerfTest::testPerfSaveLoad()
 {
-  perf.save("aircraft_performance.lnmperf");
+  QFETCH(QString, filename);
 
-  perf = AircraftPerf();
-  perf.load("aircraft_performance.lnmperf");
+  AircraftPerf loadedPerf;
+  loadedPerf.load(filename);
+  loadedPerf.saveXml(QFileInfo(filename).fileName() + "_xml");
 
-  QCOMPARE(perf.getDescription(), QString("Slow climber"));
-  QCOMPARE(perf.getName(), QString("Boeing 737-200"));
-  QCOMPARE(perf.getAircraftType(), QString("B732"));
+  AircraftPerf loadedPerfXml;
+  loadedPerfXml.load(QFileInfo(filename).fileName() + "_xml");
 
-  QCOMPARE(perf.useFuelAsVolume(), false);
-  QCOMPARE(perf.getTaxiFuel(), 1000.f);
-  QCOMPARE(perf.getReserveFuel(), 6000.f);
-  QCOMPARE(perf.getExtraFuel(), 2000.f);
-
-  QCOMPARE(perf.getClimbVertSpeed(), 2000.f);
-  QCOMPARE(perf.getClimbSpeed(), 250.f);
-  QCOMPARE(perf.getClimbFuelFlow(), 800.f);
-
-  QCOMPARE(perf.getCruiseSpeed(), 450.f);
-  QCOMPARE(perf.getCruiseFuelFlow(), 400.f);
-  QCOMPARE(perf.getContingencyFuel(), 10.f);
-
-  QCOMPARE(perf.getDescentSpeed(), 300.f);
-  QCOMPARE(perf.getDescentVertSpeed(), 3000.f);
-  QCOMPARE(perf.getDescentFuelFlow(), 100.f);
+  QCOMPARE(loadedPerf, loadedPerfXml);
 }

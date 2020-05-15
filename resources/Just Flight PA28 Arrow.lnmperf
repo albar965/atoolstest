@@ -1,0 +1,28 @@
+[Options]
+Metadata=Erstellt mit Little Navmap Version 2.4.4 (Revision b96521a) am 2020 01 26T21:29:01
+ProgramVersion=2.4.4
+FormatVersion=2.4.0
+Name=PA28 Arrow
+AircraftType=P28R
+Description=
+FuelAsVolume=false
+JetFuel=false
+
+[Perf]
+UsableFuel=420
+TaxiFuelLbsGal=2
+ReserveFuelLbsGal=70
+ExtraFuelLbsGal=0
+ContingencyFuelPercent=5
+ClimbVertSpeedFtPerMin=871
+ClimbSpeedKtsTAS=96
+ClimbFuelFlowLbsGalPerHour=90
+CruiseSpeedKtsTAS=129
+CruiseFuelFlowLbsGalPerHour=68
+DescentSpeedKtsTAS=115
+DescentVertSpeedFtPerMin=1012
+DescentFuelFlowLbsGalPerHour=46
+AlternateSpeed=110
+AlternateFuelFlow=70
+MinRunwayLength=1800
+RunwayType=Soft

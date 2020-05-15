@@ -1,0 +1,28 @@
+[Options]
+Metadata=Erstellt mit Little Navmap Version 2.5.0.develop (Revision 122bb37) am 2020 03 19T21:34:01
+ProgramVersion=2.5.0.develop
+FormatVersion=2.4.0
+Name=King Air C90
+AircraftType=BE9L
+Description=Climb \n2000 RPM limited bei either torque or ITT\n150 knots to 10 000 ft\n130 knots to 20 000 ft\n120 knots to 25 000 ft \n\nCruise \nFL200-FL230\n1900 RPM and torque as below or limited by ITT\n\nft/Torque\n0-14000 1315\n16000 1245\n18000 1164\n20000 1088\n21000 1051\n22000 1014\n23000 978\n24000 942\n25000 902\n26000 862\n28000 773\n\nDescent\n2000 fpm and 10 KTS below red line\n\nhttps://www.littlenavmap.org
+FuelAsVolume=false
+JetFuel=true
+
+[Perf]
+UsableFuel=2400
+TaxiFuelLbsGal=20
+ReserveFuelLbsGal=350
+ExtraFuelLbsGal=0
+ContingencyFuelPercent=5
+ClimbVertSpeedFtPerMin=1491.67
+ClimbSpeedKtsTAS=162.137
+ClimbFuelFlowLbsGalPerHour=670.946
+CruiseSpeedKtsTAS=219.288
+CruiseFuelFlowLbsGalPerHour=501.606
+DescentSpeedKtsTAS=246.291
+DescentVertSpeedFtPerMin=1752.45
+DescentFuelFlowLbsGalPerHour=388.17
+AlternateSpeed=186
+AlternateFuelFlow=363
+MinRunwayLength=2500
+RunwayType=Soft
