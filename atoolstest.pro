@@ -86,6 +86,8 @@ win32: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=$$PWD/../openssl-1.1.1d-win32-mingw
 # =======================================================================
 # Set compiler flags and paths
 
+LIBS += -L$$ATOOLS_LIB_PATH -latools
+
 unix:!macx {
   isEmpty(GIT_PATH) : GIT_PATH=git
 
@@ -94,6 +96,8 @@ unix:!macx {
   # Makes the shell script and setting LD_LIBRARY_PATH redundant
   QMAKE_RPATHDIR=.
   QMAKE_RPATHDIR+=./lib
+
+  LIBS += -lz
 }
 
 win32 {
@@ -117,7 +121,6 @@ isEmpty(GIT_PATH) {
   GIT_REVISION='\\"$$system('$$GIT_PATH' rev-parse --short HEAD)\\"'
 }
 
-LIBS += -L$$ATOOLS_LIB_PATH -latools
 PRE_TARGETDEPS += $$ATOOLS_LIB_PATH/libatools.a
 DEPENDPATH += $$ATOOLS_INC_PATH
 INCLUDEPATH += $$PWD/src $$ATOOLS_INC_PATH

@@ -20,6 +20,7 @@
 #include "geo/pos.h"
 #include "geo/linestring.h"
 #include "atools.h"
+#include "zip/gzip.h"
 #include "exception.h"
 
 using atools::fs::pln::Flightplan;
@@ -410,6 +411,17 @@ void FlightplanTest::testSaveLnm()
            atools::strFromFile(BASE + "result_flightplan_all2.lnmpln").simplified());
 }
 
+void FlightplanTest::testSaveLnmGz()
+{
+  atools::fs::pln::Flightplan temp;
+
+  QByteArray gz = io.saveLnmGz(flightplan);
+  io.loadLnmGz(temp, gz);
+
+  QVERIFY(atools::zip::isGzipCompressed(gz));
+  QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
+}
+
 void FlightplanTest::testReadLnmBroken()
 {
   atools::fs::pln::Flightplan temp;
@@ -654,4 +666,7 @@ void FlightplanTest::testSaveGpx()
   track.append(atools::geo::Pos(29.90336391749667, 69.44466508670483, 0));
 
   io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan.gpx", track, QVector<quint32>(), 10000);
+
+  QByteArray bytes = io.saveGpxGz(flightplan, track, QVector<quint32>(), 10000);
+  QVERIFY(atools::zip::isGzipCompressed(bytes));
 }

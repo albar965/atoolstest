@@ -70,6 +70,7 @@ private slots:
   void testSaveGpx();
 
   void testSaveLnm();
+  void testSaveLnmGz();
   void testReadLnmBroken();
 
   void testSaveGarminGns();
