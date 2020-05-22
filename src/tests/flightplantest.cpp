@@ -669,4 +669,17 @@ void FlightplanTest::testSaveGpx()
 
   QByteArray bytes = io.saveGpxGz(flightplan, track, QVector<quint32>(), 10000);
   QVERIFY(atools::zip::isGzipCompressed(bytes));
+
+  atools::geo::LineString routeLoaded, trackLoaded;
+  io.loadGpxGz(&routeLoaded, &trackLoaded, bytes);
+  QCOMPARE(trackLoaded.size(), track.size());
+  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
+
+  trackLoaded.clear();
+  io.loadGpxGz(nullptr, &trackLoaded, bytes);
+  QCOMPARE(trackLoaded.size(), track.size());
+
+  routeLoaded.clear();
+  io.loadGpxGz(&routeLoaded, nullptr, bytes);
+  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
 }

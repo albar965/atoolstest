@@ -48,6 +48,8 @@ private slots:
   void testPerfSaveLoad_data();
   void testPerfSaveLoad();
 
+  void testPerfSaveLoadXmlGz();
+
 };
 
 #endif // ATOOLSTEST_PERFTEST_H

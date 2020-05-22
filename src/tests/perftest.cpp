@@ -17,6 +17,7 @@
 
 #include "perftest.h"
 #include "fs/pln/flightplan.h"
+#include "zip/gzip.h"
 
 #include "atools.h"
 
@@ -80,6 +81,18 @@ void PerfTest::testPerfSaveLoadXml()
 
   AircraftPerf loadedPerf;
   loadedPerf.load("aircraft_performance_xml.lnmperf");
+
+  QCOMPARE(loadedPerf, perf);
+}
+
+void PerfTest::testPerfSaveLoadXmlGz()
+{
+  QByteArray bytes = perf.saveXmlGz();
+
+  QVERIFY(atools::zip::isGzipCompressed(bytes));
+
+  AircraftPerf loadedPerf;
+  loadedPerf.loadXmlGz(bytes);
 
   QCOMPARE(loadedPerf, perf);
 }
