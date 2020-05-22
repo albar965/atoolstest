@@ -162,8 +162,8 @@ void MetarTest::testMetarSim()
 
   // Check the number of failed since too many are not readable
   QCOMPARE(numFailed, 15);
-  QCOMPARE(numFailedPressure, 402);
-  QCOMPARE(numFailedTemp, 109);
-  QCOMPARE(numFailedDewpoint, 164);
+  QCOMPARE(numFailedPressure, 398);
+  QCOMPARE(numFailedTemp, 105);
+  QCOMPARE(numFailedDewpoint, 160);
   QCOMPARE(numFailedWind, 137);
 }
