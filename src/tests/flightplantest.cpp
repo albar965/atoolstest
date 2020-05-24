@@ -512,17 +512,48 @@ void FlightplanTest::testSaveMaddogMdr()
   }
 }
 
-void FlightplanTest::testSaveGarminGns()
+void FlightplanTest::testLoadGarminFpl()
 {
-  io.saveGarminGns(flightplan,
+  Flightplan plan;
+  io.load(plan, ":/test/resources/ESOKLFKB_garmin.fpl");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 43);
+
+  io.load(plan, ":/test/resources/flightplan_garmin.fpl");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 6);
+}
+
+void FlightplanTest::testSaveGarminFpl()
+{
+  io.saveGarminFpl(flightplan,
                    OUTPUT + QDir::separator() + "result_flightplan_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
-  io.saveGarminGns(flightplanUser,
+
+  Flightplan temp;
+  io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_gns.fpl");
+  QCOMPARE(temp.isLnmFormat(), false);
+  QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
+
+  io.saveGarminFpl(flightplanUser,
                    OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
 
-  io.saveGarminGns(flightplan, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl",
+  io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl");
+  QCOMPARE(temp.isLnmFormat(), false);
+  QCOMPARE(temp.getEntries().size(), flightplanUser.getEntries().size());
+
+  io.saveGarminFpl(flightplan, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl",
                    atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
-  io.saveGarminGns(flightplanUser, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl",
+
+  io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl");
+  QCOMPARE(temp.isLnmFormat(), false);
+  QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
+
+  io.saveGarminFpl(flightplanUser, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl",
                    atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
+
+  io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl");
+  QCOMPARE(temp.isLnmFormat(), false);
+  QCOMPARE(temp.getEntries().size(), flightplanUser.getEntries().size());
 }
 
 void FlightplanTest::testSaveGpx()

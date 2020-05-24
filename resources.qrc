@@ -53,6 +53,8 @@
         <file>resources/Laminar Research King Air C90.lnmperf</file>
         <file>resources/ToLiss A319.lnmperf</file>
         <file>resources/Just Flight PA28 Arrow.lnmperf</file>
+        <file>resources/flightplan_garmin.fpl</file>
+        <file>resources/ESOKLFKB_garmin.fpl</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
