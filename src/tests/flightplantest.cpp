@@ -702,15 +702,17 @@ void FlightplanTest::testSaveGpx()
   QVERIFY(atools::zip::isGzipCompressed(bytes));
 
   atools::geo::LineString routeLoaded, trackLoaded;
-  io.loadGpxGz(&routeLoaded, &trackLoaded, bytes);
+  QStringList names;
+  io.loadGpxGz(&routeLoaded, &names, &trackLoaded, bytes);
   QCOMPARE(trackLoaded.size(), track.size());
   QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
+  QCOMPARE(names.size(), flightplan.getEntries().size());
 
   trackLoaded.clear();
-  io.loadGpxGz(nullptr, &trackLoaded, bytes);
+  io.loadGpxGz(nullptr, nullptr, &trackLoaded, bytes);
   QCOMPARE(trackLoaded.size(), track.size());
 
   routeLoaded.clear();
-  io.loadGpxGz(&routeLoaded, nullptr, bytes);
+  io.loadGpxGz(&routeLoaded, nullptr, nullptr, bytes);
   QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
 }
