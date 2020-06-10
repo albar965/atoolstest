@@ -21,6 +21,15 @@
 #include <QString>
 #include <QtTest>
 
+namespace atools {
+
+namespace fs {
+namespace weather {
+class WeatherDownloadBase;
+}
+}
+}
+
 class MetarTest :
   public QObject
 {
@@ -35,9 +44,18 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testVatsimDownload();
+  void testVatsimDownloadFailed();
+  void testIvaoDownload();
+  void testIvaoDownloadFailed();
   void testNoaaDownload();
+  void testNoaaDownloadFailed();
+
   void testMetarAsn();
   void testMetarSim();
+
+private:
+  void testDownload(atools::fs::weather::WeatherDownloadBase& downloader, bool expectFail);
 
 };
 
