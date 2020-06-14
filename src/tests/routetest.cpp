@@ -307,7 +307,7 @@ void RouteTest::testRouteFinder_data()
 #endif
 
   QTest::newRow("MMSD to NTTO MODE_WAYPOINT")
-    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3143.f << 10
+    << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3132.f << 11
     << int(NET_AIRWAY) << int(MODE_WAYPOINT) << true;
   QTest::newRow("MMSD to NTTO MODE_AIRWAY_AND_WAYPOINT")
     << Pos(-109.721, 23.1521) << Pos(-140.957, -18.0642) << 3276.f << 16
