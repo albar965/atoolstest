@@ -33,6 +33,8 @@
 #include "tests/tracktest.h"
 #include "tests/updatetest.h"
 #include "tests/versiontest.h"
+#include "geo/calculations.h"
+#include "fs/sc/simconnecttypes.h"
 
 #include <QString>
 #include <QTimer>
@@ -98,6 +100,10 @@ void deinitIo();
 int main(int argc, char *argv[])
 {
   Q_INIT_RESOURCE(atools);
+
+  // Register all types to allow conversion from/to QVariant and thus reading/writing into settings
+  atools::geo::registerMetaTypes();
+  atools::fs::sc::registerMetaTypes();
 
   argCount = argc;
   argVector = argv;
