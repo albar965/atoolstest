@@ -106,7 +106,7 @@ void TrackTest::testDownload()
 
   atools::track::TrackVectorType resultTracks;
   atools::track::TrackType resultType = atools::track::UNKNOWN;
-  connect(&downloader, &TrackDownloader::downloadFinished,
+  connect(&downloader, &TrackDownloader::trackDownloadFinished,
           [&resultTracks, &resultType, &err, &done](const atools::track::TrackVectorType& tracks,
                                                     atools::track::TrackType type) -> void
   {
@@ -117,7 +117,7 @@ void TrackTest::testDownload()
     err = false;
   });
 
-  connect(&downloader, &TrackDownloader::downloadFailed,
+  connect(&downloader, &TrackDownloader::trackDownloadFailed,
           [&err, &done](const QString& error, int errorCode, QString downloadUrl, atools::track::TrackType type) -> void
   {
     qWarning() << "downloadFailed" << error << errorCode << downloadUrl << char(type);
