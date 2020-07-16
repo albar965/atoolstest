@@ -16,6 +16,9 @@
 *****************************************************************************/
 
 #include "exception.h"
+#include "fs/sc/simconnecttypes.h"
+#include "geo/calculations.h"
+
 #include "tests/airspacetest.h"
 #include "tests/calctest.h"
 #include "tests/dtmtest.h"
@@ -32,9 +35,8 @@
 #include "tests/stringtest.h"
 #include "tests/tracktest.h"
 #include "tests/updatetest.h"
+#include "tests/utiltest.h"
 #include "tests/versiontest.h"
-#include "geo/calculations.h"
-#include "fs/sc/simconnecttypes.h"
 
 #include <QString>
 #include <QTimer>
@@ -159,6 +161,7 @@ int main(int argc, char *argv[])
   DEFINETEST(StringTest)
   DEFINETEST(TrackTest)
   DEFINETEST(UpdateTest)
+  DEFINETEST(UtilTest)
   DEFINETEST(VersionTest)
 
   parser->parse(QCoreApplication::arguments());
@@ -207,7 +210,6 @@ void test()
     RUNTESTEXT(DtmTest)
     RUNTESTEXT(FlightplanTest)
     RUNTESTEXT(GeoTest)
-    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
     RUNTESTEXT(MagdecTest)
     RUNTESTEXT(MetarTest)
     RUNTESTEXT(OnlineTest)
@@ -217,8 +219,10 @@ void test()
     RUNTESTEXT(SpatialTest)
     RUNTESTEXT(StringTest)
     RUNTESTEXT(TrackTest)
-    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
+    RUNTESTEXT(UtilTest)
     RUNTESTEXT(VersionTest)
+    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
+    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
 
     qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << endl;
   }

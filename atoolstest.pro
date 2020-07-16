@@ -182,6 +182,7 @@ SOURCES += \
   src/tests/tracktest.cpp \
   src/tests/updatetest.cpp \
   src/tests/stringtest.cpp \
+  src/tests/utiltest.cpp \
   src/tests/versiontest.cpp \
   src/tests/onlinetest.cpp \
   src/tests/perftest.cpp \
@@ -203,6 +204,7 @@ HEADERS += \
   src/tests/tracktest.h \
   src/tests/updatetest.h \
   src/tests/stringtest.h \
+  src/tests/utiltest.h \
   src/tests/versiontest.h \
   src/tests/onlinetest.h \
   src/tests/perftest.h \
