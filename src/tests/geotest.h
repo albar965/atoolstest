@@ -47,6 +47,9 @@ private slots:
   void testRectInflate_data();
   void testRectInflate();
 
+  void testRectInflateMeter_data();
+  void testRectInflateMeter();
+
   void testRectExtend_data();
   void testRectExtend();
 

@@ -1062,3 +1062,41 @@ void GeoTest::testRectInflate()
 
   QCOMPARE(rect.inflate(width, height), expected);
 }
+
+void GeoTest::testRectInflateMeter_data()
+{
+#define FUNC QString("%1:%2").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
+
+  QTest::addColumn<Rect>("rect");
+  QTest::addColumn<float>("width");
+  QTest::addColumn<float>("height");
+  QTest::addColumn<Rect>("expected");
+
+  QTest::newRow(FUNC)
+    << Rect(-1.f, 1.f, 1.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-2.000557f, 2.f, 2.000557f, -2.f);
+
+  QTest::newRow(FUNC)
+      << Rect(89.f, 1.f, 91.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(87.999443f, 2.f, 92.000557f, -2.f);
+
+  QTest::newRow(FUNC)
+    << Rect(-1.f, 71.f, 1.f, 69.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-1.342196f, 72.f, 1.342196f, 68.f);
+
+  QTest::newRow(FUNC)
+    << Rect(-1.f, -69.f, 1.f, -71.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-1.342196f, -68.f, 1.342196f, -72.f);
+
+#undef FUNC
+}
+
+void GeoTest::testRectInflateMeter()
+{
+  QFETCH(Rect, rect);
+  QFETCH(float, width);
+  QFETCH(float, height);
+  QFETCH(Rect, expected);
+
+  Rect result = rect.inflateMeter(width, height);
+  qDebug() << "result" << result << result.getWidthMeter() << "expected" << expected << expected.getWidthMeter();
+
+  QVERIFY(result.almostEqual(expected, 0.00001f));
+  QVERIFY(atools::almostEqual(result.getWidthMeter(), expected.getWidthMeter(), 1.f));
+}
