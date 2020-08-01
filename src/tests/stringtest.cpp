@@ -97,6 +97,8 @@ void StringTest::testPath()
   QFETCH(QString, result);
 
   QCOMPARE(atools::buildPathNoCase(path), result);
+  QCOMPARE(atools::buildPathNoCase(path.join('/')), result);
+  QCOMPARE(atools::buildPathNoCase(path.join('\\')), result);
 }
 
 void StringTest::testCsv_data()
