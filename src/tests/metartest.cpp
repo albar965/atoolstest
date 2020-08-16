@@ -23,6 +23,7 @@
 #include "fs/weather/weathernetdownload.h"
 #include "geo/pos.h"
 #include "fs/weather/weatherdownloadbase.h"
+#include "testutil/testutil.h"
 
 using atools::fs::weather::NoaaWeatherDownloader;
 using atools::fs::weather::WeatherNetDownload;
@@ -143,12 +144,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
   atools::fs::weather::MetarResult metar = downloader.getMetar("EDDF", AIRPORT_COORDS.value("EDDF"));
   QVERIFY(metar.isEmpty());
 
-  int i = 0;
-  while(!finished && i++ < 180)
-  {
-    QApplication::processEvents();
-    QThread::sleep(1);
-  }
+  testutil::waitForValue(finished, 180);
 
   qDebug() << Q_FUNC_INFO << downloader.size() << "updateFlag" << updateFlag << "errorFlag" << errorFlag;
 

@@ -80,12 +80,7 @@ void UpdateTest::testUpdateStable()
 
   check.checkForUpdates(QString(), true, atools::util::STABLE);
 
-  int i = 0;
-  while(found == false && i++ < 20)
-  {
-    QApplication::processEvents();
-    QThread::sleep(1);
-  }
+  testutil::waitForValue(found, 180);
 
   QCOMPARE(testUpdates.size(), 1);
 }

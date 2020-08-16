@@ -26,13 +26,12 @@ namespace testutil {
 
 void waitForValue(bool& done, int seconds)
 {
-  int ti = 200;
-
-  int i = 0;
-  while(done == false && i++ < (seconds * 1000 / ti))
+  int waitTimeMs = seconds * 1000, sleepTimeMs = 100, msecs = 0;
+  while(!done && msecs < waitTimeMs)
   {
     QApplication::processEvents();
-    QThread::msleep(static_cast<unsigned long>(ti));
+    QThread::msleep(sleepTimeMs);
+    msecs += sleepTimeMs;
   }
 }
 
