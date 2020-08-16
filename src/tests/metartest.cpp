@@ -112,23 +112,26 @@ void MetarTest::testNoaaDownload()
 void MetarTest::testNoaaDownloadFailed()
 {
   NoaaWeatherDownloader downloader(this, true);
-  downloader.setRequestUrl("https://tgftp.nws.noaa.gov/data/observations/metar/cycles/XXX");
+  downloader.setRequestUrl("https://tgftp.nws.noaa.gov/data/observations/metar/cycles/XXX%1XXX");
   testDownload(downloader, true);
 }
 
 void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloader, bool expectFail)
 {
-  bool updateFlag = false, errorFlag = false;
-  connect(&downloader, &WeatherDownloadBase::weatherUpdated, [&updateFlag]() -> void
+  bool updateFlag = false, errorFlag = false, finished = false;
+
+  connect(&downloader, &WeatherDownloadBase::weatherUpdated, [&updateFlag, &finished]() -> void
   {
     updateFlag = true;
+    finished = true;
   });
 
   connect(&downloader, &WeatherDownloadBase::weatherDownloadFailed,
-          [&errorFlag](const QString& error, int errorCode, QString url) -> void
+          [&errorFlag, &finished](const QString& error, int errorCode, QString url) -> void
   {
     qDebug() << Q_FUNC_INFO << error << errorCode << url;
     errorFlag = true;
+    finished = true;
   });
 
   const QHash<QString, atools::geo::Pos> *coords = &AIRPORT_COORDS;
@@ -141,7 +144,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
   QVERIFY(metar.isEmpty());
 
   int i = 0;
-  while(downloader.isDownloading() && i++ < 60)
+  while(!finished && i++ < 180)
   {
     QApplication::processEvents();
     QThread::sleep(1);
