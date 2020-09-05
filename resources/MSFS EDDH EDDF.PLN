@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Hamburg to Frankfurt/Main</Title>
+        <FPType>IFR</FPType>
+        <RouteType>LowAlt</RouteType>
+        <CruisingAlt>30000.000</CruisingAlt>
+        <DepartureID>EDDH</DepartureID>
+        <DepartureLLA>N53° 38' 1.22",E9° 59' 6.80",+000040.75</DepartureLLA>
+        <DestinationID>EDDF</DestinationID>
+        <DestinationLLA>N50° 1' 57.39",E8° 32' 26.37",+000338.14</DestinationLLA>
+        <Descr>Hamburg to Frankfurt/Main</Descr>
+        <DepartureName>Hamburg</DepartureName>
+        <DestinationName>Frankfurt/Main</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="Hamburg">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N53° 38' 1.22",E9° 59' 6.80",+000040.75</WorldPosition>
+            <RunwayNumberFP>23</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>EDDH</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="D0">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 36' 16.98",E9° 56' 13.12",+000550.00</WorldPosition>
+            <DepartureFP>AMLU1B</DepartureFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="DH111">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 34' 31.74",E9° 52' 32.92",+001100.00</WorldPosition>
+            <DepartureFP>AMLU1B</DepartureFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DH111</ICAOIdent>
+                <ICAOAirport>EDDH</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="D2">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 30' 53.30",E9° 54' 40.42",+001850.00</WorldPosition>
+            <DepartureFP>AMLU1B</DepartureFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="DH115">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 30' 48.07",E10° 2' 41.42",+002800.00</WorldPosition>
+            <DepartureFP>AMLU1B</DepartureFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DH115</ICAOIdent>
+                <ICAOAirport>EDDH</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="AMLUH">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 25' 44.00",E10° 19' 21.00",+005050.00</WorldPosition>
+            <DepartureFP>AMLU1B</DepartureFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>AMLUH</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ORTAG">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N51° 29' 12.00",E11° 4' 47.00",+029000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ORTAG</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MIPSI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 54' 25.00",E11° 1' 26.00",+030000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>MIPSI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BAMKI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N50° 43' 5.00",E11° 1' 13.00",+029000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BAMKI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="KEGOS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 39' 38.00",E11° 3' 5.00",+029000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>KEGOS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="ASPAT">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 11' 46.00",E10° 43' 33.00",+030000.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>ASPAT</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="GIMAX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 19' 52.00",E10° 31' 51.00",+029000.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>GIMAX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SIRIO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 34' 25.00",E10° 4' 24.00",+024400.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>SIRIO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TOSTU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 42' 49.00",E9° 48' 21.00",+021750.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>TOSTU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LEPSA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 49' 22.00",E9° 35' 26.00",+019650.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>LEPSA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SPESA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 51' 44.00",E9° 20' 54.00",+017700.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>SPESA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CHA">
+            <ATCWaypointType>VOR</ATCWaypointType>
+            <WorldPosition>N49° 55' 15.97",E9° 2' 23.34",+015200.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>CHA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DF635">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 58' 56.74",E8° 43' 0.98",+012600.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DF635</ICAOIdent>
+                <ICAOAirport>EDDF</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DF636">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 55' 36.32",E8° 29' 8.06",+010700.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DF636</ICAOIdent>
+                <ICAOAirport>EDDF</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DF640">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 52' 59.30",E8° 18' 18.40",+009200.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DF640</ICAOIdent>
+                <ICAOAirport>EDDF</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DF641">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 51' 32.73",E8° 12' 22.52",+008400.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DF641</ICAOIdent>
+                <ICAOAirport>EDDF</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DF642">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 50' 7.98",E8° 6' 35.09",+007600.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DF642</ICAOIdent>
+                <ICAOAirport>EDDF</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DF643">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 48' 42.94",E8° 0' 48.00",+006800.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DF643</ICAOIdent>
+                <ICAOAirport>EDDF</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DF644">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N49° 47' 17.60",E7° 55' 1.26",+006000.00</WorldPosition>
+            <ArrivalFP>ASPA5E</ArrivalFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DF644</ICAOIdent>
+                <ICAOAirport>EDDF</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="Frankfurt/Main">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N50° 1' 57.39",E8° 32' 26.37",+000350.00</WorldPosition>
+            <ApproachTypeFP>VORDME</ApproachTypeFP>
+            <RunwayNumberFP>7</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <ICAO>
+                <ICAOIdent>EDDF</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

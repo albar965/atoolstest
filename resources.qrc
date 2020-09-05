@@ -55,6 +55,8 @@
         <file>resources/Just Flight PA28 Arrow.lnmperf</file>
         <file>resources/flightplan_garmin.fpl</file>
         <file>resources/ESOKLFKB_garmin.fpl</file>
+        <file>resources/MSFS EDDH EDDF.PLN</file>
+        <file>resources/MSFS EDXW EDDH.PLN</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

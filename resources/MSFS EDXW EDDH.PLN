@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Westerland/Sylt to Hamburg</Title>
+        <FPType>IFR</FPType>
+        <RouteType>LowAlt</RouteType>
+        <CruisingAlt>5000.000</CruisingAlt>
+        <DepartureID>EDXW</DepartureID>
+        <DepartureLLA>N54° 54' 44.66",E8° 20' 29.46",+000035.25</DepartureLLA>
+        <DestinationID>EDDH</DestinationID>
+        <DestinationLLA>N53° 38' 1.22",E9° 59' 6.80",+000040.75</DestinationLLA>
+        <Descr>Westerland/Sylt to Hamburg</Descr>
+        <DepartureName>Westerland/Sylt</DepartureName>
+        <DestinationName>Hamburg</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="EDXW">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N54° 54' 44.66",E8° 20' 29.46",+000035.25</WorldPosition>
+            <ICAO>
+                <ICAOIdent>EDXW</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BOGMU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 58' 45.00",E10° 17' 20.00",+005000.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>BOGMU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="DH621">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>N53° 56' 11.40",E10° 12' 7.70",+004000.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>ED</ICAORegion>
+                <ICAOIdent>DH621</ICAOIdent>
+                <ICAOAirport>EDDH</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="A2">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 52' 55.46",E10° 16' 44.89",+005000.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="A3">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 55' 28.84",E10° 21' 56.65",+005000.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="A4">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 58' 1.99",E10° 27' 9.03",+005000.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="A5">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 54' 11.40",E10° 32' 32.97",+005000.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="A6">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 51' 38.47",E10° 27' 20.74",+004000.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="A7">
+            <ATCWaypointType>User</ATCWaypointType>
+            <WorldPosition>N53° 49' 5.31",E10° 22' 9.12",+003550.00</WorldPosition>
+            <ArrivalFP>BOGM2A</ArrivalFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+        </ATCWaypoint>
+        <ATCWaypoint id="EDDH">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>N53° 38' 1.22",E9° 59' 6.80",+000050.00</WorldPosition>
+            <ApproachTypeFP>RNAV</ApproachTypeFP>
+            <RunwayNumberFP>23</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>EDDH</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

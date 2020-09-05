@@ -91,6 +91,10 @@ void FlightplanTest::testDetectFormat()
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/RANDOM_BIN_3.tst"), atools::fs::pln::NONE);
 
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/flightplan-procs.pln"), atools::fs::pln::FSX_PLN);
+
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/MSFS EDXW EDDH.PLN"), atools::fs::pln::MSFS_PLN);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/MSFS EDDH EDDF.PLN"), atools::fs::pln::MSFS_PLN);
+
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/flightplan-fs9.pln"), atools::fs::pln::FS9_PLN);
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/LIDTLSZS_FSC.pln"), atools::fs::pln::FSC_PLN);
 
@@ -522,6 +526,21 @@ void FlightplanTest::testLoadGarminFpl()
   io.load(plan, ":/test/resources/flightplan_garmin.fpl");
   QCOMPARE(plan.isLnmFormat(), false);
   QCOMPARE(plan.getEntries().size(), 6);
+}
+
+void FlightplanTest::testLoadMsfsPln()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/MSFS EDDH EDDF.PLN");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 6);
+  QCOMPARE(plan.getProperties().size(), 6);
+
+  plan.clear();
+  io.load(plan, ":/test/resources/MSFS EDXW EDDH.PLN");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 2);
+  QCOMPARE(plan.getProperties().size(), 6);
 }
 
 void FlightplanTest::testSaveGarminFpl()
