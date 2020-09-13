@@ -76,6 +76,7 @@ private slots:
   void testSaveGarminFpl();
   void testLoadGarminFpl();
 
+  void testLoadFsxPln();
   void testLoadMsfsPln();
 
   void testSaveFlightGearDirect();

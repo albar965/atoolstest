@@ -151,6 +151,12 @@ void GeoTest::testAntiMeridian_data()
   QTest::addColumn<float>("lonx2");
   QTest::addColumn<bool>("result");
 
+  QTest::newRow("-180 to -170") << -180.f << -170.f << false;
+  QTest::newRow("170 to 180") << 170.f << 180.f << false;
+
+  QTest::newRow("180 to -170") << 180.f << -170.f << true;
+  QTest::newRow("170 to -180") << 170.f << -180.f << true;
+
   QTest::newRow("-177 to 177") << -177.f << 177.f << true;
   QTest::newRow("-180 to 180") << -180.f << 180.f << true;
   QTest::newRow("-91 to 91") << -91.f << 91.f << true
@@ -170,6 +176,59 @@ void GeoTest::testAntiMeridian()
 
   QCOMPARE(atools::geo::crossesAntiMeridian(lonx1, lonx2), result);
   QCOMPARE(atools::geo::crossesAntiMeridian(lonx2, lonx1), result);
+}
+
+void GeoTest::testCourse_data()
+{
+  QTest::addColumn<float>("lonx1");
+  QTest::addColumn<float>("lonx2");
+  QTest::addColumn<bool>("west");
+  QTest::addColumn<bool>("east");
+  const bool WEST = true, EAST = true;
+
+  QTest::newRow("177 to -177") << 177.f << -177.f << false << EAST;
+
+  QTest::newRow("170 to -180") << 170.f << -180.f << false << EAST;
+  QTest::newRow("170 to 180") << 170.f << 180.f << false << EAST;
+  QTest::newRow("-170 to 180") << -170.f << 180.f << WEST << false;
+  QTest::newRow("-170 to -180") << -170.f << -180.f << WEST << false;
+
+  QTest::newRow("180 to -170") << 180.f << -170.f << false << EAST;
+  QTest::newRow("-180 to -170") << -180.f << -170.f << false << EAST;
+  QTest::newRow("180 to 170") << 180.f << 170.f << WEST << false;
+  QTest::newRow("-180 to 170") << -180.f << 170.f << WEST << false;
+
+  QTest::newRow("-90 to 90") << -90.f << 90.f << false << false;
+  QTest::newRow("90 to -90") << 90.f << -90.f << false << false;
+
+  QTest::newRow("-180 to 180") << -180.f << 180.f << false << false;
+  QTest::newRow("180 to -180") << 180.f << -180.f << false << false;
+  QTest::newRow("0 to 0") << 0.f << 0.f << false << false;
+
+  QTest::newRow("-177 to 177") << -177.f << 177.f << WEST << false;
+
+  QTest::newRow("-91 to 91") << -91.f << 91.f << WEST << false;
+  QTest::newRow("91 to -91") << 91.f << -91.f << false << EAST;
+
+  QTest::newRow("89 to -89") << 89.f << -89.f << WEST << false;
+  QTest::newRow("-89 to 89") << -89.f << 89.f << false << EAST;
+
+  QTest::newRow("-45 to 45") << -45.f << 45.f << false << EAST;
+  QTest::newRow("45 to -45") << 45.f << -45.f << WEST << false;
+
+  QTest::newRow("-1 to 1") << -1.f << 1.f << false << EAST;
+  QTest::newRow("1 to -1") << 1.f << -1.f << WEST << false;
+}
+
+void GeoTest::testCourse()
+{
+  QFETCH(float, lonx1);
+  QFETCH(float, lonx2);
+  QFETCH(bool, west);
+  QFETCH(bool, east);
+
+  QCOMPARE(atools::geo::isWestCourse(lonx1, lonx2), west);
+  QCOMPARE(atools::geo::isEastCourse(lonx1, lonx2), east);
 }
 
 void GeoTest::testAngleDiff_data()
@@ -1076,7 +1135,7 @@ void GeoTest::testRectInflateMeter_data()
     << Rect(-1.f, 1.f, 1.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-2.000557f, 2.f, 2.000557f, -2.f);
 
   QTest::newRow(FUNC)
-      << Rect(89.f, 1.f, 91.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(87.999443f, 2.f, 92.000557f, -2.f);
+    << Rect(89.f, 1.f, 91.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(87.999443f, 2.f, 92.000557f, -2.f);
 
   QTest::newRow(FUNC)
     << Rect(-1.f, 71.f, 1.f, 69.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-1.342196f, 72.f, 1.342196f, 68.f);

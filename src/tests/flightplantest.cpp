@@ -90,6 +90,7 @@ void FlightplanTest::testDetectFormat()
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/RANDOM_BIN_2.tst"), atools::fs::pln::NONE);
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/RANDOM_BIN_3.tst"), atools::fs::pln::NONE);
 
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/BPRL2.pln"), atools::fs::pln::FSX_PLN);
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/flightplan-procs.pln"), atools::fs::pln::FSX_PLN);
 
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/MSFS EDXW EDDH.PLN"), atools::fs::pln::MSFS_PLN);
@@ -526,6 +527,15 @@ void FlightplanTest::testLoadGarminFpl()
   io.load(plan, ":/test/resources/flightplan_garmin.fpl");
   QCOMPARE(plan.isLnmFormat(), false);
   QCOMPARE(plan.getEntries().size(), 6);
+}
+
+void FlightplanTest::testLoadFsxPln()
+{
+  Flightplan plan;
+  io.load(plan, ":/test/resources/BPRL2.pln");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 6);
+  QCOMPARE(plan.getProperties().size(), 0);
 }
 
 void FlightplanTest::testLoadMsfsPln()

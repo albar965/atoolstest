@@ -44,6 +44,9 @@ private slots:
   void testAntiMeridian_data();
   void testAntiMeridian();
 
+  void testCourse_data();
+  void testCourse();
+
   void testRectInflate_data();
   void testRectInflate();
 

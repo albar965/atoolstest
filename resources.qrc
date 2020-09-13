@@ -57,6 +57,7 @@
         <file>resources/ESOKLFKB_garmin.fpl</file>
         <file>resources/MSFS EDDH EDDF.PLN</file>
         <file>resources/MSFS EDXW EDDH.PLN</file>
+        <file>resources/BPRL2.pln</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

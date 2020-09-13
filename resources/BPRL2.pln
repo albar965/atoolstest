@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SimBase.Document Type="AceXML" version="1,0">
+<Descr>BPRL2</Descr>
+<FlightPlan.FlightPlan>
+<FPType>VFR</FPType>
+<RouteType>LowAlt</RouteType>
+<CruisingAlt>5000</CruisingAlt>
+<DepartureID>CYPR</DepartureID>
+<DepartureLLA>54.285833 , -130.444678,+116.0</DepartureLLA>
+<DestinationID>PAWG</DestinationID>
+<DestinationLLA>56.484333 , -132.369833,+25.0</DestinationLLA>
+<Descr>CYPR, PAWG</Descr>
+<DeparturePosition>13</DeparturePosition>
+<DepartureName>CYPR</DepartureName>
+<DestinationName>PAWG</DestinationName>
+<AppVersion>
+<AppVersionMajor>10</AppVersionMajor>
+<AppVersionBuild>3000</AppVersionBuild>
+</AppVersion>
+<ATCWaypoint id="CYPR">
+<ATCWaypointType>AIRPORT</ATCWaypointType>
+<WorldPosition>54.285833 , -130.444678,+116.0</WorldPosition>
+<ICAO>
+<ICAORegion>CY</ICAORegion>
+<ICAOIdent>CYPR</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV001">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>54.765892 , -130.647858,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV001</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV002">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>54.792821 , -130.555389,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV002</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV003">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>54.955593 , -130.277985,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV003</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV004">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.067412 , -130.180939,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV004</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV005">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.170032 , -130.118683,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV005</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV006">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.279689 , -129.966705,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV006</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV007">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.337008 , -130.015228,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV007</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV008">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.452955 , -130.034454,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV008</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV009">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.582019 , -130.125092,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV009</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV010">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.678668 , -130.104950,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV010</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV011">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.725615 , -130.148895,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV011</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV012">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>55.785377 , -130.137909,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV012</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="CZST">
+<ATCWaypointType>AIRPORT</ATCWaypointType>
+<WorldPosition>55.933333 , -129.983333,+5000</WorldPosition>
+<ICAO>
+<ICAORegion>CY</ICAORegion>
+<ICAOIdent>CZST</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV013">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.003680 , -129.995453,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV013</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV014">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.121749 , -130.095703,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV014</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV015">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.097245 , -130.238525,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV015</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV016">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.240221 , -130.460999,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV016</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV017">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.263109 , -130.620300,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV017</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV018">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.358327 , -130.686218,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV018</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV019">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.362892 , -130.772736,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV019</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV020">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.402428 , -131.078979,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV020</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV021">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.610077 , -131.580231,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV021</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV022">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.596471 , -131.832916,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV022</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV023">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.647847 , -131.882355,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV023</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV024">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.711968 , -132.091095,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV024</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="SV025">
+<ATCWaypointType>User</ATCWaypointType>
+<WorldPosition>56.645582 , -132.316315,+5000</WorldPosition>
+<ICAO>
+<ICAOIdent>SV025</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+<ATCWaypoint id="PAWG">
+<ATCWaypointType>AIRPORT</ATCWaypointType>
+<WorldPosition>56.484333 , -132.369833,+25.0</WorldPosition>
+<ICAO>
+<ICAORegion>PA</ICAORegion>
+<ICAOIdent>PAWG</ICAOIdent>
+</ICAO>
+</ATCWaypoint>
+</FlightPlan.FlightPlan>
+</SimBase.Document>
