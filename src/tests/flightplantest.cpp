@@ -534,7 +534,7 @@ void FlightplanTest::testLoadFsxPln()
   Flightplan plan;
   io.load(plan, ":/test/resources/BPRL2.pln");
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 6);
+  QCOMPARE(plan.getEntries().size(), 28);
   QCOMPARE(plan.getProperties().size(), 0);
 }
 
