@@ -257,13 +257,13 @@ void RouteTest::testRouteNetworkAirwayTrack()
   node = net->getNearestNode(Pos(-14., 55.));
   QCOMPARE(node.getConnections() & CONNECTION_TRACK_START_END, CONNECTION_TRACK_START_END);
   QCOMPARE(node.getConnections() & CONNECTION_TRACK, CONNECTION_NONE);
-  QCOMPARE(node.getConnections() & CONNECTION_AIRWAY, CONNECTION_NONE);
+  QCOMPARE(node.getConnections() & CONNECTION_AIRWAY_BOTH, CONNECTION_NONE);
 
   // << Pos(-30, 56) /* 5630N */
   node = net->getNearestNode(Pos(-30., 56.));
   QCOMPARE(node.getConnections() & CONNECTION_TRACK_START_END, CONNECTION_NONE);
   QCOMPARE(node.getConnections() & CONNECTION_TRACK, CONNECTION_TRACK);
-  QCOMPARE(node.getConnections() & CONNECTION_AIRWAY, CONNECTION_NONE);
+  QCOMPARE(node.getConnections() & CONNECTION_AIRWAY_BOTH, CONNECTION_NONE);
 }
 
 void RouteTest::testRouteFinder_data()
