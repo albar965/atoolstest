@@ -302,7 +302,7 @@ void RouteTest::testRouteFinder_data()
 #ifndef QT_DEBUG
   // Too slow for debug mode
   QTest::newRow("KLAS to LPAZ MODE_AIRWAY_WAYPOINT SLOW")
-    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4231.f << 42
+    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4248.f << 53
     << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
 #endif
 
