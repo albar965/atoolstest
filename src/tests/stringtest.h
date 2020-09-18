@@ -44,6 +44,7 @@ private slots:
   void testCsv_data();
   void testCsv();
 
+  void testNormalize();
 };
 
 #endif // ATOOLSTEST_STRINGTEST_H

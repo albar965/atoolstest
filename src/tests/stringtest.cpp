@@ -41,8 +41,28 @@ void StringTest::cleanupTestCase()
 
 }
 
+void StringTest::testNormalize()
+{
+  QStringList TEST({
+    " !\" § $ % & / ( ) = ? ` ´ { [ ] } \\ @ ; , : . _ - * + ' # ",
+    "Ä ä Ö ö Ü ü ¼ ½ ¾ À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø ",
+    "Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ñ ò ó ô õ ö ø ù ú û ý ÿ ",
+    "Ā ā Ă ă Ą ą Ć ć Ĉ ĉ Ċ ċ Č Č č Ď ď Đ đ Ē ē Ĕ ĕ Ė ė Ę ę Ě ě Ĝ ĝ Ğ ğ Ġ ",
+    "ġ Ģ ģ Ĥ Ĥ Ħ ħ Ĩ ĩ Ī ī Ĭ ĭ Į į İ ı Ĳ ĳ Ĵ ĵ Ķ ķ ĸ Ĺ ĺ Ļ ļ Ľ ľ Ŀ ŀ Ł ł ",
+    "Ń ń Ņ ņ Ň ň ŉ Ŋ ŋ Ō ō Ŏ ŏ Ő ő Œ œ Ŕ ŕ Ŗ ŗ Ř ř Ś ś Ŝ ŝ Ş ş Š š Ţ ţ Ť ť ",
+    "Ŧ ŧ Ũ ũ Ū ū Ŭ ŭ Ů ů Ű ű Ų ų Ŵ ŵ Ŷ ŷ Ÿ Ź ź Ż ż Ž ž ſ"
+  });
+
+  for(QString s : TEST)
+  {
+    qInfo() << s;
+    qInfo() << atools::normalizeStr(s);
+  }
+}
+
 void StringTest::testCapAirport_data()
 {
+
   QTest::addColumn<QString>("name");
   QTest::addColumn<QString>("capname");
 
@@ -87,7 +107,7 @@ void StringTest::testPath_data()
   QTest::newRow("Not Existing Path wrong case") << QStringList({"/usr", "BINX", "aclocalx"}) << "/usr/BINX/aclocalx";
   QTest::newRow("Not Existing Path wrong case 2") << QStringList({"/usr", "BINX", "ACLOCALX"}) << "/usr/BINX/ACLOCALX";
   QTest::newRow("Not Existing Path wrong case 3") <<
-  QStringList({"/", "USR", "BINX", "ACLOCALX"}) << "/usr/BINX/ACLOCALX";
+    QStringList({"/", "USR", "BINX", "ACLOCALX"}) << "/usr/BINX/ACLOCALX";
 #endif
 }
 
@@ -120,11 +140,11 @@ void StringTest::testCsv_data()
   QTest::newRow("CSV Line Escaped \"\"") << "\"a,a,a\",bbb,ccc,\"dd\"\"dd\"" << QStringList({"a,a,a", "bbb", "ccc",
                                                                                              "dd\"dd"});
   QTest::newRow("CSV Line Escaped \"\" at start or value") << "\"a,a,a\",bbb,ccc,\"\"\"dd\"" <<
-  QStringList({"a,a,a", "bbb", "ccc",
-               "\"dd"});
+    QStringList({"a,a,a", "bbb", "ccc",
+                 "\"dd"});
   QTest::newRow("CSV Line Escaped \"\" at end or value") << "\"a,a,a\",bbb,ccc,\"dd\"\"\"" <<
-  QStringList({"a,a,a", "bbb", "ccc",
-               "dd\""});
+    QStringList({"a,a,a", "bbb", "ccc",
+                 "dd\""});
   QTest::newRow("CSV Line Escaped \\n") << "\"a,a,a\",bbb,ccc,\"dd\ndd\"" << QStringList({"a,a,a", "bbb", "ccc",
                                                                                           "dd\ndd"});
 }
