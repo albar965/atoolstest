@@ -24,6 +24,9 @@
 #include <QtTest>
 
 namespace atools {
+namespace sql {
+class SqlDatabase;
+}
 namespace geo {
 class Pos;
 }
@@ -43,6 +46,8 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testToolDatabase();
+
   void testTool();
 
   void testOpen();
@@ -60,6 +65,7 @@ private slots:
 
 private:
   atools::wmm::MagDecTool tool;
+  atools::sql::SqlDatabase *db = nullptr;
 
 };
 

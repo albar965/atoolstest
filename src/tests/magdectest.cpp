@@ -20,6 +20,9 @@
 #include "fs/common/magdecreader.h"
 #include "wmm/magdectool.h"
 #include "geo/pos.h"
+#include "sql/sqlscript.h"
+#include "sql/sqldatabase.h"
+#include "testutil/testutil.h"
 
 using atools::fs::common::MagDecReader;
 using atools::geo::Pos;
@@ -39,10 +42,18 @@ void MagdecTest::initTestCase()
 {
   qInfo() << tool.getVersion();
   tool.init(2019);
+
+  db = testutil::createDb("TESTDBMAGDEC", "online_test_airspaces.sqlite");
+
+  atools::sql::SqlScript script(db, true /* options->isVerbose()*/);
+  script.executeScript(":/atools/resources/sql/fs/db/drop_nav.sql");
+  script.executeScript(":/atools/resources/sql/fs/db/create_nav_schema.sql");
+  db->commit();
 }
 
 void MagdecTest::cleanupTestCase()
 {
+  testutil::removeDb(db, "TESTDBMAGDEC");
 }
 
 void MagdecTest::testTool()
@@ -59,12 +70,42 @@ void MagdecTest::testOpen()
   QCOMPARE(reader.isValid(), true);
 }
 
+void MagdecTest::testToolDatabase()
+{
+  {
+    MagDecReader reader;
+    reader.readFromWmm(2020, 9);
+    reader.writeToTable(*db);
+    db->commit();
+
+    // VORDME: Santana (Sao Paulo Tma) (STN)
+    QCOMPARE(reader.getMagVar(Pos(-46.9233, -23.4875)), -21.5827f);
+
+    // VORDME: Albury (AY)
+    QCOMPARE(reader.getMagVar(Pos(146.966, -36.0681)), 11.899f);
+  }
+
+  {
+    MagDecReader reader;
+    reader.readFromTable(*db);
+
+    // VORDME: Santana (Sao Paulo Tma) (STN)
+    QCOMPARE(reader.getMagVar(Pos(-46.9233, -23.4875)), -21.5827f);
+
+    // VORDME: Albury (AY)
+    QCOMPARE(reader.getMagVar(Pos(146.966, -36.0681)), 11.899f);
+  }
+}
+
 void MagdecTest::testMagdecBgl_data()
 {
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("magvar");
 
   // Cannot test 90 degree since normalize will roll over
+
+  QTest::newRow("VORDME: Santana (Sao Paulo Tma) (STN)") << Pos(-46.9233, -23.4875) << -21.2939f;
+  QTest::newRow("VORDME: Albury (AY)") << Pos(146.966, -36.0681) << 11.7954f;
 
   QTest::newRow("Last Offset") << Pos(-1.f, 89.99f) << -3.59544f;
   QTest::newRow("First Offset") << Pos(0.f, -89.99f) << -30.3497f;
@@ -104,20 +145,23 @@ void MagdecTest::testMagdecWmm_data()
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("magvar");
 
-  QTest::newRow("Atlantic") << Pos(0.5f, 0.5f) << -4.48539f;
-  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -4.82358f;
-  QTest::newRow("Atlantic") << Pos(2.5f, 2.5f) << -3.23948f;
-  QTest::newRow("Atlantic") << Pos(-2.5f, -2.5f) << -6.7297f;
-  QTest::newRow("West Min") << Pos(-180.f, 0.f) << 9.61181f;
-  QTest::newRow("East Max") << Pos(180.f, 0.f) << 9.61181f;
+  QTest::newRow("VORDME: Santana (Sao Paulo Tma) (STN)") << Pos(-46.9233, -23.4875) << -21.4301f;
+  QTest::newRow("VORDME: Albury (AY)") << Pos(146.966, -36.0681) << 11.8341f;
 
-  QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.3121f; // 17° East
-  QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.2194f; // 21° West
-  QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.60491f; // 9° West
-  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.22868f;
+  QTest::newRow("Atlantic") << Pos(0.5f, 0.5f) << -4.49343f;
+  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -4.83106f;
+  QTest::newRow("Atlantic") << Pos(2.5f, 2.5f) << -3.24916f;
+  QTest::newRow("Atlantic") << Pos(-2.5f, -2.5f) << -6.73327f;
+  QTest::newRow("West Min") << Pos(-180.f, 0.f) << 9.63978f;
+  QTest::newRow("East Max") << Pos(180.f, 0.f) << 9.63978f;
 
-  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.82358f;
-  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) <<  -4.82358f;
+  QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.3201f; // 17° East
+  QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.2144f; // 21° West
+  QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.61332f; // 9° West
+  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.22097f;
+
+  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.83106f;
+  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) <<  -4.83106f;
 }
 
 void MagdecTest::testMagdecWmm()
@@ -152,20 +196,23 @@ void MagdecTest::testWmmTool_data()
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("magvar");
 
-  QTest::newRow("Atlantic") << Pos(0.5f, 0.5f) << -4.48539f;
-  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -4.82358f;
-  QTest::newRow("Atlantic") << Pos(2.5f, 2.5f) << -3.23948f;
-  QTest::newRow("Atlantic") << Pos(-2.5f, -2.5f) << -6.7297f;
-  QTest::newRow("West Min") << Pos(-180.f, 0.f) << 9.61181f;
-  QTest::newRow("East Max") << Pos(180.f, 0.f) << 9.52861f;
+  QTest::newRow("VORDME: Santana (Sao Paulo Tma) (STN)") << Pos(-46.9233, -23.4875) << -21.2521f;
+  QTest::newRow("VORDME: Albury (AY)") << Pos(146.966, -36.0681) << 11.8607f;
 
-  QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.2074f; // 17° East
-  QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.1891f; // 21° West
-  QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.57719f; // 9° West
-  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.166f;
+  QTest::newRow("Atlantic") << Pos(0.5f, 0.5f) << -4.49343f;
+  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << -4.83106f;
+  QTest::newRow("Atlantic") << Pos(2.5f, 2.5f) << -3.24916f;
+  QTest::newRow("Atlantic") << Pos(-2.5f, -2.5f) << -6.73327f;
+  QTest::newRow("West Min") << Pos(-180.f, 0.f) << 9.63978f;
+  QTest::newRow("East Max") << Pos(180.f, 0.f) << 9.557f;
 
-  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.82358f;
-  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) << -4.82358f;
+  QTest::newRow("Vancouver YVR") << Pos(-123.1491, 49.0773) << 16.215f; // 17° East
+  QTest::newRow("Natash YNA") << Pos(-61.7809, 50.1836) << -19.1838f; // 21° West
+  QTest::newRow("Nosy-Be NSB") << Pos(48.3233, -13.3056) << -9.58556f; // 9° West
+  QTest::newRow("Waypoint GOMER") << Pos(-17.3333435058594, 28.0) << -5.15816f;
+
+  QTest::newRow("Atlantic 2") << Pos(0.001f, 0.001f) << -4.83106f;
+  QTest::newRow("Atlantic 3") << Pos(-0.001f, -0.001f) <<  -4.83106f;
 }
 
 void MagdecTest::testWmmTool()
@@ -200,6 +247,6 @@ void MagdecTest::testWmm()
 #if defined(Q_OS_WIN32)
   QCOMPARE(outFile2.size(), 2688611);
 #else
-  QCOMPARE(outFile2.size(), 2623451);
+  QCOMPARE(outFile2.size(), 2623462);
 #endif
 }
