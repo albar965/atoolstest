@@ -50,6 +50,7 @@ private slots:
   void testIvaoDownloadFailed();
   void testNoaaDownload();
   void testNoaaDownloadFailed();
+  void testNoaaDownloadFailedNoHost();
 
   void testMetarAsn();
   void testMetarSim();

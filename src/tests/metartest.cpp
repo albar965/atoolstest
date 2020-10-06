@@ -117,6 +117,13 @@ void MetarTest::testNoaaDownloadFailed()
   testDownload(downloader, true);
 }
 
+void MetarTest::testNoaaDownloadFailedNoHost()
+{
+  NoaaWeatherDownloader downloader(this, true);
+  downloader.setRequestUrl("https://NONONONO.nws.noaa.gov/data/observations/metar/cycles/%1Z.TXT");
+  testDownload(downloader, true);
+}
+
 void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloader, bool expectFail)
 {
   bool updateFlag = false, errorFlag = false, finished = false;

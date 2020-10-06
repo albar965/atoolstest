@@ -555,8 +555,7 @@ void FlightplanTest::testLoadMsfsPln()
 
 void FlightplanTest::testSaveGarminFpl()
 {
-  io.saveGarminFpl(flightplan,
-                   OUTPUT + QDir::separator() + "result_flightplan_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
+  io.saveGarminFpl(flightplan, OUTPUT + QDir::separator() + "result_flightplan_gns.fpl", false);
 
   Flightplan temp;
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_gns.fpl");
@@ -564,21 +563,19 @@ void FlightplanTest::testSaveGarminFpl()
   QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
 
   io.saveGarminFpl(flightplanUser,
-                   OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl", atools::fs::pln::SAVE_NO_OPTIONS);
+                   OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl", false);
 
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl");
   QCOMPARE(temp.isLnmFormat(), false);
   QCOMPARE(temp.getEntries().size(), flightplanUser.getEntries().size());
 
-  io.saveGarminFpl(flightplan, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl",
-                   atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
+  io.saveGarminFpl(flightplan, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl", true);
 
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl");
   QCOMPARE(temp.isLnmFormat(), false);
   QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
 
-  io.saveGarminFpl(flightplanUser, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl",
-                   atools::fs::pln::SAVE_GNS_USER_WAYPOINTS);
+  io.saveGarminFpl(flightplanUser, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl", true);
 
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl");
   QCOMPARE(temp.isLnmFormat(), false);
