@@ -60,6 +60,49 @@ void StringTest::testNormalize()
   }
 }
 
+void StringTest::testElide()
+{
+  using namespace atools;
+  QCOMPARE(elideTextShort("0123456789", 5), "0123…");
+  QCOMPARE(elideTextShort("012345", 5), "0123…");
+  QCOMPARE(elideTextShort("01234", 5), "01234");
+  QCOMPARE(elideTextShort("0123", 5), "0123");
+  QCOMPARE(elideTextShort("0", 5), "0");
+  QCOMPARE(elideTextShort("", 5), "");
+  QCOMPARE(elideTextShortLeft("0123456789", 5), "…6789");
+  QCOMPARE(elideTextShortLeft("012345", 5), "…2345");
+  QCOMPARE(elideTextShortLeft("01234", 5), "01234");
+  QCOMPARE(elideTextShortLeft("0123", 5), "0123");
+  QCOMPARE(elideTextShortLeft("0", 5), "0");
+  QCOMPARE(elideTextShortLeft("", 5), "");
+  QCOMPARE(elideTextShortMiddle("0123456789", 5), "01…89");
+  QCOMPARE(elideTextShortMiddle("012345", 5), "01…45");
+  QCOMPARE(elideTextShortMiddle("01234", 5), "01234");
+  QCOMPARE(elideTextShortMiddle("0123", 5), "0123");
+  QCOMPARE(elideTextShortMiddle("0", 5), "0");
+  QCOMPARE(elideTextShortMiddle("", 5), "");
+
+  QCOMPARE(elideTextLinesShort("0123456789", 5, 5), "0123…");
+  QCOMPARE(elideTextLinesShort("012345", 5, 5), "0123…");
+  QCOMPARE(elideTextLinesShort("01234", 5, 5), "01234");
+  QCOMPARE(elideTextLinesShort("0123", 5, 5), "0123");
+  QCOMPARE(elideTextLinesShort("0", 5, 5), "0");
+  QCOMPARE(elideTextLinesShort("", 5, 5), "");
+  QCOMPARE(elideTextLinesShort("0123456789\n\nABCDEFGHIJ\n0123456789\n0123456789\n0123456789", 2, 5), "0123…\n\n…");
+  QCOMPARE(elideTextLinesShort("0123456789\nABCDEFGHIJ\n0123456789\n0123456789\n0123456789", 2, 5), "0123…\nABCD…\n…");
+  QCOMPARE(elideTextLinesShort("0123456789\nABCDEFGHIJ\n0123456789", 2, 10), "0123456789\nABCDEFGHIJ\n…");
+  QCOMPARE(elideTextLinesShort("0123456789\nABCDEFGHIJ\n0123456789", 2, 10, false, false), "0123456789\nABCDEFGHIJ…");
+  QCOMPARE(elideTextLinesShort("0123456789\nABCDEFGHIJ", 2, 10), "0123456789\nABCDEFGHIJ");
+  QCOMPARE(elideTextLinesShort("0123456789\nABCDEFGHIJ", 2, 5), "0123…\nABCD…");
+  QCOMPARE(elideTextLinesShort("0123456789", 2, 10), "0123456789");
+  QCOMPARE(elideTextLinesShort("0123456789", 2, 9), "01234567…");
+
+  QCOMPARE(elideTextLinesShort("0123456789\n\nABCDEFGHIJ\n0123456789\n\n0123456789\n0123456789", 2, 5, true), "0123…\nABCD…\n…");
+  QCOMPARE(elideTextLinesShort("0123456789\n\nABCDEFGHIJ\n\n0123456789", 2, 10, true), "0123456789\nABCDEFGHIJ\n…");
+  QCOMPARE(elideTextLinesShort("0123456789\n\nABCDEFGHIJ", 2, 10, true), "0123456789\nABCDEFGHIJ");
+  QCOMPARE(elideTextLinesShort("\n0123456789\n", 2, 10, true), "0123456789");
+}
+
 void StringTest::testCapAirport_data()
 {
 
@@ -67,7 +110,12 @@ void StringTest::testCapAirport_data()
   QTest::addColumn<QString>("capname");
 
   QTest::newRow("Tustin Mcas") << "Tustin Mcas" << "Tustin MCAS";
+  QTest::newRow("TUSTIN MCAS") << "TUSTIN MCAS" << "Tustin MCAS";
+  QTest::newRow("tustin mcas") << "tustin mcas" << "Tustin MCAS";
   QTest::newRow("San Clemente Island Nalf") << "San Clemente Island Nalf" << "San Clemente Island NALF";
+  QTest::newRow("St Mary's") << "St Mary's" << "St Mary's";
+  QTest::newRow("ST MARY'S") << "ST MARY'S" << "St Mary's";
+  QTest::newRow("st mary's") << "st mary's" << "St Mary's";
 
 }
 
