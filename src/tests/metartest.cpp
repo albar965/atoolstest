@@ -165,7 +165,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
   {
     QVERIFY(updateFlag);
     QVERIFY(!errorFlag);
-    QVERIFY(downloader.size() > 5000);
+    QVERIFY(downloader.size() > 500);
 
     for(auto it = AIRPORT_COORDS.begin(); it != AIRPORT_COORDS.end(); ++it)
     {
