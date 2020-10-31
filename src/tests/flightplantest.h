@@ -72,6 +72,7 @@ private slots:
   void testSaveLnm();
   void testSaveLnmGz();
   void testReadLnmBroken();
+  void testReadLnmEmpty();
 
   void testSaveGarminFpl();
   void testLoadGarminFpl();

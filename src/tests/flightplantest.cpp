@@ -433,6 +433,12 @@ void FlightplanTest::testReadLnmBroken()
   QVERIFY_EXCEPTION_THROWN(io.load(temp, ":/test/resources/flightplan_all_broken.lnmpln"), atools::Exception);
 }
 
+void FlightplanTest::testReadLnmEmpty()
+{
+  atools::fs::pln::Flightplan temp;
+  QVERIFY_EXCEPTION_THROWN(io.load(temp, ":/test/resources/Empty Flightplan.lnmpln"), atools::Exception);
+}
+
 void FlightplanTest::testSaveLeveld()
 {
   Flightplan plan;

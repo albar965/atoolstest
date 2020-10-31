@@ -58,6 +58,7 @@
         <file>resources/MSFS EDDH EDDF.PLN</file>
         <file>resources/MSFS EDXW EDDH.PLN</file>
         <file>resources/BPRL2.pln</file>
+        <file>resources/Empty Flightplan.lnmpln</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
