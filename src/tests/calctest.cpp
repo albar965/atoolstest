@@ -42,6 +42,63 @@ void CalcTest::cleanupTestCase()
 
 }
 
+void CalcTest::testUtc_data()
+{
+  QTest::addColumn<int>("days");
+  QTest::addColumn<int>("localSeconds");
+  QTest::addColumn<int>("zuluSeconds");
+  QTest::addColumn<QDateTime>("utcResult");
+
+  // Same day
+  QTest::newRow("8:30 17:30") << 305 << int(8.5 * 3600.) << int(17.5 * 3600.)
+                              << QDateTime(QDate(2020, 11, 1), QTime(17, 30), Qt::UTC);
+  QTest::newRow("17:30 8:30") << 305 << int(17.5 * 3600.) << int(8.5 * 3600.)
+                              << QDateTime(QDate(2020, 11, 1), QTime(8, 30), Qt::UTC);
+
+  QTest::newRow("7:30 18:30") << 305 << int(7.5 * 3600.) << int(18.5 * 3600.)
+                              << QDateTime(QDate(2020, 11, 1), QTime(18, 30), Qt::UTC);
+  QTest::newRow("18:30 7:30") << 305 << int(18.5 * 3600.) << int(7.5 * 3600.)
+                              << QDateTime(QDate(2020, 11, 1), QTime(7, 30), Qt::UTC);
+
+  QTest::newRow("12:30 13:30") << 305 << int(12.5 * 3600.) << int(13.5 * 3600.)
+                               << QDateTime(QDate(2020, 11, 1), QTime(13, 30), Qt::UTC);
+
+  QTest::newRow("13:30 12:30") << 305 << int(13.5 * 3600.) << int(12.5 * 3600.)
+                               << QDateTime(QDate(2020, 11, 1), QTime(12, 30), Qt::UTC);
+
+  QTest::newRow("11:30 12:30") << 305 << int(11.5 * 3600.) << int(12.5 * 3600.)
+                               << QDateTime(QDate(2020, 11, 1), QTime(12, 30), Qt::UTC);
+
+  QTest::newRow("12:30 11:30") << 305 << int(12.5 * 3600.) << int(11.5 * 3600.)
+                               << QDateTime(QDate(2020, 11, 1), QTime(11, 30), Qt::UTC);
+
+  // One day forward
+  QTest::newRow("18:30 5:30") << 305 << int(18.5 * 3600.) << int(5.5 * 3600.)
+                              << QDateTime(QDate(2020, 11, 2), QTime(5, 30), Qt::UTC);
+  QTest::newRow("23:30 0:30") << 305 << int(23.5 * 3600.) << int(0.5 * 3600.)
+                              << QDateTime(QDate(2020, 11, 2), QTime(0, 30), Qt::UTC);
+
+  // One day back
+  QTest::newRow("5:30 18:30") << 305 << int(5.5 * 3600.) << int(18.5 * 3600.)
+                              << QDateTime(QDate(2020, 10, 31), QTime(18, 30), Qt::UTC);
+  QTest::newRow("0:30 23:30") << 305 << int(0.5 * 3600.) << int(23.5 * 3600.)
+                              << QDateTime(QDate(2020, 10, 31), QTime(23, 30), Qt::UTC);
+
+}
+
+void CalcTest::testUtc()
+{
+  QFETCH(int, days);
+  QFETCH(int, localSeconds);
+  QFETCH(int, zuluSeconds);
+  QFETCH(QDateTime, utcResult);
+
+  QDateTime local = atools::correctDateLocal(days, localSeconds, zuluSeconds);
+
+  qDebug() << local << local.toUTC() << utcResult;
+  QCOMPARE(local.toUTC(), utcResult);
+}
+
 void CalcTest::testAltitudePressure_data()
 {
   QTest::addColumn<float>("altMeter");

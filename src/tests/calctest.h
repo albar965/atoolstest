@@ -35,6 +35,9 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testUtc_data();
+  void testUtc();
+
   void testAltitudePressure_data();
   void testAltitudePressure();
 
