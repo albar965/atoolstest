@@ -39,7 +39,6 @@ const static QHash<QString, atools::geo::Pos> AIRPORT_COORDS = {
   {"EDDN", atools::geo::Pos(11.0780086517334, 49.4986991882324)},
   {"EDDB", atools::geo::Pos(13.5006723403931, 52.362247467041)},
   {"EDDC", atools::geo::Pos(13.7679996490479, 51.1343460083008)},
-  {"EDDT", atools::geo::Pos(13.2877111434937, 52.559684753418)},
   {"EDDV", atools::geo::Pos(9.68352222442627, 52.4602127075195)},
   {"EDDW", atools::geo::Pos(8.78674697875977, 53.0474014282227)},
   {"EDDS", atools::geo::Pos(9.22196388244629, 48.6898765563965)},
@@ -47,11 +46,11 @@ const static QHash<QString, atools::geo::Pos> AIRPORT_COORDS = {
   {"EDDE", atools::geo::Pos(10.9581060409546, 50.9798126220703)},
   {"EDDG", atools::geo::Pos(7.68483066558838, 52.1346435546875)},
   {"EDDP", atools::geo::Pos(12.2363834381104, 51.4239921569824)},
-  {"EDDI", atools::geo::Pos(13.4031963348389, 52.4747467041016)} // Closed
+  {"EDCF", atools::geo::Pos(13.80201, 52.28137)} // No METAR - nearest EDDB
 };
 
 const static QHash<QString, QString> AIRPORT_SUBST = {
-  {"EDDI", "EDDT"}
+  {"EDCF", "EDDB"}
 };
 
 MetarTest::MetarTest()
