@@ -22,6 +22,7 @@
 #include "atools.h"
 #include "zip/gzip.h"
 #include "exception.h"
+#include "util/xmlstream.h"
 
 using atools::fs::pln::Flightplan;
 using atools::fs::pln::FlightplanIO;
@@ -58,6 +59,20 @@ void FlightplanTest::cleanupTestCase()
 {
   flightplan.clear();
   QCOMPARE(flightplan.getEntries().size(), 0);
+}
+
+void FlightplanTest::testEncoding()
+{
+  QDir().mkpath(OUTPUT);
+
+  io.load(flightplan, ":/test/resources/Codec ISO8859-15.fpl");
+  QCOMPARE(flightplan.getEntries().size(), 4);
+
+  io.load(flightplan, ":/test/resources/Codec UTF8 BOM.fpl");
+  QCOMPARE(flightplan.getEntries().size(), 4);
+
+  io.load(flightplan, ":/test/resources/Codec UTF16 BOM.fpl");
+  QCOMPARE(flightplan.getEntries().size(), 4);
 }
 
 #ifdef FPR_TEST

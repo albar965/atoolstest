@@ -59,6 +59,9 @@
         <file>resources/MSFS EDXW EDDH.PLN</file>
         <file>resources/BPRL2.pln</file>
         <file>resources/Empty Flightplan.lnmpln</file>
+        <file>resources/Codec ISO8859-15.fpl</file>
+        <file>resources/Codec UTF8 BOM.fpl</file>
+        <file>resources/Codec UTF16 BOM.fpl</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
