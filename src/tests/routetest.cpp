@@ -131,7 +131,7 @@ void RouteTest::testRouteNetworkAirway()
     QVERIFY(n.type == NODE_WAYPOINT);
 
     if(n.edges.isEmpty())
-      QVERIFY(n.con == CONNECTION_NONE);
+      QVERIFY(n.con == CONNECTION_NONE || n.con == CONNECTION_PROC);
 
     for(const Edge& e : n.edges)
     {
@@ -227,7 +227,7 @@ void RouteTest::testRouteNetworkAirwayTrack()
 
     if(n.edges.isEmpty())
     {
-      QVERIFY(n.con == CONNECTION_NONE || n.con == CONNECTION_TRACK_START_END);
+      QVERIFY(n.con == CONNECTION_NONE || n.con == CONNECTION_PROC || n.con == CONNECTION_TRACK_START_END);
       QVERIFY(!n.hasTracks());
     }
     else
