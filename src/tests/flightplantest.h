@@ -45,6 +45,8 @@ private slots:
 #endif
 
 private slots:
+  void testEncoding();
+
   void testSaveFprDirect();
   void testSaveFprAirway();
 

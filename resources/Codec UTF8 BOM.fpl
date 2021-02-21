@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<flight-plan xmlns="http://www8.garmin.com/xmlschemas/FlightPlan/v1">
+<created>20210108T15:58:51Z</created>
+<aircraft>
+    <aircraft-tailnumber>C172</aircraft-tailnumber>
+</aircraft>
+<flight-data>
+    <etd-zulu></etd-zulu>
+    <altitude-ft>5500</altitude-ft>
+</flight-data>
+<waypoint-table>
+    
+    <waypoint>
+        <identifier>MKJP</identifier>
+        <type>AIRPORT</type>
+        <lat>17.93555601434844</lat>
+        <lon>-76.78750006142999</lon>
+        <altitude-ft></altitude-ft>
+    </waypoint>
+    
+    <waypoint>
+        <identifier>18.158/-73.888</identifier>
+        <type></type>
+        <lat>18.15775221927899</lat>
+        <lon>-73.88770826965944</lon>
+        <altitude-ft></altitude-ft>
+    </waypoint>
+    
+    <waypoint>
+        <identifier>18.501/-73.451</identifier>
+        <type></type>
+        <lat>18.50106205246042</lat>
+        <lon>-73.45057780425084</lon>
+        <altitude-ft></altitude-ft>
+    </waypoint>
+    
+    <waypoint>
+        <identifier>MTPP</identifier>
+        <type>AIRPORT</type>
+        <lat>18.58005001486404</lat>
+        <lon>-72.29254205783403</lon>
+        <altitude-ft></altitude-ft>
+    </waypoint>
+    
+</waypoint-table>
+<route>
+    <route-name>MKJP TO MTPP</route-name>
+    <flight-plan-index>1</flight-plan-index>
+    
+    <route-point>
+        <waypoint-identifier>MKJP</waypoint-identifier>
+        <waypoint-type>AIRPORT</waypoint-type>
+    </route-point>
+    
+    <route-point>
+        <waypoint-identifier>18.158/-73.888</waypoint-identifier>
+        <waypoint-type></waypoint-type>
+    </route-point>
+    
+    <route-point>
+        <waypoint-identifier>18.501/-73.451</waypoint-identifier>
+        <waypoint-type></waypoint-type>
+    </route-point>
+    
+    <route-point>
+        <waypoint-identifier>MTPP</waypoint-identifier>
+        <waypoint-type>AIRPORT</waypoint-type>
+    </route-point>
+    
+</route>
+</flight-plan>

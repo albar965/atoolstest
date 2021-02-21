@@ -115,7 +115,7 @@ void RouteTest::testRouteNetworkAirway()
 
   net->clearParameters();
 
-  QCOMPARE(net->getNodes().size(), 156801);
+  QCOMPARE(net->getNodes().size(), 66242);
 
   for(const Node& n : net->getNodes())
   {
@@ -212,7 +212,7 @@ void RouteTest::testRouteNetworkAirwayTrack()
 
   net->clearParameters();
 
-  QCOMPARE(net->getNodes().size(), 156882);
+  QCOMPARE(net->getNodes().size(), 66323);
 
   for(const Node& n : net->getNodes())
   {
@@ -484,7 +484,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
     << int(MODE_WAYPOINT)
     << int(NET_AIRWAY)
-    << 308
+    << 101
     << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY_WAYPOINT near destination")
@@ -492,7 +492,7 @@ void RouteTest::testRouteNeighbors_data()
     << Pos(9.98823, 53.6304) << Pos(9.98889, 44.0889)
     << int(MODE_AIRWAY_WAYPOINT)
     << int(NET_AIRWAY)
-    << 21
+    << 12
     << Rect(LineString({Pos(6, 45.4781), Pos(16, 44.0889)}));
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY_WAYPOINT far from destination")

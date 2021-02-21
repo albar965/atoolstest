@@ -35,6 +35,11 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testLastSixHour_data();
+  void testLastSixHour();
+  void testNextSixHour_data();
+  void testNextSixHour();
+
   void testUtc_data();
   void testUtc();
 
