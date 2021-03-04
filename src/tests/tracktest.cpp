@@ -54,8 +54,8 @@ void TrackTest::testTrackReader_data()
   QTest::addColumn<int>("number");
   QTest::addColumn<int>("invalid");
 
-  QTest::newRow("AUSOTS") << "testdata/AUSOTS.html" << int(atools::track::AUSOTS) << 21 << 0;
-  QTest::newRow("AUSOTS 2") << "testdata/AUSOTS2.html" << int(atools::track::AUSOTS) << 19 << 0;
+  // QTest::newRow("AUSOTS") << "testdata/AUSOTS.html" << int(atools::track::AUSOTS) << 21 << 0;
+  // QTest::newRow("AUSOTS 2") << "testdata/AUSOTS2.html" << int(atools::track::AUSOTS) << 19 << 0;
   QTest::newRow("PACOTS") << "testdata/PACOTS.html" << int(atools::track::PACOTS) << 14 << 0;
   QTest::newRow("PACOTS 2") << "testdata/PACOTS2.html" << int(atools::track::PACOTS) << 16 << 0;
   QTest::newRow("NAT (2 invalid)") << "testdata/NAT.html" << int(atools::track::NAT) << 13 << 2;
@@ -89,7 +89,7 @@ void TrackTest::testDownload_data()
   QTest::addColumn<int>("downloadNumber");
 
   QTest::newRow("NAT") << int(atools::track::NAT) << 1;
-  QTest::newRow("AUSOTS") << int(atools::track::AUSOTS) << 0;
+  // QTest::newRow("AUSOTS") << int(atools::track::AUSOTS) << 0;
   QTest::newRow("PACOTS") << int(atools::track::PACOTS) << 8;
 }
 
