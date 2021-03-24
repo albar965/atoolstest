@@ -62,6 +62,8 @@
         <file>resources/Codec ISO8859-15.fpl</file>
         <file>resources/Codec UTF8 BOM.fpl</file>
         <file>resources/Codec UTF16 BOM.fpl</file>
+        <file>resources/vatsim-data-fmt.json</file>
+        <file>resources/vatsim-status-json.txt</file>
+        <file>resources/transceivers-data-fmt.json</file>
     </qresource>
-    <qresource prefix="/"/>
 </RCC>
