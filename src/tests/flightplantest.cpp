@@ -120,6 +120,9 @@ void FlightplanTest::testDetectFormat()
 
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/flightplan.lnmpln"), atools::fs::pln::LNM_PLN);
 
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/MUCA - MUNB.fpl.bin"), atools::fs::pln::GARMIN_FPL);
+  QCOMPARE(FlightplanIO::detectFormat(":/test/resources/UT026T4.fpl"), atools::fs::pln::GARMIN_FPL);
+
   QCOMPARE(FlightplanIO::detectFormat(":/test/resources/add-on.xml"), atools::fs::pln::NONE);
 }
 

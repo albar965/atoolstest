@@ -17,7 +17,6 @@
 .~*#
 *.bak
 *.BIN
-*.bin
 *.db
 #*#
 *.cache/

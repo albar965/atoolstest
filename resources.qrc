@@ -65,5 +65,7 @@
         <file>resources/vatsim-data-fmt.json</file>
         <file>resources/vatsim-status-json.txt</file>
         <file>resources/transceivers-data-fmt.json</file>
+        <file>resources/MUCA - MUNB.fpl.bin</file>
+        <file>resources/UT026T4.fpl</file>
     </qresource>
 </RCC>
