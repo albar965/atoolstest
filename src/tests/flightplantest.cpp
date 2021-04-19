@@ -75,6 +75,36 @@ void FlightplanTest::testEncoding()
   QCOMPARE(flightplan.getEntries().size(), 4);
 }
 
+void FlightplanTest::testCompress()
+{
+  QDir().mkpath(OUTPUT);
+
+  atools::fs::pln::Flightplan plan, compressed;
+
+  io.load(plan, ":/test/resources/test_direct.lnmpln");
+  QCOMPARE(plan.getEntries().size(), 9);
+  compressed = plan.compressedAirways();
+  qDebug() << Q_FUNC_INFO << plan.toShortString();
+  qDebug() << Q_FUNC_INFO << compressed.toShortString();
+  QCOMPARE(compressed.toShortString(), "EDDF EGAKA USUDO VALAV VP378 BIKTU UPONO VP191 LIRF");
+
+  io.load(plan, ":/test/resources/test_airway.lnmpln");
+  QCOMPARE(plan.getEntries().size(), 31);
+  compressed = plan.compressedAirways();
+  qDebug() << Q_FUNC_INFO << plan.toShortString();
+  qDebug() << Q_FUNC_INFO << compressed.toShortString();
+  QCOMPARE(compressed.toShortString(), "EDDF NOKDI [Y163] NATOR [N850] IXITO [L50] ELB [M729] MEDAL [Q160] OST LIRF");
+
+  io.load(plan, ":/test/resources/test_mixed.lnmpln");
+  QCOMPARE(plan.getEntries().size(), 27);
+  compressed = plan.compressedAirways();
+  qDebug() << Q_FUNC_INFO << plan.toShortString();
+  qDebug() << Q_FUNC_INFO << compressed.toShortString();
+  QCOMPARE(
+    compressed.toShortString(),
+    "EDDF NOKDI [Y163] NATOR [N850] TITIX LS209 VP390 KEMMI VP317 DORAV IXITO [L50] ELB [M729] MEDAL [Q160] OST LIRF");
+}
+
 #ifdef FPR_TEST
 extern "C" {
 #include "/home/alex/Downloads/Majestic/CFMCSystem_types.h"
@@ -137,7 +167,7 @@ void FlightplanTest::testSaveFprDirect()
 
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_direct.fpr");
 
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_direct.fpr").size(), 36089);
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "_test_fpr_direct.fpr"), 1733058381);
 }
 
 void FlightplanTest::testSaveFprAirway()
@@ -147,7 +177,7 @@ void FlightplanTest::testSaveFprAirway()
   io.load(fp, ":/test/resources/_test_fpr.pln");
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_airway.fpr");
 
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_airway.fpr").size(), 36089);
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "_test_fpr_airway.fpr"), 2387619898);
 }
 
 void FlightplanTest::testLoadFs9()
@@ -204,11 +234,7 @@ void FlightplanTest::testSaveFlpDirect()
 
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_direct.flp");
 
-#ifdef Q_OS_WIN32
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1055);
-#else
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1010);
-#endif
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_direct.flp"), 607683429);
 }
 
 void FlightplanTest::testSaveFlpAirway()
@@ -221,11 +247,7 @@ void FlightplanTest::testSaveFlpAirway()
 
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_airway.flp");
 
-#ifdef Q_OS_WIN32
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_airway.flp").size(), 1204);
-#else
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_airway.flp").size(), 1130);
-#endif
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_airway.flp"), 1376439437);
 }
 
 void FlightplanTest::testSaveFlpMixed()
@@ -238,11 +260,46 @@ void FlightplanTest::testSaveFlpMixed()
 
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_mixed.flp");
 
-#ifdef Q_OS_WIN32
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 996);
-#else
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_mixed.flp").size(), 943);
-#endif
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_mixed.flp"), 2460896818);
+}
+
+void FlightplanTest::testSaveFlpCrjDirect()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/test_direct.lnmpln");
+  QCOMPARE(fp.isLnmFormat(), true);
+  QCOMPARE(fp.isEmpty(), false);
+
+  io.saveCrjFlp(fp, OUTPUT + QDir::separator() + "result_flp_crj_direct.flp");
+
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_direct.flp"), 36648602);
+}
+
+void FlightplanTest::testSaveFlpCrjAirway()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/test_airway.lnmpln");
+  QCOMPARE(fp.isLnmFormat(), true);
+  QCOMPARE(fp.isEmpty(), false);
+
+  io.saveCrjFlp(fp, OUTPUT + QDir::separator() + "result_flp_crj_airway.flp");
+
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_airway.flp"), 490869392);
+}
+
+void FlightplanTest::testSaveFlpCrjMixed()
+{
+  Flightplan fp;
+
+  io.load(fp, ":/test/resources/test_mixed.lnmpln");
+  QCOMPARE(fp.isLnmFormat(), true);
+  QCOMPARE(fp.isEmpty(), false);
+
+  io.saveCrjFlp(fp, OUTPUT + QDir::separator() + "result_flp_crj_mixed.flp");
+
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_mixed.flp"), 273924346);
 }
 
 void FlightplanTest::testSaveFltplanDirect()
@@ -255,7 +312,7 @@ void FlightplanTest::testSaveFltplanDirect()
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan");
 
-  // QCOMPARE(QFileInfo("result_fltplan_direct.fltplan").size(), 1010);
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan"), 4125796922);
 }
 
 void FlightplanTest::testSaveFltplanAirway()
@@ -268,7 +325,7 @@ void FlightplanTest::testSaveFltplanAirway()
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan");
 
-  // QCOMPARE(QFileInfo("result_fltplan_airway.fltplan").size(), 1130);
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan"), 2002411220);
 }
 
 void FlightplanTest::testSaveFltplanMixed()
@@ -281,7 +338,7 @@ void FlightplanTest::testSaveFltplanMixed()
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed.fltplan");
 
-  // QCOMPARE(QFileInfo("result_fltplan_mixed.fltplan").size(), 943);
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_mixed.fltplan"), 2315414080);
 }
 
 void FlightplanTest::testSaveFlightGearDirect()

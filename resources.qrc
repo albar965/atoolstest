@@ -67,5 +67,8 @@
         <file>resources/transceivers-data-fmt.json</file>
         <file>resources/MUCA - MUNB.fpl.bin</file>
         <file>resources/UT026T4.fpl</file>
+        <file>resources/test_direct.lnmpln</file>
+        <file>resources/test_mixed.lnmpln</file>
+        <file>resources/test_airway.lnmpln</file>
     </qresource>
 </RCC>

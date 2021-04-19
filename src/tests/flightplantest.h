@@ -46,6 +46,7 @@ private slots:
 
 private slots:
   void testEncoding();
+  void testCompress();
 
   void testSaveFprDirect();
   void testSaveFprAirway();
@@ -58,6 +59,10 @@ private slots:
   void testSaveFlpDirect();
   void testSaveFlpAirway();
   void testSaveFlpMixed();
+
+  void testSaveFlpCrjDirect();
+  void testSaveFlpCrjAirway();
+  void testSaveFlpCrjMixed();
 
   void testSaveFltplanDirect();
   void testSaveFltplanAirway();

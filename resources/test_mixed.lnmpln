@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LittleNavmap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.littlenavmap.org/schema/lnmpln.xsd">
+  <Flightplan>
+    <Header>
+      <FlightplanType>IFR</FlightplanType>
+      <CruisingAlt>27000</CruisingAlt>
+      <CreationDate>2021-04-17T17:48:26</CreationDate>
+      <FileVersion>1.0</FileVersion>
+      <ProgramName>Little Navmap</ProgramName>
+      <ProgramVersion>2.6.11</ProgramVersion>
+      <Documentation>https://www.littlenavmap.org/lnmpln.html</Documentation>
+    </Header>
+    <SimData Cycle="2101">XP11</SimData>
+    <NavData Cycle="2102">NAVIGRAPH</NavData>
+    <AircraftPerformance>
+      <FilePath>Aerobask Phenom 300.lnmperf</FilePath>
+      <Type>E55P</Type>
+      <Name>Aerobask Phenom 300</Name>
+    </AircraftPerformance>
+    <Departure>
+      <Pos Lon="8.534159" Lat="50.027531" Alt="354.00"/>
+      <Start>07R</Start>
+    </Departure>
+    <Waypoints>
+      <Waypoint>
+        <Name>Frankfurt Am Main</Name>
+        <Ident>EDDF</Ident>
+        <Type>AIRPORT</Type>
+        <Pos Lon="8.546506" Lat="50.024780" Alt="354.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>NOKDI</Ident>
+        <Region>ED</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.479167" Lat="49.866390" Alt="5545.56"/>
+      </Waypoint>
+      <Waypoint>
+        <Name>Ried</Name>
+        <Ident>RID</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>VOR</Type>
+        <Pos Lon="8.541486" Lat="49.781693" Alt="8296.26"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>ODAVU</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.533889" Lat="49.725555" Alt="9949.56"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>ANEKI</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.480428" Lat="49.317272" Alt="21971.43"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>NEKLO</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.476389" Lat="49.286110" Alt="22888.96"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>BADLI</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.447500" Lat="49.063610" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>PABLA</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.351970" Lat="48.788586" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>HERBI</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.243611" Lat="48.490833" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>NATOR</Ident>
+        <Region>ED</Region>
+        <Airway>Y163</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.321261" Lat="48.169998" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>TITIX</Ident>
+        <Region>ED</Region>
+        <Airway>N850</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.396667" Lat="47.858334" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>LS209</Ident>
+        <Region>LS</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.567667" Lat="46.547943" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>VP390</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.704166" Lat="45.434444" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>KEMMI</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.812222" Lat="44.775002" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>VP317</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.936111" Lat="44.552776" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>DORAV</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.852222" Lat="44.326389" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>IXITO</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.803611" Lat="44.134724" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>UNITA</Ident>
+        <Region>LI</Region>
+        <Airway>L50</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="9.025000" Lat="43.944443" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>TIDKA</Ident>
+        <Region>LI</Region>
+        <Airway>L50</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="9.191944" Lat="43.799999" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>KONER</Ident>
+        <Region>LI</Region>
+        <Airway>L50</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="9.530000" Lat="43.504723" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>EVROG</Ident>
+        <Region>LI</Region>
+        <Airway>L50</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="9.813056" Lat="43.254444" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>BAKRO</Ident>
+        <Region>LI</Region>
+        <Airway>L50</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="9.887500" Lat="43.188057" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Name>Elba</Name>
+        <Ident>ELB</Ident>
+        <Region>LI</Region>
+        <Airway>L50</Airway>
+        <Type>VOR</Type>
+        <Pos Lon="10.395722" Lat="42.730694" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>GILIO</Ident>
+        <Region>LI</Region>
+        <Airway>M729</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="10.926111" Lat="42.366665" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>MEDAL</Ident>
+        <Region>LI</Region>
+        <Airway>M729</Airway>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="11.376389" Lat="42.052776" Alt="22683.71"/>
+      </Waypoint>
+      <Waypoint>
+        <Name>Ostia</Name>
+        <Ident>OST</Ident>
+        <Region>LI</Region>
+        <Airway>Q160</Airway>
+        <Type>VOR</Type>
+        <Pos Lon="12.237528" Lat="41.803780" Alt="133.61"/>
+      </Waypoint>
+      <Waypoint>
+        <Name>Leonardo Da Vinci Intl</Name>
+        <Ident>LIRF</Ident>
+        <Type>AIRPORT</Type>
+        <Pos Lon="12.238889" Lat="41.800278" Alt="14.00"/>
+      </Waypoint>
+    </Waypoints>
+  </Flightplan>
+</LittleNavmap>

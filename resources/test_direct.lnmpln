@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LittleNavmap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.littlenavmap.org/schema/lnmpln.xsd">
+  <Flightplan>
+    <Header>
+      <FlightplanType>IFR</FlightplanType>
+      <CruisingAlt>27000</CruisingAlt>
+      <CreationDate>2021-04-17T17:48:51</CreationDate>
+      <FileVersion>1.0</FileVersion>
+      <ProgramName>Little Navmap</ProgramName>
+      <ProgramVersion>2.6.11</ProgramVersion>
+      <Documentation>https://www.littlenavmap.org/lnmpln.html</Documentation>
+    </Header>
+    <SimData Cycle="2101">XP11</SimData>
+    <NavData Cycle="2102">NAVIGRAPH</NavData>
+    <AircraftPerformance>
+      <FilePath>Aerobask Phenom 300.lnmperf</FilePath>
+      <Type>E55P</Type>
+      <Name>Aerobask Phenom 300</Name>
+    </AircraftPerformance>
+    <Departure>
+      <Pos Lon="8.534159" Lat="50.027531" Alt="354.00"/>
+      <Start>07R</Start>
+    </Departure>
+    <Waypoints>
+      <Waypoint>
+        <Name>Frankfurt Am Main</Name>
+        <Ident>EDDF</Ident>
+        <Type>AIRPORT</Type>
+        <Pos Lon="8.546506" Lat="50.024780" Alt="354.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>EGAKA</Ident>
+        <Region>ED</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="8.748611" Lat="49.857224" Alt="6518.63"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>USUDO</Ident>
+        <Region>ED</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="9.675000" Lat="48.090279" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>VALAV</Ident>
+        <Region>LS</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="10.386111" Lat="46.632778" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>VP378</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="10.957222" Lat="45.356388" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>BIKTU</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="11.539166" Lat="44.002224" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>UPONO</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="12.004723" Lat="42.849167" Alt="27000.00"/>
+      </Waypoint>
+      <Waypoint>
+        <Ident>VP191</Ident>
+        <Region>LI</Region>
+        <Type>WAYPOINT</Type>
+        <Pos Lon="12.178611" Lat="42.256943" Alt="15067.73"/>
+      </Waypoint>
+      <Waypoint>
+        <Name>Leonardo Da Vinci Intl</Name>
+        <Ident>LIRF</Ident>
+        <Type>AIRPORT</Type>
+        <Pos Lon="12.238889" Lat="41.800278" Alt="14.00"/>
+      </Waypoint>
+    </Waypoints>
+  </Flightplan>
+</LittleNavmap>
