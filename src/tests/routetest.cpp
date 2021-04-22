@@ -299,10 +299,10 @@ void RouteTest::testRouteFinder_data()
     << Pos(-70.2239, 47.5976) << Pos(-6.27, 53.4214) << 2398.f << 12
     << int(NET_AIRWAY_TRACK) << int(MODE_AIRWAY_WAYPOINT_TRACK) << true;
 
-#ifndef QT_DEBUG
+#ifndef QT_DEBUGX
   // Too slow for debug mode
   QTest::newRow("KLAS to LPAZ MODE_AIRWAY_WAYPOINT SLOW")
-    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4248.f << 53
+    << Pos(-115.152, 36.0801) << Pos(-25.1711, 36.9739) << 4229.23f << 40
     << int(NET_AIRWAY) << int(MODE_AIRWAY_WAYPOINT) << true;
 #endif
 
