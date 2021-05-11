@@ -16,6 +16,7 @@
 *****************************************************************************/
 
 #include "utiltest.h"
+#include "util/props.h"
 
 UtilTest::UtilTest()
 {
@@ -72,4 +73,104 @@ void UtilTest::testFlags()
   TestEnums read;
   in >> read;
   QCOMPARE(testList, read);
+}
+
+void UtilTest::testProps()
+{
+  using namespace atools::util;
+  enum Key
+  {
+    KEY_BOOL = 10,
+    KEY_BYTE,
+    KEY_SHORT,
+    KEY_INT,
+    KEY_LONG,
+    KEY_FLOAT,
+    KEY_DOUBLE,
+    KEY_STRING,
+    KEY_BYTES,
+    KEY_VARIANT,
+    KEY_NONE
+  };
+  const unsigned char byteTest[] = {0x78, 0x56, 0x34, 0x12};
+  QByteArray bytes1((const char *)(byteTest), 4);
+
+  const unsigned char byteTest2[] = {0xde, 0xad, 0xbe, 0xef, 0xde, 0xad, 0xbe, 0xef, 0xde, 0xad, 0xbe, 0xef};
+  QByteArray bytes2((const char *)(byteTest2), 12);
+
+  Props props;
+  props.addProps(QVector<Prop>({
+    Prop(KEY_BOOL, true), Prop(KEY_BOOL, false),
+    Prop(KEY_BYTE, -1),
+    Prop(KEY_BYTE, 127),
+    Prop(KEY_BYTE, 128),
+    Prop(KEY_BYTE, 255),
+    Prop(KEY_INT, 42), Prop(KEY_INT, 965),
+    Prop(KEY_INT, std::numeric_limits<int>::max()),
+    Prop(KEY_INT, std::numeric_limits<int>::min()),
+    Prop(KEY_INT, std::numeric_limits<unsigned int>::max()),
+    Prop(KEY_INT, std::numeric_limits<unsigned int>::min()),
+    Prop(KEY_SHORT, static_cast<short>(1024)),
+    Prop(KEY_LONG, 4200000000000000000LL),
+    Prop(KEY_LONG, 42LL),
+    Prop(KEY_FLOAT, 3.14159f),
+    Prop(KEY_DOUBLE, 2.71828182846),
+    Prop(KEY_STRING, QString("Hello Test")),
+    Prop(KEY_BYTES, bytes1),
+    Prop(KEY_BYTES, bytes2),
+    Prop(KEY_VARIANT, QVariant("Variant")),
+    Prop(KEY_VARIANT, QVariant(1968)),
+    Prop(KEY_VARIANT, QVariant(12.3456789f)),
+    Prop(KEY_VARIANT, QVariant(23.5678901)),
+    Prop(KEY_NONE),
+    Prop()
+  }));
+
+  QByteArray bytes;
+  QDataStream out(&bytes, QIODevice::WriteOnly);
+  out << props;
+
+  Props propsRead;
+  QDataStream in(bytes);
+  in >> propsRead;
+
+  for(const Prop& p : propsRead)
+    qDebug() << p;
+
+  QCOMPARE(props.size() - 1, propsRead.size());
+
+  QCOMPARE(propsRead.getProp(KEY_NONE).isValid(), true);
+  QCOMPARE(propsRead.getProps(KEY_BOOL).at(0).getValueBool(), true);
+  QCOMPARE(propsRead.getProps(KEY_BOOL).at(1).getValueBool(), false);
+
+  QCOMPARE(propsRead.getProps(KEY_BYTE).at(0).getValueInt(), -1);
+  QCOMPARE(propsRead.getProps(KEY_BYTE).at(1).getValueInt(), 127);
+  QCOMPARE(propsRead.getProps(KEY_BYTE).at(2).getValueInt(), 128);
+  QCOMPARE(propsRead.getProps(KEY_BYTE).at(3).getValueInt(), 255);
+
+  QCOMPARE(propsRead.getProp(KEY_SHORT).getValueShort(), static_cast<short>(1024));
+
+  QCOMPARE(propsRead.getProps(KEY_INT).at(0).getValueInt(), 42);
+  QCOMPARE(propsRead.getProps(KEY_INT).at(1).getValueInt(), 965);
+  QCOMPARE(propsRead.getProps(KEY_INT).at(2).getValueInt(), std::numeric_limits<int>::max());
+  QCOMPARE(propsRead.getProps(KEY_INT).at(3).getValueInt(), std::numeric_limits<int>::min());
+  QCOMPARE(propsRead.getProps(KEY_INT).at(4).getValueUInt(), std::numeric_limits<unsigned int>::max());
+  QCOMPARE(propsRead.getProps(KEY_INT).at(5).getValueUInt(), std::numeric_limits<unsigned int>::min());
+
+  QCOMPARE(propsRead.getProps(KEY_LONG).at(0).getValueLongLong(), 4200000000000000000LL);
+  QCOMPARE(propsRead.getProps(KEY_LONG).at(1).getValueLongLong(), 42LL);
+
+  QCOMPARE(propsRead.getProp(KEY_FLOAT).getValueFloat(), 3.14159f);
+  QCOMPARE(propsRead.getProp(KEY_DOUBLE).getValueDouble(), 2.71828182846);
+  QCOMPARE(propsRead.getProp(KEY_STRING).getValueString(), QString("Hello Test"));
+  QCOMPARE(propsRead.getProps(KEY_BYTES).at(0).getValueBytes(), bytes1);
+  QCOMPARE(propsRead.getProps(KEY_BYTES).at(1).getValueBytes(), bytes2);
+
+  QCOMPARE(propsRead.getProps(KEY_VARIANT).at(0).getValueVariant(), QVariant("Variant"));
+  QCOMPARE(propsRead.getProps(KEY_VARIANT).at(1).getValueVariant(), QVariant(1968));
+  QCOMPARE(propsRead.getProps(KEY_VARIANT).at(2).getValueVariant(), QVariant(12.3456789f));
+  QCOMPARE(propsRead.getProps(KEY_VARIANT).at(3).getValueVariant(), QVariant(23.5678901));
+
+  for(auto it = propsRead.begin(); it != propsRead.end(); ++it)
+    QVERIFY(it.value().isValid());
 }
