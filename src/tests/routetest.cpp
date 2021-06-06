@@ -115,7 +115,7 @@ void RouteTest::testRouteNetworkAirway()
 
   net->clearParameters();
 
-  QCOMPARE(net->getNodes().size(), 65831);
+  QCOMPARE(net->getNodes().size(), 64800);
 
   for(const Node& n : net->getNodes())
   {
@@ -212,7 +212,7 @@ void RouteTest::testRouteNetworkAirwayTrack()
 
   net->clearParameters();
 
-  QCOMPARE(net->getNodes().size(), 65912);
+  QCOMPARE(net->getNodes().size(), 64881);
 
   for(const Node& n : net->getNodes())
   {
