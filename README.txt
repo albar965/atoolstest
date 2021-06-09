@@ -5,6 +5,8 @@ Test program for the atools library. Uses the Qt test framework.
 
 Run on the command line with --help to get information about tests.
 
+Issues can be submitted at https://github.com/albar965/littlenavmap/issues .
+
 ------------------------------------------------------------------------------
 
 Usage: atoolstest [options]

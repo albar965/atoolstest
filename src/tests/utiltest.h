@@ -36,6 +36,7 @@ private slots:
   void cleanupTestCase();
 
   void testFlags();
+  void testProps();
 
 };
 

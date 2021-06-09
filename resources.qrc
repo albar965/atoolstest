@@ -62,6 +62,13 @@
         <file>resources/Codec ISO8859-15.fpl</file>
         <file>resources/Codec UTF8 BOM.fpl</file>
         <file>resources/Codec UTF16 BOM.fpl</file>
+        <file>resources/vatsim-data-fmt.json</file>
+        <file>resources/vatsim-status-json.txt</file>
+        <file>resources/transceivers-data-fmt.json</file>
+        <file>resources/MUCA - MUNB.fpl.bin</file>
+        <file>resources/UT026T4.fpl</file>
+        <file>resources/test_direct.lnmpln</file>
+        <file>resources/test_mixed.lnmpln</file>
+        <file>resources/test_airway.lnmpln</file>
     </qresource>
-    <qresource prefix="/"/>
 </RCC>

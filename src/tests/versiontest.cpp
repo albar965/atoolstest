@@ -42,6 +42,9 @@ void VersionTest::testVersion_data()
   QTest::newRow("Minor smaller") << "1.1.1" << "1.2.1" << true << false;
   QTest::newRow("Patchlevel smaller") << "1.1.1" << "1.1.2" << true << false;
 
+  QTest::newRow("Beta smaller than stable") << "1.1.1.beta" << "1.1.1" << true << false;
+  QTest::newRow("Stable larger than beta") << "1.1.1" << "1.1.1.beta" << false << false;
+
   QTest::newRow("Beta equal") << "1.1.1.beta" << "1.1.1.beta" << false << true;
   QTest::newRow("Beta major smaller") << "1.1.1.beta" << "2.1.1.beta" << true << false;
   QTest::newRow("Beta minor smaller") << "1.1.1.beta" << "1.2.1.beta" << true << false;
