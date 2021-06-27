@@ -70,5 +70,6 @@
         <file>resources/test_direct.lnmpln</file>
         <file>resources/test_mixed.lnmpln</file>
         <file>resources/test_airway.lnmpln</file>
+        <file>resources/ivao-data-fmt.json</file>
     </qresource>
 </RCC>

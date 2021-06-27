@@ -43,7 +43,10 @@ private slots:
 
   void testCreateSchemaVatsim();
   void testCreateSchemaVatsim3();
+
   void testCreateSchemaIvao();
+  void testCreateSchemaIvao2();
+
   void testCreateSchemaCustom();
 
   void testOpenStatusVatsim();
@@ -52,7 +55,9 @@ private slots:
 
   void testOpenWhazzupVatsim();
   void testOpenWhazzupVatsim3();
+
   void testOpenWhazzupIvao();
+  void testOpenWhazzupIvao2();
 
   void testOpenServersVatsim();
   void testOpenServersIvao();
@@ -68,6 +73,7 @@ private slots:
 private:
   atools::sql::SqlDatabase *dbCustom = nullptr;
   atools::sql::SqlDatabase *dbIvao = nullptr;
+  atools::sql::SqlDatabase *dbIvao2 = nullptr;
   atools::sql::SqlDatabase *dbVatsim = nullptr;
   atools::sql::SqlDatabase *dbVatsim3 = nullptr;
 
