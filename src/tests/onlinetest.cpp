@@ -44,7 +44,10 @@ void OnlineTest::initTestCase()
 {
   dbVatsim = testutil::createDb("TESTDBVATSIM", "online_test_vatsim.sqlite");
   dbVatsim3 = testutil::createDb("TESTDBVATSIM3", "online_test_vatsim3.sqlite");
+
   dbIvao = testutil::createDb("TESTDBIVAO", "online_test_ivao.sqlite");
+  dbIvao2 = testutil::createDb("TESTDBIVAO2", "online_test_ivao2.sqlite");
+
   dbCustom = testutil::createDb("TESTDBCUSTOM", "online_test_custom.sqlite");
 }
 
@@ -52,7 +55,10 @@ void OnlineTest::cleanupTestCase()
 {
   testutil::removeDb(dbVatsim, "TESTDBVATSIM");
   testutil::removeDb(dbVatsim3, "TESTDBVATSIM3");
+
   testutil::removeDb(dbIvao, "TESTDBIVAO");
+  testutil::removeDb(dbIvao2, "TESTDBIVAO2");
+
   testutil::removeDb(dbCustom, "TESTDBCUSTOM");
 }
 
@@ -77,6 +83,15 @@ void OnlineTest::testCreateSchemaVatsim3()
 void OnlineTest::testCreateSchemaIvao()
 {
   OnlinedataManager odm(dbIvao, true);
+  odm.createSchema();
+  odm.initQueries();
+  QCOMPARE(odm.hasSchema(), true);
+  QCOMPARE(odm.hasData(), false);
+}
+
+void OnlineTest::testCreateSchemaIvao2()
+{
+  OnlinedataManager odm(dbIvao2, true);
   odm.createSchema();
   odm.initQueries();
   QCOMPARE(odm.hasSchema(), true);
@@ -192,11 +207,10 @@ void OnlineTest::testOpenWhazzupVatsim3()
   QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2021, 3, 20), QTime(13, 0, 4, 940), Qt::UTC)); // 20180322170014
 
   QDebug dbg(qDebug());
-  SqlUtil(dbVatsim3).printTableStats(dbg, {"client", "atc", "server", "airport"}, true);
+  SqlUtil(dbVatsim3).printTableStats(dbg, {"client", "atc", "server"}, true);
   QCOMPARE(SqlUtil(dbVatsim3).rowCount("client"), 1470);
   QCOMPARE(SqlUtil(dbVatsim3).rowCount("atc"), 155);
   QCOMPARE(SqlUtil(dbVatsim3).rowCount("server"), 7);
-  QCOMPARE(SqlUtil(dbVatsim3).rowCount("airport"), 57);
 }
 
 void OnlineTest::testOpenWhazzupIvao()
@@ -216,6 +230,28 @@ void OnlineTest::testOpenWhazzupIvao()
   QCOMPARE(SqlUtil(dbIvao).rowCount("client"), 599); // 691
   QCOMPARE(SqlUtil(dbIvao).rowCount("atc"), 92);
   QCOMPARE(SqlUtil(dbIvao).rowCount("server"), 6);
+}
+
+void OnlineTest::testOpenWhazzupIvao2()
+{
+  OnlinedataManager odm(dbIvao2, true);
+  odm.initQueries();
+  odm.readFromWhazzup(atools::strFromFile(":/test/resources/ivao-data-fmt.json"),
+                      atools::fs::online::IVAO_JSON2,
+                      QDateTime(QDate(2018, 3, 22), QTime(16, 0, 00)));
+  dbIvao2->commit();
+
+  QCOMPARE(odm.hasSchema(), true);
+  QCOMPARE(odm.hasData(), true);
+  QCOMPARE(odm.getReloadMinutesFromWhazzup(), 0);
+  // "updatedAt": "2021-06-20T21:09:19.642Z",
+  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2021, 6, 20), QTime(21, 9, 19, 642), Qt::UTC));  // 20180322170014
+
+  QDebug dbg(qDebug());
+  SqlUtil(dbIvao2).printTableStats(dbg, {"client", "atc", "server"}, true);
+  QCOMPARE(SqlUtil(dbIvao2).rowCount("client"), 540);
+  QCOMPARE(SqlUtil(dbIvao2).rowCount("atc"), 80);
+  QCOMPARE(SqlUtil(dbIvao2).rowCount("server"), 8);
 }
 
 void OnlineTest::testOpenServersVatsim()

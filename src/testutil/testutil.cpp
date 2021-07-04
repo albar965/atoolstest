@@ -30,7 +30,7 @@ void waitForValue(bool& done, int seconds)
   while(!done && msecs < waitTimeMs)
   {
     QApplication::processEvents();
-    QThread::msleep(sleepTimeMs);
+    QThread::msleep(static_cast<unsigned long>(sleepTimeMs));
     msecs += sleepTimeMs;
   }
 }
