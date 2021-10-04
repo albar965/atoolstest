@@ -167,8 +167,7 @@ void FlightplanTest::testSaveFprDirect()
 
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_direct.fpr");
 
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "_test_fpr_direct.fpr"),
-           static_cast<unsigned int>(1733058381));
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_direct.fpr").size(), 36089);
 }
 
 void FlightplanTest::testSaveFprAirway()
@@ -178,8 +177,7 @@ void FlightplanTest::testSaveFprAirway()
   io.load(fp, ":/test/resources/_test_fpr.pln");
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_airway.fpr");
 
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "_test_fpr_airway.fpr"),
-           static_cast<unsigned int>(2387619898));
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_airway.fpr").size(), 36089);
 }
 
 void FlightplanTest::testLoadFs9()
@@ -236,8 +234,7 @@ void FlightplanTest::testSaveFlpDirect()
 
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_direct.flp");
 
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_direct.flp"),
-           static_cast<unsigned int>(607683429));
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1055);
 }
 
 void FlightplanTest::testSaveFlpAirway()
@@ -320,8 +317,7 @@ void FlightplanTest::testSaveFltplanDirect()
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan");
 
-  QCOMPARE(atools::textFileHash(
-             OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan"), static_cast<unsigned int>(4125796922));
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan").size(), 3554);
 }
 
 void FlightplanTest::testSaveFltplanAirway()
@@ -334,8 +330,7 @@ void FlightplanTest::testSaveFltplanAirway()
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan");
 
-  QCOMPARE(atools::textFileHash(
-             OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan"), static_cast<unsigned int>(2002411220));
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan").size(), 4554);
 }
 
 void FlightplanTest::testSaveFltplanMixed()

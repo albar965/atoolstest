@@ -245,7 +245,7 @@ void MagdecTest::testWmm()
     }
   }
 #if defined(Q_OS_WIN32)
-  QCOMPARE(outFile2.size(), 2688611);
+  QCOMPARE(outFile2.size(), 2688622);
 #else
   QCOMPARE(outFile2.size(), 2623462);
 #endif
