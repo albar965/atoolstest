@@ -28,7 +28,7 @@ using atools::fs::pln::Flightplan;
 using atools::fs::pln::FlightplanIO;
 using atools::fs::pln::FlightplanEntry;
 
-const static QLatin1Literal OUTPUT("flightplan_output");
+const static QLatin1String OUTPUT("flightplan_output");
 
 FlightplanTest::FlightplanTest()
 {
