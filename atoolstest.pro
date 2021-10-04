@@ -101,6 +101,7 @@ unix:!macx {
 }
 
 win32 {
+  LIBS += -L$$ATOOLS_LIB_PATH -latools -lz
   LIBS += -L$$OPENSSL_PATH
 
   WINDEPLOY_FLAGS = --compiler-runtime
