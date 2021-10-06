@@ -204,19 +204,19 @@ void SceneryCfgTest::testP3dv4AddOn()
 {
   AddOnPackage package(":/test/resources/add-on.xml");
 
-  QCOMPARE(package.getName(), QLatin1Literal("MyAddOn"));
+  QCOMPARE(package.getName(), QLatin1String("MyAddOn"));
   QCOMPARE(package.getDescription(), QString("My Add-on developed by My Company äöüß."));
   QCOMPARE(package.getBaseDirectory(), QString(":/test/resources"));
   QCOMPARE(package.getFilename(), QString(":/test/resources/add-on.xml"));
 
-  QCOMPARE(package.getComponents().at(0).getName(), QLatin1Literal("Scenery01"));
-  QCOMPARE(package.getComponents().at(0).getPath(), QLatin1Literal("Content\\Scenery\\Scenery01"));
-  QCOMPARE(package.getComponents().at(0).getCategory(), QLatin1Literal("Scenery"));
+  QCOMPARE(package.getComponents().at(0).getName(), QLatin1String("Scenery01"));
+  QCOMPARE(package.getComponents().at(0).getPath(), QLatin1String("Content\\Scenery\\Scenery01"));
+  QCOMPARE(package.getComponents().at(0).getCategory(), QLatin1String("Scenery"));
   QCOMPARE(package.getComponents().at(0).getLayer(), -1);
 
-  QCOMPARE(package.getComponents().at(1).getName(), QLatin1Literal("Scenery02"));
-  QCOMPARE(package.getComponents().at(1).getPath(), QLatin1Literal("C:\\Content\\Scenery\\Scenery02"));
-  QCOMPARE(package.getComponents().at(1).getCategory(), QLatin1Literal("Scenery"));
+  QCOMPARE(package.getComponents().at(1).getName(), QLatin1String("Scenery02"));
+  QCOMPARE(package.getComponents().at(1).getPath(), QLatin1String("C:\\Content\\Scenery\\Scenery02"));
+  QCOMPARE(package.getComponents().at(1).getCategory(), QLatin1String("Scenery"));
   QCOMPARE(package.getComponents().at(1).getLayer(), 99);
 }
 
@@ -229,14 +229,14 @@ void SceneryCfgTest::testP3dv4AddOn2()
   QCOMPARE(package.getBaseDirectory(), QString(":/test/resources"));
   QCOMPARE(package.getFilename(), QString(":/test/resources/add-on_copy.xml"));
 
-  QCOMPARE(package.getComponents().at(0).getName(), QLatin1Literal("Scenery01"));
-  QCOMPARE(package.getComponents().at(0).getPath(), QLatin1Literal("Content\\Scenery\\Scenery01"));
-  QCOMPARE(package.getComponents().at(0).getCategory(), QLatin1Literal("Scenery"));
+  QCOMPARE(package.getComponents().at(0).getName(), QLatin1String("Scenery01"));
+  QCOMPARE(package.getComponents().at(0).getPath(), QLatin1String("Content\\Scenery\\Scenery01"));
+  QCOMPARE(package.getComponents().at(0).getCategory(), QLatin1String("Scenery"));
   QCOMPARE(package.getComponents().at(0).getLayer(), -1);
 
-  QCOMPARE(package.getComponents().at(1).getName(), QLatin1Literal("Scenery02"));
-  QCOMPARE(package.getComponents().at(1).getPath(), QLatin1Literal("C:\\Content\\Scenery\\Scenery02"));
-  QCOMPARE(package.getComponents().at(1).getCategory(), QLatin1Literal("Scenery"));
+  QCOMPARE(package.getComponents().at(1).getName(), QLatin1String("Scenery02"));
+  QCOMPARE(package.getComponents().at(1).getPath(), QLatin1String("C:\\Content\\Scenery\\Scenery02"));
+  QCOMPARE(package.getComponents().at(1).getCategory(), QLatin1String("Scenery"));
   QCOMPARE(package.getComponents().at(1).getLayer(), 99);
 }
 
@@ -244,15 +244,15 @@ void SceneryCfgTest::testP3dv4AddOnUtf16()
 {
   AddOnPackage package(":/test/resources/add-on-utf-16.xml");
 
-  QCOMPARE(package.getName(), QLatin1Literal("Flightbeam - KMSP"));
-  QCOMPARE(package.getDescription(), QLatin1Literal("Flightbeam - Minneapolis St. Paul Intl. Airport for Prepar3D"));
-  QCOMPARE(package.getBaseDirectory(), QLatin1Literal(":/test/resources"));
-  QCOMPARE(package.getFilename(), QLatin1Literal(":/test/resources/add-on-utf-16.xml"));
+  QCOMPARE(package.getName(), QLatin1String("Flightbeam - KMSP"));
+  QCOMPARE(package.getDescription(), QLatin1String("Flightbeam - Minneapolis St. Paul Intl. Airport for Prepar3D"));
+  QCOMPARE(package.getBaseDirectory(), QLatin1String(":/test/resources"));
+  QCOMPARE(package.getFilename(), QLatin1String(":/test/resources/add-on-utf-16.xml"));
 
-  QCOMPARE(package.getComponents().at(0).getName(), QLatin1Literal("Flightbeam - KMSP scenery"));
+  QCOMPARE(package.getComponents().at(0).getName(), QLatin1String("Flightbeam - KMSP scenery"));
   QCOMPARE(package.getComponents().at(0).getPath(),
-           QLatin1Literal("G:\\Program Files\\Lockheed Martin\\Prepar3D v4\\Flightbeam\\Flightbeam - KMSP\\scenery"));
-  QCOMPARE(package.getComponents().at(0).getCategory(), QLatin1Literal("Scenery"));
+           QLatin1String("G:\\Program Files\\Lockheed Martin\\Prepar3D v4\\Flightbeam\\Flightbeam - KMSP\\scenery"));
+  QCOMPARE(package.getComponents().at(0).getCategory(), QLatin1String("Scenery"));
   QCOMPARE(package.getComponents().at(0).getLayer(), -1);
 
 }

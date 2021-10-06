@@ -217,7 +217,6 @@ RESOURCES += \
 
 OTHER_FILES += \
   $$files(testdata/*, true) \
-  .travis.yml \
   .gitignore \
   uncrustify.cfg \
   BUILD.txt \

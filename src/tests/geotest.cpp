@@ -1052,6 +1052,10 @@ void GeoTest::testCoordString_data()
   QTest::addColumn<QString>("coord");
   QTest::addColumn<Pos>("pos");
 
+  ROW("N 52 33.58;E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
+  ROW("N 52 33,58:E 13 17,26", atools::geo::Pos(13.287666, 52.559666));
+  ROW("N 52 33.58|E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
+
   ROW("", atools::geo::EMPTY_POS);
   ROW("4", atools::geo::EMPTY_POS);
   ROW("N3E", atools::geo::EMPTY_POS);

@@ -28,7 +28,7 @@ using atools::fs::pln::Flightplan;
 using atools::fs::pln::FlightplanIO;
 using atools::fs::pln::FlightplanEntry;
 
-const static QLatin1Literal OUTPUT("flightplan_output");
+const static QLatin1String OUTPUT("flightplan_output");
 
 FlightplanTest::FlightplanTest()
 {
@@ -234,7 +234,11 @@ void FlightplanTest::testSaveFlpDirect()
 
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_direct.flp");
 
+#if defined(Q_OS_WIN32)
   QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1055);
+#else
+  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_flp_direct.flp").size(), 1010);
+#endif
 }
 
 void FlightplanTest::testSaveFlpAirway()
