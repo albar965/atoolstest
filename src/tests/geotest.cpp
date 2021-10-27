@@ -715,7 +715,7 @@ void GeoTest::testBinaryMsaGeo()
   atools::fs::common::BinaryMsaGeometry geo;
   geo.addSectors(bearingAltitude);
 
-  geo.calculate(atools::geo::Pos(lon, lat), radius, 0.f);
+  geo.calculate(atools::geo::Pos(lon, lat), radius, 0.f, false);
   QVERIFY(geo.isValid());
 
   atools::fs::common::BinaryMsaGeometry geo2;
