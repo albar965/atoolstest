@@ -66,4 +66,7 @@ enum class TestEnum : atools::util::FlagType
 ATOOLS_DECLARE_FLAGS(TestEnums, TestEnum)
 ATOOLS_DECLARE_OPERATORS_FOR_FLAGS(TestEnums)
 
+Q_DECLARE_TYPEINFO(TestEnums, Q_PRIMITIVE_TYPE);
+Q_DECLARE_METATYPE(TestEnums);
+
 #endif // ATOOLSTEST_UTILTEST_H

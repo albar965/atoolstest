@@ -107,6 +107,8 @@ int main(int argc, char *argv[])
   atools::geo::registerMetaTypes();
   atools::fs::sc::registerMetaTypes();
 
+  qRegisterMetaTypeStreamOperators<TestEnums>();
+
   argCount = argc;
   argVector = argv;
 

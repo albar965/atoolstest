@@ -73,6 +73,14 @@ void UtilTest::testFlags()
   TestEnums read;
   in >> read;
   QCOMPARE(testList, read);
+
+  QVariant var = QVariant::fromValue<TestEnums>(testList);
+  TestEnums fromVar = var.value<TestEnums>();
+  QCOMPARE(testList, fromVar);
+
+  var = QVariant::fromValue<TestEnums>(TestEnum::EIGHT64);
+  fromVar = var.value<TestEnums>();
+  QCOMPARE(TestEnum::EIGHT64, fromVar);
 }
 
 void UtilTest::testProps()
@@ -92,6 +100,7 @@ void UtilTest::testProps()
     KEY_VARIANT,
     KEY_NONE
   };
+
   const unsigned char byteTest[] = {0x78, 0x56, 0x34, 0x12};
   QByteArray bytes1((const char *)(byteTest), 4);
 
