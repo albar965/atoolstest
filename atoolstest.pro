@@ -171,6 +171,7 @@ message(-----------------------------------)
 
 SOURCES += \
   src/tests/airspacetest.cpp \
+  src/tests/atoolstest.cpp \
   src/tests/calctest.cpp \
   src/tests/gribtest.cpp \
   src/tests/metartest.cpp \
@@ -193,6 +194,7 @@ SOURCES += \
 
 HEADERS += \
   src/tests/airspacetest.h \
+  src/tests/atoolstest.h \
   src/tests/calctest.h \
   src/tests/gribtest.h \
   src/tests/metartest.h \

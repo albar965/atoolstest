@@ -20,6 +20,7 @@
 #include "geo/calculations.h"
 
 #include "tests/airspacetest.h"
+#include "tests/atoolstest.h"
 #include "tests/calctest.h"
 #include "tests/dtmtest.h"
 #include "tests/flightplantest.h"
@@ -148,6 +149,7 @@ int main(int argc, char *argv[])
   parser->addOption(testFunctions);
 
   DEFINETEST(AirspaceTest)
+  DEFINETEST(AtoolsTest)
   DEFINETEST(CalcTest)
   DEFINETEST(DtmTest)
   DEFINETEST(FlightplanTest)
@@ -209,6 +211,7 @@ void test()
 
     RUNTESTEXT(AirspaceTest)
     RUNTESTEXT(CalcTest)
+    RUNTESTEXT(AtoolsTest)
     RUNTESTEXT(DtmTest)
     RUNTESTEXT(FlightplanTest)
     RUNTESTEXT(GeoTest)
