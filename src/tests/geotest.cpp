@@ -91,7 +91,12 @@ void GeoTest::testCenter()
   QCOMPARE(Rect(160.f, 10.f, -160.f, -10.f).getCenter(), Pos(-180.f, 0.f));
   QCOMPARE(Rect(150.f, 10.f, -170.f, -10.f).getCenter(), Pos(170.f, 0.f));
   QCOMPARE(Rect(170.f, 10.f, -150.f, -10.f).getCenter(), Pos(-170.f, 0.f));
-  QCOMPARE(Rect(-100.f, 10.f, 100.f, -10.f).getCenter(), Pos(-180.f, 0.f));
+
+  QCOMPARE(Rect(-100.f, 10.f, 100.f, -10.f).getCenter(), Pos(0.f, 0.f));
+  QCOMPARE(Rect(-80.f, 10.f, 80.f, -10.f).getCenter(), Pos(0.f, 0.f));
+
+  QCOMPARE(Rect(100.f, 10.f, -100.f, -10.f).getCenter(), Pos(-180.f, 0.f));
+  QCOMPARE(Rect(80.f, 10.f, -80.f, -10.f).getCenter(), Pos(-180.f, 0.f));
 }
 
 void GeoTest::testCartesian_data()
