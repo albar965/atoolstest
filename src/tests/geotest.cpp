@@ -162,11 +162,11 @@ void GeoTest::testAntiMeridian_data()
   QTest::newRow("-180 to -170") << -180.f << -170.f << false;
   QTest::newRow("170 to 180") << 170.f << 180.f << false;
 
-  QTest::newRow("180 to -170") << 180.f << -170.f << true;
-  QTest::newRow("170 to -180") << 170.f << -180.f << true;
+  QTest::newRow("180 to -170") << 180.f << -170.f << false;
+  QTest::newRow("170 to -180") << 170.f << -180.f << false;
+  QTest::newRow("-180 to 180") << -180.f << 180.f << false;
 
   QTest::newRow("-177 to 177") << -177.f << 177.f << true;
-  QTest::newRow("-180 to 180") << -180.f << 180.f << true;
   QTest::newRow("-91 to 91") << -91.f << 91.f << true
   ;
   QTest::newRow("-90 to 90") << -90.f << 90.f << false;
@@ -636,6 +636,39 @@ void GeoTest::testAngleQuad4()
   QCOMPARE(pos.angleDegTo(Pos(x, x - 1.f)), 180.f);
   QCOMPARE(pos.angleDegTo(Pos(x + 1.f, y)), 89.6464f);
   QCOMPARE(pos.angleDegTo(Pos(x - 1.f, y)), 270.354f);
+}
+
+void GeoTest::testLineAntiMeridian_data()
+{
+  QTest::addColumn<Line>("line");
+  QTest::addColumn<float>("resultLat");
+  QTest::addColumn<float>("resultLon");
+
+  // QTest::newRow("180.f, 49.f, -170.f,  49.f") << Line(180.f, 49.f, -170.f, 49.f) << 9.50215f << -180.f;
+
+  QTest::newRow("-179.f, 10.f, 179.f,  9.f") << Line(-179.f, 10.f, 179.f, 9.f) << 9.50215f << -180.f;
+  QTest::newRow("179.f, 10.f, -179.f,  9.f") << Line(179.f, 10.f, -179.f, 9.f) << 9.50215f << 180.f;
+  QTest::newRow("179.f,  1.f, -179.f, -1.f") << Line(179.f, 1.f, -179.f, -1.f) << 1.34101e-05f << 180.f;
+  QTest::newRow("179.f,  2.f, -179.f,  1.f") << Line(179.f, 2.f, -179.f, 1.f) << 1.50034f << 180.f;
+  QTest::newRow("170.f,  1.f, -170.f,  0.f") << Line(170.f, 1.f, -170.f, 0.f) << 0.507752f << 180.f;
+
+}
+
+void GeoTest::testLineAntiMeridian()
+{
+  QFETCH(Line, line);
+  QFETCH(float, resultLat);
+  QFETCH(float, resultLon);
+
+  QCOMPARE(line.crossesAntiMeridian(), true);
+
+  QList<Line> corrected = line.splitAtAntiMeridian();
+
+  QCOMPARE(corrected.size(), 2);
+  QCOMPARE(corrected.at(0).getPos2().getLatY(), resultLat);
+  QCOMPARE(corrected.at(0).getPos2().getLonX(), resultLon);
+  QCOMPARE(corrected.at(1).getPos1().getLatY(), resultLat);
+  QCOMPARE(corrected.at(1).getPos1().getLonX(), -resultLon);
 }
 
 const static atools::geo::LineString track(
