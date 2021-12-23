@@ -89,7 +89,6 @@ void DbTest::cleanupTestCase()
   QCOMPARE(userdata.rowCount(), 0);
 
   atools::fs::userdata::UserdataManager userdataUndo(dbUndo);
-  userdataUndo.dropUndoSchema();
   userdataUndo.dropSchema();
   QCOMPARE(userdataUndo.hasSchema(), false);
   QCOMPARE(userdataUndo.hasData(), false);
