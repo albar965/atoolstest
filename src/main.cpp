@@ -22,6 +22,7 @@
 #include "tests/airspacetest.h"
 #include "tests/atoolstest.h"
 #include "tests/calctest.h"
+#include "tests/dbtest.h"
 #include "tests/dtmtest.h"
 #include "tests/flightplantest.h"
 #include "tests/geotest.h"
@@ -158,6 +159,7 @@ int main(int argc, char *argv[])
   DEFINETEST(MagdecTest)
   DEFINETEST(MetarTest)
   DEFINETEST(OnlineTest)
+  DEFINETEST(DbTest)
   DEFINETEST(PerfTest)
   DEFINETEST(RouteTest)
   DEFINETEST(SceneryCfgTest)
@@ -210,11 +212,13 @@ void test()
     timer.start();
 
     RUNTESTEXT(AirspaceTest)
-    RUNTESTEXT(CalcTest)
     RUNTESTEXT(AtoolsTest)
+    RUNTESTEXT(CalcTest)
+    RUNTESTEXT(DbTest)
     RUNTESTEXT(DtmTest)
     RUNTESTEXT(FlightplanTest)
     RUNTESTEXT(GeoTest)
+    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
     RUNTESTEXT(MagdecTest)
     RUNTESTEXT(MetarTest)
     RUNTESTEXT(OnlineTest)
@@ -224,10 +228,9 @@ void test()
     RUNTESTEXT(SpatialTest)
     RUNTESTEXT(StringTest)
     RUNTESTEXT(TrackTest)
+    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
     RUNTESTEXT(UtilTest)
     RUNTESTEXT(VersionTest)
-    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
-    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
 
     qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << endl;
   }
