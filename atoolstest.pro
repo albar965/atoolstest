@@ -28,8 +28,8 @@
 # ("../build-atools-$${CONF_TYPE}/$${CONF_TYPE}" on Windows) if not set.
 #
 # OPENSSL_PATH
-# Windows: Base path of WinSSL 1.1.1 installation (https://slproweb.com/products/Win32OpenSSL.html).
-#          Defaults to "../openssl-1.1.1d-win32-mingw" if empty.
+# Windows: Base path of WinSSL 1.1.1 installation which can optionally installed with the Qt Installer.
+#          Defaults to "$$[QT_INSTALL_PREFIX])\..\..\Tools\OpenSSL\Win_x86\bin\" (e.g. "C:\Qt\Tools\OpenSSL\Win_x86\bin\") if empty.
 # Linux:   Not used.
 # macOS:   Not used.
 #
@@ -81,7 +81,9 @@ isEmpty(DEPLOY_BASE) : DEPLOY_BASE=$$PWD/../deploy
 isEmpty(ATOOLS_INC_PATH) : ATOOLS_INC_PATH=$$PWD/../atools/src
 isEmpty(ATOOLS_LIB_PATH) : ATOOLS_LIB_PATH=$$PWD/../build-atools-$$CONF_TYPE
 
-win32: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=$$PWD/../openssl-1.1.1d-win32-mingw
+# QT_INSTALL_PREFIX: C:/Qt/5.15.2/mingw81_32
+# C:\Qt\Tools\OpenSSL\Win_x86\bin\
+win32: isEmpty(OPENSSL_PATH) : OPENSSL_PATH=$$[QT_INSTALL_PREFIX])\..\..\Tools\OpenSSL\Win_x86\bin\
 
 # =======================================================================
 # Set compiler flags and paths
@@ -101,11 +103,11 @@ unix:!macx {
 }
 
 win32 {
-  LIBS += -L$$OPENSSL_PATH
+  LIBS += -L$$ATOOLS_LIB_PATH -latools -lz
 
   WINDEPLOY_FLAGS = --compiler-runtime
   CONFIG(debug, debug|release) : WINDEPLOY_FLAGS += --debug
-  CONFIG(release, debug|release) : WINDEPLOY_FLAGS += --release
+#  CONFIG(release, debug|release) : WINDEPLOY_FLAGS += --release
 }
 
 macx {
@@ -169,7 +171,9 @@ message(-----------------------------------)
 
 SOURCES += \
   src/tests/airspacetest.cpp \
+  src/tests/atoolstest.cpp \
   src/tests/calctest.cpp \
+  src/tests/dbtest.cpp \
   src/tests/gribtest.cpp \
   src/tests/metartest.cpp \
   src/tests/geotest.cpp \
@@ -191,7 +195,9 @@ SOURCES += \
 
 HEADERS += \
   src/tests/airspacetest.h \
+  src/tests/atoolstest.h \
   src/tests/calctest.h \
+  src/tests/dbtest.h \
   src/tests/gribtest.h \
   src/tests/metartest.h \
   src/tests/geotest.h \
@@ -215,7 +221,6 @@ RESOURCES += \
 
 OTHER_FILES += \
   $$files(testdata/*, true) \
-  .travis.yml \
   .gitignore \
   uncrustify.cfg \
   BUILD.txt \
@@ -263,8 +268,8 @@ win32 {
   deploy.commands = rmdir /s /q $$p($$DEPLOY_BASE/$$TARGET_NAME) &
   deploy.commands += mkdir $$p($$DEPLOY_BASE/$$TARGET_NAME/sqldrivers) &&
   deploy.commands += xcopy $$p($$OUT_PWD/atoolstest.exe) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
-  deploy.commands += xcopy $$p($$OPENSSL_PATH/libcrypto-1_1.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
-  deploy.commands += xcopy $$p($$OPENSSL_PATH/libssl-1_1.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH/libcrypto*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH/libssl*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/CHANGELOG.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/README.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/LICENSE.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&

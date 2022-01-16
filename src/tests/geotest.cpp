@@ -22,6 +22,8 @@
 #include "geo/rect.h"
 #include "geo/calculations.h"
 #include "fs/util/coordinates.h"
+#include "fs/common/binarygeometry.h"
+#include "fs/common/binarymsageometry.h"
 #include "geo/line.h"
 
 using atools::geo::Pos;
@@ -30,6 +32,7 @@ using atools::geo::Line;
 using atools::geo::LineString;
 using atools::geo::LineDistance;
 using atools::geo::angleAbsDiff;
+using atools::geo::angleAbsDiff2;
 using atools::geo::nmToMeter;
 
 namespace QTest {
@@ -89,7 +92,12 @@ void GeoTest::testCenter()
   QCOMPARE(Rect(160.f, 10.f, -160.f, -10.f).getCenter(), Pos(-180.f, 0.f));
   QCOMPARE(Rect(150.f, 10.f, -170.f, -10.f).getCenter(), Pos(170.f, 0.f));
   QCOMPARE(Rect(170.f, 10.f, -150.f, -10.f).getCenter(), Pos(-170.f, 0.f));
-  QCOMPARE(Rect(-100.f, 10.f, 100.f, -10.f).getCenter(), Pos(-180.f, 0.f));
+
+  QCOMPARE(Rect(-100.f, 10.f, 100.f, -10.f).getCenter(), Pos(0.f, 0.f));
+  QCOMPARE(Rect(-80.f, 10.f, 80.f, -10.f).getCenter(), Pos(0.f, 0.f));
+
+  QCOMPARE(Rect(100.f, 10.f, -100.f, -10.f).getCenter(), Pos(-180.f, 0.f));
+  QCOMPARE(Rect(80.f, 10.f, -80.f, -10.f).getCenter(), Pos(-180.f, 0.f));
 }
 
 void GeoTest::testCartesian_data()
@@ -154,11 +162,11 @@ void GeoTest::testAntiMeridian_data()
   QTest::newRow("-180 to -170") << -180.f << -170.f << false;
   QTest::newRow("170 to 180") << 170.f << 180.f << false;
 
-  QTest::newRow("180 to -170") << 180.f << -170.f << true;
-  QTest::newRow("170 to -180") << 170.f << -180.f << true;
+  QTest::newRow("180 to -170") << 180.f << -170.f << false;
+  QTest::newRow("170 to -180") << 170.f << -180.f << false;
+  QTest::newRow("-180 to 180") << -180.f << 180.f << false;
 
   QTest::newRow("-177 to 177") << -177.f << 177.f << true;
-  QTest::newRow("-180 to 180") << -180.f << 180.f << true;
   QTest::newRow("-91 to 91") << -91.f << 91.f << true
   ;
   QTest::newRow("-90 to 90") << -90.f << 90.f << false;
@@ -236,43 +244,43 @@ void GeoTest::testAngleDiff_data()
   QTest::addColumn<float>("angle1");
   QTest::addColumn<float>("angle2");
   QTest::addColumn<float>("result");
+  QTest::addColumn<float>("result2");
 
-  QTest::newRow("(0.f, 0.f), 0.f)") << 0.f << 0.f << 0.f;
-  QTest::newRow("(180.f, 180.f), 0.f)") << 180.f << 180.f << 0.f;
-  QTest::newRow("(360.f, 360.f), 0.f)") << 360.f << 360.f << 0.f;
+  QTest::newRow("(0.f, 0.f), 0.f)") << 0.f << 0.f << 0.f << 0.f;
+  QTest::newRow("(180.f, 180.f), 0.f)") << 180.f << 180.f << 0.f << 0.f;
+  QTest::newRow("(360.f, 360.f), 0.f)") << 360.f << 360.f << 0.f << 0.f;
 
-  QTest::newRow("(0.f, 360.f), 0.f)") << 0.f << 360.f << 0.f;
-  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f;
+  QTest::newRow("(0.f, 360.f), 0.f)") << 0.f << 360.f << 0.f << 360.f;
+  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f << 0.f;
 
-  QTest::newRow("(0.f, 180.f), 180.f)") << 0.f << 180.f << 180.f;
-  QTest::newRow("(180.f, 0.f), 180.f)") << 180.f << 0.f << 180.f;
+  QTest::newRow("(0.f, 180.f), 180.f)") << 0.f << 180.f << 180.f << 180.f;
+  QTest::newRow("(180.f, 0.f), 180.f)") << 180.f << 0.f << 180.f << 180.f;
 
-  QTest::newRow("(359.f, 1.f), 2.f)") << 359.f << 1.f << 2.f;
-  QTest::newRow("(1.f, 359.f), 2.f)") << 1.f << 359.f << 2.f;
+  QTest::newRow("(359.f, 1.f), 2.f)") << 359.f << 1.f << 2.f << 2.f;
+  QTest::newRow("(1.f, 359.f), 2.f)") << 1.f << 359.f << 2.f << 358.f;
 
-  QTest::newRow("(350.f, 10.f), 20.f)") << 350.f << 10.f << 20.f;
-  QTest::newRow("(10.f, 350.f), 20.f)") << 10.f << 350.f << 20.f;
+  QTest::newRow("(350.f, 10.f), 20.f)") << 350.f << 10.f << 20.f << 20.f;
+  QTest::newRow("(10.f, 350.f), 20.f)") << 10.f << 350.f << 20.f << 340.f;
 
-  QTest::newRow("(179.f, 181.f), 2.f)") << 179.f << 181.f << 2.f;
-  QTest::newRow("(181.f, 179.f), 2.f)") << 181.f << 179.f << 2.f;
+  QTest::newRow("(179.f, 181.f), 2.f)") << 179.f << 181.f << 2.f << 2.f;
+  QTest::newRow("(181.f, 179.f), 2.f)") << 181.f << 179.f << 2.f << 358.f;
 
-  QTest::newRow("(360.f, 180.f), 180.f)") << 360.f << 180.f << 180.f;
-  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f;
+  QTest::newRow("(360.f, 180.f), 180.f)") << 360.f << 180.f << 180.f << 180.f;
+  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f << 0.f;
 
-  QTest::newRow("(89.f, 271.f), 178.f)") << 89.f << 271.f << 178.f;
-  QTest::newRow("(91.f, 269.f), 178.f)") << 91.f << 269.f << 178.f;
+  QTest::newRow("(89.f, 271.f), 178.f)") << 89.f << 271.f << 178.f << 182.f;
+  QTest::newRow("(91.f, 269.f), 178.f)") << 91.f << 269.f << 178.f << 178.f;
 
-  QTest::newRow("(271.f, 89.f), 178.f)") << 271.f << 89.f << 178.f;
-  QTest::newRow("(269.f, 91.f), 178.f)") << 269.f << 91.f << 178.f;
+  QTest::newRow("(271.f, 89.f), 178.f)") << 271.f << 89.f << 178.f << 178.f;
+  QTest::newRow("(269.f, 91.f), 178.f)") << 269.f << 91.f << 178.f << 182.f;
 
-  QTest::newRow("(90.f, 270.f), 180.f)") << 90.f << 270.f << 180.f;
-  QTest::newRow("(89.f, 269.f), 180.f)") << 89.f << 269.f << 180.f;
-  QTest::newRow("(91.f, 271.f), 180.f)") << 91.f << 271.f << 180.f;
+  QTest::newRow("(90.f, 270.f), 180.f)") << 90.f << 270.f << 180.f << 180.f;
+  QTest::newRow("(89.f, 269.f), 180.f)") << 89.f << 269.f << 180.f << 180.f;
+  QTest::newRow("(91.f, 271.f), 180.f)") << 91.f << 271.f << 180.f << 180.f;
 
-  QTest::newRow("(270.f, 90.f), 180.f)") << 270.f << 90.f << 180.f;
-  QTest::newRow("(269.f, 89.f), 180.f)") << 269.f << 89.f << 180.f;
-  QTest::newRow("(271.f, 91.f), 180.f)") << 271.f << 91.f << 180.f;
-
+  QTest::newRow("(270.f, 90.f), 180.f)") << 270.f << 90.f << 180.f << 180.f;
+  QTest::newRow("(269.f, 89.f), 180.f)") << 269.f << 89.f << 180.f << 180.f;
+  QTest::newRow("(271.f, 91.f), 180.f)") << 271.f << 91.f << 180.f << 180.f;
 }
 
 void GeoTest::testAngleDiff()
@@ -280,7 +288,9 @@ void GeoTest::testAngleDiff()
   QFETCH(float, angle1);
   QFETCH(float, angle2);
   QFETCH(float, result);
+  QFETCH(float, result2);
   QCOMPARE(angleAbsDiff(angle1, angle2), result);
+  QCOMPARE(angleAbsDiff2(angle1, angle2), result2);
 }
 
 void GeoTest::testLineParallel_data()
@@ -628,6 +638,138 @@ void GeoTest::testAngleQuad4()
   QCOMPARE(pos.angleDegTo(Pos(x - 1.f, y)), 270.354f);
 }
 
+void GeoTest::testLineAntiMeridian_data()
+{
+  QTest::addColumn<Line>("line");
+  QTest::addColumn<float>("resultLat");
+  QTest::addColumn<float>("resultLon");
+
+  // QTest::newRow("180.f, 49.f, -170.f,  49.f") << Line(180.f, 49.f, -170.f, 49.f) << 9.50215f << -180.f;
+
+  QTest::newRow("-179.f, 10.f, 179.f,  9.f") << Line(-179.f, 10.f, 179.f, 9.f) << 9.50215f << -180.f;
+  QTest::newRow("179.f, 10.f, -179.f,  9.f") << Line(179.f, 10.f, -179.f, 9.f) << 9.50215f << 180.f;
+  QTest::newRow("179.f,  1.f, -179.f, -1.f") << Line(179.f, 1.f, -179.f, -1.f) << 1.34101e-05f << 180.f;
+  QTest::newRow("179.f,  2.f, -179.f,  1.f") << Line(179.f, 2.f, -179.f, 1.f) << 1.50034f << 180.f;
+  QTest::newRow("170.f,  1.f, -170.f,  0.f") << Line(170.f, 1.f, -170.f, 0.f) << 0.507752f << 180.f;
+
+}
+
+void GeoTest::testLineAntiMeridian()
+{
+  QFETCH(Line, line);
+  QFETCH(float, resultLat);
+  QFETCH(float, resultLon);
+
+  QCOMPARE(line.crossesAntiMeridian(), true);
+
+  QList<Line> corrected = line.splitAtAntiMeridian();
+
+  QCOMPARE(corrected.size(), 2);
+  QCOMPARE(corrected.at(0).getPos2().getLatY(), resultLat);
+  QCOMPARE(corrected.at(0).getPos2().getLonX(), resultLon);
+  QCOMPARE(corrected.at(1).getPos1().getLatY(), resultLat);
+  QCOMPARE(corrected.at(1).getPos1().getLonX(), -resultLon);
+}
+
+const static atools::geo::LineString track(
+{
+  atools::geo::Pos(-8.912841278937394, 52.60663708318238),
+  atools::geo::Pos(-8.862844205905699, 52.61221376715999),
+  atools::geo::Pos(-8.662602813702559, 52.63407550093609),
+  atools::geo::Pos(-8.402765170981132, 52.63008327695571),
+  atools::geo::Pos(-8.051495013488424, 52.66678238662439),
+  atools::geo::Pos(-7.791341410380108, 52.66146052390298),
+  atools::geo::Pos(-7.590108505223442, 52.68145353757851),
+  atools::geo::Pos(-7.18720374863533, 52.72068953286778),
+  atools::geo::Pos(-6.985279544531381, 52.73958550237592),
+  atools::geo::Pos(-6.732500222209509, 52.76263774609386),
+  atools::geo::Pos(-6.479632750528286, 52.78541082562952),
+  atools::geo::Pos(-6.276865722530852, 52.80297420333915),
+  atools::geo::Pos(-6.132516801580161, 52.84700371769064),
+  atools::geo::Pos(-5.894403110840573, 52.93085126233986),
+  atools::geo::Pos(-5.690426214570678, 52.947194255398),
+  atools::geo::Pos(-5.405982190787223, 53.06408723300809),
+  atools::geo::Pos(-5.222656559035221, 53.17260544928833),
+  atools::geo::Pos(-4.935089915514705, 53.28809650054057)
+});
+
+void GeoTest::testBinaryGeo()
+{
+  LineString test;
+  atools::fs::common::BinaryGeometry geo(track);
+
+  QByteArray bytes = geo.writeToByteArray();
+  QCOMPARE(bytes.size(), 148);
+
+  atools::fs::common::BinaryGeometry geo2(bytes);
+  QCOMPARE(geo2.getGeometry(), track);
+}
+
+void GeoTest::testBinaryMsaGeo_data()
+{
+  QTest::addColumn<float>("radius");
+  QTest::addColumn<float>("lat");
+  QTest::addColumn<float>("lon");
+  QTest::addColumn<QVector<float> >("bearingAltitude");
+
+  // area_code  icao_code  airport_identifier  msa_center  msa_center_latitude  msa_center_longitude
+  // magnetic_true_indicator  multiple_code  radius_limit
+  // sector_bearing_1  sector_altitude_1  sector_bearing_2  sector_altitude_2  sector_bearing_3  sector_altitude_3
+  // sector_bearing_4  sector_altitude_4  sector_bearing_5  sector_altitude_5
+
+  // USA K7 06FA PHK 26.78274167 -80.69143333 M  25 180 26
+  QTest::newRow("USA K7 06FA PHK") << 25.f << 26.78274167f << -80.69143333f
+                                   << QVector<float>({180.f, 26.f});
+
+  // AFR DA DAAP ILZ 26.72005 8.63577222 M 25 180 43
+  QTest::newRow("AFR DA DAAP ILZ") << 25.f << 26.72005f << 8.63577222f
+                                   << QVector<float>({180.f, 43.f});
+
+  // AFR DA DAAG MAR 36.68476389 2.78216111 M 25 270 71 90 40
+  QTest::newRow("AFR DA DAAG MAR") << 25.f << 36.68476389f << 2.78216111f
+                                   << QVector<float>({270.f, 71.f, 90.f, 40.f});
+
+  // AFR DA DAAG ZEM 36.795 3.57083333 M 25 180 44 270 85 360 53 90 40
+  QTest::newRow("AFR DA DAAG ZEM") << 25.f << 36.795f << 3.57083333f
+                                   << QVector<float>({180.f, 44.f, 270.f, 85.f, 360.f, 53.f, 90.f, 40.f});
+
+  // AFR DA DAAJ DJA 24.28772778 9.45334167 M 25 180 83 360 79
+  QTest::newRow("AFR DA DAAJ DJA") << 25.f << 24.28772778f << 9.45334167f
+                                   << QVector<float>({180.f, 83.f, 360.f, 79.f});
+
+  // AFR DA DAAS STF 36.17666667 5.28861111 M A 25 240 69 320 84 65 78 155 87
+  QTest::newRow("AFR DA DAAS STF A") << 25.f << 36.17666667f << 5.28861111f
+                                     << QVector<float>({240.f, 69.f, 320.f, 84.f, 65.f, 78.f, 155.f, 87.f});
+
+  // AFR DA DAAS STF 36.17666667 5.28861111 M B 25 180 87 270 83
+  QTest::newRow("AFR DA DAAS STF B") << 25.f << 36.17666667f << 5.28861111f
+                                     << QVector<float>({180.f, 87.f, 270.f, 83.f, });
+}
+
+void GeoTest::testBinaryMsaGeo()
+{
+  QFETCH(float, radius);
+  QFETCH(float, lat);
+  QFETCH(float, lon);
+  QFETCH(QVector<float>, bearingAltitude);
+
+  atools::fs::common::BinaryMsaGeometry geo;
+  geo.addSectors(bearingAltitude);
+
+  geo.calculate(atools::geo::Pos(lon, lat), radius, 0.f, false);
+  QVERIFY(geo.isValid());
+
+  atools::fs::common::BinaryMsaGeometry geo2;
+  geo2.readFromByteArray(geo.writeToByteArray());
+
+  QCOMPARE(geo.getAltitudes(), geo2.getAltitudes());
+  QCOMPARE(geo.getBearings(), geo2.getBearings());
+  QCOMPARE(geo.getBoundingRect(), geo2.getBoundingRect());
+  QCOMPARE(geo.getGeometry(), geo2.getGeometry());
+  QCOMPARE(geo.getLabelPositions(), geo2.getLabelPositions());
+  QCOMPARE(geo.getBearingEndPositions(), geo2.getBearingEndPositions());
+}
+
 void GeoTest::testDistanceToLineAlongHoriz()
 {
   LineDistance dist;
@@ -750,18 +892,18 @@ void GeoTest::testDistanceToLineBug2()
   QCOMPARE(dist.status, atools::geo::BEFORE_START);
 }
 
-// pos1	@0x555556ce9c38	atools::geo::Pos &
-// altitude	2000.0	float
-// latY	48.72694396972656	float
-// lonX		float
-// pos2	@0x555556a870d8	atools::geo::Pos &
-// altitude	0.0	float
-// latY	49.073055267333984	float
-// lonX	-124.12972259521484	float
-// this	@0x7fffffffc5a8	atools::geo::Pos
-// altitude	5000.0	float
-// latY	48.41421127319336	float
-// lonX	-122.49698638916016	float
+// pos1  @0x555556ce9c38  atools::geo::Pos &
+// altitude  2000.0  float
+// latY  48.72694396972656  float
+// lonX    float
+// pos2  @0x555556a870d8  atools::geo::Pos &
+// altitude  0.0  float
+// latY  49.073055267333984  float
+// lonX  -124.12972259521484  float
+// this  @0x7fffffffc5a8  atools::geo::Pos
+// altitude  5000.0  float
+// latY  48.41421127319336  float
+// lonX  -122.49698638916016  float
 
 void GeoTest::testRectExpandDateBoundary()
 {
@@ -950,6 +1092,10 @@ void GeoTest::testCoordString_data()
 
   QTest::addColumn<QString>("coord");
   QTest::addColumn<Pos>("pos");
+
+  ROW("N 52 33.58;E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
+  ROW("N 52 33,58:E 13 17,26", atools::geo::Pos(13.287666, 52.559666));
+  ROW("N 52 33.58|E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
 
   ROW("", atools::geo::EMPTY_POS);
   ROW("4", atools::geo::EMPTY_POS);

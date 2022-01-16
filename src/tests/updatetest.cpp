@@ -44,7 +44,7 @@
 
 using atools::util::UpdateCheck;
 
-static const QLatin1Literal VERSION_URL("https://www.littlenavmap.org/test/littlenavmap-version");
+static const QLatin1String VERSION_URL("https://www.littlenavmap.org/test/littlenavmap-version");
 
 UpdateTest::UpdateTest()
 {

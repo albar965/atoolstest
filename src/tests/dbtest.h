@@ -15,19 +15,25 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_UTILTEST_H
-#define ATOOLSTEST_UTILTEST_H
+#ifndef ATOOLSTEST_DB_TEST_H
+#define ATOOLSTEST_DB_TEST_H
 
-#include "util/flags.h"
+#include <QString>
 #include <QtTest>
 
-class UtilTest :
+namespace atools {
+namespace sql {
+class SqlDatabase;
+}
+}
+
+class DbTest :
   public QObject
 {
   Q_OBJECT
 
 public:
-  UtilTest();
+  DbTest();
 
   static void runtest(int argc, char *argv[]);
 
@@ -35,38 +41,24 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-  void testFlags();
-  void testProps();
+  void testInsert();
+  void testInsertId();
+  void testUpdate();
+  void testDelete();
+
+  void testInsertUndo();
+  void testInsertUndoId();
+  void testUpdateUndo();
+  void testDeleteUndo();
+  void testUndoDeleteAll();
+  void testUndoBulkInsert();
+
+  void testExecUndoRedo();
+  void testExecUndoRedoBulk();
+
+private:
+  atools::sql::SqlDatabase *db = nullptr, *dbUndo = nullptr, *dbUndoBulk = nullptr;
 
 };
 
-/* *INDENT-OFF* */
-enum class TestEnum : atools::util::FlagType
-{
-  NONE =    0,
-  ONE =     0x0000000000000001,
-  TWO =     0x0000000000000002,
-  FOUR =    0x0000000000000004,
-  EIGHT =   0x0000000000000008,
-  ONE16 =   0x0000000000001000,
-  TWO16 =   0x0000000000002000,
-  FOUR16 =  0x0000000000004000,
-  EIGHT16 = 0x0000000000008000,
-  ONE32 =   0x0000000010000000,
-  TWO32 =   0x0000000020000000,
-  FOUR32 =  0x0000000040000000,
-  EIGHT32 = 0x0000000080000000,
-  ONE64 =   0x1000000000000000,
-  TWO64 =   0x2000000000000000,
-  FOUR64 =  0x4000000000000000,
-  EIGHT64 = 0x8000000000000000
-};
-/* *INDENT-ON* */
-
-ATOOLS_DECLARE_FLAGS(TestEnums, TestEnum)
-ATOOLS_DECLARE_OPERATORS_FOR_FLAGS(TestEnums)
-
-Q_DECLARE_TYPEINFO(TestEnums, Q_PRIMITIVE_TYPE);
-Q_DECLARE_METATYPE(TestEnums);
-
-#endif // ATOOLSTEST_UTILTEST_H
+#endif // ATOOLSTEST_DB_TEST_H

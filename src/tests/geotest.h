@@ -102,6 +102,14 @@ private slots:
   void testAngleQuad3();
   void testAngleQuad4();
 
+  void testLineAntiMeridian_data();
+  void testLineAntiMeridian();
+
+  void testBinaryGeo();
+
+  void testBinaryMsaGeo_data();
+  void testBinaryMsaGeo();
+
 };
 
 #endif // ATOOLSTEST_GEOTEST_H
