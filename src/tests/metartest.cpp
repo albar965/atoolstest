@@ -166,7 +166,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
     QVERIFY(!errorFlag);
     QVERIFY(downloader.size() > 100);
 
-    for(auto it = AIRPORT_COORDS.begin(); it != AIRPORT_COORDS.end(); ++it)
+    for(auto it = AIRPORT_COORDS.constBegin(); it != AIRPORT_COORDS.constEnd(); ++it)
     {
       const QString ident = it.key();
       const atools::geo::Pos pos = it.value();
@@ -190,7 +190,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
       }
     }
 
-    for(auto it = AIRPORT_COORDS.begin(); it != AIRPORT_COORDS.end(); ++it)
+    for(auto it = AIRPORT_COORDS.constBegin(); it != AIRPORT_COORDS.constEnd(); ++it)
     {
       const QString ident = it.key();
       const atools::geo::Pos pos = it.value();
