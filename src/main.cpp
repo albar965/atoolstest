@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
   DEFINETEST(VersionTest)
 
   parser->parse(QCoreApplication::arguments());
-  otherOptions.append(QCoreApplication::arguments().first());
+  otherOptions.append(QCoreApplication::arguments().constFirst());
 
   if(parser->isSet(maxWarningsOpt))
   {

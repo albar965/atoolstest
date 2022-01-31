@@ -151,13 +151,13 @@ void SceneryCfgTest::testXplane()
   QCOMPARE(packs.getEntries().at(idx).disabled, true);
   QCOMPARE(packs.getEntries().at(idx++).valid, true);
 
-  const SceneryPack *entry = packs.getEntryByPath(packs.getEntries().first().filepath);
+  const SceneryPack *entry = packs.getEntryByPath(packs.getEntries().constFirst().filepath);
   QCOMPARE(entry->filepath.endsWith(QString("Norway ENBN tdg") + QDir::separator() + "Earth nav data" +
                                     QDir::separator() + "apt.dat"), true);
   QCOMPARE(entry->disabled, false);
   QCOMPARE(entry->valid, true);
 
-  const SceneryPack *entry2 = packs.getEntryByPath(packs.getEntries().last().filepath);
+  const SceneryPack *entry2 = packs.getEntryByPath(packs.getEntries().constLast().filepath);
   QCOMPARE(entry2->filepath.endsWith(QString("ZYYJ_Yanji") + QDir::separator() + "Earth nav data" + QDir::separator() +
                                      "apt.dat"), true);
   QCOMPARE(entry2->disabled, true);
