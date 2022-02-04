@@ -34,6 +34,7 @@ public:
 private slots:
   void testVersion_data();
   void testVersion();
+  void testVersionStr();
 
 };
 
