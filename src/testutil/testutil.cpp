@@ -19,7 +19,7 @@
 
 #include "sql/sqldatabase.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QThread>
 
 namespace testutil {
@@ -29,7 +29,7 @@ void waitForValue(bool& done, int seconds)
   int waitTimeMs = seconds * 1000, sleepTimeMs = 100, msecs = 0;
   while(!done && msecs < waitTimeMs)
   {
-    QApplication::processEvents();
+    QCoreApplication::processEvents();
     QThread::msleep(static_cast<unsigned long>(sleepTimeMs));
     msecs += sleepTimeMs;
   }
