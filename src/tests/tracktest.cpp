@@ -58,7 +58,7 @@ void TrackTest::testTrackReader_data()
   // QTest::newRow("AUSOTS 2") << "testdata/AUSOTS2.html" << int(atools::track::AUSOTS) << 19 << 0;
   QTest::newRow("PACOTS") << "testdata/PACOTS.html" << int(atools::track::PACOTS) << 14 << 0;
   QTest::newRow("PACOTS 2") << "testdata/PACOTS2.html" << int(atools::track::PACOTS) << 16 << 0;
-  QTest::newRow("NAT (2 invalid)") << "testdata/NAT.html" << int(atools::track::NAT) << 13 << 2;
+  QTest::newRow("NAT (2 invalid)") << "testdata/NAT.html" << int(atools::track::NAT) << 13 << 1;
   QTest::newRow("NAT 2") << "testdata/NAT2.html" << int(atools::track::NAT) << 9 << 0;
 }
 
@@ -72,15 +72,17 @@ void TrackTest::testTrackReader()
   TrackReader reader;
   reader.readTracks(filename, atools::track::TrackType(type));
 
-  QCOMPARE(reader.removeInvalid(), invalid);
-  QCOMPARE(reader.getTracks().size(), number);
-
   for(const atools::track::Track& track : reader.getTracks())
   {
     qDebug() << track;
     QCOMPARE(track.type, atools::track::TrackType(type));
-    QVERIFY(track.isFullyValid());
   }
+
+  QCOMPARE(reader.removeInvalid(), invalid);
+  QCOMPARE(reader.getTracks().size(), number);
+
+  for(const atools::track::Track& track : reader.getTracks())
+    QVERIFY(track.isFullyValid());
 }
 
 void TrackTest::testDownload_data()
