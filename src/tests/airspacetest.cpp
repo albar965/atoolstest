@@ -18,6 +18,8 @@
 #include "airspacetest.h"
 
 #include "fs/userdata/airspacereaderopenair.h"
+#include "fs/userdata/airspacereaderivao.h"
+#include "fs/userdata/airspacereadervatsim.h"
 #include "testutil/testutil.h"
 
 #include "sql/sqldatabase.h"
@@ -27,6 +29,7 @@
 using atools::sql::SqlDatabase;
 using atools::sql::SqlUtil;
 using atools::sql::SqlScript;
+using atools::fs::userdata::AirspaceReaderBase;
 
 AirspaceTest::AirspaceTest()
 {
@@ -50,21 +53,98 @@ void AirspaceTest::initTestCase()
   script.executeScript(":/atools/resources/sql/fs/db/create_meta_schema.sql");
 
   db->commit();
+
+  QFile file("testdata/airports.csv");
+  if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+  {
+    QTextStream stream(&file);
+
+    while(!stream.atEnd())
+    {
+      QStringList line = stream.readLine().simplified().split(',');
+      airports.insert(line.value(0), atools::geo::Pos(line.value(1).toFloat(), line.value(2).toFloat()));
+    }
+    file.close();
+  }
 }
 
 void AirspaceTest::cleanupTestCase()
 {
-  testutil::removeDb(db, "TESTDBAIRSPACE");
+  // testutil::removeDb(db, "TESTDBAIRSPACE");
+}
+
+void AirspaceTest::testLoadGeoJsonTracon()
+{
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/traconboundaries.json"), AirspaceReaderBase::GEO_JSON);
+
+  atools::fs::userdata::AirspaceReaderVatsim reader(db);
+  reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
+  reader.setFileId(1);
+  reader.setAirspaceId(10000);
+  reader.readFile("testdata/traconboundaries.json");
+  db->commit();
+
+  SqlUtil util(db);
+  QCOMPARE(util.hasTableAndRows("boundary"), true);
+  QCOMPARE(util.rowCount("boundary", "file_id = 1"), 346);
+  QCOMPARE(reader.getErrors().size(), 0);
+  QCOMPARE(reader.getNumAirspacesRead(), 346);
+}
+
+void AirspaceTest::testLoadGeoJsonFir()
+{
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/firboundaries.json"), AirspaceReaderBase::GEO_JSON);
+
+  atools::fs::userdata::AirspaceReaderVatsim reader(db);
+  reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
+  reader.setFileId(2);
+  reader.setAirspaceId(20000);
+  reader.readFile("testdata/firboundaries.json");
+  db->commit();
+
+  SqlUtil util(db);
+  QCOMPARE(util.hasTableAndRows("boundary"), true);
+  QCOMPARE(util.rowCount("boundary", "file_id = 2"), 538);
+  QCOMPARE(reader.getErrors().size(), 0);
+  QCOMPARE(reader.getNumAirspacesRead(), 538);
+}
+
+void AirspaceTest::testLoadIvaoJson()
+{
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/atc_positions_fmt.json"), AirspaceReaderBase::IVAO_JSON);
+
+  atools::fs::userdata::AirspaceReaderIvao reader(db);
+  reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
+  reader.setFileId(3);
+  reader.setAirspaceId(30000);
+  reader.readFile("testdata/atc_positions_fmt.json");
+  db->commit();
+
+  SqlUtil util(db);
+  QCOMPARE(util.hasTableAndRows("boundary"), true);
+  QCOMPARE(util.rowCount("boundary", "file_id = 3"), 695);
+  QCOMPARE(reader.getErrors().size(), 0);
+  QCOMPARE(reader.getNumAirspacesRead(), 695);
 }
 
 void AirspaceTest::testLoadOpenAir()
 {
-  atools::fs::userdata::AirspaceReaderOpenAir writer(db);
-  writer.readFile(1, ":/test/resources/airspace.txt");
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/airspace.txt"), AirspaceReaderBase::OPEN_AIR);
+
+  atools::fs::userdata::AirspaceReaderOpenAir reader(db);
+  reader.setFileId(4);
+  reader.setAirspaceId(40000);
+  reader.readFile("testdata/airspace.txt");
+  db->commit();
 
   SqlUtil util(db);
   QCOMPARE(util.hasTableAndRows("boundary"), true);
-  QCOMPARE(util.rowCount("boundary"), 3151);
-  QCOMPARE(writer.getErrors().size(), 5);
-  QCOMPARE(writer.getNumAirspacesRead(), 3151);
+  QCOMPARE(util.rowCount("boundary", "file_id = 4"), 3151);
+  QCOMPARE(reader.getErrors().size(), 5);
+  QCOMPARE(reader.getNumAirspacesRead(), 3151);
+}
+
+atools::geo::Pos AirspaceTest::fetchAirportCoordinates(const QString& airportIdent)
+{
+  return airports.value(airportIdent, atools::geo::EMPTY_POS);
 }

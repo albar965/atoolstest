@@ -216,9 +216,6 @@ HEADERS += \
   src/tests/perftest.h \
   src/testutil/testutil.h
 
-RESOURCES += \
-    resources.qrc
-
 OTHER_FILES += \
   $$files(testdata/*, true) \
   .gitignore \

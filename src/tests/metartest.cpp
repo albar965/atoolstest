@@ -88,19 +88,19 @@ void MetarTest::testVatsimDownloadFailed()
   testDownload(downloader, true);
 }
 
-void MetarTest::testIvaoDownload()
-{
-  WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
-  downloader.setRequestUrl("http://wx.ivao.aero/metar.php");
-  testDownload(downloader, false);
-}
+// void MetarTest::testIvaoDownload()
+// {
+// WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
+// downloader.setRequestUrl("https://wx.ivao.aero/metar.php");
+// testDownload(downloader, false);
+// }
 
-void MetarTest::testIvaoDownloadFailed()
-{
-  WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
-  downloader.setRequestUrl("http://wx.ivao.aero/XXX");
-  testDownload(downloader, true);
-}
+// void MetarTest::testIvaoDownloadFailed()
+// {
+// WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
+// downloader.setRequestUrl("https://wx.ivao.aero/XXX");
+// testDownload(downloader, true);
+// }
 
 void MetarTest::testNoaaDownload()
 {
@@ -152,7 +152,8 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
 
   testutil::waitForValue(finished, 180);
 
-  qDebug() << Q_FUNC_INFO << downloader.size() << "updateFlag" << updateFlag << "errorFlag" << errorFlag;
+  qDebug() << Q_FUNC_INFO << downloader.getRequestUrl() << downloader.size()
+           << "updateFlag" << updateFlag << "errorFlag" << errorFlag;
 
   if(expectFail)
   {
@@ -225,7 +226,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
 
 void MetarTest::testMetarAsn()
 {
-  QFile metarFile(":/test/resources/current_wx_snapshot.txt");
+  QFile metarFile("testdata/current_wx_snapshot.txt");
   QVERIFY(metarFile.open(QIODevice::ReadOnly | QIODevice::Text));
 
   QTextStream weatherSnapshot(&metarFile);
@@ -259,7 +260,7 @@ void MetarTest::testMetarAsn()
 
 void MetarTest::testMetarSim()
 {
-  QFile metarFiles(":/test/resources/METAR.txt");
+  QFile metarFiles("testdata/METAR.txt");
   QVERIFY(metarFiles.open(QIODevice::ReadOnly | QIODevice::Text));
 
   QTextStream weatherSnapshot(&metarFiles);

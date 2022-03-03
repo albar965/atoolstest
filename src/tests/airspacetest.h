@@ -18,8 +18,11 @@
 #ifndef ATOOLSTEST_AIRSPACETEST_H
 #define ATOOLSTEST_AIRSPACETEST_H
 
+#include "geo/pos.h"
+
 #include <QString>
 #include <QtTest>
+#include <QHash>
 
 namespace atools {
 namespace sql {
@@ -41,9 +44,16 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testLoadGeoJsonTracon();
+  void testLoadGeoJsonFir();
+  void testLoadIvaoJson();
   void testLoadOpenAir();
 
 private:
+  atools::geo::Pos fetchAirportCoordinates(const QString& airportIdent);
+
+  QHash<QString, atools::geo::Pos> airports;
+
   atools::sql::SqlDatabase *db = nullptr;
 };
 

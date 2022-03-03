@@ -174,7 +174,7 @@ void SceneryCfgTest::testFsx()
 
   QString codec("Windows-1252");
   SceneryCfg cfg(codec);
-  cfg.read(":/test/resources/scenery_fsx_cfg");
+  cfg.read("testdata/scenery_fsx_cfg");
 
   const QList<SceneryArea>& areas = cfg.getAreas();
   QCOMPARE(areas.size(), 203);
@@ -191,7 +191,7 @@ void SceneryCfgTest::testP3dv4()
   QString specialChars("TEST äöü~ÄÖÜß§^°|\\");
   QString codec("UTF-8");
   SceneryCfg cfg(codec);
-  cfg.read(":/test/resources/scenery_p3dv4.cfg");
+  cfg.read("testdata/scenery_p3dv4.cfg");
 
   const QList<SceneryArea>& areas = cfg.getAreas();
   QCOMPARE(areas.size(), 196);
@@ -202,12 +202,12 @@ void SceneryCfgTest::testP3dv4()
 
 void SceneryCfgTest::testP3dv4AddOn()
 {
-  AddOnPackage package(":/test/resources/add-on.xml");
+  AddOnPackage package("testdata/add-on.xml");
 
   QCOMPARE(package.getName(), QLatin1String("MyAddOn"));
   QCOMPARE(package.getDescription(), QString("My Add-on developed by My Company äöüß."));
-  QCOMPARE(package.getBaseDirectory(), QString(":/test/resources"));
-  QCOMPARE(package.getFilename(), QString(":/test/resources/add-on.xml"));
+  QCOMPARE(package.getBaseDirectory(), QString("testdata"));
+  QCOMPARE(package.getFilename(), QString("testdata/add-on.xml"));
 
   QCOMPARE(package.getComponents().at(0).getName(), QLatin1String("Scenery01"));
   QCOMPARE(package.getComponents().at(0).getPath(), QLatin1String("Content\\Scenery\\Scenery01"));
@@ -222,12 +222,12 @@ void SceneryCfgTest::testP3dv4AddOn()
 
 void SceneryCfgTest::testP3dv4AddOn2()
 {
-  AddOnPackage package(":/test/resources/add-on_copy.xml");
+  AddOnPackage package("testdata/add-on_copy.xml");
 
   QCOMPARE(package.getName(), QString());
   QCOMPARE(package.getDescription(), QString());
-  QCOMPARE(package.getBaseDirectory(), QString(":/test/resources"));
-  QCOMPARE(package.getFilename(), QString(":/test/resources/add-on_copy.xml"));
+  QCOMPARE(package.getBaseDirectory(), QString("testdata"));
+  QCOMPARE(package.getFilename(), QString("testdata/add-on_copy.xml"));
 
   QCOMPARE(package.getComponents().at(0).getName(), QLatin1String("Scenery01"));
   QCOMPARE(package.getComponents().at(0).getPath(), QLatin1String("Content\\Scenery\\Scenery01"));
@@ -242,12 +242,12 @@ void SceneryCfgTest::testP3dv4AddOn2()
 
 void SceneryCfgTest::testP3dv4AddOnUtf16()
 {
-  AddOnPackage package(":/test/resources/add-on-utf-16.xml");
+  AddOnPackage package("testdata/add-on-utf-16.xml");
 
   QCOMPARE(package.getName(), QLatin1String("Flightbeam - KMSP"));
   QCOMPARE(package.getDescription(), QLatin1String("Flightbeam - Minneapolis St. Paul Intl. Airport for Prepar3D"));
-  QCOMPARE(package.getBaseDirectory(), QLatin1String(":/test/resources"));
-  QCOMPARE(package.getFilename(), QLatin1String(":/test/resources/add-on-utf-16.xml"));
+  QCOMPARE(package.getBaseDirectory(), QLatin1String("testdata"));
+  QCOMPARE(package.getFilename(), QLatin1String("testdata/add-on-utf-16.xml"));
 
   QCOMPARE(package.getComponents().at(0).getName(), QLatin1String("Flightbeam - KMSP scenery"));
   QCOMPARE(package.getComponents().at(0).getPath(),
@@ -259,13 +259,13 @@ void SceneryCfgTest::testP3dv4AddOnUtf16()
 
 void SceneryCfgTest::testP3dv4AddOnEncodingMismatch()
 {
-  AddOnPackage package(":/test/resources/add-on_encoding_mismatch.xml");
+  AddOnPackage package("testdata/add-on_encoding_mismatch.xml");
   QCOMPARE(package.getDescription(), QString("Sends simulator reports to Navigraph Charts öäüÖÜ"));
 }
 
 void SceneryCfgTest::testP3dv4AddOnNoEncoding()
 {
-  AddOnPackage package(":/test/resources/add-on_win_encoding_no_bom.xml");
+  AddOnPackage package("testdata/add-on_win_encoding_no_bom.xml");
   QCOMPARE(package.getDescription(), QString("Sends simulator reports to Navigraph Charts öäüÖÄÜ"));
 
 }
