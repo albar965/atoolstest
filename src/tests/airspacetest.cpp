@@ -75,7 +75,7 @@ void AirspaceTest::cleanupTestCase()
 
 void AirspaceTest::testLoadGeoJsonTracon()
 {
-  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/traconboundaries.json"), AirspaceReaderBase::GEO_JSON);
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/traconboundaries.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
 
   atools::fs::userdata::AirspaceReaderVatsim reader(db);
   reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
@@ -93,7 +93,7 @@ void AirspaceTest::testLoadGeoJsonTracon()
 
 void AirspaceTest::testLoadGeoJsonFir()
 {
-  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/firboundaries.json"), AirspaceReaderBase::GEO_JSON);
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/firboundaries.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
 
   atools::fs::userdata::AirspaceReaderVatsim reader(db);
   reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
