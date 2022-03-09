@@ -111,13 +111,13 @@ void AirspaceTest::testLoadGeoJsonFir()
 
 void AirspaceTest::testLoadIvaoJson()
 {
-  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/atc_positions_fmt.json"), AirspaceReaderBase::IVAO_JSON);
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/ivao_atc_positions_fmt.json"), AirspaceReaderBase::IVAO_JSON);
 
   atools::fs::userdata::AirspaceReaderIvao reader(db);
   reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
   reader.setFileId(3);
   reader.setAirspaceId(30000);
-  reader.readFile("testdata/atc_positions_fmt.json");
+  reader.readFile("testdata/ivao_atc_positions_fmt.json");
   db->commit();
 
   SqlUtil util(db);
