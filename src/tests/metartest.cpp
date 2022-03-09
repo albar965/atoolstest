@@ -22,6 +22,7 @@
 #include "fs/weather/noaaweatherdownloader.h"
 #include "fs/weather/weathernetdownload.h"
 #include "geo/pos.h"
+#include "atools.h"
 #include "fs/weather/weatherdownloadbase.h"
 #include "testutil/testutil.h"
 
@@ -88,19 +89,34 @@ void MetarTest::testVatsimDownloadFailed()
   testDownload(downloader, true);
 }
 
-// void MetarTest::testIvaoDownload()
-// {
-// WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
-// downloader.setRequestUrl("https://wx.ivao.aero/metar.php");
-// testDownload(downloader, false);
-// }
+void MetarTest::testIvaoRead()
+{
+  WeatherNetDownload downloader(this, atools::fs::weather::JSON, true);
+  downloader.setRequestUrl("testdata/ivao_metar_fmt.json");
+  testDownload(downloader, false);
+}
 
-// void MetarTest::testIvaoDownloadFailed()
-// {
-// WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
-// downloader.setRequestUrl("https://wx.ivao.aero/XXX");
-// testDownload(downloader, true);
-// }
+void MetarTest::testIvaoDownload()
+{
+  QString KEY(":/atoolstest/little_navmap_keys/ivao_weather_api_key.bin");
+  if(QFile::exists(KEY))
+  {
+    WeatherNetDownload downloader(this, atools::fs::weather::JSON, true);
+    downloader.setRequestUrl("https://api.ivao.aero/v2/airports/all/metar");
+    downloader.setHeaderParameters({
+      {"accept", "application/json"},
+      {"apiKey", atools::strFromCryptFile(KEY, 0x2B1A96468EB62460)}
+    });
+    testDownload(downloader, false);
+  }
+}
+
+void MetarTest::testIvaoDownloadFailed()
+{
+  WeatherNetDownload downloader(this, atools::fs::weather::JSON, true);
+  downloader.setRequestUrl("https://api.ivao.aero/v2/airports/all/metar");
+  testDownload(downloader, true);
+}
 
 void MetarTest::testNoaaDownload()
 {
@@ -148,7 +164,10 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
   });
 
   atools::fs::weather::MetarResult metar = downloader.getMetar("EDDF", AIRPORT_COORDS.value("EDDF"));
-  QVERIFY(metar.isEmpty());
+  if(QFileInfo::exists(downloader.getRequestUrl()))
+    QVERIFY(!metar.isEmpty());
+  else
+    QVERIFY(metar.isEmpty());
 
   testutil::waitForValue(finished, 180);
 

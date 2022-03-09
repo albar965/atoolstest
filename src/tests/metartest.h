@@ -47,8 +47,9 @@ private slots:
   void testVatsimDownload();
   void testVatsimDownloadFailed();
 
-  // void testIvaoDownload();
-  // void testIvaoDownloadFailed();
+  void testIvaoRead();
+  void testIvaoDownload();
+  void testIvaoDownloadFailed();
   void testNoaaDownload();
   void testNoaaDownloadFailed();
   void testNoaaDownloadFailedNoHost();

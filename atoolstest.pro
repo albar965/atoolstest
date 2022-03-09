@@ -225,6 +225,12 @@ OTHER_FILES += \
   LICENSE.txt
 
 # =====================================================================
+# Add API key resource only if it exists
+exists($$PWD/../little_navmap_keys) {
+  RESOURCES += keys.qrc
+}
+
+# =====================================================================
 # Local deployment commands for development
 
 unix:!macx {
