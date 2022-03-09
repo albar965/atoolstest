@@ -75,13 +75,13 @@ void AirspaceTest::cleanupTestCase()
 
 void AirspaceTest::testLoadGeoJsonTracon()
 {
-  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/traconboundaries.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/vatsim_traconboundaries_fmt.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
 
   atools::fs::userdata::AirspaceReaderVatsim reader(db);
   reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
   reader.setFileId(1);
   reader.setAirspaceId(10000);
-  reader.readFile("testdata/traconboundaries.json");
+  reader.readFile("testdata/vatsim_traconboundaries_fmt.json");
   db->commit();
 
   SqlUtil util(db);
@@ -93,13 +93,13 @@ void AirspaceTest::testLoadGeoJsonTracon()
 
 void AirspaceTest::testLoadGeoJsonFir()
 {
-  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/firboundaries.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
+  QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/vatsim_firboundaries_fmt.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
 
   atools::fs::userdata::AirspaceReaderVatsim reader(db);
   reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
   reader.setFileId(2);
   reader.setAirspaceId(20000);
-  reader.readFile("testdata/firboundaries.json");
+  reader.readFile("testdata/vatsim_firboundaries_fmt.json");
   db->commit();
 
   SqlUtil util(db);
