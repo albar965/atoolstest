@@ -25,6 +25,7 @@
 #include "tests/dbtest.h"
 #include "tests/dtmtest.h"
 #include "tests/flightplantest.h"
+#include "tests/fsutiltest.h"
 #include "tests/geotest.h"
 #include "tests/gribtest.h"
 #include "tests/magdectest.h"
@@ -154,6 +155,7 @@ int main(int argc, char *argv[])
   DEFINETEST(CalcTest)
   DEFINETEST(DtmTest)
   DEFINETEST(FlightplanTest)
+  DEFINETEST(FsUtilTest)
   DEFINETEST(GeoTest)
   DEFINETEST(GribTest)
   DEFINETEST(MagdecTest)
@@ -217,6 +219,7 @@ void test()
     RUNTESTEXT(DbTest)
     RUNTESTEXT(DtmTest)
     RUNTESTEXT(FlightplanTest)
+    RUNTESTEXT(FsUtilTest)
     RUNTESTEXT(GeoTest)
     RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
     RUNTESTEXT(MagdecTest)

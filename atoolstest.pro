@@ -174,6 +174,7 @@ SOURCES += \
   src/tests/atoolstest.cpp \
   src/tests/calctest.cpp \
   src/tests/dbtest.cpp \
+  src/tests/fsutiltest.cpp \
   src/tests/gribtest.cpp \
   src/tests/metartest.cpp \
   src/tests/geotest.cpp \
@@ -198,6 +199,7 @@ HEADERS += \
   src/tests/atoolstest.h \
   src/tests/calctest.h \
   src/tests/dbtest.h \
+  src/tests/fsutiltest.h \
   src/tests/gribtest.h \
   src/tests/metartest.h \
   src/tests/geotest.h \
