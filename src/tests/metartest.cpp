@@ -164,10 +164,6 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
   });
 
   atools::fs::weather::MetarResult metar = downloader.getMetar("EDDF", AIRPORT_COORDS.value("EDDF"));
-  if(QFileInfo::exists(downloader.getRequestUrl()))
-    QVERIFY(!metar.isEmpty());
-  else
-    QVERIFY(metar.isEmpty());
 
   testutil::waitForValue(finished, 180);
 

@@ -31,10 +31,6 @@ public:
 
   static void runtest(int argc, char *argv[]);
 
-private slots:
-  void testAverage();
-  void testAverageTime();
-
 };
 
 #endif // ATOOLSTEST_H
