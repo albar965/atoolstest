@@ -120,13 +120,14 @@ int main(int argc, char *argv[])
   QCoreApplication::setApplicationName("atoolstest");
   QCoreApplication::setOrganizationName("ABarthel");
   QCoreApplication::setOrganizationDomain("littlenavmap.org");
-  QCoreApplication::setApplicationVersion("1.0.3"); // VERSION_NUMBER
+  QCoreApplication::setApplicationVersion("3.6.0"); // VERSION_NUMBER
 
   qStdOut() << "SSL supported" << QSslSocket::supportsSsl()
             << "build library" << QSslSocket::sslLibraryBuildVersionString()
             << "library" << QSslSocket::sslLibraryVersionString() << endl;
 
   qStdOut() << "Starting tests ..." << endl;
+  qStdOut() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion() << endl;
   qStdOut() << "LANG=" << QProcessEnvironment::systemEnvironment().value("LANG") << endl;
   qStdOut() << "LANGUAGE=" << QProcessEnvironment::systemEnvironment().value("LANGUAGE") << endl;
 
