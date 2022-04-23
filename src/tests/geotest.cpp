@@ -1093,6 +1093,15 @@ void GeoTest::testCoordString_data()
   QTest::addColumn<QString>("coord");
   QTest::addColumn<Pos>("pos");
 
+  ROW("57N30", atools::geo::Pos(-130.f, 57.f));
+  ROW("5730N", atools::geo::Pos(-30.f, 57.f));
+  ROW("5730E", atools::geo::Pos(30.f, 57.f));
+  ROW("57E30", atools::geo::Pos(130.f, 57.f));
+  ROW("57W30", atools::geo::Pos(-130.f, -57.f));
+  ROW("5730W", atools::geo::Pos(-30.f, -57.f));
+  ROW("5730S", atools::geo::Pos(30.f, -57.f));
+  ROW("57S30", atools::geo::Pos(130.f, -57.f));
+
   ROW("N 52 33.58;E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
   ROW("N 52 33,58:E 13 17,26", atools::geo::Pos(13.287666, 52.559666));
   ROW("N 52 33.58|E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
@@ -1151,8 +1160,6 @@ void GeoTest::testCoordString_data()
   ROW("481200N0112800E", atools::geo::Pos(11.466666f, 48.200001f));
 
   ROW("N6500/W08000", atools::geo::Pos(-80.f, 65.f));
-
-  ROW("5020N", atools::geo::Pos(-20.f, 50.f));
 
 #undef ROW
 }
