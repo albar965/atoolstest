@@ -34,6 +34,8 @@ using atools::geo::LineDistance;
 using atools::geo::angleAbsDiff;
 using atools::geo::angleAbsDiff2;
 using atools::geo::nmToMeter;
+using atools::geo::meterToNm;
+using atools::geo::feetToNm;
 
 namespace QTest {
 template<>
@@ -184,6 +186,34 @@ void GeoTest::testAntiMeridian()
 
   QCOMPARE(atools::geo::crossesAntiMeridian(lonx1, lonx2), result);
   QCOMPARE(atools::geo::crossesAntiMeridian(lonx2, lonx1), result);
+}
+
+void GeoTest::testDistance_data()
+{
+  QTest::addColumn<Pos>("pos1");
+  QTest::addColumn<Pos>("pos2");
+  QTest::addColumn<float>("result");
+  QTest::addColumn<float>("result3d");
+
+  QTest::newRow("") << Pos(8.f, 49.f, 10000.f) << Pos(8.f, 49.f, 40000.f) << 0.f << feetToNm(30000.f);
+  QTest::newRow("") << Pos(8.f, 49.f, 10000.f) << Pos(8.f, 50.f, 10000.f) << 60.0335f << 60.0335f;
+
+  QTest::newRow("") << Pos(8.f, 49.f, Pos::INVALID_VALUE) << Pos(8.f, 50.f, 10000.f) << 60.0335f << 60.0335f;
+  QTest::newRow("") << Pos(8.f, 49.f, 10000.f) << Pos(8.f, 50.f, Pos::INVALID_VALUE) << 60.0335f << 60.0335f;
+
+  QTest::newRow("") << Pos(8.f, 49.f, 10000.f) << Pos(8.f, 50.f, 40000.f) << 60.0335f
+                    << std::sqrt(feetToNm(30000.f) * feetToNm(30000.f) + 60.0335f * 60.0335f);
+}
+
+void GeoTest::testDistance()
+{
+  QFETCH(Pos, pos1);
+  QFETCH(Pos, pos2);
+  QFETCH(float, result);
+  QFETCH(float, result3d);
+
+  QCOMPARE(meterToNm(pos1.distanceMeterTo(pos2)), result);
+  QCOMPARE(meterToNm(pos1.distanceMeterTo3d(pos2)), result3d);
 }
 
 void GeoTest::testCourse_data()
