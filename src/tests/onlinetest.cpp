@@ -182,7 +182,7 @@ void OnlineTest::testOpenWhazzupVatsim()
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 2);
-  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 22), QTime(17, 0, 14)));
+  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 22), QTime(17, 0, 14), Qt::UTC));
 
   QDebug dbg(qDebug());
   SqlUtil(dbVatsim3).printTableStats(dbg, {"client", "atc", "server"}, true);
@@ -223,7 +223,7 @@ void OnlineTest::testOpenWhazzupIvao()
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 1);
-  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 21), QTime(15, 54, 54))); // 20180321155454
+  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2018, 3, 21), QTime(15, 54, 54), Qt::UTC)); // 20180321155454
 
   QDebug dbg(qDebug());
   SqlUtil(dbVatsim3).printTableStats(dbg, {"client", "atc", "server"}, true);
@@ -293,7 +293,7 @@ void OnlineTest::testOpenWhazzupCustom()
   QCOMPARE(odm.hasSchema(), true);
   QCOMPARE(odm.hasData(), true);
   QCOMPARE(odm.getReloadMinutesFromWhazzup(), 1);
-  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2017, 9, 26), QTime(20, 12, 32))); // 20170926201232
+  QCOMPARE(odm.getLastUpdateTimeFromWhazzup(), QDateTime(QDate(2017, 9, 26), QTime(20, 12, 32), Qt::UTC)); // 20170926201232
 
   QDebug dbg(qDebug());
   SqlUtil(dbVatsim3).printTableStats(dbg, {"client", "atc", "server"}, true);
