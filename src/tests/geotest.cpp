@@ -33,6 +33,7 @@ using atools::geo::LineString;
 using atools::geo::LineDistance;
 using atools::geo::angleAbsDiff;
 using atools::geo::angleAbsDiff2;
+using atools::geo::angleAbsDiffSign;
 using atools::geo::nmToMeter;
 using atools::geo::meterToNm;
 using atools::geo::feetToNm;
@@ -275,42 +276,43 @@ void GeoTest::testAngleDiff_data()
   QTest::addColumn<float>("angle2");
   QTest::addColumn<float>("result");
   QTest::addColumn<float>("result2");
+  QTest::addColumn<float>("resultsign");
 
-  QTest::newRow("(0.f, 0.f), 0.f)") << 0.f << 0.f << 0.f << 0.f;
-  QTest::newRow("(180.f, 180.f), 0.f)") << 180.f << 180.f << 0.f << 0.f;
-  QTest::newRow("(360.f, 360.f), 0.f)") << 360.f << 360.f << 0.f << 0.f;
+  QTest::newRow("(0.f, 0.f), 0.f)") << 0.f << 0.f << 0.f << 0.f << 0.f;
+  QTest::newRow("(180.f, 180.f), 0.f)") << 180.f << 180.f << 0.f << 0.f << 0.f;
+  QTest::newRow("(360.f, 360.f), 0.f)") << 360.f << 360.f << 0.f << 0.f << 0.f;
 
-  QTest::newRow("(0.f, 360.f), 0.f)") << 0.f << 360.f << 0.f << 360.f;
-  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f << 0.f;
+  QTest::newRow("(0.f, 360.f), 0.f)") << 0.f << 360.f << 0.f << 360.f << 0.f;
+  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f << 0.f << 0.f;
 
-  QTest::newRow("(0.f, 180.f), 180.f)") << 0.f << 180.f << 180.f << 180.f;
-  QTest::newRow("(180.f, 0.f), 180.f)") << 180.f << 0.f << 180.f << 180.f;
+  QTest::newRow("(0.f, 180.f), 180.f)") << 0.f << 180.f << 180.f << 180.f << 180.f;
+  QTest::newRow("(180.f, 0.f), 180.f)") << 180.f << 0.f << 180.f << 180.f << -180.f;
 
-  QTest::newRow("(359.f, 1.f), 2.f)") << 359.f << 1.f << 2.f << 2.f;
-  QTest::newRow("(1.f, 359.f), 2.f)") << 1.f << 359.f << 2.f << 358.f;
+  QTest::newRow("(359.f, 1.f), 2.f)") << 359.f << 1.f << 2.f << 2.f << 2.f;
+  QTest::newRow("(1.f, 359.f), 2.f)") << 1.f << 359.f << 2.f << 358.f << -2.f;
 
-  QTest::newRow("(350.f, 10.f), 20.f)") << 350.f << 10.f << 20.f << 20.f;
-  QTest::newRow("(10.f, 350.f), 20.f)") << 10.f << 350.f << 20.f << 340.f;
+  QTest::newRow("(350.f, 10.f), 20.f)") << 350.f << 10.f << 20.f << 20.f << 20.f;
+  QTest::newRow("(10.f, 350.f), 20.f)") << 10.f << 350.f << 20.f << 340.f << -20.f;
 
-  QTest::newRow("(179.f, 181.f), 2.f)") << 179.f << 181.f << 2.f << 2.f;
-  QTest::newRow("(181.f, 179.f), 2.f)") << 181.f << 179.f << 2.f << 358.f;
+  QTest::newRow("(179.f, 181.f), 2.f)") << 179.f << 181.f << 2.f << 2.f << 2.f;
+  QTest::newRow("(181.f, 179.f), 2.f)") << 181.f << 179.f << 2.f << 358.f << -2.f;
 
-  QTest::newRow("(360.f, 180.f), 180.f)") << 360.f << 180.f << 180.f << 180.f;
-  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f << 0.f;
+  QTest::newRow("(360.f, 180.f), 180.f)") << 360.f << 180.f << 180.f << 180.f << -180.f;
+  QTest::newRow("(360.f, 0.f), 0.f)") << 360.f << 0.f << 0.f << 0.f << 0.f;
 
-  QTest::newRow("(89.f, 271.f), 178.f)") << 89.f << 271.f << 178.f << 182.f;
-  QTest::newRow("(91.f, 269.f), 178.f)") << 91.f << 269.f << 178.f << 178.f;
+  QTest::newRow("(89.f, 271.f), 178.f)") << 89.f << 271.f << 178.f << 182.f << -178.f;
+  QTest::newRow("(91.f, 269.f), 178.f)") << 91.f << 269.f << 178.f << 178.f << 178.f;
 
-  QTest::newRow("(271.f, 89.f), 178.f)") << 271.f << 89.f << 178.f << 178.f;
-  QTest::newRow("(269.f, 91.f), 178.f)") << 269.f << 91.f << 178.f << 182.f;
+  QTest::newRow("(271.f, 89.f), 178.f)") << 271.f << 89.f << 178.f << 178.f << 178.f;
+  QTest::newRow("(269.f, 91.f), 178.f)") << 269.f << 91.f << 178.f << 182.f << -178.f;
 
-  QTest::newRow("(90.f, 270.f), 180.f)") << 90.f << 270.f << 180.f << 180.f;
-  QTest::newRow("(89.f, 269.f), 180.f)") << 89.f << 269.f << 180.f << 180.f;
-  QTest::newRow("(91.f, 271.f), 180.f)") << 91.f << 271.f << 180.f << 180.f;
+  QTest::newRow("(90.f, 270.f), 180.f)") << 90.f << 270.f << 180.f << 180.f << 180.f;
+  QTest::newRow("(89.f, 269.f), 180.f)") << 89.f << 269.f << 180.f << 180.f << 180.f;
+  QTest::newRow("(91.f, 271.f), 180.f)") << 91.f << 271.f << 180.f << 180.f << 180.f;
 
-  QTest::newRow("(270.f, 90.f), 180.f)") << 270.f << 90.f << 180.f << 180.f;
-  QTest::newRow("(269.f, 89.f), 180.f)") << 269.f << 89.f << 180.f << 180.f;
-  QTest::newRow("(271.f, 91.f), 180.f)") << 271.f << 91.f << 180.f << 180.f;
+  QTest::newRow("(270.f, 90.f), 180.f)") << 270.f << 90.f << 180.f << 180.f << -180.f;
+  QTest::newRow("(269.f, 89.f), 180.f)") << 269.f << 89.f << 180.f << 180.f << -180.f;
+  QTest::newRow("(271.f, 91.f), 180.f)") << 271.f << 91.f << 180.f << 180.f << -180.f;
 }
 
 void GeoTest::testAngleDiff()
@@ -319,8 +321,11 @@ void GeoTest::testAngleDiff()
   QFETCH(float, angle2);
   QFETCH(float, result);
   QFETCH(float, result2);
+  QFETCH(float, resultsign);
+
   QCOMPARE(angleAbsDiff(angle1, angle2), result);
   QCOMPARE(angleAbsDiff2(angle1, angle2), result2);
+  QCOMPARE(angleAbsDiffSign(angle1, angle2), resultsign);
 }
 
 void GeoTest::testLineParallel_data()
