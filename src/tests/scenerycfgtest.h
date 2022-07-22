@@ -44,6 +44,9 @@ private slots:
   void testP3dv4AddOnEncodingMismatch();
   void testP3dv4AddOnNoEncoding();
 
+  void testContentXmlSu9();
+  void testContentXmlSu10();
+  void testContentXmlEmpty();
 };
 
 #endif // ATOOLSTEST_SCTEST_H

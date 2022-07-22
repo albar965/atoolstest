@@ -19,11 +19,13 @@
 
 #include "fs/scenery/scenerycfg.h"
 #include "fs/scenery/addonpackage.h"
+#include "fs/scenery/contentxml.h"
 #include "fs/xp/scenerypacks.h"
 
 using atools::fs::scenery::SceneryCfg;
 using atools::fs::scenery::SceneryArea;
 using atools::fs::scenery::AddOnPackage;
+using atools::fs::scenery::ContentXml;
 
 using atools::fs::xp::SceneryPack;
 using atools::fs::xp::SceneryPacks;
@@ -37,6 +39,51 @@ void SceneryCfgTest::runtest(int argc, char *argv[])
 {
   SceneryCfgTest tst;
   QTest::qExec(&tst, argc, argv);
+}
+
+void SceneryCfgTest::testContentXmlSu9()
+{
+  ContentXml xml;
+  xml.read("testdata/Content_su9.xml");
+
+  QCOMPARE(xml.isDisabled("navigraph-navdata"), true);
+  QCOMPARE(xml.isDisabled("fs-base-nav"), false);
+
+  QCOMPARE(xml.getPriority("fs-base"), 0);
+  QCOMPARE(xml.getPriority("fs-base-genericairports"), 1);
+  QCOMPARE(xml.getPriority("fs-base-nav"), 2);
+  QCOMPARE(xml.getPriority("microsoft-airport-eddp-leipzig"), 55);
+
+  QCOMPARE(xml.getAreas().size(), 89);
+}
+
+void SceneryCfgTest::testContentXmlSu10()
+{
+  ContentXml xml;
+  xml.read("testdata/Content_su10.xml");
+
+  QCOMPARE(xml.isDisabled("navigraph-navdata"), false);
+  QCOMPARE(xml.isDisabled("fs-base-nav"), false);
+
+  // <Package name="fs-base" priority="1"/>
+  QCOMPARE(xml.getPriority("fs-base"), 1);
+  // <Package name="fs-base-genericairports" priority="1"/>
+  QCOMPARE(xml.getPriority("fs-base-genericairports"), 1);
+  // <Package name="fs-base-nav" priority="-1"/>
+  QCOMPARE(xml.getPriority("fs-base-nav"), -1);
+
+  // Not included
+  QCOMPARE(xml.getPriority("microsoft-discovery-gibraltar"), 0);
+
+  QCOMPARE(xml.getAreas().size(), 19);
+}
+
+void SceneryCfgTest::testContentXmlEmpty()
+{
+  ContentXml xml;
+  xml.read("testdata/Content_empty.xml");
+
+  QCOMPARE(xml.getAreas().size(), 0);
 }
 
 void SceneryCfgTest::testXplane()
@@ -103,7 +150,7 @@ void SceneryCfgTest::testXplane()
   // SCENERY_PACK /home/USER/Projekte/atoolstest/testdata/X-Plane Landmarks - Sydney/
   qInfo() << packs.getEntries().at(idx).filepath;
   qInfo() << packs.getEntries().at(idx).errorText;
-  QCOMPARE(packs.getEntries().at(idx).filepath.contains(QString( "X-Plane Landmarks - Sydney")), true);
+  QCOMPARE(packs.getEntries().at(idx).filepath.contains(QString("X-Plane Landmarks - Sydney")), true);
   QCOMPARE(packs.getEntries().at(idx).disabled, false);
   QCOMPARE(packs.getEntries().at(idx).valid, false);
   QCOMPARE(packs.getEntries().at(idx++).errorText.isEmpty(), false);
