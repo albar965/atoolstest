@@ -19,6 +19,8 @@
 
 #include "util/average.h"
 
+#include <QDateTime>
+
 AtoolsTest::AtoolsTest()
 {
 
@@ -105,6 +107,52 @@ void AtoolsTest::testAverageTime()
   }
 
   return;
+}
+
+void AtoolsTest::testDateTimeFromString()
+{
+  QDateTime dt = QDateTime::currentDateTime();
+
+  // Local time
+  qDebug() << Q_FUNC_INFO;
+  qDebug() << Q_FUNC_INFO << dt;
+
+  // Same time with UTC spec (unchanged hours)
+  dt.setTimeZone(QTimeZone::utc());
+  qDebug() << Q_FUNC_INFO << dt;
+
+  // Returns local time
+  qDebug() << Q_FUNC_INFO;
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58.876Z\", \"yyyy-MM-ddTHH:mm:ss.zzzZ\")"
+           << QDateTime::fromString("2022-07-31T18:54:58.876Z", "yyyy-MM-ddTHH:mm:ss.zzzZ");
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58Z\", \"yyyy-MM-ddTHH:mm:ssZ\")"
+           << QDateTime::fromString("2022-07-31T18:54:58Z", "yyyy-MM-ddTHH:mm:ssZ");
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromSecsSinceEpoch(QDateTime::currentSecsSinceEpoch())"
+           << QDateTime::fromSecsSinceEpoch(QDateTime::currentSecsSinceEpoch());
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromMSecsSinceEpoch(QDateTime::currentMSecsSinceEpoch())"
+           << QDateTime::fromMSecsSinceEpoch(QDateTime::currentMSecsSinceEpoch());
+
+  // Returns UTC but moves time
+  qDebug() << Q_FUNC_INFO;
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58.876Z\", \"yyyy-MM-ddTHH:mm:ss.zzzZ\").toUTC()"
+           << QDateTime::fromString("2022-07-31T18:54:58.876Z", "yyyy-MM-ddTHH:mm:ss.zzzZ").toUTC();
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58Z\", \"yyyy-MM-ddTHH:mm:ssZ\").toUTC()"
+           << QDateTime::fromString("2022-07-31T18:54:58Z", "yyyy-MM-ddTHH:mm:ssZ").toUTC();
+
+  // Returns UTC
+  qDebug() << Q_FUNC_INFO;
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromSecsSinceEpoch(QDateTime::currentSecsSinceEpoch(), Qt::UTC)"
+           << QDateTime::fromSecsSinceEpoch(QDateTime::currentSecsSinceEpoch(), Qt::UTC);
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromMSecsSinceEpoch(QDateTime::currentMSecsSinceEpoch(), Qt::UTC)"
+           << QDateTime::fromMSecsSinceEpoch(QDateTime::currentMSecsSinceEpoch(), Qt::UTC);
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58.876Z\", Qt::ISODateWithMs)"
+           << QDateTime::fromString("2022-07-31T18:54:58.876Z", Qt::ISODateWithMs);
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58Z\", Qt::ISODate)"
+           << QDateTime::fromString("2022-07-31T18:54:58Z", Qt::ISODate);
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58.876Z\", Qt::ISODate)"
+           << QDateTime::fromString("2022-07-31T18:54:58.876Z", Qt::ISODate);
+  qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58Z\", Qt::ISODateWithMs)"
+           << QDateTime::fromString("2022-07-31T18:54:58Z", Qt::ISODateWithMs);
 }
 
 void AtoolsTest::testAverage()
