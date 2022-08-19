@@ -52,9 +52,12 @@ void SceneryCfgTest::testContentXmlSu9()
   QCOMPARE(xml.getPriority("fs-base"), 0);
   QCOMPARE(xml.getPriority("fs-base-genericairports"), 1);
   QCOMPARE(xml.getPriority("fs-base-nav"), 2);
-  QCOMPARE(xml.getPriority("microsoft-airport-eddp-leipzig"), 55);
+  QCOMPARE(xml.getPriority("microsoft-airport-eddp-leipzig", -999), 55);
 
-  QCOMPARE(xml.getAreas().size(), 89);
+  // Not included
+  QCOMPARE(xml.getPriority("microsoft-discovery-melbourne", -999), -999);
+
+  QCOMPARE(xml.getAreas().size(), 88);
 }
 
 void SceneryCfgTest::testContentXmlSu10()
@@ -70,10 +73,10 @@ void SceneryCfgTest::testContentXmlSu10()
   // <Package name="fs-base-genericairports" priority="1"/>
   QCOMPARE(xml.getPriority("fs-base-genericairports"), 1);
   // <Package name="fs-base-nav" priority="-1"/>
-  QCOMPARE(xml.getPriority("fs-base-nav"), -1);
+  QCOMPARE(xml.getPriority("fs-base-nav", -999), -1);
 
   // Not included
-  QCOMPARE(xml.getPriority("microsoft-discovery-gibraltar"), 0);
+  QCOMPARE(xml.getPriority("microsoft-discovery-gibraltar", -999), -999);
 
   QCOMPARE(xml.getAreas().size(), 19);
 }

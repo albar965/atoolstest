@@ -73,7 +73,6 @@
   <Package name="microsoft-discovery-lisbon" active="true"/>
   <Package name="microsoft-discovery-madrid" active="true"/>
   <Package name="microsoft-discovery-mecca" active="true"/>
-  <Package name="microsoft-discovery-melbourne" active="true"/>
   <Package name="microsoft-discovery-monument" active="true"/>
   <Package name="microsoft-discovery-mountcook" active="true"/>
   <Package name="microsoft-discovery-pennine" active="true"/>
