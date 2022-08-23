@@ -49,7 +49,7 @@
 # =============================================================================
 
 # Define program version here
-VERSION_NUMBER=3.7.0.develop
+VERSION_NUMBER=3.7.11.develop
 
 QT += sql xml core widgets testlib network
 QT -= gui
