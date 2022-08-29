@@ -115,7 +115,7 @@ void MetarTest::testIvaoDownloadFailed()
 {
   WeatherNetDownload downloader(this, atools::fs::weather::JSON, true);
   downloader.setRequestUrl("https://api.ivao.aero/v2/airports/all/metar");
-  testDownload(downloader, true);
+  testDownload(downloader, false);
 }
 
 void MetarTest::testNoaaDownload()
