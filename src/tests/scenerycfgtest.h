@@ -47,6 +47,7 @@ private slots:
   void testContentXmlSu9();
   void testContentXmlSu10();
   void testContentXmlEmpty();
+  void testContentXmlZero();
 };
 
 #endif // ATOOLSTEST_SCTEST_H

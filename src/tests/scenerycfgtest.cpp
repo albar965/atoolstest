@@ -89,6 +89,14 @@ void SceneryCfgTest::testContentXmlEmpty()
   QCOMPARE(xml.getAreas().size(), 0);
 }
 
+void SceneryCfgTest::testContentXmlZero()
+{
+  ContentXml xml;
+  xml.read("testdata/Content_zero.xml");
+
+  QCOMPARE(xml.getAreas().size(), 0);
+}
+
 void SceneryCfgTest::testXplane()
 {
   // I
