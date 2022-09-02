@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
   QCoreApplication::setApplicationName("atoolstest");
   QCoreApplication::setOrganizationName("ABarthel");
   QCoreApplication::setOrganizationDomain("littlenavmap.org");
-  QCoreApplication::setApplicationVersion(VERSION_NUMBER_ATOOLSTEST); // VERSION_NUMBER
+  QCoreApplication::setApplicationVersion(VERSION_NUMBER_ATOOLSTEST);
 
   qStdOut() << "SSL supported" << QSslSocket::supportsSsl()
             << "build library" << QSslSocket::sslLibraryBuildVersionString()
