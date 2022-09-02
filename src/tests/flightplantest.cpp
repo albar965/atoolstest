@@ -154,6 +154,9 @@ void FlightplanTest::testDetectFormat()
   QCOMPARE(FlightplanIO::detectFormat("testdata/UT026T4.fpl"), atools::fs::pln::GARMIN_FPL);
 
   QCOMPARE(FlightplanIO::detectFormat("testdata/add-on.xml"), atools::fs::pln::NONE);
+
+  QCOMPARE(FlightplanIO::detectFormat("testdata/Flight1 Garmin GTN 650-750 KYKM-CYLW.gfp"), atools::fs::pln::GARMIN_GFP);
+  QCOMPARE(FlightplanIO::detectFormat("testdata/Reality XP GTN 750-650 Touch KYKM_CYLW.gfp"), atools::fs::pln::GARMIN_GFP);
 }
 
 void FlightplanTest::testSaveFprDirect()
@@ -824,44 +827,123 @@ void FlightplanTest::testSaveGpx()
   for(int i = 0; i < track2.size(); i++)
     track2[i].setAltitude((i + 1) * 22.f);
 
-  QVector<atools::geo::LineString> tracks({track1, track2});
+  const QVector<atools::geo::LineString> tracks({track1, track2});
 
-  QVector<quint32> timestamps1, timestamps2;
+  qint64 mSecsSinceEpoch = QDateTime::currentDateTime().toMSecsSinceEpoch(); // 1600000000000
+  QVector<qint64> timestamps1, timestamps2;
   for(int i = 0; i < track1.size(); i++)
-    timestamps1.append(QDateTime::currentDateTimeUtc().toTime_t());
+    timestamps1.append(mSecsSinceEpoch /*- 7200*/ + i * 1000);
   for(int i = 0; i < track2.size(); i++)
-    timestamps2.append(QDateTime::currentDateTimeUtc().toTime_t());
-  QVector<QVector<quint32> > timestamps({timestamps1, timestamps2});
+    timestamps2.append(mSecsSinceEpoch /*- 3600*/ + i * 1000);
+  const QVector<QVector<qint64> > timestamps({timestamps1, timestamps2});
 
-  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan.gpx", tracks,
-             timestamps, 10000);
+  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan.gpx", tracks, timestamps, 10000);
 
   QByteArray bytes = io.saveGpxGz(flightplan, tracks, timestamps, 10000);
   QVERIFY(atools::zip::isGzipCompressed(bytes));
 
   atools::geo::LineString routeLoaded;
   QVector<atools::geo::LineString> tracksLoaded;
-  QVector<QVector<quint32> > timestampsLoaded;
+  QVector<QVector<qint64> > timestampsLoaded;
 
   QStringList names;
   io.loadGpxGz(&routeLoaded, &names, &tracksLoaded, &timestampsLoaded, bytes);
-  QCOMPARE(tracksLoaded.size(), tracks.size());
+  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
+  QCOMPARE(timestampsLoaded, timestamps);
   for(int i = 0; i < tracksLoaded.size(); i++)
-    QCOMPARE(tracksLoaded.at(i).size(), tracks.at(i).size());
+  {
+    for(int j = 0; j < tracksLoaded.at(i).size(); j++)
+      QCOMPARE(tracksLoaded.at(i).at(j).almostEqual(tracks.at(i).at(j), 0.000001f), true);
+  }
 
   QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
   QCOMPARE(names.size(), flightplan.getEntries().size());
 
   tracksLoaded.clear();
+  timestampsLoaded.clear();
   io.loadGpxGz(nullptr, nullptr, &tracksLoaded, &timestampsLoaded, bytes);
-  QCOMPARE(tracksLoaded.size(), tracks.size());
+  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
+  QCOMPARE(timestampsLoaded, timestamps);
   for(int i = 0; i < tracksLoaded.size(); i++)
-    QCOMPARE(tracksLoaded.at(i).size(), tracks.at(i).size());
+  {
+    for(int j = 0; j < tracksLoaded.at(i).size(); j++)
+      QCOMPARE(tracksLoaded.at(i).at(j).almostEqual(tracks.at(i).at(j), 0.000001f), true);
+  }
 
   routeLoaded.clear();
+  timestampsLoaded.clear();
   io.loadGpxGz(&routeLoaded, nullptr, nullptr, nullptr, bytes);
   QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
 
-  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", tracksLoaded,
-             timestamps, 10000);
+  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", tracksLoaded, timestamps, 10000);
+}
+
+void FlightplanTest::testLoadGfp()
+{
+  // FPN/RI:F:KYKM:F:PERTT:F:COBDI:F:N47406W120509:F:ROZSE:F:DIABO.J503.FOLDY:F:YDC:F:CYLW
+  Flightplan plan;
+  io.load(plan, "testdata/Flight1 Garmin GTN 650-750 KYKM-CYLW.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 9);
+  QCOMPARE(plan.getProperties().size(), 0);
+
+  // FPN/RI:DA:KYKM:D:WENAS7.PERTT:R:09O:F:COBDI,N47072W120397:F:N47406W120509:F:
+  // ROZSE,N48134W121018:F:DIABO,N48500W120562.J503.FOLDY,N49031W120427:AA:CYLW:A:PIGLU4.YDC(16O):AP:I16-Z.HUMEK
+  plan.clear();
+  io.load(plan, "testdata/Reality XP GTN 750-650 Touch KYKM_CYLW.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 7);
+  QCOMPARE(plan.getProperties().size(), 8);
+
+  // FPN/RI:F:EDNL:F:KUDAV:F:LOWI
+  plan.clear();
+  io.load(plan, "testdata/EDNL-LOWI.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 3);
+  QCOMPARE(plan.getProperties().size(), 0);
+
+  // FPN/RI:F:BIKF:F:N63045W021414:F:N62143W020281:F:N61000W019000:F:N56300W015000:F:N55000W014000:F: ...
+  // ... N51340W011130:F:N47300W008450:F:N46000W008000:F:N44501W006552:F:N44033W005561:F:LEAS
+  plan.clear();
+  io.load(plan, "testdata/BIKF-LEAS.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 12);
+  QCOMPARE(plan.getProperties().size(), 0);
+
+  // FPN/RI:F:ENBR:F:BADAB.L197.TUKMU.L621.AAL.P615.EKERN.Z998.UMVUP.M852.POVEL.Z94.GALMA.M736.RUDNO.L604.PABSA:F:LOWS
+  plan.clear();
+  io.load(plan, "testdata/ENBR-LOWS.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 11);
+  QCOMPARE(plan.getProperties().size(), 0);
+
+  // FPN/RI:F:KEAT:F:EAT.V120.SEA.V495.CONDI.V338.YVR.V330.TRENA:F:N50805W124202:F:N51085W124178:F:CAG3:F:N51846W124150:F:CYPU
+  plan.clear();
+  io.load(plan, "testdata/KEAT-CYPU.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 11);
+  QCOMPARE(plan.getProperties().size(), 0);
+
+  // FPN/RI:F:LOWI:F:NORIN.UT23.ALGOI.Z2.KUDES.UN871.BERSU.Z55.ROTOS.UZ669.MILPA.UN869.MEBAK.UP860.BEBIX.UM129.LMG.UN460.CNA:F:LFCY
+  plan.clear();
+  io.load(plan, "testdata/LOWI-LFCY.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 12);
+  QCOMPARE(plan.getProperties().size(), 0);
+
+  // FPN/RI:DA:KYKM:D:WENAS7.PERTT:R:09O:F:COBDI,N47072W120397:F:N47406W120509:F:ROZSE,N48134W121018: ...
+  // ... F:DIABO,N48500W120562.J503.FOLDY,N49031W120427:AA:CYLW:A:PIGLU4.YDC(16O):AP:RNVA.AMBAT
+  plan.clear();
+  io.load(plan, "testdata/KYKM_CYLW.gfp");
+  qDebug() << Q_FUNC_INFO << plan;
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.getEntries().size(), 7);
+  QCOMPARE(plan.getProperties().size(), 8);
 }

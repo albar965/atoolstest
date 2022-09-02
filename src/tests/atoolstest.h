@@ -34,6 +34,7 @@ public:
 private slots:
   void testAverage();
   void testAverageTime();
+  void testDateTimeFromString();
 
 };
 
