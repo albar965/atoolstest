@@ -23,6 +23,7 @@
 #include "geo/calculations.h"
 #include "fs/util/coordinates.h"
 #include "fs/common/binarygeometry.h"
+#include "fs/common/binarymsageometry.h"
 #include "geo/line.h"
 
 using atools::geo::Pos;
@@ -737,6 +738,71 @@ void GeoTest::testBinaryGeo()
 
   atools::fs::common::BinaryGeometry geo2(bytes);
   QCOMPARE(geo2.getGeometry(), track);
+}
+
+void GeoTest::testBinaryMsaGeo_data()
+{
+  QTest::addColumn<float>("radius");
+  QTest::addColumn<float>("lat");
+  QTest::addColumn<float>("lon");
+  QTest::addColumn<QVector<float> >("bearingAltitude");
+
+  // area_code  icao_code  airport_identifier  msa_center  msa_center_latitude  msa_center_longitude
+  // magnetic_true_indicator  multiple_code  radius_limit
+  // sector_bearing_1  sector_altitude_1  sector_bearing_2  sector_altitude_2  sector_bearing_3  sector_altitude_3
+  // sector_bearing_4  sector_altitude_4  sector_bearing_5  sector_altitude_5
+
+  // USA K7 06FA PHK 26.78274167 -80.69143333 M  25 180 26
+  QTest::newRow("USA K7 06FA PHK") << 25.f << 26.78274167f << -80.69143333f
+                                   << QVector<float>({180.f, 26.f});
+
+  // AFR DA DAAP ILZ 26.72005 8.63577222 M 25 180 43
+  QTest::newRow("AFR DA DAAP ILZ") << 25.f << 26.72005f << 8.63577222f
+                                   << QVector<float>({180.f, 43.f});
+
+  // AFR DA DAAG MAR 36.68476389 2.78216111 M 25 270 71 90 40
+  QTest::newRow("AFR DA DAAG MAR") << 25.f << 36.68476389f << 2.78216111f
+                                   << QVector<float>({270.f, 71.f, 90.f, 40.f});
+
+  // AFR DA DAAG ZEM 36.795 3.57083333 M 25 180 44 270 85 360 53 90 40
+  QTest::newRow("AFR DA DAAG ZEM") << 25.f << 36.795f << 3.57083333f
+                                   << QVector<float>({180.f, 44.f, 270.f, 85.f, 360.f, 53.f, 90.f, 40.f});
+
+  // AFR DA DAAJ DJA 24.28772778 9.45334167 M 25 180 83 360 79
+  QTest::newRow("AFR DA DAAJ DJA") << 25.f << 24.28772778f << 9.45334167f
+                                   << QVector<float>({180.f, 83.f, 360.f, 79.f});
+
+  // AFR DA DAAS STF 36.17666667 5.28861111 M A 25 240 69 320 84 65 78 155 87
+  QTest::newRow("AFR DA DAAS STF A") << 25.f << 36.17666667f << 5.28861111f
+                                     << QVector<float>({240.f, 69.f, 320.f, 84.f, 65.f, 78.f, 155.f, 87.f});
+
+  // AFR DA DAAS STF 36.17666667 5.28861111 M B 25 180 87 270 83
+  QTest::newRow("AFR DA DAAS STF B") << 25.f << 36.17666667f << 5.28861111f
+                                     << QVector<float>({180.f, 87.f, 270.f, 83.f, });
+}
+
+void GeoTest::testBinaryMsaGeo()
+{
+  QFETCH(float, radius);
+  QFETCH(float, lat);
+  QFETCH(float, lon);
+  QFETCH(QVector<float>, bearingAltitude);
+
+  atools::fs::common::BinaryMsaGeometry geo;
+  geo.addSectors(bearingAltitude);
+
+  geo.calculate(atools::geo::Pos(lon, lat), radius, 0.f, false);
+  QVERIFY(geo.isValid());
+
+  atools::fs::common::BinaryMsaGeometry geo2;
+  geo2.readFromByteArray(geo.writeToByteArray());
+
+  QCOMPARE(geo.getAltitudes(), geo2.getAltitudes());
+  QCOMPARE(geo.getBearings(), geo2.getBearings());
+  QCOMPARE(geo.getBoundingRect(), geo2.getBoundingRect());
+  QCOMPARE(geo.getGeometry(), geo2.getGeometry());
+  QCOMPARE(geo.getLabelPositions(), geo2.getLabelPositions());
+  QCOMPARE(geo.getBearingEndPositions(), geo2.getBearingEndPositions());
 }
 
 void GeoTest::testDistanceToLineAlongHoriz()

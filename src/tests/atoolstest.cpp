@@ -17,6 +17,7 @@
 
 #include "atoolstest.h"
 
+#include "util/average.h"
 
 #include <QDateTime>
 
@@ -25,7 +26,7 @@ AtoolsTest::AtoolsTest()
 
 }
 
-void AtoolsTest::runtest(int argc, char* argv[])
+void AtoolsTest::testAverageTime()
 {
   {
     atools::util::MovingAverageTime average(1000);

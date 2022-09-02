@@ -37,6 +37,28 @@ public:
 
   static void runtest(int argc, char *argv[]);
 
+private slots:
+  void initTestCase();
+  void cleanupTestCase();
+
+  void testInsert();
+  void testInsertId();
+  void testUpdate();
+  void testDelete();
+
+  void testInsertUndo();
+  void testInsertUndoId();
+  void testUpdateUndo();
+  void testDeleteUndo();
+  void testUndoDeleteAll();
+  void testUndoBulkInsert();
+
+  void testExecUndoRedo();
+  void testExecUndoRedoBulk();
+
+private:
+  atools::sql::SqlDatabase *db = nullptr, *dbUndo = nullptr, *dbUndoBulk = nullptr;
+
 };
 
 #endif // ATOOLSTEST_DB_TEST_H

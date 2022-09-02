@@ -112,6 +112,7 @@ private slots:
 
   void testDistance_data();
   void testDistance();
+
 };
 
 #endif // ATOOLSTEST_GEOTEST_H
