@@ -43,7 +43,7 @@ void MagdecTest::initTestCase()
   qInfo() << tool.getVersion();
   tool.init(2019);
 
-  db = testutil::createDb("TESTDBMAGDEC", "online_test_airspaces.sqlite");
+  db = testutil::createDb("TESTDBMAGDEC", "online_test_magdec.sqlite");
 
   atools::sql::SqlScript script(db, true /* options->isVerbose()*/);
   script.executeScript(":/atools/resources/sql/fs/db/drop_nav.sql");
@@ -65,7 +65,7 @@ void MagdecTest::testTool()
 void MagdecTest::testOpen()
 {
   MagDecReader reader;
-  reader.readFromBgl(":/test/resources/magdec.bgl");
+  reader.readFromBgl("testdata/magdec.bgl");
 
   QCOMPARE(reader.isValid(), true);
 }
@@ -131,7 +131,7 @@ void MagdecTest::testMagdecBgl_data()
 void MagdecTest::testMagdecBgl()
 {
   MagDecReader reader;
-  reader.readFromBgl(":/test/resources/magdec.bgl");
+  reader.readFromBgl("testdata/magdec.bgl");
 
   QFETCH(Pos, pos);
   QFETCH(float, magvar);

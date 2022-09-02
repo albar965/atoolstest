@@ -25,6 +25,7 @@
 #include "tests/dbtest.h"
 #include "tests/dtmtest.h"
 #include "tests/flightplantest.h"
+#include "tests/fsutiltest.h"
 #include "tests/geotest.h"
 #include "tests/gribtest.h"
 #include "tests/magdectest.h"
@@ -127,6 +128,7 @@ int main(int argc, char *argv[])
             << "library" << QSslSocket::sslLibraryVersionString() << endl;
 
   qStdOut() << "Starting tests ..." << endl;
+  qStdOut() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion() << endl;
   qStdOut() << "LANG=" << QProcessEnvironment::systemEnvironment().value("LANG") << endl;
   qStdOut() << "LANGUAGE=" << QProcessEnvironment::systemEnvironment().value("LANGUAGE") << endl;
 
@@ -154,6 +156,7 @@ int main(int argc, char *argv[])
   DEFINETEST(CalcTest)
   DEFINETEST(DtmTest)
   DEFINETEST(FlightplanTest)
+  DEFINETEST(FsUtilTest)
   DEFINETEST(GeoTest)
   DEFINETEST(GribTest)
   DEFINETEST(MagdecTest)
@@ -171,7 +174,7 @@ int main(int argc, char *argv[])
   DEFINETEST(VersionTest)
 
   parser->parse(QCoreApplication::arguments());
-  otherOptions.append(QCoreApplication::arguments().first());
+  otherOptions.append(QCoreApplication::arguments().constFirst());
 
   if(parser->isSet(maxWarningsOpt))
   {
@@ -217,6 +220,7 @@ void test()
     RUNTESTEXT(DbTest)
     RUNTESTEXT(DtmTest)
     RUNTESTEXT(FlightplanTest)
+    RUNTESTEXT(FsUtilTest)
     RUNTESTEXT(GeoTest)
     RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
     RUNTESTEXT(MagdecTest)

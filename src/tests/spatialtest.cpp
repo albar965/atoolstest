@@ -190,6 +190,8 @@ void SpatialTest::testSpatialRadius_data()
 
   QTest::newRow("Pos(0.f, 0.f)") << Pos(0.f, 0.f) << 8000.f << 2849;
   QTest::newRow("Pos(10.7952, 50.1669)") << Pos(10.7952f, 50.1669f) << 500.f << 302;
+  QTest::newRow("Pos(8.165, 50.255) TAU/ED") << Pos(8.165f, 50.255f) << 0.5f << 1;
+  QTest::newRow("Pos(-122.3096,47.4354) SEA/K1") << Pos(-122.31f, 47.435f) << 0.5f << 1;
 }
 
 void SpatialTest::testSpatialRadius()

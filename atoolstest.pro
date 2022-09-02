@@ -49,7 +49,7 @@
 # =============================================================================
 
 # Define program version here
-VERSION_NUMBER=1.0.4
+VERSION_NUMBER=3.7.11.develop
 
 QT += sql xml core widgets testlib network
 QT -= gui
@@ -182,6 +182,7 @@ SOURCES += \
   src/tests/atoolstest.cpp \
   src/tests/calctest.cpp \
   src/tests/dbtest.cpp \
+  src/tests/fsutiltest.cpp \
   src/tests/gribtest.cpp \
   src/tests/metartest.cpp \
   src/tests/geotest.cpp \
@@ -206,6 +207,7 @@ HEADERS += \
   src/tests/atoolstest.h \
   src/tests/calctest.h \
   src/tests/dbtest.h \
+  src/tests/fsutiltest.h \
   src/tests/gribtest.h \
   src/tests/metartest.h \
   src/tests/geotest.h \
@@ -223,9 +225,6 @@ HEADERS += \
   src/tests/onlinetest.h \
   src/tests/perftest.h \
   src/testutil/testutil.h
-
-RESOURCES += \
-    resources.qrc
 
 OTHER_FILES += \
   $$files(testdata/*, true) \

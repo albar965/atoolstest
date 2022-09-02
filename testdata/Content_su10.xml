@@ -1,0 +1,22 @@
+<Priorities>
+	<Package name="fs-base" priority="1"/>
+	<Package name="asobo-airport-eham-amsterdam" priority="-1"/>
+	<Package name="asobo-airport-cytz-billy-bishop" priority="-1"/>
+	<Package name="fs-base-genericairports" priority="1"/>
+	<Package name="asobo-airport-eidl-donegal" priority="-1"/>
+	<Package name="asobo-modellib-props" priority="1"/>
+	<Package name="asobo-jetways" priority="1"/>
+	<Package name="asobo-modellib-airport-generic" priority="-1"/>
+	<Package name="navigraph-navdata-base" priority="-1"/>
+	<Package name="navigraph-navdata" priority="-1"/>
+	<Package name="fs-base-ai-traffic" priority="-1"/>
+	<Package name="asobo-airport-eddf-frankfurt" priority="-1"/>
+	<Package name="fs-base-ui-vr" priority="-1"/>
+	<Package name="asobo-airport-c53-lowerloon" priority="-1"/>
+	<Package name="asobo-airport-egll-heathrow" priority="-1"/>
+	<Package name="asobo-liveevent" priority="-1"/>
+	<Package name="fs-base-nav" priority="-1"/>
+	<Package name="asobo-airport-czst-stewart-aerodrome" priority="-1"/>
+	<Package name="asobo-modellib-buildings" priority="-1"/>
+</Priorities>
+

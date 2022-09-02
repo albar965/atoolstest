@@ -15,27 +15,31 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_VERSIONTEST_H
-#define ATOOLSTEST_VERSIONTEST_H
+#ifndef ATOOLSTEST_FSUTILTEST_H
+#define ATOOLSTEST_FSUTILTEST_H
 
-#include <QString>
 #include <QtTest>
 
-class VersionTest :
+class FsUtilTest :
   public QObject
 {
   Q_OBJECT
 
 public:
-  VersionTest();
+  FsUtilTest();
 
   static void runtest(int argc, char *argv[]);
 
 private slots:
-  void testVersion_data();
-  void testVersion();
-  void testVersionStr();
+  void initTestCase();
+  void cleanupTestCase();
+
+  void testRunwaySplit();
+  void testRunways_data();
+  void testRunways();
+  void testRunwaysEqual_data();
+  void testRunwaysEqual();
 
 };
 
-#endif // ATOOLSTEST_VERSIONTEST_H
+#endif // ATOOLSTEST_FSUTILTEST_H

@@ -44,7 +44,6 @@ private slots:
 
 #endif
 
-private slots:
   void testEncoding();
   void testCompress();
 
@@ -109,6 +108,8 @@ private slots:
   void testSaveQwRte();
 
   void testSaveMaddogMdr();
+
+  void testLoadGfp();
 
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser, flightplanAll;

@@ -225,7 +225,7 @@ void GribTest::testGribWindLineStringQuery()
 
   atools::grib::Wind wind = queryLnm->getWindAverageForLineString(line);
 
-  qInfo() << "w1:" << queryLnm->getWindForPos(line.first()) << "w2:" << queryLnm->getWindForPos(line.last());
+  qInfo() << "w1:" << queryLnm->getWindForPos(line.constFirst()) << "w2:" << queryLnm->getWindForPos(line.constLast());
 
   qInfo() << line << "speed" << speed << "dir" << dir
           << "wind.speed" << wind.speed << "wind.dir" << wind.dir;

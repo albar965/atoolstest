@@ -101,9 +101,9 @@ void PerfTest::testPerfSaveLoad_data()
 {
   QTest::addColumn<QString>("filename");
 
-  QTest::newRow("Laminar Research King Air C90.lnmperf") << ":/test/resources/Laminar Research King Air C90.lnmperf";
-  QTest::newRow("ToLiss A319.lnmperf") << ":/test/resources/ToLiss A319.lnmperf";
-  QTest::newRow("Just Flight PA28 Arrow.lnmperf") << ":/test/resources/Just Flight PA28 Arrow.lnmperf";
+  QTest::newRow("Laminar Research King Air C90.lnmperf") << "testdata/Laminar Research King Air C90.lnmperf";
+  QTest::newRow("ToLiss A319.lnmperf") << "testdata/ToLiss A319.lnmperf";
+  QTest::newRow("Just Flight PA28 Arrow.lnmperf") << "testdata/Just Flight PA28 Arrow.lnmperf";
 }
 
 void PerfTest::testPerfSaveLoad()

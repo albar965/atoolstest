@@ -107,6 +107,11 @@ private slots:
 
   void testBinaryGeo();
 
+  void testBinaryMsaGeo_data();
+  void testBinaryMsaGeo();
+
+  void testDistance_data();
+  void testDistance();
 };
 
 #endif // ATOOLSTEST_GEOTEST_H

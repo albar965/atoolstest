@@ -19,6 +19,8 @@
 
 #include "util/version.h"
 
+using atools::util::Version;
+
 VersionTest::VersionTest()
 {
 
@@ -75,6 +77,33 @@ void VersionTest::testVersion()
   QFETCH(bool, resultsmaller);
   QFETCH(bool, resultequal);
 
-  QCOMPARE(atools::util::Version(version1) < atools::util::Version(version2), resultsmaller);
-  QCOMPARE(atools::util::Version(version1) == atools::util::Version(version2), resultequal);
+  QCOMPARE(Version(version1) < Version(version2), resultsmaller);
+  QCOMPARE(Version(version1) == Version(version2), resultequal);
+}
+
+void VersionTest::testVersionStr()
+{
+  Version version;
+  QCOMPARE(version.isValid(), true);
+
+  version = Version(1, 2);
+  QCOMPARE(version.isValid(), true);
+  QCOMPARE(version.getVersionString(), "1.2");
+
+  version = Version("1.2");
+  QCOMPARE(version.isValid(), true);
+  QCOMPARE(version.getMajor(), 1);
+  QCOMPARE(version.getMinor(), 2);
+  QCOMPARE(version.getPatchlevel(), -1);
+
+  version = Version("1.2.33.beta9");
+  QCOMPARE(version.isValid(), true);
+  QCOMPARE(version.getMajor(), 1);
+  QCOMPARE(version.getMinor(), 2);
+  QCOMPARE(version.getPatchlevel(), 33);
+  QCOMPARE(version.getNameSubVersion(), 9);
+  QCOMPARE(version.getName(), "beta");
+
+  version = Version("1");
+  QCOMPARE(version.isValid(), false);
 }

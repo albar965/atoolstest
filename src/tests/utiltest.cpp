@@ -180,6 +180,6 @@ void UtilTest::testProps()
   QCOMPARE(propsRead.getProps(KEY_VARIANT).at(2).getValueVariant(), QVariant(12.3456789f));
   QCOMPARE(propsRead.getProps(KEY_VARIANT).at(3).getValueVariant(), QVariant(23.5678901));
 
-  for(auto it = propsRead.begin(); it != propsRead.end(); ++it)
+  for(auto it = propsRead.constBegin(); it != propsRead.constEnd(); ++it)
     QVERIFY(it.value().isValid());
 }
