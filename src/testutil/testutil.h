@@ -29,6 +29,7 @@ class SqlDatabase;
 namespace testutil {
 
 void waitForValue(bool& done, int seconds);
+void wait(int seconds);
 
 atools::sql::SqlDatabase *createDb(const QString& name, const QString& file);
 

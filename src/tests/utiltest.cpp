@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2022 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,10 @@
 
 #include "utiltest.h"
 #include "util/props.h"
+#include "util/filesystemwatcher.h"
+#include "testutil/testutil.h"
+
+using atools::util::FileSystemWatcher;
 
 UtilTest::UtilTest()
 {
@@ -182,4 +186,87 @@ void UtilTest::testProps()
 
   for(auto it = propsRead.constBegin(); it != propsRead.constEnd(); ++it)
     QVERIFY(it.value().isValid());
+}
+
+void UtilTest::testFilesystemWatcher()
+{
+  QFile::remove("testdata/watcher/DUMMYFILE");
+  const int delay = 4;
+
+  FileSystemWatcher watcher(this, true);
+  QStringList filenamesResult;
+  QString dirResult;
+  bool foundFiles = false, foundDir = false;
+  connect(&watcher, &FileSystemWatcher::filesUpdated, [&filenamesResult, &foundFiles](const QStringList& filenames) -> void
+  {
+    foundFiles = true;
+    filenamesResult = filenames;
+    std::sort(filenamesResult.begin(), filenamesResult.end());
+  });
+  connect(&watcher, &FileSystemWatcher::dirUpdated, [&dirResult, &foundDir](const QString& dir) -> void
+  {
+    foundDir = true;
+    dirResult = dir;
+  });
+
+  QStringList files({"testdata/watcher/METAR-2022-9-6-19.00-ZULU.txt", "testdata/watcher/METAR-2022-9-6-20.00-ZULU.txt"});
+  watcher.setFilenamesAndStart(files);
+
+  QFile metar1(files.at(0)), metar2(files.at(1));
+  metar1.open(QIODevice::Append);
+  metar2.open(QIODevice::Append);
+
+  qDebug() << Q_FUNC_INFO << "Test first ===========================================";
+  testutil::wait(delay);
+  metar1.setFileTime(QDateTime::currentDateTime().addSecs(-25), QFileDevice::FileModificationTime);
+  testutil::waitForValue(foundFiles, 60);
+  QVERIFY(!foundDir);
+  QVERIFY(foundFiles);
+  QCOMPARE(filenamesResult, {files.at(0)});
+
+  qDebug() << Q_FUNC_INFO << "Test second ===========================================";
+  foundFiles = foundDir = false;
+  filenamesResult.clear();
+  dirResult.clear();
+  testutil::wait(delay);
+  metar2.setFileTime(QDateTime::currentDateTime().addSecs(-20), QFileDevice::FileModificationTime);
+  testutil::waitForValue(foundFiles, 60);
+  QVERIFY(!foundDir);
+  QVERIFY(foundFiles);
+  QCOMPARE(filenamesResult, {files.at(1)});
+
+  qDebug() << Q_FUNC_INFO << "Test two files ===========================================";
+  foundFiles = foundDir = false;
+  filenamesResult.clear();
+  dirResult.clear();
+  testutil::wait(delay);
+  metar1.setFileTime(QDateTime::currentDateTime().addSecs(-15), QFileDevice::FileModificationTime);
+  metar2.setFileTime(QDateTime::currentDateTime().addSecs(-10), QFileDevice::FileModificationTime);
+  testutil::waitForValue(foundFiles, 60);
+  QVERIFY(!foundDir);
+  QVERIFY(foundFiles);
+  QCOMPARE(filenamesResult, files);
+
+  qDebug() << Q_FUNC_INFO << "Test dir ===========================================";
+  foundFiles = foundDir = false;
+  filenamesResult.clear();
+  dirResult.clear();
+  testutil::wait(delay);
+  QFile dummyFile("testdata/watcher/DUMMYFILE");
+  dummyFile.open(QIODevice::WriteOnly);
+  testutil::waitForValue(foundDir, 60);
+  QVERIFY(foundDir);
+  QVERIFY(!foundFiles);
+  QCOMPARE(dirResult, "testdata/watcher");
+
+  qDebug() << Q_FUNC_INFO << "Test last ===========================================";
+  foundFiles = foundDir = false;
+  filenamesResult.clear();
+  dirResult.clear();
+  testutil::wait(delay);
+  metar1.setFileTime(QDateTime::currentDateTime().addSecs(-5), QFileDevice::FileModificationTime);
+  testutil::waitForValue(foundFiles, 60);
+  QVERIFY(!foundDir);
+  QVERIFY(foundFiles);
+  QCOMPARE(filenamesResult, {files.at(0)});
 }

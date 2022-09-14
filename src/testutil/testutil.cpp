@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2022 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,17 @@
 #include <QThread>
 
 namespace testutil {
+
+void wait(int seconds)
+{
+  int waitTimeMs = seconds * 1000, sleepTimeMs = 100, msecs = 0;
+  while(msecs < waitTimeMs)
+  {
+    QCoreApplication::processEvents();
+    QThread::msleep(static_cast<unsigned long>(sleepTimeMs));
+    msecs += sleepTimeMs;
+  }
+}
 
 void waitForValue(bool& done, int seconds)
 {
@@ -55,5 +66,6 @@ void removeDb(atools::sql::SqlDatabase *& db, const QString& name)
 
   atools::sql::SqlDatabase::removeDatabase(name);
 }
+
 
 } // namespace testutil

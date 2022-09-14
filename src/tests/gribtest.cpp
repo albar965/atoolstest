@@ -54,11 +54,11 @@ void GribTest::runtest(int argc, char *argv[])
 void GribTest::initTestCase()
 {
   queryLnm = new WindQuery(this, verbose);
-  queryLnm->initFromFile("testdata/lnm_winds.grib");
+  queryLnm->initFromPath("testdata/lnm_winds.grib", atools::fs::weather::WEATHER_XP11);
   queryLnm->setSamplesPerDegree(100);
 
   queryGlobal2 = new WindQuery(this, verbose);
-  queryGlobal2->initFromFile("testdata/global_winds2.grib");
+  queryGlobal2->initFromPath("testdata/global_winds2.grib", atools::fs::weather::WEATHER_XP11);
   queryGlobal2->setSamplesPerDegree(100);
 }
 
@@ -71,7 +71,7 @@ void GribTest::cleanupTestCase()
 void GribTest::testLoadSpecialCharPath()
 {
   WindQuery wq(this, verbose);
-  wq.initFromFile("testdata/lnm_winds äöüß.grib");
+  wq.initFromPath("testdata/lnm_winds äöüß.grib", atools::fs::weather::WEATHER_XP11);
   wq.setSamplesPerDegree(100);
   QCOMPARE(wq.hasWindData(), true);
 }

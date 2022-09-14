@@ -37,6 +37,7 @@ private slots:
 
   void testFlags();
   void testProps();
+  void testFilesystemWatcher();
 
 };
 

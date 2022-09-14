@@ -119,7 +119,7 @@ void SceneryCfgTest::testXplane()
   SceneryPacks packs;
   packs.read("testdata/X-Plane");
 
-  QCOMPARE(packs.getEntries().size(), 9);
+  QCOMPARE(packs.getEntries().size(), 10);
 
   int idx = 0;
   // SCENERY_PACK Custom Scenery/Norway ENBN tdg/
@@ -200,6 +200,8 @@ void SceneryCfgTest::testXplane()
 
   // SCENERY_PACK Custom Scenery/ZBYN v1/
   // ignored
+
+  idx++;
 
   // SCENERY_PACK_DISABLED Custom Scenery/ZYYJ_Yanji/
   qInfo() << packs.getEntries().at(idx).filepath;
