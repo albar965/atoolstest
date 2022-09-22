@@ -18,6 +18,7 @@
 #include "atoolstest.h"
 
 #include "util/average.h"
+#include "zip/gzip.h"
 
 #include <QDateTime>
 
@@ -203,5 +204,14 @@ void AtoolsTest::testAverage()
 
     QCOMPARE(average.getAverage(), 7.5f);
   }
+}
 
+void AtoolsTest::testGzip()
+{
+  QFile file("testdata/17Z.TXT.gz");
+  file.open(QIODevice::ReadOnly);
+  QByteArray decompressed = atools::zip::gzipDecompress(file.readAll());
+  QString str(decompressed);
+  QCOMPARE(decompressed.size(), 2875509);
+  QCOMPARE(str.size(), 2875506);
 }
