@@ -40,6 +40,8 @@ private slots:
   void testRunwaysEqual_data();
   void testRunwaysEqual();
 
+  void testXpWaypointFlags();
+
 };
 
 #endif // ATOOLSTEST_FSUTILTEST_H
