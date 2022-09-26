@@ -16,9 +16,12 @@
 *****************************************************************************/
 
 #include "utiltest.h"
+#include "atools.h"
 #include "util/props.h"
 #include "util/filesystemwatcher.h"
 #include "testutil/testutil.h"
+
+#include <QFileInfo>
 
 using atools::util::FileSystemWatcher;
 
@@ -112,32 +115,30 @@ void UtilTest::testProps()
   QByteArray bytes2((const char *)(byteTest2), 12);
 
   Props props;
-  props.addProps(QVector<Prop>({
-    Prop(KEY_BOOL, true), Prop(KEY_BOOL, false),
-    Prop(KEY_BYTE, -1),
-    Prop(KEY_BYTE, 127),
-    Prop(KEY_BYTE, 128),
-    Prop(KEY_BYTE, 255),
-    Prop(KEY_INT, 42), Prop(KEY_INT, 965),
-    Prop(KEY_INT, std::numeric_limits<int>::max()),
-    Prop(KEY_INT, std::numeric_limits<int>::min()),
-    Prop(KEY_INT, std::numeric_limits<unsigned int>::max()),
-    Prop(KEY_INT, std::numeric_limits<unsigned int>::min()),
-    Prop(KEY_SHORT, static_cast<short>(1024)),
-    Prop(KEY_LONG, 4200000000000000000LL),
-    Prop(KEY_LONG, 42LL),
-    Prop(KEY_FLOAT, 3.14159f),
-    Prop(KEY_DOUBLE, 2.71828182846),
-    Prop(KEY_STRING, QString("Hello Test")),
-    Prop(KEY_BYTES, bytes1),
-    Prop(KEY_BYTES, bytes2),
-    Prop(KEY_VARIANT, QVariant("Variant")),
-    Prop(KEY_VARIANT, QVariant(1968)),
-    Prop(KEY_VARIANT, QVariant(12.3456789f)),
-    Prop(KEY_VARIANT, QVariant(23.5678901)),
-    Prop(KEY_NONE),
-    Prop()
-  }));
+  props.addProps(QVector<Prop>({Prop(KEY_BOOL, true), Prop(KEY_BOOL, false),
+                                Prop(KEY_BYTE, -1),
+                                Prop(KEY_BYTE, 127),
+                                Prop(KEY_BYTE, 128),
+                                Prop(KEY_BYTE, 255),
+                                Prop(KEY_INT, 42), Prop(KEY_INT, 965),
+                                Prop(KEY_INT, std::numeric_limits<int>::max()),
+                                Prop(KEY_INT, std::numeric_limits<int>::min()),
+                                Prop(KEY_INT, std::numeric_limits<unsigned int>::max()),
+                                Prop(KEY_INT, std::numeric_limits<unsigned int>::min()),
+                                Prop(KEY_SHORT, static_cast<short>(1024)),
+                                Prop(KEY_LONG, 4200000000000000000LL),
+                                Prop(KEY_LONG, 42LL),
+                                Prop(KEY_FLOAT, 3.14159f),
+                                Prop(KEY_DOUBLE, 2.71828182846),
+                                Prop(KEY_STRING, QString("Hello Test")),
+                                Prop(KEY_BYTES, bytes1),
+                                Prop(KEY_BYTES, bytes2),
+                                Prop(KEY_VARIANT, QVariant("Variant")),
+                                Prop(KEY_VARIANT, QVariant(1968)),
+                                Prop(KEY_VARIANT, QVariant(12.3456789f)),
+                                Prop(KEY_VARIANT, QVariant(23.5678901)),
+                                Prop(KEY_NONE),
+                                Prop()}));
 
   QByteArray bytes;
   QDataStream out(&bytes, QIODevice::WriteOnly);
@@ -197,17 +198,17 @@ void UtilTest::testFilesystemWatcher()
   QStringList filenamesResult;
   QString dirResult;
   bool foundFiles = false, foundDir = false;
-  connect(&watcher, &FileSystemWatcher::filesUpdated, [&filenamesResult, &foundFiles](const QStringList& filenames) -> void
-  {
-    foundFiles = true;
-    filenamesResult = filenames;
-    std::sort(filenamesResult.begin(), filenamesResult.end());
-  });
-  connect(&watcher, &FileSystemWatcher::dirUpdated, [&dirResult, &foundDir](const QString& dir) -> void
-  {
-    foundDir = true;
-    dirResult = dir;
-  });
+  connect(&watcher, &FileSystemWatcher::filesUpdated, [&filenamesResult, &foundFiles](const QStringList &filenames)->void
+          {
+            foundFiles = true;
+            filenamesResult = filenames;
+            std::sort(filenamesResult.begin(), filenamesResult.end());
+          });
+  connect(&watcher, &FileSystemWatcher::dirUpdated, [&dirResult, &foundDir](const QString &dir)->void
+          {
+            foundDir = true;
+            dirResult = dir;
+          });
 
   QStringList files({"testdata/watcher/METAR-2022-9-6-19.00-ZULU.txt", "testdata/watcher/METAR-2022-9-6-20.00-ZULU.txt"});
   watcher.setFilenamesAndStart(files);
@@ -269,4 +270,92 @@ void UtilTest::testFilesystemWatcher()
   QVERIFY(!foundDir);
   QVERIFY(foundFiles);
   QCOMPARE(filenamesResult, {files.at(0)});
+}
+
+void UtilTest::testLinkTarget()
+{
+#ifdef Q_OS_WIN
+
+  const static QChar SEP(QDir::separator());
+
+  if(QFileInfo::exists(QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
+                                                "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                "LocalCache\\Packages\\Community"))
+  {
+    QString community = QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
+                                                 "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                 "LocalCache\\Packages\\Community";
+
+    // Directory
+    QString target = atools::linkTarget(QFileInfo(community + SEP + "airport-eddk"));
+    qDebug() << Q_FUNC_INFO << target;
+    QCOMPARE(target, QString());
+
+    // Symbolic Link
+    target = atools::linkTarget(QFileInfo(community + SEP + "guadeloupe TFFR"));
+    qDebug() << Q_FUNC_INFO << target;
+    QCOMPARE(target, "D:/MSFS Addons/guadeloupe TFFR");
+
+    // Junction
+    target = atools::linkTarget(QFileInfo(community + SEP + "airport-licc-catania"));
+    qDebug() << Q_FUNC_INFO << target;
+    QCOMPARE(target, "D:/MSFS Addons/airport-licc-catania");
+
+    // Shortcut
+    target = atools::linkTarget(QFileInfo(community + SEP + "cyqx-gander.lnk"));
+    qDebug() << Q_FUNC_INFO << target;
+    QCOMPARE(target, "D:/MSFS Addons/cyqx-gander");
+
+    target = atools::linkTarget(QFileInfo(community + SEP + "cyqx-gander"));
+    qDebug() << Q_FUNC_INFO << target;
+    QCOMPARE(target, QString());
+  }
+#endif
+}
+
+void UtilTest::testCanonicalPath()
+{
+#ifdef Q_OS_WIN
+  const static QChar SEP(QDir::separator());
+
+  if(QFileInfo::exists(QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
+                                                "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                "LocalCache\\Packages\\Community"))
+  {
+    QString community = QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
+                                                 "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                 "LocalCache\\Packages\\Community";
+    QString target;
+    // Directory
+    QString path = community + SEP + "airport-eddk\\scenery\\world\\scenery\\EDDK.bgl";
+    target = atools::canonicalFilePath(QFileInfo(path));
+    qDebug() << Q_FUNC_INFO << "Directory" << target;
+    QCOMPARE(target, QDir::cleanPath(path));
+
+    // Symbolic Link
+    target = atools::canonicalFilePath(QFileInfo(community + SEP + "guadeloupe TFFR\\scenery\\tffr.bgl"));
+    qDebug() << Q_FUNC_INFO << "Symbolic link" << target;
+    QCOMPARE(target, QDir::cleanPath("D:\\MSFS Addons\\guadeloupe TFFR\\linked scenery\\tffr.bgl"));
+
+    // Junction
+    target = atools::canonicalFilePath(QFileInfo(community + SEP + "airport-licc-catania\\scenery\\Catania scenery.bgl"));
+    qDebug() << Q_FUNC_INFO << "Junction" << target;
+    QCOMPARE(target, QDir::cleanPath("D:\\MSFS Addons\\airport-licc-catania\\linked scenery\\Catania scenery.bgl"));
+
+    // Shortcut
+    target = atools::canonicalFilePath(QFileInfo(community + SEP + "cyqx-gander.lnk\\scenery\\world\\scenery\\cyqx\\Gander.bgl"));
+    qDebug() << Q_FUNC_INFO << "Shortcut" << target;
+    QCOMPARE(target, QDir::cleanPath("D:\\MSFS Addons\\cyqx-gander\\scenery\\world\\scenery\\cyqx\\Gander.bgl"));
+
+    path = community + SEP + "cyqx-gander\\scenery\\world\\scenery\\cyqx\\Gander.bgl";
+    target = atools::canonicalFilePath(QFileInfo(path));
+    qDebug() << Q_FUNC_INFO << "Shortcut no extension" << target;
+    QCOMPARE(target, QDir::cleanPath(path));
+
+    path = community + SEP + "C:\\ATOOLS DOES NEVER EXIST\\BLAH\\BLAH";
+    target = atools::canonicalFilePath(QFileInfo(path));
+    qDebug() << Q_FUNC_INFO << "Invalid path" << target;
+    QCOMPARE(target, QDir::cleanPath(path));
+  }
+#endif
 }

@@ -39,6 +39,9 @@ private slots:
   void testProps();
   void testFilesystemWatcher();
 
+  void testLinkTarget();
+  void testCanonicalPath();
+
 };
 
 /* *INDENT-OFF* */
