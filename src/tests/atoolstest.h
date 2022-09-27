@@ -36,6 +36,8 @@ private slots:
   void testAverageTime();
   void testDateTimeFromString();
 
+  void testGzip();
+
 };
 
 #endif // ATOOLSTEST_H

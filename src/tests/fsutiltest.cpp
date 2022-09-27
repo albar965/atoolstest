@@ -137,7 +137,6 @@ void FsUtilTest::testRunwaysEqual_data()
   QTest::newRow("9") << true << "9" << "RW04T" << false;
   QTest::newRow("9") << true << "9" << "RW4T" << false;
 
-
   QTest::newRow("04") << false << "04" << "4" << true;
   QTest::newRow("04") << false << "04" << "04" << true;
   QTest::newRow("04R") << false << "04R" << "04RT" << true;
@@ -173,4 +172,17 @@ void FsUtilTest::testRunwaysEqual()
     QCOMPARE(runwayAlmostEqual(runway1, runway2), equal);
   else
     QCOMPARE(runwayEqual(runway1, runway2), equal);
+}
+
+void FsUtilTest::testXpWaypointFlags()
+{
+  QCOMPARE(atools::fs::util::waypointFlagsToXplane(""), "");
+  QCOMPARE(atools::fs::util::waypointFlagsToXplane("XXXX"), "");
+  QCOMPARE(atools::fs::util::waypointFlagsToXplane("V  "), "2105430");
+  QCOMPARE(atools::fs::util::waypointFlagsToXplane("RUD"), "4478290");
+  QCOMPARE(atools::fs::util::waypointFlagsToXplane("W D"), "4464727");
+  QCOMPARE(atools::fs::util::waypointFlagsFromXplane(""), "");
+  QCOMPARE(atools::fs::util::waypointFlagsFromXplane("ABCD"), "");
+  QCOMPARE(atools::fs::util::waypointFlagsFromXplane("2105430"), "V  ");
+  QCOMPARE(atools::fs::util::waypointFlagsFromXplane("4464727"), "W D");
 }
