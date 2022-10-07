@@ -24,7 +24,7 @@
 #include "sql/sqlutil.h"
 #include "sql/sqltransaction.h"
 #include "sql/sqlrecord.h"
-#include "atools.h"
+#include "sql/sqlexception.h"
 
 using atools::sql::SqlDatabase;
 using atools::sql::SqlUtil;
@@ -97,6 +97,23 @@ void DbTest::cleanupTestCase()
 
   testutil::removeDb(db, "TESTDBMANUSER");
   testutil::removeDb(dbUndo, "TESTDBMANUSERUNDO");
+}
+
+void DbTest::testBound()
+{
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select '''?''' from a where id = ? and name = ?"), QStringList({"0", "1"}));
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id"), QStringList({":id"}));
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id and name = :name1"), QStringList({":id", ":name1"}));
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id_one and name = :OTHER_9_name"),
+           QStringList({":id_one", ":OTHER_9_name"}));
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id/one and name = :OTHER-9-name"),
+           QStringList({":id", ":OTHER-9-name"}));
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id and name = ':name1'"), QStringList({":id"}));
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :i and name = :n"), QStringList({":i", ":n"}));
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select '?' from a where id = ? and name = ?"), QStringList({"0", "1"}));
+
+  QVERIFY_EXCEPTION_THROWN(atools::sql::SqlQuery::extractPlaceholders(
+                             "select '?' from a where id = ? and name = :id"), atools::sql::SqlException);
 }
 
 // CREATE TABLE userdata (
