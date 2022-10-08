@@ -101,19 +101,41 @@ void DbTest::cleanupTestCase()
 
 void DbTest::testBound()
 {
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select '''?''' from a where id = ? and name = ?"), QStringList({"0", "1"}));
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id"), QStringList({":id"}));
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id and name = :name1"), QStringList({":id", ":name1"}));
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id_one and name = :OTHER_9_name"),
+  bool positional;
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select '''?''' from a where id = ? and name = ?", positional),
+           QStringList({"0", "1"}));
+  QCOMPARE(positional, true);
+
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id", positional),
+           QStringList({":id"}));
+  QCOMPARE(positional, false);
+
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id and name = :name1", positional),
+           QStringList({":id", ":name1"}));
+  QCOMPARE(positional, false);
+
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id_one and name = :OTHER_9_name", positional),
            QStringList({":id_one", ":OTHER_9_name"}));
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id/one and name = :OTHER-9-name"),
+  QCOMPARE(positional, false);
+
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id/one and name = :OTHER-9-name", positional),
            QStringList({":id", ":OTHER-9-name"}));
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id and name = ':name1'"), QStringList({":id"}));
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :i and name = :n"), QStringList({":i", ":n"}));
-  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select '?' from a where id = ? and name = ?"), QStringList({"0", "1"}));
+  QCOMPARE(positional, false);
+
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :id and name = ':name1'", positional),
+           QStringList({":id"}));
+  QCOMPARE(positional, false);
+
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select * from a where id = :i and name = :n", positional),
+           QStringList({":i", ":n"}));
+  QCOMPARE(positional, false);
+
+  QCOMPARE(atools::sql::SqlQuery::extractPlaceholders("select '?' from a where id = ? and name = ?", positional),
+           QStringList({"0", "1"}));
+  QCOMPARE(positional, true);
 
   QVERIFY_EXCEPTION_THROWN(atools::sql::SqlQuery::extractPlaceholders(
-                             "select '?' from a where id = ? and name = :id"), atools::sql::SqlException);
+                             "select '?' from a where id = ? and name = :id", positional), atools::sql::SqlException);
 }
 
 // CREATE TABLE userdata (
