@@ -17,11 +17,9 @@
 
 #include "gribtest.h"
 
-#include "atools.h"
 #include "grib/gribreader.h"
 #include "grib/gribdownloader.h"
 #include "grib/windquery.h"
-#include "geo/calculations.h"
 #include "geo/rect.h"
 #include "geo/linestring.h"
 #include "testutil/testutil.h"
@@ -33,7 +31,7 @@ using atools::grib::WindQuery;
 using atools::geo::LineString;
 using atools::geo::Pos;
 using atools::geo::Rect;
-using atools::grib::WindPosVector;
+using atools::grib::WindPosList;
 using atools::grib::WindPos;
 using atools::grib::Wind;
 
@@ -240,12 +238,12 @@ void GribTest::testGribWindRectQuery_data()
 {
   QTest::addColumn<Rect>("rect");
   QTest::addColumn<float>("alt");
-  QTest::addColumn<atools::grib::WindPosVector>("result");
+  QTest::addColumn<atools::grib::WindPosList>("result");
 
   /* *INDENT-OFF* */
 
 //  QTest::newRow("Meridian  10000 ft 2 degrees") << Rect(-2.f, 2.f, 2.f, -2.f) << 10000.f
-//    << atools::grib::WindPosVector({
+//    << atools::grib::WindPosList({
 //        {Pos(-2.f, 2.f), Wind({101.763f, 16.2887f})},
 //        {Pos(-1.f, 2.f), Wind({97.1598f, 16.8164f})},
 //        {Pos(0.f, 2.f), Wind({95.6853f, 18.018f})},
@@ -274,12 +272,12 @@ void GribTest::testGribWindRectQuery_data()
 //    });
 
   QTest::newRow("West of Spain 0 ft 2 degrees") << Rect(-12.f, 52.f, -11.f, 51.f) << 0.f
-                                                    << atools::grib::WindPosVector({ });
+                                                    << atools::grib::WindPosList({ });
   QTest::newRow("West of Spain 260 ft 2 degrees") << Rect(-12.f, 52.f, -11.f, 51.f) << 260.f
-                                                << atools::grib::WindPosVector({ });
+                                                << atools::grib::WindPosList({ });
 
   QTest::newRow("West of Spain 10000 ft 2 degrees") << Rect(-12.f, 52.f, -11.f, 51.f) << 10000.f
-    << atools::grib::WindPosVector({ });
+    << atools::grib::WindPosList({ });
 
   /* *INDENT-ON* */
 }
@@ -288,9 +286,9 @@ void GribTest::testGribWindRectQuery()
 {
   QFETCH(Rect, rect);
   QFETCH(float, alt);
-  QFETCH(atools::grib::WindPosVector, result);
+  QFETCH(atools::grib::WindPosList, result);
 
-  atools::grib::WindPosVector winds = queryLnm->getWindForRect(rect, alt);
+  atools::grib::WindPosList winds = queryLnm->getWindForRect(rect, alt);
 
   for(int i = 0; i < winds.size(); i++)
   {
