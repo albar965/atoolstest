@@ -68,7 +68,8 @@ TEMPLATE = app
 
 ATOOLS_INC_PATH=$$(ATOOLS_INC_PATH)
 ATOOLS_LIB_PATH=$$(ATOOLS_LIB_PATH)
-OPENSSL_PATH=$$(OPENSSL_PATH)
+OPENSSL_PATH_WIN32=$$(OPENSSL_PATH_WIN32)
+OPENSSL_PATH_WIN64=$$(OPENSSL_PATH_WIN64)
 GIT_PATH=$$(ATOOLS_GIT_PATH)
 DEPLOY_BASE=$$(DEPLOY_BASE)
 QUIET=$$(ATOOLS_QUIET)
@@ -111,6 +112,18 @@ win32 {
   WINDEPLOY_FLAGS = --compiler-runtime
   CONFIG(debug, debug|release) : WINDEPLOY_FLAGS += --debug
 #  CONFIG(release, debug|release) : WINDEPLOY_FLAGS += --release
+
+  contains(QT_ARCH, i386) {
+    # FSX or P3D
+    WINARCH = win32
+    DEFINES += WINARCH32
+    OPENSSL_PATH_WIN=$$(OPENSSL_PATH_WIN32)
+  } else {
+    # MSFS
+    WINARCH = win64
+    DEFINES += WINARCH64
+    OPENSSL_PATH_WIN=$$(OPENSSL_PATH_WIN64)
+  }
 }
 
 macx {
@@ -158,6 +171,7 @@ message(GIT_REVISION: $$GIT_REVISION)
 message(GIT_REVISION_FULL: $$GIT_REVISION_FULL)
 message(GIT_PATH: $$GIT_PATH)
 message(OPENSSL_PATH: $$OPENSSL_PATH)
+message(OPENSSL_PATH_WIN: $$OPENSSL_PATH_WIN)
 message(ATOOLS_INC_PATH: $$ATOOLS_INC_PATH)
 message(ATOOLS_LIB_PATH: $$ATOOLS_LIB_PATH)
 message(DEPLOY_BASE: $$DEPLOY_BASE)
@@ -288,8 +302,8 @@ win32 {
   deploy.commands += echo $$VERSION_NUMBER > $$p($$DEPLOY_BASE/$$TARGET_NAME/version.txt) &&
   deploy.commands += echo $$GIT_REVISION_FULL > $$p($$DEPLOY_BASE/$$TARGET_NAME/revision.txt) &&
   deploy.commands += xcopy $$p($$OUT_PWD/atoolstest.exe) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
-  deploy.commands += xcopy $$p($$OPENSSL_PATH/libcrypto*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
-  deploy.commands += xcopy $$p($$OPENSSL_PATH/libssl*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH_WIN/libcrypto*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
+  deploy.commands += xcopy $$p($$OPENSSL_PATH_WIN/libssl*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/CHANGELOG.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/README.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$PWD/LICENSE.txt) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
