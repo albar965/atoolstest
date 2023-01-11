@@ -40,14 +40,16 @@ private slots:
   void testNextSixHour_data();
   void testNextSixHour();
 
-  void testUtc_data();
-  void testUtc();
+  void testCorrectDateLocal();
 
   void testAltitudePressure_data();
   void testAltitudePressure();
 
   void testSunsetSunrise_data();
   void testSunsetSunrise();
+
+private:
+  void correctDateLocalRun(int localDateDays, int localTimeHour, int utcTimeHour, float longitudeX, int expectedOffsetHours);
 
 };
 

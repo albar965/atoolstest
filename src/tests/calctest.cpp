@@ -144,65 +144,6 @@ void CalcTest::testLastSixHour()
   QCOMPARE(local, result);
 }
 
-void CalcTest::testUtc_data()
-{
-  QTest::addColumn<int>("days");
-  QTest::addColumn<int>("localSeconds");
-  QTest::addColumn<int>("zuluSeconds");
-  QTest::addColumn<QDateTime>("utcResult");
-
-  int year = QDate::currentDate().year();
-
-  // Same day
-  QTest::newRow("8:30 17:30") << 2 << int(8.5 * 3600.) << int(17.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 3), QTime(17, 30), Qt::UTC);
-  QTest::newRow("17:30 8:30") << 2 << int(17.5 * 3600.) << int(8.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 3), QTime(8, 30), Qt::UTC);
-
-  QTest::newRow("7:30 18:30") << 2 << int(7.5 * 3600.) << int(18.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 3), QTime(18, 30), Qt::UTC);
-  QTest::newRow("18:30 7:30") << 2 << int(18.5 * 3600.) << int(7.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 3), QTime(7, 30), Qt::UTC);
-
-  QTest::newRow("12:30 13:30") << 2 << int(12.5 * 3600.) << int(13.5 * 3600.)
-                               << QDateTime(QDate(year, 1, 3), QTime(13, 30), Qt::UTC);
-
-  QTest::newRow("13:30 12:30") << 2 << int(13.5 * 3600.) << int(12.5 * 3600.)
-                               << QDateTime(QDate(year, 1, 3), QTime(12, 30), Qt::UTC);
-
-  QTest::newRow("11:30 12:30") << 2 << int(11.5 * 3600.) << int(12.5 * 3600.)
-                               << QDateTime(QDate(year, 1, 3), QTime(12, 30), Qt::UTC);
-
-  QTest::newRow("12:30 11:30") << 2 << int(12.5 * 3600.) << int(11.5 * 3600.)
-                               << QDateTime(QDate(year, 1, 3), QTime(11, 30), Qt::UTC);
-
-  // One day forward
-  QTest::newRow("18:30 5:30") << 2 << int(18.5 * 3600.) << int(5.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 4), QTime(5, 30), Qt::UTC);
-  QTest::newRow("23:30 0:30") << 2 << int(23.5 * 3600.) << int(0.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 4), QTime(0, 30), Qt::UTC);
-
-  // One day back
-  QTest::newRow("5:30 18:30") << 2 << int(5.5 * 3600.) << int(18.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 2), QTime(18, 30), Qt::UTC);
-  QTest::newRow("0:30 23:30") << 2 << int(0.5 * 3600.) << int(23.5 * 3600.)
-                              << QDateTime(QDate(year, 1, 2), QTime(23, 30), Qt::UTC);
-
-}
-
-void CalcTest::testUtc()
-{
-  QFETCH(int, days);
-  QFETCH(int, localSeconds);
-  QFETCH(int, zuluSeconds);
-  QFETCH(QDateTime, utcResult);
-
-  QDateTime local = atools::correctDateLocal(days, localSeconds, zuluSeconds);
-
-  qDebug() << local << local.toUTC() << utcResult;
-  QCOMPARE(local.toUTC(), utcResult);
-}
-
 void CalcTest::testAltitudePressure_data()
 {
   QTest::addColumn<float>("altMeter");
@@ -282,4 +223,54 @@ void CalcTest::testSunsetSunrise()
   QCOMPARE(time, result);
   QCOMPARE(neverrise, neverRises);
   QCOMPARE(neverset, neverSets);
+}
+
+void CalcTest::testCorrectDateLocal()
+{
+  for(int i = 0; i < 24; i++)
+    correctDateLocalRun(6, i, i, 0.f, 0);
+
+  correctDateLocalRun(6, 3, 0, 170.f, 3);
+  correctDateLocalRun(6, 6, 0, 170.f, 6);
+  correctDateLocalRun(6, 9, 0, 170.f, 9);
+  correctDateLocalRun(6, 12, 0, 170.f, 12);
+  correctDateLocalRun(6, 15, 0, 170.f, 9);
+  correctDateLocalRun(6, 18, 0, 170.f, 6);
+
+  correctDateLocalRun(6, 3, 0, -170.f, -3);
+  correctDateLocalRun(6, 6, 0, -170.f, -6);
+  correctDateLocalRun(6, 9, 0, -170.f, -9);
+  correctDateLocalRun(6, 12, 0, -170.f, -12);
+  correctDateLocalRun(6, 6, 3, -170.f, -3);
+  correctDateLocalRun(6, 3, 6, 170.f, 3);
+}
+
+void CalcTest::correctDateLocalRun(int localDateDays, int localTimeHour, int utcTimeHour, float longitudeX, int expectedOffsetHours)
+{
+  int step = 2;
+
+  qDebug() << "GMT" << expectedOffsetHours << "==========================================================";
+  for(int i = 0; i < 24 / step; i++)
+  {
+    QDateTime localDateTime = atools::correctDateLocal(localDateDays, localTimeHour * 3600, utcTimeHour * 3600, longitudeX);
+    QDateTime zuluDateTime = localDateTime.toUTC();
+
+    qDebug() << "local" << localDateTime.toString(Qt::ISODateWithMs) << "zulu" << zuluDateTime.toString(Qt::ISODateWithMs)
+             << "localDateDays" << localDateDays << "localTimeHour" << localTimeHour << "utcTimeHour" << utcTimeHour;
+
+    QCOMPARE(localDateTime.offsetFromUtc() / 3600, expectedOffsetHours);
+    QCOMPARE(localDateTime.time().msecsSinceStartOfDay() / 1000 / 3600, localTimeHour);
+    QCOMPARE(localDateTime.date().dayOfYear(), localDateDays);
+
+    localTimeHour += step;
+    utcTimeHour += step;
+
+    if(localTimeHour >= 24)
+    {
+      localTimeHour -= 24;
+      localDateDays++;
+    }
+    if(utcTimeHour >= 24)
+      utcTimeHour -= 24;
+  }
 }
