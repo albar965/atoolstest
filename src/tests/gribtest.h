@@ -50,6 +50,7 @@ private slots:
   void testGribReadInterpolate_data();
   void testGribReadInterpolate();
 
+  void testGribReadNoGrib();
   void testGribReadNoFile();
   void testGribReadNoData();
   void testGribReadInvalidFile();

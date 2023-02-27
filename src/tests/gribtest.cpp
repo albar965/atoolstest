@@ -168,6 +168,12 @@ void GribTest::testGribReadInterpolate()
   // QCOMPARE(atools::almostEqual(wind.speed, wind2.speed, 0.5f), true);
 }
 
+void GribTest::testGribReadNoGrib()
+{
+  GribReader reader;
+  QVERIFY_EXCEPTION_THROWN(reader.readFile("testdata/add-on.xml"), atools::Exception);
+}
+
 void GribTest::testGribReadNoFile()
 {
   GribReader reader;
@@ -183,10 +189,7 @@ void GribTest::testGribReadNoData()
 void GribTest::testGribReadInvalidFile()
 {
   GribReader reader;
-  reader.readFile("testdata/global_turbulence.grib");
-
-  const atools::grib::GribDatasetVector& datasets = reader.getDatasets();
-  QCOMPARE(datasets.size(), 0);
+  QVERIFY_EXCEPTION_THROWN(reader.readFile("testdata/global_turbulence.grib"), atools::Exception);
 }
 
 void GribTest::testGribWindLineStringQuery_data()
