@@ -47,7 +47,7 @@ void DbTest::initTestCase()
   db = testutil::createDb("TESTDBMANUSER", "test_user.sqlite");
   atools::fs::userdata::UserdataManager userdata(db);
   userdata.dropSchema();
-  userdata.createSchema();
+  userdata.createSchema(true);
   userdata.setUndoActive(false);
   userdata.importCsv("testdata/dbmanagertest.csv");
 
@@ -59,7 +59,7 @@ void DbTest::initTestCase()
   dbUndo = testutil::createDb("TESTDBMANUSERUNDO", "test_user_undo.sqlite");
   atools::fs::userdata::UserdataManager userdataUndo(dbUndo);
   userdataUndo.dropSchema();
-  userdataUndo.createSchema();
+  userdataUndo.createSchema(true);
 
   userdataUndo.setUndoActive(false);
   userdataUndo.importCsv("testdata/dbmanagertest.csv"); // Import without undo
@@ -73,7 +73,7 @@ void DbTest::initTestCase()
   dbUndoBulk = testutil::createDb("TESTDBMANUSERUNDOBULK", "test_user_undo_bulk.sqlite");
   atools::fs::userdata::UserdataManager userdataUndoBulk(dbUndoBulk);
   userdataUndoBulk.dropSchema();
-  userdataUndoBulk.createSchema();
+  userdataUndoBulk.createSchema(true);
   QCOMPARE(userdataUndoBulk.hasSchema(), true);
   QCOMPARE(userdataUndoBulk.hasUndoSchema(), true);
   QCOMPARE(userdataUndoBulk.rowCount(), 0);

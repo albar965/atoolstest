@@ -20,7 +20,8 @@
 
 #include "geo/pos.h"
 
-using atools::geo::Pos;
+namespace ageo = atools::geo;
+using ageo::Pos;
 
 CalcTest::CalcTest()
 {
@@ -163,9 +164,52 @@ void CalcTest::testAltitudePressure()
   QFETCH(float, altMeter);
   QFETCH(float, pressureMbar);
 
-  QCOMPARE(atools::geo::pressureMbarForAltMeter(altMeter), pressureMbar);
-  QCOMPARE(atools::geo::altMeterForPressureMbar(pressureMbar), altMeter);
+  QCOMPARE(ageo::pressureMbarForAltMeter(altMeter), pressureMbar);
+  QCOMPARE(ageo::altMeterForPressureMbar(pressureMbar), altMeter);
+}
 
+void CalcTest::testDensityAltitude_data()
+{
+  QTest::addColumn<float>("temperatureC");
+  QTest::addColumn<float>("seaLevelPressureMbar");
+  QTest::addColumn<float>("altitudeFt");
+  QTest::addColumn<float>("densityAltResult");
+  QTest::addColumn<float>("pressureAltResult");
+
+  QTest::newRow("15 << 1013.25 << 0") << 15.f << 1013.25f << 0.f << 0.f << 0.f;
+  QTest::newRow("30 << 1013.25 << 0") << 30.f << 1013.25f << 0.f << 1723.93f << 0.f;
+  QTest::newRow("0  << 1013.25 << 0") << 0.f << 1013.25f << 0.f << -1838.49f << 0.f;
+
+  QTest::newRow("15 << 1013.25 << 1000") << 15.f << 1013.25f << 1000.f << 1233.97f << 1000.f;
+  QTest::newRow("30 << 1013.25 << 1000") << 30.f << 1013.25f << 1000.f << 2943.28f << 1000.f;
+  QTest::newRow("0  << 1013.25 << 1000") << 0.f << 1013.25f << 1000.f << -588.919f << 1000.f;
+
+  QTest::newRow("15 << 980 << 1000") << 15.f << 980.f << 1000.f << 2367.45f << 1920.f;
+  QTest::newRow("30 << 980 << 1000") << 30.f << 980.f << 1000.f << 4063.32f << 1920.f;
+  QTest::newRow("0  << 980 << 1000") << 0.f << 980.f << 1000.f << 558.89f << 1920.f;
+
+  QTest::newRow("15 << 1030 << 1000") << 15.f << 1030.f << 1000.f << 673.71f << 545.769f;
+  QTest::newRow("30 << 1030 << 1000") << 30.f << 1030.f << 1000.f << 2389.66f << 545.769f;
+  QTest::newRow("0  << 1030 << 1000") << 0.f << 1030.f << 1000.f << -1156.26f << 545.769f;
+
+}
+
+void CalcTest::testDensityAltitude()
+{
+  QFETCH(float, temperatureC);
+  QFETCH(float, seaLevelPressureMbar);
+  QFETCH(float, altitudeFt);
+  QFETCH(float, densityAltResult);
+  QFETCH(float, pressureAltResult);
+
+  float pressureAltitude = ageo::pressureAltitudeFt(altitudeFt, seaLevelPressureMbar);
+  QCOMPARE(pressureAltitude, pressureAltResult);
+
+  float densityAltitude = ageo::densityAltitudeFt(temperatureC, pressureAltitude);
+  QCOMPARE(densityAltitude, densityAltResult);
+
+  densityAltitude = ageo::densityAltitudeFt(temperatureC, altitudeFt, seaLevelPressureMbar);
+  QCOMPARE(densityAltitude, densityAltResult);
 }
 
 void CalcTest::testSunsetSunrise_data()
@@ -217,7 +261,7 @@ void CalcTest::testSunsetSunrise()
   QFETCH(bool, neverset);
 
   bool neverRises, neverSets;
-  QTime time = atools::geo::calculateSunriseSunset(neverRises, neverSets, pos, date, zenith);
+  QTime time = ageo::calculateSunriseSunset(neverRises, neverSets, pos, date, zenith);
   // qDebug() << pos << date << zenith;
   // qDebug() << time << QDateTime(date, time).toLocalTime();
   QCOMPARE(time, result);
