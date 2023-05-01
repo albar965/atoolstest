@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2023 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ void DbTest::initTestCase()
   userdata.dropSchema();
   userdata.createSchema(true);
   userdata.setUndoActive(false);
-  userdata.importCsv("testdata/dbmanagertest.csv");
+  userdata.importCsv({"testdata/dbmanagertest.csv"});
 
   QCOMPARE(userdata.hasSchema(), true);
   QCOMPARE(userdata.hasUndoSchema(), true);
@@ -62,7 +62,7 @@ void DbTest::initTestCase()
   userdataUndo.createSchema(true);
 
   userdataUndo.setUndoActive(false);
-  userdataUndo.importCsv("testdata/dbmanagertest.csv"); // Import without undo
+  userdataUndo.importCsv({"testdata/dbmanagertest.csv"}); // Import without undo
   userdataUndo.setUndoActive(true);
 
   QCOMPARE(userdataUndo.hasSchema(), true);
@@ -349,7 +349,7 @@ void DbTest::testUndoBulkInsert()
 {
   atools::fs::userdata::UserdataManager userdata(dbUndo);
 
-  userdata.importCsv("testdata/dbmanagertest2.csv");
+  userdata.importCsv({"testdata/dbmanagertest2.csv"});
 
   QCOMPARE(userdata.rowCount(), 50);
 }
