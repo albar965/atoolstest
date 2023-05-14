@@ -1317,17 +1317,10 @@ void GeoTest::testRectInflateMeter_data()
   QTest::addColumn<float>("height");
   QTest::addColumn<Rect>("expected");
 
-  QTest::newRow(FUNC)
-    << Rect(-1.f, 1.f, 1.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-2.000557f, 2.f, 2.000557f, -2.f);
-
-  QTest::newRow(FUNC)
-    << Rect(89.f, 1.f, 91.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(87.999443f, 2.f, 92.000557f, -2.f);
-
-  QTest::newRow(FUNC)
-    << Rect(-1.f, 71.f, 1.f, 69.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-1.342196f, 72.f, 1.342196f, 68.f);
-
-  QTest::newRow(FUNC)
-    << Rect(-1.f, -69.f, 1.f, -71.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-1.342196f, -68.f, 1.342196f, -72.f);
+  QTest::newRow(FUNC) << Rect(-1.f, 1.f, 1.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-2.000557f, 2.f, 2.000557f, -2.f);
+  QTest::newRow(FUNC) << Rect(89.f, 1.f, 91.f, -1.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(87.999443f, 2.f, 92.000557f, -2.f);
+  QTest::newRow(FUNC) << Rect(-1.f, 71.f, 1.f, 69.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-1.342196f, 72.f, 1.342196f, 68.f);
+  QTest::newRow(FUNC) << Rect(-1.f, -69.f, 1.f, -71.f) << nmToMeter(60.f) << nmToMeter(60.f) << Rect(-1.342196f, -68.f, 1.342196f, -72.f);
 
 #undef FUNC
 }
@@ -1344,4 +1337,55 @@ void GeoTest::testRectInflateMeter()
 
   QVERIFY(result.almostEqual(expected, 0.00001f));
   QVERIFY(atools::almostEqual(result.getWidthMeter(), expected.getWidthMeter(), 1.f));
+}
+
+void GeoTest::testRectRadius_data()
+{
+  QTest::addColumn<Pos>("pos");
+  QTest::addColumn<float>("radius");
+  QTest::addColumn<float>("west");
+  QTest::addColumn<float>("north");
+  QTest::addColumn<float>("east");
+  QTest::addColumn<float>("south");
+
+#define FUNC QString("%1:%2").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
+  QTest::newRow(FUNC) << Pos(0.f, 0.f) << 60.f << -1.071429f << 1.f << 1.071429f << -1.f;
+  QTest::newRow(FUNC) << Pos(0.f, 0.f) << 120.f << -1.071429f * 2.f << 2.f << 1.071429f * 2.f << -2.f;
+  QTest::newRow(FUNC) << Pos(0.f, 0.f) << 240.f << -1.071429f * 4.f << 4.f << 1.071429f * 4.f << -4.f;
+
+  QTest::newRow(FUNC) << Pos(0.f, 20.f) << 60.f << -1.15385f << 21.f << 1.15385f << 19.f;
+  QTest::newRow(FUNC) << Pos(0.f, 40.f) << 60.f << -1.53846f << 41.f << 1.53846f << 39.f;
+  QTest::newRow(FUNC) << Pos(0.f, 60.f) << 60.f << -2.4f << 61.f << 2.4f << 59.f;
+  QTest::newRow(FUNC) << Pos(0.f, 70.f) << 60.f << -3.87097f << 71.f << 3.87097f << 69.f;
+  QTest::newRow(FUNC) << Pos(0.f, 80.f) << 60.f << -11.5385f << 81.f << 11.5385f << 79.f;
+  QTest::newRow(FUNC) << Pos(0.f, 85.f) << 60.f << -60.f << 86.f << 60.f << 84.f;
+
+  QTest::newRow(FUNC) << Pos(0.f, -60.f) << 60.f << -2.4f << -59.f << 2.4f << -61.f;
+  QTest::newRow(FUNC) << Pos(0.f, -70.f) << 60.f << -3.87097f << -69.f << 3.87097f << -71.f;
+
+  QTest::newRow(FUNC) << Pos(80.f, -60.f) << 60.f << -2.4f + 80 << -59.f << 2.4f + 80 << -61.f;
+  QTest::newRow(FUNC) << Pos(80.f, -70.f) << 60.f << -3.87097f + 80 << -69.f << 3.87097f + 80 << -71.f;
+#undef FUNC
+}
+
+void GeoTest::testRectRadius()
+{
+  QFETCH(Pos, pos);
+  QFETCH(float, radius);
+  QFETCH(float, west);
+  QFETCH(float, north);
+  QFETCH(float, east);
+  QFETCH(float, south);
+
+  Rect rect(pos, atools::geo::nmToMeter(radius), true /* fast */);
+
+  QVERIFY(atools::geo::meterToNm(rect.getWidthMeter() / 2.f) > radius);
+
+  if(pos.getLatY() < 82.f)
+    QVERIFY(atools::geo::meterToNm(rect.getWidthMeter() / 2.f) < radius * 2.f);
+
+  QCOMPARE(rect.getWest(), west);
+  QCOMPARE(rect.getNorth(), north);
+  QCOMPARE(rect.getEast(), east);
+  QCOMPARE(rect.getSouth(), south);
 }

@@ -464,7 +464,7 @@ void RouteTest::testRouteNeighbors_data()
     << int(MODE_AIRWAY_WAYPOINT)
     << int(NET_AIRWAY)
     << 10
-    << Rect(Pos(-45., 36.), nmToMeter(600.f));
+    << Rect(Pos(-45., 36.), nmToMeter(600.f), true /* fast */);
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY far from destination")
     << Pos(9.947, 49.7175)     /* WUR */
@@ -472,7 +472,7 @@ void RouteTest::testRouteNeighbors_data()
     << int(MODE_AIRWAY)
     << int(NET_AIRWAY)
     << 3
-    << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
+    << Rect(Pos(9.947, 49.7175), nmToMeter(340.f), true /* fast */);
 
   QTest::newRow("EDDH - LIQW MODE_WAYPOINT far from destination")
     << Pos(9.947, 49.7175)       /* WUR */
@@ -480,7 +480,7 @@ void RouteTest::testRouteNeighbors_data()
     << int(MODE_WAYPOINT)
     << int(NET_AIRWAY)
     << 85
-    << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
+    << Rect(Pos(9.947, 49.7175), nmToMeter(340.f), true /* fast */);
 
   QTest::newRow("EDDH - LIQW MODE_AIRWAY_WAYPOINT near destination")
     << Pos(10, 45.4781) /* VAKON */
@@ -496,7 +496,7 @@ void RouteTest::testRouteNeighbors_data()
     << int(MODE_AIRWAY_WAYPOINT)
     << int(NET_AIRWAY)
     << 3
-    << Rect(Pos(9.947, 49.7175), nmToMeter(340.f));
+    << Rect(Pos(9.947, 49.7175), nmToMeter(340.f), true /* fast */);
 }
 
 void RouteTest::testRouteNeighbors()
