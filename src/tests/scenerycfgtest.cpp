@@ -103,17 +103,15 @@ void SceneryCfgTest::testAircraftIndex()
   atools::fs::scenery::AircraftIndex index;
 
   index.loadIndex({"testdata/MSFS/Community", "testdata/MSFS/Official/OneStore"});
-  QCOMPARE(index.size(), 4);
+  QCOMPARE(index.size(), 6);
 
   QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/microsoft-aircraft-bell407/aircraft.cfg"), "Bell 407");
   QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_Baron_G58/aircraft.cfg"), "BE58");
   QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_A320_NEO_Livery_01/aircraft.cfg"), "");
   QCOMPARE(index.getIcaoTypeDesignator("SimObjects/AirPlanes/Asobo_A320_NEO/aircraft.cfg"), "A20N");
   QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_B787_10/aircraft.cfg"), "B78X");
-  // Community/microsoft-aircraft-bell407/SimObjects/Airplanes/microsoft-aircraft-bell407/aircraft.cfg:icao_type_designator ="Bell 407"
-  // Official/OneStore/asobo-aircraft-baron-g58/SimObjects/Airplanes/Asobo_Baron_G58/aircraft.cfg:icao_type_designator = "BE58"
-  // Official/OneStore/asobo-aircraft-a320-neo/SimObjects/AirPlanes/Asobo_A320_NEO/aircraft.cfg:icao_type_designator = "A20N"
-  // Official/OneStore/asobo-aircraft-b787-10/SimObjects/Airplanes/Asobo_B787_10/aircraft.cfg:icao_type_designator = "B78X"
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/aircraft.cfg"), "DHC2");
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/aircraft.cfg"), "DHC2");
 }
 
 void SceneryCfgTest::testXplane()

@@ -1,0 +1,2934 @@
+{
+  "content": [
+    {
+      "path": "ContentInfo/microsoft-aircraft-dhc2/Thumbnail.jpg",
+      "size": 48859,
+      "date": 133093803630000000
+    },
+    {
+      "path": "de-DE.locPak",
+      "size": 30584,
+      "date": 133101215680000000
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_BeaconTop.fx",
+      "size": 1222,
+      "date": 133108218638588703
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_CockpitFront.fx",
+      "size": 1282,
+      "date": 133072061030000000
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_CockpitSpot.fx",
+      "size": 1282,
+      "date": 133072061190000000
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_GaugeSelfIllum_01.fx",
+      "size": 1359,
+      "date": 133108218638690803
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_GaugeTiny.fx",
+      "size": 1361,
+      "date": 133108218638710750
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_Landing.fx",
+      "size": 1229,
+      "date": 133108218638731180
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_NavigationGreen.fx",
+      "size": 1230,
+      "date": 133108218638760622
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_NavigationRed.fx",
+      "size": 1227,
+      "date": 133108218638780568
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_NavigationWhite.fx",
+      "size": 1227,
+      "date": 133108218638800515
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_PostNormal.fx",
+      "size": 1360,
+      "date": 133108218638820779
+    },
+    {
+      "path": "Effects/LIGHT_MVDHC2_StrobeDouble.fx",
+      "size": 2345,
+      "date": 133072061460000000
+    },
+    {
+      "path": "en-US.locPak",
+      "size": 27035,
+      "date": 133101214930000000
+    },
+    {
+      "path": "es-ES.locPak",
+      "size": 31532,
+      "date": 133101222010000000
+    },
+    {
+      "path": "es-MX.locPak",
+      "size": 31309,
+      "date": 133101219960000000
+    },
+    {
+      "path": "fi-FI.locPak",
+      "size": 28842,
+      "date": 133101220210000000
+    },
+    {
+      "path": "fr-FR.locPak",
+      "size": 31550,
+      "date": 133101224780000000
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Fonts/RobotoMono-Bold.ttf",
+      "size": 114752,
+      "date": 133108218641564703
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Mv/MV_EFB_DHC2/assets/BlackBird_logo_portrait.png",
+      "size": 216666,
+      "date": 133057459930000000
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Mv/MV_EFB_DHC2/assets/MV_logo_0.png",
+      "size": 52695,
+      "date": 132039557900000000
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Mv/MV_EFB_DHC2/mv-efb-dhc2.css",
+      "size": 6766,
+      "date": 133072060080000000
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Mv/MV_EFB_DHC2/mv-efb-dhc2.html",
+      "size": 123637,
+      "date": 133071299790000000
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Mv/MV_EFB_DHC2/mv-efb-dhc2.js",
+      "size": 15670,
+      "date": 133072060250000000
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Mv/MV_EFB_DHC2/mv-efb-dhc2_alt.css",
+      "size": 6238,
+      "date": 133072059940000000
+    },
+    {
+      "path": "it-IT.locPak",
+      "size": 30956,
+      "date": 133101222660000000
+    },
+    {
+      "path": "ja-JP.locPak",
+      "size": 31974,
+      "date": 133101218200000000
+    },
+    {
+      "path": "nb-NO.locPak",
+      "size": 26986,
+      "date": 133101224570000000
+    },
+    {
+      "path": "nl-NL.locPak",
+      "size": 29392,
+      "date": 133101218030000000
+    },
+    {
+      "path": "pl-PL.locPak",
+      "size": 30649,
+      "date": 133101218260000000
+    },
+    {
+      "path": "pt-BR.locPak",
+      "size": 30086,
+      "date": 133101224080000000
+    },
+    {
+      "path": "pt-PT.locPak",
+      "size": 30769,
+      "date": 133101217100000000
+    },
+    {
+      "path": "ru-RU.locPak",
+      "size": 43379,
+      "date": 133101223080000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/ai.cfg",
+      "size": 631,
+      "date": 133080896350000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/aircraft.cfg",
+      "size": 11456,
+      "date": 133101222200000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/Approach.flt",
+      "size": 2745,
+      "date": 133076610750000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/apron.flt",
+      "size": 3662,
+      "date": 133063669480000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/cameras.cfg",
+      "size": 21274,
+      "date": 133065390170000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/Checklist/DHC2_Checklist.xml",
+      "size": 10474,
+      "date": 133093781840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/Climb.flt",
+      "size": 2745,
+      "date": 133076610300000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/cockpit.cfg",
+      "size": 4521,
+      "date": 133075798890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/Cruise.flt",
+      "size": 2773,
+      "date": 133076617720000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/engines.cfg",
+      "size": 8840,
+      "date": 133086635940000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/Final.flt",
+      "size": 2745,
+      "date": 133076610470000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/finalwater.FLT",
+      "size": 2745,
+      "date": 133076610590000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/flight_model.cfg",
+      "size": 18453,
+      "date": 133086675300000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/gameplay.cfg",
+      "size": 1224,
+      "date": 132730846390000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/hangar.flt",
+      "size": 2643,
+      "date": 133035772790000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Exterior.bin",
+      "size": 15267716,
+      "date": 133108218663108116
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Exterior.gltf",
+      "size": 238183,
+      "date": 133108218663157985
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Exterior.xml",
+      "size": 19931,
+      "date": 133078634070000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Interior.xml",
+      "size": 315,
+      "date": 133071372680000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Interior_LOD0.bin",
+      "size": 19874948,
+      "date": 133108218675905971
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Interior_LOD0.gltf",
+      "size": 861683,
+      "date": 133108218677791132
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Interior_LOD1.bin",
+      "size": 19684592,
+      "date": 133108218690994395
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/DHC2_Interior_LOD1.gltf",
+      "size": 839749,
+      "date": 133108218691277814
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model/model.CFG",
+      "size": 663,
+      "date": 132984082360000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model.avclub/DHC2_Exterior.bin",
+      "size": 16118960,
+      "date": 133108218644076469
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model.avclub/DHC2_Exterior.gltf",
+      "size": 268153,
+      "date": 133108218648036816
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model.avclub/DHC2_Exterior.xml",
+      "size": 221,
+      "date": 133083308860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model.avclub/DHC2_Interior.xml",
+      "size": 333,
+      "date": 133083309340000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/model.avclub/model.CFG",
+      "size": 663,
+      "date": 132983794380000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/Notice.txt",
+      "size": 179,
+      "date": 133108218691317884
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/panel/PANEL.CFG",
+      "size": 1573,
+      "date": 133101221260000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/panel/panel.xml",
+      "size": 1389,
+      "date": 133021186030000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/runway.FLT",
+      "size": 3673,
+      "date": 133076611840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/runwaywater.FLT",
+      "size": 3870,
+      "date": 133076611770000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/systems.cfg",
+      "size": 11562,
+      "date": 133081868440000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/target_performance.cfg",
+      "size": 1821,
+      "date": 132385696720000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/taxi.flt",
+      "size": 3870,
+      "date": 133046181850000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.1/texture.CFG",
+      "size": 116,
+      "date": 133071359600000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.1/thumbnail.JPG",
+      "size": 178757,
+      "date": 133044672040000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.2/texture.CFG",
+      "size": 116,
+      "date": 133071359680000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.2/thumbnail.JPG",
+      "size": 178631,
+      "date": 133044672280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.3/texture.CFG",
+      "size": 116,
+      "date": 133071359750000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.3/thumbnail.JPG",
+      "size": 181047,
+      "date": 133044672560000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.4/texture.CFG",
+      "size": 116,
+      "date": 133071359830000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.4/thumbnail.JPG",
+      "size": 200287,
+      "date": 133044672820000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.5/texture.CFG",
+      "size": 116,
+      "date": 133071359930000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.5/thumbnail.JPG",
+      "size": 131267,
+      "date": 133081575760000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.6/texture.CFG",
+      "size": 116,
+      "date": 133108218700722229
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.6/thumbnail.JPG",
+      "size": 135812,
+      "date": 133081575940000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.7/texture.CFG",
+      "size": 116,
+      "date": 133083295660000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.7/thumbnail.JPG",
+      "size": 176484,
+      "date": 133044673200000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.avclub/texture.CFG",
+      "size": 118,
+      "date": 133083296100000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.avclub/thumbnail.JPG",
+      "size": 133357,
+      "date": 133083320760000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.kenmore/texture.CFG",
+      "size": 119,
+      "date": 133086507020000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.kenmore/thumbnail.JPG",
+      "size": 135482,
+      "date": 133086535480000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.xbox/texture.CFG",
+      "size": 116,
+      "date": 133083295960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/texture.xbox/thumbnail.JPG",
+      "size": 133012,
+      "date": 133083320900000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/ai.cfg",
+      "size": 1549,
+      "date": 133081022660000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/aircraft.cfg",
+      "size": 9805,
+      "date": 133101217800000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/approach.flt",
+      "size": 2745,
+      "date": 133057871830000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/apron.flt",
+      "size": 3662,
+      "date": 133057655050000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/cameras.cfg",
+      "size": 21274,
+      "date": 133065390140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/Checklist/DHC2_Checklist.xml",
+      "size": 10474,
+      "date": 133093781840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/Checklist/Library.xml",
+      "size": 54269,
+      "date": 133101224180000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/climb.flt",
+      "size": 2745,
+      "date": 133057872270000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/cockpit.cfg",
+      "size": 4521,
+      "date": 133075754470000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/cruise.flt",
+      "size": 2773,
+      "date": 133076619220000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/engines.cfg",
+      "size": 8840,
+      "date": 133086632860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/final.flt",
+      "size": 2745,
+      "date": 133057872210000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/flight_model.cfg",
+      "size": 19441,
+      "date": 133086675600000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/gameplay.cfg",
+      "size": 1224,
+      "date": 132991417590000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/hangar.flt",
+      "size": 2643,
+      "date": 133035772790000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Exterior.bin",
+      "size": 11124872,
+      "date": 133108218718356102
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Exterior.gltf",
+      "size": 218729,
+      "date": 133108218718506465
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Exterior.xml",
+      "size": 13987,
+      "date": 133071321170000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Interior.XML",
+      "size": 125138,
+      "date": 133101219790000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Interior_LOD0.bin",
+      "size": 19206620,
+      "date": 133108218728742241
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Interior_LOD0.gltf",
+      "size": 831795,
+      "date": 133108218732198818
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Interior_LOD1.bin",
+      "size": 19016264,
+      "date": 133108218737503447
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/DHC2_Interior_LOD1.gltf",
+      "size": 809146,
+      "date": 133108218737843420
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model/model.CFG",
+      "size": 663,
+      "date": 132984082360000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model.avclub/DHC2_Exterior.bin",
+      "size": 11874428,
+      "date": 133108218707971152
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model.avclub/DHC2_Exterior.gltf",
+      "size": 246920,
+      "date": 133108218711795693
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model.avclub/DHC2_Exterior.xml",
+      "size": 221,
+      "date": 133083258620000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model.avclub/DHC2_Interior.xml",
+      "size": 303,
+      "date": 133083259820000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/model.avclub/model.CFG",
+      "size": 663,
+      "date": 132983794380000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/Notice.txt",
+      "size": 179,
+      "date": 133093683620000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/panel/PANEL.CFG",
+      "size": 1573,
+      "date": 133101214910000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/panel/panel.xml",
+      "size": 1389,
+      "date": 133020424800000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/runway.flt",
+      "size": 3673,
+      "date": 133044655900000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/sound/Milviz_DHC2.PC.PCK",
+      "size": 40413159,
+      "date": 133101218570000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/sound/sound.xml",
+      "size": 73925,
+      "date": 133092998320000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/soundai/Milviz_DHC2_AI.PC.PCK",
+      "size": 5552506,
+      "date": 133101220670000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/soundai/soundai.xml",
+      "size": 7982,
+      "date": 133093002160000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/systems.cfg",
+      "size": 11634,
+      "date": 133071322890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/target_performance.cfg",
+      "size": 1821,
+      "date": 132385696720000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/taxi.flt",
+      "size": 3870,
+      "date": 133046181670000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_albd.png.DDS",
+      "size": 1398256,
+      "date": 133108219800720386
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108219800750352
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_comp.png.DDS",
+      "size": 43832,
+      "date": 133108219800770262
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219800800219
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_green_emis.png.DDS",
+      "size": 43832,
+      "date": 133108219800820167
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_green_emis.png.DDS.json",
+      "size": 102,
+      "date": 133108219800840075
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_norm.png.DDS",
+      "size": 1398256,
+      "date": 133108219800899919
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/avionics_decals_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108219800919904
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_albd.png.DDS",
+      "size": 1398256,
+      "date": 133108219800970042
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108219800989922
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_comp.png.DDS",
+      "size": 43832,
+      "date": 133108219801009990
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219801029952
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_newgreen_emis.png.DDS",
+      "size": 1398256,
+      "date": 133108219801079808
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_newgreen_emis.png.DDS.json",
+      "size": 119,
+      "date": 133108219801099706
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_normal.png.DDS",
+      "size": 1398256,
+      "date": 133108219801252799
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/BendixKing_decals_normal.png.DDS.json",
+      "size": 160,
+      "date": 133108219801269566
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/C310R_tablet_01_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108219802086285
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/C310R_tablet_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219802116211
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/C310R_tablet_01_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108219802672352
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/C310R_tablet_01_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219802692609
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/C310R_tablet_01_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108219806640663
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/C310R_tablet_01_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108219806670608
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219822588633
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219822647106
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_01_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219834457583
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_01_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219834517417
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_01_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108219854723712
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_01_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108219854803515
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219871495393
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219871545283
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_02_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219878127067
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_02_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219878176958
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_02_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108219894404302
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_02_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108219894474141
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219911166245
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219911219360
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_03_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219926659679
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_03_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219926719884
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_03_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108219945233464
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_03_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108219945323625
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219960263443
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219960313305
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_04_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219973756253
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_04_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219973806222
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_04_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108220012273249
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_04_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220012353123
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108220036950983
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220039283649
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_05_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108220052354608
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_05_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220052404494
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_05_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108220100246856
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_05_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220100336236
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_06_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108220114729151
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_06_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220114779012
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_06_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108220129105926
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_06_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220129155499
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_06_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108220154612458
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_06_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220154692275
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_07_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220157874769
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_07_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220157904707
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_07_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220161279032
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_07_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220161308959
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_07_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220170685700
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_07_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220170735297
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108220179947495
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220179997335
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_08_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108220194323486
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_08_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220194373374
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_08_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108220225702477
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_08_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220225782285
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_09_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220235856921
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_09_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220235886865
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_09_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220242981555
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_09_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220243021449
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_09_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220260492187
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_09_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220260532096
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_10_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108220261270318
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_10_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220261300181
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_10_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220264507171
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_10_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220264537111
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_10_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220270212998
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_10_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220270242918
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_11_albd.png.DDS",
+      "size": 22369776,
+      "date": 133108220272058400
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_11_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220272098309
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_11_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220279293154
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_11_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220279323371
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_11_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220279844557
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_11_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220279874500
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_12_albd.png.DDS",
+      "size": 1398256,
+      "date": 133108220279934296
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_12_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220279963875
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_12_comp.png.DDS",
+      "size": 699192,
+      "date": 133108220280118330
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_12_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220280138289
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_12_norm.png.DDS",
+      "size": 1398256,
+      "date": 133108220280576882
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_12_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220280602857
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220286600127
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220289636687
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_14_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220301778586
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_14_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220301813138
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_14_norm.png.DDS",
+      "size": 11184976,
+      "date": 133108220307829518
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_14_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220307859441
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108220325257121
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220325316955
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_15_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108220332000812
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_15_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220332051191
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_15_norm.png.DDS",
+      "size": 89478640,
+      "date": 133108220373578310
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_Ext_15_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220373660408
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_01_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220377134535
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220377164479
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_01_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220377979384
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_01_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220378019285
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_01_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220386482068
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_01_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220386522203
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_02_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220394742545
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220394772475
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_02_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220399200793
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_02_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220399230716
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_02_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220400786602
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_02_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220400826515
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_03_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220409820290
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220409849842
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_03_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220412043472
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_03_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220412073419
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_03_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220431886204
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_03_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220431925166
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_04_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220446613431
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220446643352
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_04_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220454329810
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_04_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220454360170
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_04_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220462342530
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_04_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220462372463
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_05_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220474026412
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220474055945
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_05_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220481383423
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_05_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220481413383
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_05_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220492241293
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_05_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220492275691
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_06_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220496979001
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_06_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220497008946
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_06_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220503379568
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_06_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220503411563
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_06_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220518797676
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_06_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220518837592
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_07_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220524859882
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_07_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220524889824
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_07_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220544305704
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_07_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220544345587
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_07_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220557591404
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_07_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220557631575
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_08_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220570353433
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220570377790
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_08_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220585750801
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_08_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220585790368
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_08_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220592501321
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_08_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220592531238
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_09_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108220596941364
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_09_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220596971289
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_09_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220600538694
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_09_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220600578590
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_09_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220610117484
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_09_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220610147431
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_decals_albd.png.DDS",
+      "size": 22369776,
+      "date": 133108220615702944
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_decals_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220615732879
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_decals_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220615912727
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_decals_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220615932685
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_decals_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220616231571
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_decals_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220616271592
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_cabin_albd.png.DDS",
+      "size": 22369776,
+      "date": 133108220622803590
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_cabin_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220622833943
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_cabin_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220625315551
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_cabin_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220625345812
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_cabin_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220625887368
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_cabin_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220625917288
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_guages_albd.png.DDS",
+      "size": 22369776,
+      "date": 133108220641614456
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_guages_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220641654420
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_guages_comp.png.DDS",
+      "size": 11184952,
+      "date": 133108220647390198
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_guages_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220647420549
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_guages_norm.png.DDS",
+      "size": 22369776,
+      "date": 133108220650037412
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC2_Beaver_int_glass_guages_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220650076952
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC3_ext_07_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108220650287710
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC3_ext_07_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220650316545
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC3_ext_07_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220650661072
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC3_ext_07_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220650694584
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC3_ext_07_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220650977872
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/DHC3_ext_07_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220651007790
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/F86_int_lights_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108220651486590
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/F86_int_lights_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220651516891
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/F86_int_lights_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220652012835
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/F86_int_lights_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220652042778
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/F86_int_lights_emis.png.DDS",
+      "size": 2796344,
+      "date": 133108220652437711
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/F86_int_lights_emis.png.DDS.json",
+      "size": 102,
+      "date": 133108220652457667
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_albd.png.DDS",
+      "size": 5592560,
+      "date": 133108220652720481
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220652750401
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220652909982
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220652940354
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_Detail_comp.png.DDS",
+      "size": 699192,
+      "date": 133108220657883052
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_Detail_comp.png.DDS.json",
+      "size": 134,
+      "date": 133108220657909210
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_Detail_norm.png.DDS",
+      "size": 1398256,
+      "date": 133108220660547121
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_Detail_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220660577052
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220663011047
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Frost_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220663040979
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Garmin_GA_37_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108220664253880
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Garmin_GA_37_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220664284148
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Garmin_GA_37_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220664435360
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Garmin_GA_37_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220664455308
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Garmin_GA_37_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220664706904
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Garmin_GA_37_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220664736806
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Generic_Ext_Lights_OFF.png.DDS",
+      "size": 2796344,
+      "date": 133108220664876410
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Generic_Ext_Lights_OFF.png.DDS.json",
+      "size": 102,
+      "date": 133108220664906025
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Generic_Ext_Lights_ON.png.DDS",
+      "size": 2796344,
+      "date": 133108220665045952
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Generic_Ext_Lights_ON.png.DDS.json",
+      "size": 102,
+      "date": 133108220665075567
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Glass_DetailMap_mask.png.DDS",
+      "size": 11184952,
+      "date": 133108220675142463
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/Glass_DetailMap_mask.png.DDS.json",
+      "size": 134,
+      "date": 133108220675172406
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS430_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108220678498758
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS430_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220678528647
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS430_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220678668275
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS430_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220678697867
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS430_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220681980438
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS430_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220682008979
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS530_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108220682182186
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS530_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220682212110
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS530_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220682361712
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS530_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220682391633
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS530_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220682611060
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GNS530_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220682640976
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_albd.png.DDS",
+      "size": 5592560,
+      "date": 133108220682820503
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220682840450
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220682960137
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220682990049
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_decals_emis.png.DDS",
+      "size": 87536,
+      "date": 133108220683019978
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_decals_emis.png.DDS.json",
+      "size": 119,
+      "date": 133108220683039924
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220683189564
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/GTX330_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220683219489
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_albd.png.DDS",
+      "size": 5592560,
+      "date": 133108220683409301
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220683439194
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220683558899
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220683588807
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_emis.png.DDS",
+      "size": 2796344,
+      "date": 133108220685573642
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_emis.png.DDS.json",
+      "size": 102,
+      "date": 133108220685593603
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220690802659
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KAP140_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220690830572
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KMA30_albd.png.DDS",
+      "size": 2796344,
+      "date": 133108220694027211
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KMA30_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108220694056041
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KMA30_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220694205645
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KMA30_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220694235607
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KMA30_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220696988476
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KMA30_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220697008430
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_albd.png.DDS",
+      "size": 5592560,
+      "date": 133108220697432314
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220697452275
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220697602156
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220697632073
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_emis.png.DDS",
+      "size": 2796344,
+      "date": 133108220697732640
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_emis.png.DDS.json",
+      "size": 102,
+      "date": 133108220697752601
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220698084926
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KR87_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220698104874
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_albd.png.DDS",
+      "size": 5592560,
+      "date": 133108220701250961
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_albd.png.DDS.json",
+      "size": 119,
+      "date": 133108220701274689
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_comp.png.DDS",
+      "size": 2796344,
+      "date": 133108220701414317
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108220701444244
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_emis.png.DDS",
+      "size": 2796344,
+      "date": 133108220701504081
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_emis.png.DDS.json",
+      "size": 102,
+      "date": 133108220701524028
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_norm.png.DDS",
+      "size": 5592560,
+      "date": 133108220701703553
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/KX165A_norm.png.DDS.json",
+      "size": 160,
+      "date": 133108220701723500
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/no_emis.png.DDS",
+      "size": 43832,
+      "date": 133108220701753425
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/no_emis.png.DDS.json",
+      "size": 102,
+      "date": 133108220701773374
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/prop_blur_back.png.DDS",
+      "size": 5592560,
+      "date": 133108220704547913
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/prop_blur_back.png.DDS.json",
+      "size": 119,
+      "date": 133108220704588144
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/prop_blur_slow.png.DDS",
+      "size": 5592560,
+      "date": 133108220704747713
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/prop_blur_slow.png.DDS.json",
+      "size": 119,
+      "date": 133108220704777624
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/prop_blur_slow_back.png.DDS",
+      "size": 5592560,
+      "date": 133108220704917351
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture/prop_blur_slow_back.png.DDS.json",
+      "size": 119,
+      "date": 133108220704947273
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218787817883
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218787868087
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218798488280
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218798558105
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218808485955
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218808555768
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218818136891
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218818187076
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218835339578
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218835388625
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_06_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218846843587
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_06_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218846893464
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218860060846
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218863322056
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 5616104,
+      "date": 133108218867714621
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218867734283
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218885258129
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218885317954
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/texture.CFG",
+      "size": 31,
+      "date": 132903037820000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.1/thumbnail.JPG",
+      "size": 173448,
+      "date": 133044673700000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218899580002
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218899630189
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218911930961
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218911991114
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218917097468
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218917147607
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218927249647
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218927299849
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218953686776
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218953736999
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218964116079
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218964175943
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 5592552,
+      "date": 133108218967403331
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218967433152
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218978478109
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218978528052
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/texture.CFG",
+      "size": 31,
+      "date": 132903037820000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.2/thumbnail.JPG",
+      "size": 176137,
+      "date": 133044673940000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108218996734307
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108218996793875
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219009109532
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219009333681
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219024985734
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219025035641
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219035827924
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219035877804
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219051140732
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219051190614
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_06_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219072723450
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_06_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219072783294
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219088119431
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219088169652
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 5592552,
+      "date": 133108219093130405
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219093159969
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219113245080
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219113294889
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/texture.CFG",
+      "size": 31,
+      "date": 132903037820000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.3/thumbnail.JPG",
+      "size": 174728,
+      "date": 133044674280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219132824102
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219132884301
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219159133948
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219159203862
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219177410470
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219177460365
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219187312377
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219187362261
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219202504889
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219202555094
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_06_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219214455645
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_06_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219214505514
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219225057113
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219225107005
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 22369768,
+      "date": 133108219238732412
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219238773947
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219251351849
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219251399912
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/texture.CFG",
+      "size": 31,
+      "date": 132903037820000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.4/thumbnail.JPG",
+      "size": 199322,
+      "date": 133044674480000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219264005298
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219264055189
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_01_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219279592979
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_01_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219279654993
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219293426251
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219293476131
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_02_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219312160919
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_02_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219312210776
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219323781985
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219323839029
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_03_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219337696923
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_03_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219337752656
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219354158794
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219354208684
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_04_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219371912585
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_04_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219371962474
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219387788909
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219387838799
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_05_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219410003242
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_05_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219412484651
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219419839802
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219421546600
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_08_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219440293265
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_08_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219440343155
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 5592552,
+      "date": 133108219443907827
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219443937765
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_14_comp.png.DDS",
+      "size": 5592552,
+      "date": 133108219447479775
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_14_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219447499659
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219457454820
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219457504532
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_15_comp.png.DDS",
+      "size": 44739384,
+      "date": 133108219479954221
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/DHC2_Beaver_Ext_15_comp.png.DDS.json",
+      "size": 166,
+      "date": 133108219480014065
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/texture.CFG",
+      "size": 31,
+      "date": 132903037820000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.5/thumbnail.JPG",
+      "size": 125431,
+      "date": 133081575140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219489518789
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219489578626
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219494392584
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219494442453
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219501059203
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219503515656
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219509584423
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219509634304
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219517562113
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219517610967
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_06_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219535360480
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_06_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219535410355
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219556398881
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219556448772
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 22369768,
+      "date": 133108219570303453
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219570343361
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219580113049
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219580162942
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/texture.CFG",
+      "size": 31,
+      "date": 133082245270000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.6/thumbnail.JPG",
+      "size": 132936,
+      "date": 133081574960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219589979668
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219590029991
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219604435302
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219604485182
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219614691922
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219614741804
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219624782724
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219624832612
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219643164328
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219643214207
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219661062028
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219661111611
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 5592552,
+      "date": 133108219667808785
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219668052932
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219675956121
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219676005990
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/texture.CFG",
+      "size": 31,
+      "date": 132902749840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.7/thumbnail.JPG",
+      "size": 171999,
+      "date": 133044674940000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/Arrowfade.png.DDS",
+      "size": 22369776,
+      "date": 133108219679312439
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/Arrowfade.png.DDS.json",
+      "size": 119,
+      "date": 133108219679342379
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/Text.png.DDS",
+      "size": 2872,
+      "date": 133108219679362325
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/Text.png.DDS.json",
+      "size": 102,
+      "date": 133108219679382272
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/texture.CFG",
+      "size": 31,
+      "date": 132902749840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/thumbnail.JPG",
+      "size": 127015,
+      "date": 133083322260000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/Xbox_Logo.png.DDS",
+      "size": 349680,
+      "date": 133108219682432307
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.avclub/Xbox_Logo.png.DDS.json",
+      "size": 119,
+      "date": 133108219682462380
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_01_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219700530628
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_01_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219700580876
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_02_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219713980538
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_02_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219714030430
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_03_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219728330998
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_03_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219728390796
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_04_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219745898947
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_04_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219746061979
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_05_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219766365475
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_05_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219766415362
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_08_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219778165571
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_08_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219778225748
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_14_albd.png.DDS",
+      "size": 11184952,
+      "date": 133108219785456453
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_14_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219785486057
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_15_albd.png.DDS",
+      "size": 44739384,
+      "date": 133108219797819682
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/DHC2_Beaver_Ext_15_albd.png.DDS.json",
+      "size": 102,
+      "date": 133108219799753425
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/texture.CFG",
+      "size": 31,
+      "date": 132902749840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.kenmore/thumbnail.JPG",
+      "size": 130745,
+      "date": 133086536240000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/Arrowfade.png.DDS",
+      "size": 22369776,
+      "date": 133108219800491014
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/Arrowfade.png.DDS.json",
+      "size": 119,
+      "date": 133108219800531222
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/Text.png.DDS",
+      "size": 2872,
+      "date": 133108219800551153
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/Text.png.DDS.json",
+      "size": 102,
+      "date": 133108219800571109
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/texture.CFG",
+      "size": 31,
+      "date": 132902749840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/thumbnail.JPG",
+      "size": 126853,
+      "date": 133083321860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/Xbox_Logo.png.DDS",
+      "size": 349680,
+      "date": 133108219800640642
+    },
+    {
+      "path": "SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/texture.xbox/Xbox_Logo.png.DDS.json",
+      "size": 119,
+      "date": 133108219800660587
+    },
+    {
+      "path": "sv-SE.locPak",
+      "size": 28162,
+      "date": 133101218450000000
+    },
+    {
+      "path": "zh-CN.locPak",
+      "size": 25867,
+      "date": 133101215330000000
+    }
+  ]
+}

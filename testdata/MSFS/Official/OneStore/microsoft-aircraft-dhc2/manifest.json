@@ -1,0 +1,16 @@
+{
+  "dependencies": [],
+  "content_type": "AIRCRAFT",
+  "title": "DHC-2 Beaver",
+  "manufacturer": "Viking Air Limited, a De Havilland Canada company",
+  "creator": "Microsoft / Blackbird Sims",
+  "package_version": "1.0.2",
+  "minimum_game_version": "1.29.26",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "",
+      "OlderHistory": ""
+    }
+  },
+  "total_package_size": "00000000005712253008"
+}
