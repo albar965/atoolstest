@@ -1,0 +1,16 @@
+{
+  "dependencies": [],
+  "content_type": "LIVERY",
+  "title": "A320neo - 01",
+  "manufacturer": "",
+  "creator": "Asobo Studio",
+  "package_version": "0.1.9",
+  "minimum_game_version": "1.24.2",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "",
+      "OlderHistory": ""
+    }
+  },
+  "total_package_size": "00000000000070962826"
+}

@@ -1,0 +1,1529 @@
+{
+  "content": [
+    {
+      "path": "ContentInfo/microsoft-aircraft-bell407/Thumbnail.jpg",
+      "size": 12937,
+      "date": 133091192717107401
+    },
+    {
+      "path": "de-DE.locPak",
+      "size": 31223,
+      "date": 133211064873619559
+    },
+    {
+      "path": "en-US.locPak",
+      "size": 29716,
+      "date": 133211064873599549
+    },
+    {
+      "path": "es-ES.locPak",
+      "size": 32269,
+      "date": 133211064873589836
+    },
+    {
+      "path": "es-MX.locPak",
+      "size": 32396,
+      "date": 133211064873619559
+    },
+    {
+      "path": "fi-FI.locPak",
+      "size": 30648,
+      "date": 133211064873654648
+    },
+    {
+      "path": "fr-FR.locPak",
+      "size": 33051,
+      "date": 133211064873629561
+    },
+    {
+      "path": "it-IT.locPak",
+      "size": 31690,
+      "date": 133211064873654648
+    },
+    {
+      "path": "ja-JP.locPak",
+      "size": 33109,
+      "date": 133211064873579554
+    },
+    {
+      "path": "ko-KR.locPak",
+      "size": 31234,
+      "date": 133211064873639562
+    },
+    {
+      "path": "nb-NO.locPak",
+      "size": 28814,
+      "date": 133211064873639562
+    },
+    {
+      "path": "nl-NL.locPak",
+      "size": 31069,
+      "date": 133211064873599549
+    },
+    {
+      "path": "pt-BR.locPak",
+      "size": 31704,
+      "date": 133211064873569937
+    },
+    {
+      "path": "pt-PT.locPak",
+      "size": 33009,
+      "date": 133211064873589836
+    },
+    {
+      "path": "ru-RU.locPak",
+      "size": 42237,
+      "date": 133211064873609580
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/ai.cfg",
+      "size": 1512,
+      "date": 132969241917508463
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/aircraft.cfg",
+      "size": 7047,
+      "date": 133211191236854270
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/apron.FLT",
+      "size": 3824,
+      "date": 133105020807293658
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/cameras.cfg",
+      "size": 25726,
+      "date": 133106361725062178
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/Checklist/b407_checklist.xml",
+      "size": 49806,
+      "date": 133102401837755400
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/Checklist/Library.xml",
+      "size": 14348,
+      "date": 132455001680000000
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/cockpit.cfg",
+      "size": 4718,
+      "date": 133111539251549636
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/Cruise.flt",
+      "size": 5874,
+      "date": 133104989038882561
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/engines.cfg",
+      "size": 16502,
+      "date": 133211152246401483
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/flight_model.cfg",
+      "size": 23398,
+      "date": 133221396838494928
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/gameplay.cfg",
+      "size": 1142,
+      "date": 132969241917388088
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/hangar.flt",
+      "size": 3157,
+      "date": 133104996133472846
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/model.CFG",
+      "size": 598,
+      "date": 133085787526339803
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407.xml",
+      "size": 22101,
+      "date": 133219684824263671
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior.xml",
+      "size": 300695,
+      "date": 133211199579421937
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD0.bin",
+      "size": 11733648,
+      "date": 133211193983889683
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD0.gltf",
+      "size": 1069730,
+      "date": 133211193983964837
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD1.bin",
+      "size": 5154608,
+      "date": 133211064426230119
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD1.gltf",
+      "size": 562820,
+      "date": 133211064426264753
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD2.bin",
+      "size": 2652936,
+      "date": 133211064428172160
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD2.gltf",
+      "size": 518785,
+      "date": 133211064428211989
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD3.bin",
+      "size": 1421556,
+      "date": 133211064429372969
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD3.gltf",
+      "size": 332277,
+      "date": 133211064429392572
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD4.bin",
+      "size": 921140,
+      "date": 133211064430038724
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD4.gltf",
+      "size": 126629,
+      "date": 133211064430053763
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD5.bin",
+      "size": 172394,
+      "date": 133211064430264410
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD5.gltf",
+      "size": 13424,
+      "date": 133211064430273593
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD6.bin",
+      "size": 42180,
+      "date": 133211064430358691
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_interior_LOD6.gltf",
+      "size": 6564,
+      "date": 133211064430368803
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD0.bin",
+      "size": 7403040,
+      "date": 133211150086490678
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD0.gltf",
+      "size": 90542,
+      "date": 133211150086500657
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD1.bin",
+      "size": 4090196,
+      "date": 133211064174103445
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD1.gltf",
+      "size": 86777,
+      "date": 133211064174113452
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD2.bin",
+      "size": 2058952,
+      "date": 133211064175253826
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD2.gltf",
+      "size": 86616,
+      "date": 133211064175263877
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD3.bin",
+      "size": 1051144,
+      "date": 133211064175976711
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD3.gltf",
+      "size": 83116,
+      "date": 133211064175986441
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD4.bin",
+      "size": 595764,
+      "date": 133211064176368877
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD4.gltf",
+      "size": 81500,
+      "date": 133211064176378919
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD5.bin",
+      "size": 327784,
+      "date": 133211064176621080
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD5.gltf",
+      "size": 49359,
+      "date": 133211064176631027
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD6.bin",
+      "size": 182044,
+      "date": 133211064178273603
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/model/nd407_LOD6.gltf",
+      "size": 29284,
+      "date": 133211064178273603
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/Notice.txt",
+      "size": 166,
+      "date": 133090930180986532
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/panel/Gauges/ND_B407/chrono.xml",
+      "size": 6935,
+      "date": 133085122255467877
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/panel/Gauges/ND_B407/fuelqty.xml",
+      "size": 1628,
+      "date": 133085093924626784
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/panel/Gauges/ND_B407/mgt.xml",
+      "size": 1462,
+      "date": 133085094054584511
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/panel/Gauges/ND_B407/ng.xml",
+      "size": 1463,
+      "date": 133085094174849917
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/panel/Gauges/ND_B407/torque.xml",
+      "size": 1471,
+      "date": 133085094278536350
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/panel/panel.cfg",
+      "size": 1466,
+      "date": 133103185789677889
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/runway.FLT",
+      "size": 5978,
+      "date": 133104988995731096
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/sound/NemethDesigns_B407.PC.PCK",
+      "size": 55250343,
+      "date": 133104979541864885
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/sound/sound.xml",
+      "size": 34656,
+      "date": 133104979345337468
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/soundAI/NemethDesigns_B407_AI.PC.PCK",
+      "size": 9968001,
+      "date": 133104979397715822
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/soundAI/soundai.xml",
+      "size": 5031,
+      "date": 133104979249694246
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/systems.cfg",
+      "size": 13175,
+      "date": 133207457233038951
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_ALB.PNG.DDS",
+      "size": 2796344,
+      "date": 132721310571059009
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 132721310571059009
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_COMP.PNG.DDS",
+      "size": 2796344,
+      "date": 132890447000910619
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 132890447000910619
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_EMIS.PNG.DDS",
+      "size": 2796344,
+      "date": 132721312472512873
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_EMIS.PNG.DDS.json",
+      "size": 102,
+      "date": 132721312472512873
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_NORM.PNG.DDS",
+      "size": 5592560,
+      "date": 132721306691920287
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/GNS_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132721306691920287
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_DETAILS_ALB.PNG.DDS",
+      "size": 5592560,
+      "date": 132632243600030144
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_DETAILS_ALB.PNG.DDS.json",
+      "size": 151,
+      "date": 132632243600030144
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_DETAILS_NORM.PNG.DDS",
+      "size": 5592560,
+      "date": 132632243793694909
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_DETAILS_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132632243793694909
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT01_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133041856031813989
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT01_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133041856031813989
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT01_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133041857018238451
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT01_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133041857018238451
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT02_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133041754932518097
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT02_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133041754932518097
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT02_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133041755129925912
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT02_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133041755129925912
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT03_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133041755878255785
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT03_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133041755878255785
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT03_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133041756070656603
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT03_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133041756070656603
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT04_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133041756817908398
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT04_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133041756817908398
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT04_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133041757008510793
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT04_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133041757008510793
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT05_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133041764504155107
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT05_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133041764504155107
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT05_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133041757731634435
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT05_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133041757731634435
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT05_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133041757928831490
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT05_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133041757928831490
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT_LOD6_COMP.PNG.DDS",
+      "size": 174904,
+      "date": 133073873862301408
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT_LOD6_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133073873862301408
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT_LOD6_NORM.PNG.DDS",
+      "size": 349680,
+      "date": 133073874010212778
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_EXT_LOD6_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133073874010212778
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_ALB.PNG.DDS",
+      "size": 5592560,
+      "date": 133200835522165304
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_ALB.PNG.DDS.json",
+      "size": 119,
+      "date": 133200835522165304
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_COMP.PNG.DDS",
+      "size": 2796344,
+      "date": 133076202078010951
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133076202078010951
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_DETAIL_COMP.PNG.DDS",
+      "size": 699192,
+      "date": 132417741980000000
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_DETAIL_COMP.PNG.DDS.json",
+      "size": 134,
+      "date": 132417741980000000
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_DETAIL_NORM.PNG.DDS",
+      "size": 1398256,
+      "date": 132417741980000000
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_DETAIL_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132417741980000000
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_NORM.PNG.DDS",
+      "size": 5592560,
+      "date": 132881933423855629
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_FROST_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132881933423855629
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_ALB.PNG.DDS",
+      "size": 349680,
+      "date": 133068429992561929
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_ALB.PNG.DDS.json",
+      "size": 119,
+      "date": 133068429992561929
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 132445788377062122
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 132445788377062122
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_DIRT.PNG.DDS",
+      "size": 22369776,
+      "date": 133074533829721783
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_DIRT.PNG.DDS.json",
+      "size": 119,
+      "date": 133074533829721783
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_GAUGE_ALB.PNG.DDS",
+      "size": 87536,
+      "date": 133077918526017039
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_GAUGE_ALB.PNG.DDS.json",
+      "size": 119,
+      "date": 133077918526017039
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_GAUGE_COMP.PNG.DDS",
+      "size": 174904,
+      "date": 132445788486811433
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_GAUGE_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 132445788486811433
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_GAUGE_NORM.PNG.DDS",
+      "size": 5592560,
+      "date": 132445788600208626
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_GAUGE_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132445788600208626
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 132445788743374782
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_GLASS_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132445788743374782
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133082090487386358
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133082090487386358
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT01_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133082092563067067
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT01_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133082092563067067
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT01_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133080622728154392
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT01_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133080622728154392
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133080599807883818
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133080599807883818
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT02_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133081289191786982
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT02_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133081289191786982
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT02_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133080622961925534
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT02_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133080622961925534
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133087602253669594
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133087602253669594
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT03_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133087600399922199
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT03_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133087600399922199
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT03_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133080623178644926
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT03_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133080623178644926
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133080600403625173
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133080600403625173
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT04_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133081289633025536
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT04_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133081289633025536
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT04_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133080623411035386
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT04_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133080623411035386
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT05_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133200831947994252
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT05_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133200831947994252
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT05_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133080619795159714
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT05_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133080619795159714
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT05_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133092701780592629
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT05_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133092701780592629
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT06_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133203317633640149
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT06_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133203317633640149
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT06_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133203317937583968
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT06_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133203317937583968
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT06_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133080623867094183
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT06_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133080623867094183
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133091827496216175
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091827496216175
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 133091838661699824
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133091838661699824
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_EMIS.PNG.DDS",
+      "size": 11184952,
+      "date": 133194754163405685
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_EMIS.PNG.DDS.json",
+      "size": 102,
+      "date": 133194754163405685
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 133084806782158939
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_INT07_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133084806782158939
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_ALB.PNG.DDS",
+      "size": 699192,
+      "date": 133051259645012611
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133051259645012611
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_COMP.PNG.DDS",
+      "size": 699192,
+      "date": 133051263085088060
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 133051263085088060
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_EMIS.PNG.DDS",
+      "size": 699192,
+      "date": 133051297873090662
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_EMIS.PNG.DDS.json",
+      "size": 102,
+      "date": 133051297873090662
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_NORM.PNG.DDS",
+      "size": 1398256,
+      "date": 133051263460876585
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_LIGTHTS_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 133051263460876585
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_ROTOR_BLUR_ALB.PNG.DDS",
+      "size": 5592560,
+      "date": 133041886152970279
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_ROTOR_BLUR_ALB.PNG.DDS.json",
+      "size": 119,
+      "date": 133041886152970279
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_ALB.PNG.DDS",
+      "size": 1398256,
+      "date": 132631988924185966
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_ALB.PNG.DDS.json",
+      "size": 119,
+      "date": 132631988924185966
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_COMP.PNG.DDS",
+      "size": 11184952,
+      "date": 132652711290724514
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_COMP.PNG.DDS.json",
+      "size": 166,
+      "date": 132652711290724514
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_DETAILS.PNG.DDS",
+      "size": 5592560,
+      "date": 132640903576087382
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_DETAILS.PNG.DDS.json",
+      "size": 119,
+      "date": 132640903576087382
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_NORM.PNG.DDS",
+      "size": 22369776,
+      "date": 132632081902991013
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132632081902991013
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_SHD.PNG.DDS",
+      "size": 2796344,
+      "date": 133074378002104373
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_SHD.PNG.DDS.json",
+      "size": 134,
+      "date": 133074378002104373
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_SHD_NORM.PNG.DDS",
+      "size": 5592560,
+      "date": 132632242835093524
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture/ND407_WSHLD_SHD_NORM.PNG.DDS.json",
+      "size": 160,
+      "date": 132632242835093524
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090767553371703
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090767553371703
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090767555892370
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090767555892370
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090767560399920
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090767560399920
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090767558419147
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090767558419147
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091763671824209
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091763671824209
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/thumbnail.JPG",
+      "size": 195189,
+      "date": 133090841400758911
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.black-orange/thumbnail_small.JPG",
+      "size": 63618,
+      "date": 133090843290367258
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090765747659570
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090765747659570
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090765753236108
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090765753236108
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090765748954725
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090765748954725
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090765748954725
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090765748954725
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091764539694477
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091764539694477
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/thumbnail.JPG",
+      "size": 201696,
+      "date": 133090841243968461
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-gray/thumbnail_small.JPG",
+      "size": 71521,
+      "date": 133090843157545652
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777931863251
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777931863251
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777933283193
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777933283193
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777933602789
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777933602789
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777939280048
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777939280048
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091764706802357
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091764706802357
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/thumbnail.JPG",
+      "size": 205825,
+      "date": 133090841095429176
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.blue-stripes/thumbnail_small.JPG",
+      "size": 65765,
+      "date": 133090843023677113
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090771063826869
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090771063826869
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090771066302322
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090771066302322
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090771066092318
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090771066092318
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090771053447534
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090771053447534
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091765619152768
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091765619152768
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/thumbnail.JPG",
+      "size": 202106,
+      "date": 133090840891762558
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.green-black/thumbnail_small.JPG",
+      "size": 65027,
+      "date": 133090842884731395
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090775913927201
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090775913927201
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090775920418259
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090775920418259
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090775916217696
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090775916217696
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090775917829657
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090775917829657
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091765872626275
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091765872626275
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/thumbnail.JPG",
+      "size": 206936,
+      "date": 133090840686958241
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.orange-stripes/thumbnail_small.JPG",
+      "size": 65987,
+      "date": 133090842737646411
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777204416248
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777204416248
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777206632309
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777206632309
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777205846858
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777205846858
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090777207258209
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090777207258209
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091766168825343
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091766168825343
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/thumbnail.JPG",
+      "size": 214357,
+      "date": 133090840523552554
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-stripes/thumbnail_small.JPG",
+      "size": 66387,
+      "date": 133090842594160772
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090770074507874
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090770074507874
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090770075213569
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090770075213569
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090770081098619
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090770081098619
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090770072681157
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090770072681157
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091767208285328
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091767208285328
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/thumbnail.JPG",
+      "size": 201495,
+      "date": 133090840309355936
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-tan/thumbnail_small.JPG",
+      "size": 66018,
+      "date": 133090842444589083
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT01_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090855310871517
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT01_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090855310871517
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT02_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090855311421792
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT02_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090855311421792
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT03_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090855316843174
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT03_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090855316843174
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT04_ALB.PNG.DDS",
+      "size": 11184952,
+      "date": 133090855314052185
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT04_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133090855314052185
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT_LOD6_ALB.PNG.DDS",
+      "size": 43832,
+      "date": 133091768127835755
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/ND407_EXT_LOD6_ALB.PNG.DDS.json",
+      "size": 102,
+      "date": 133091768127835755
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/texture.CFG",
+      "size": 31,
+      "date": 132443254672188979
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/thumbnail.JPG",
+      "size": 204011,
+      "date": 133090840121035746
+    },
+    {
+      "path": "SimObjects/Airplanes/microsoft-aircraft-bell407/texture.red-yellow/thumbnail_small.JPG",
+      "size": 65529,
+      "date": 133090842308397823
+    },
+    {
+      "path": "sv-SE.locPak",
+      "size": 30656,
+      "date": 133211064873579554
+    },
+    {
+      "path": "tr-TR.locPak",
+      "size": 31884,
+      "date": 133211064873599549
+    }
+  ]
+}

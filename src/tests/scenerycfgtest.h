@@ -48,6 +48,9 @@ private slots:
   void testContentXmlSu10();
   void testContentXmlEmpty();
   void testContentXmlZero();
+
+  void testAircraftIndex();
+
 };
 
 #endif // ATOOLSTEST_SCTEST_H

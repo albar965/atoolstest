@@ -1,0 +1,16 @@
+{
+  "dependencies": [],
+  "content_type": "AIRCRAFT",
+  "title": "Model 407",
+  "manufacturer": "Bell",
+  "creator": "Microsoft/Nemeth Designs",
+  "package_version": "0.3.0",
+  "minimum_game_version": "1.31.21",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "VERSION 0.3.0 RELEASED JANUARY 27, 2023\\n- Tail rotor animation multiplayer fix\n- GNS 530 screen adjustments",
+      "OlderHistory": "VERSION 0.2.9 RELEASED JANUARY 17, 2023\\n- Engine performance increased to match more closely the real-world behavior.\n- Now it is easier to overstress the rotor RPM and torque under heavy load.\n- The helicopter is easier to stabilize now in cruise flight with trim and assistances turned off.\n- Low rotor warning sound now sounds when the battery is switched on.\n- Annunciators illumination is stronger now in DIM mode.\n- Altimeter barometric scale values now match up with the simulator values.\n- Gauge illumination is toned down preventing it to being overblown on maximum brightness settings.\n- Auto-trim switch has been removed.\n- Force trim switch has been removed.\n- Pedal stop functionality added (limits left pedal movement during flight) above 50 kts.\n- Rotor rotation animation in multiplayer is now functioning.\n- Rotor brake is functional again.\n- Used fuel type in the weight and balance settings is JET fuel.\n- Added Turkish language translation.\n- Added Korean language translation.\n- Pedal animation adjustments on the connecting rod is fixed.\n- Interior collider adjustments. The camera doesn’t clip into the main panel anymore.\n- VR support adjustments. Full VR support.\n- Reference cruise speed now shows the correct value on the aircraft selection screen."
+    }
+  },
+  "total_package_size": "00000000001132985880"
+}

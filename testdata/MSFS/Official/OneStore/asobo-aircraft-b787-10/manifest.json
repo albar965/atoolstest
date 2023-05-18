@@ -1,0 +1,21 @@
+{
+  "dependencies": [
+    {
+      "name": "fs-base-propdefs",
+      "package_version": "0.1.2"
+    }
+  ],
+  "content_type": "AIRCRAFT",
+  "title": "787-10 Dreamliner",
+  "manufacturer": "Boeing",
+  "creator": "Asobo Studio",
+  "package_version": "0.1.99",
+  "minimum_game_version": "1.33.2",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "",
+      "OlderHistory": ""
+    }
+  },
+  "total_package_size": "00000000000508314870"
+}
