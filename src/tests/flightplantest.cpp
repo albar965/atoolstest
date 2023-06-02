@@ -638,13 +638,13 @@ void FlightplanTest::testLoadMsfsPln()
   io.load(plan, "testdata/MSFS EDDH EDDF.PLN");
   QCOMPARE(plan.isLnmFormat(), false);
   QCOMPARE(plan.getEntries().size(), 6);
-  QCOMPARE(plan.getProperties().size(), 6);
+  QCOMPARE(plan.getProperties().size(), 8);
 
   plan.clear();
   io.load(plan, "testdata/MSFS EDXW EDDH.PLN");
   QCOMPARE(plan.isLnmFormat(), false);
   QCOMPARE(plan.getEntries().size(), 2);
-  QCOMPARE(plan.getProperties().size(), 4);
+  QCOMPARE(plan.getProperties().size(), 5);
 }
 
 void FlightplanTest::testSaveGarminFpl()
