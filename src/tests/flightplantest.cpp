@@ -22,7 +22,6 @@
 #include "atools.h"
 #include "zip/gzip.h"
 #include "exception.h"
-#include "util/xmlstream.h"
 
 using atools::fs::pln::Flightplan;
 using atools::fs::pln::FlightplanIO;
@@ -32,7 +31,6 @@ const static QLatin1String OUTPUT("flightplan_output");
 
 FlightplanTest::FlightplanTest()
 {
-
 }
 
 void FlightplanTest::runtest(int argc, char *argv[])
@@ -46,19 +44,19 @@ void FlightplanTest::initTestCase()
   QDir().mkpath(OUTPUT);
 
   io.load(flightplan, "testdata/flightplan.pln");
-  QCOMPARE(flightplan.getEntries().size(), 18);
+  QCOMPARE(flightplan.size(), 18);
 
   io.load(flightplanUser, "testdata/_test_flp_user.pln");
-  QCOMPARE(flightplanUser.getEntries().size(), 12);
+  QCOMPARE(flightplanUser.size(), 12);
 
   io.load(flightplanAll, "testdata/IFR Yakima Air  Mcallister Field (KYKM) to Kelowna (CYLW).pln");
-  QCOMPARE(flightplanAll.getEntries().size(), 9);
+  QCOMPARE(flightplanAll.size(), 9);
 }
 
 void FlightplanTest::cleanupTestCase()
 {
-  flightplan.clear();
-  QCOMPARE(flightplan.getEntries().size(), 0);
+  flightplan.clearAll();
+  QCOMPARE(flightplan.size(), 0);
 }
 
 void FlightplanTest::testEncoding()
@@ -66,13 +64,13 @@ void FlightplanTest::testEncoding()
   QDir().mkpath(OUTPUT);
 
   io.load(flightplan, "testdata/Codec ISO8859-15.fpl");
-  QCOMPARE(flightplan.getEntries().size(), 4);
+  QCOMPARE(flightplan.size(), 4);
 
   io.load(flightplan, "testdata/Codec UTF8 BOM.fpl");
-  QCOMPARE(flightplan.getEntries().size(), 4);
+  QCOMPARE(flightplan.size(), 4);
 
   io.load(flightplan, "testdata/Codec UTF16 BOM.fpl");
-  QCOMPARE(flightplan.getEntries().size(), 4);
+  QCOMPARE(flightplan.size(), 4);
 }
 
 void FlightplanTest::testCompress()
@@ -82,21 +80,21 @@ void FlightplanTest::testCompress()
   atools::fs::pln::Flightplan plan, compressed;
 
   io.load(plan, "testdata/test_direct.lnmpln");
-  QCOMPARE(plan.getEntries().size(), 9);
+  QCOMPARE(plan.size(), 9);
   compressed = plan.compressedAirways();
   qDebug() << Q_FUNC_INFO << plan.toShortString();
   qDebug() << Q_FUNC_INFO << compressed.toShortString();
   QCOMPARE(compressed.toShortString(), "EDDF EGAKA USUDO VALAV VP378 BIKTU UPONO VP191 LIRF");
 
   io.load(plan, "testdata/test_airway.lnmpln");
-  QCOMPARE(plan.getEntries().size(), 31);
+  QCOMPARE(plan.size(), 31);
   compressed = plan.compressedAirways();
   qDebug() << Q_FUNC_INFO << plan.toShortString();
   qDebug() << Q_FUNC_INFO << compressed.toShortString();
   QCOMPARE(compressed.toShortString(), "EDDF NOKDI [Y163] NATOR [N850] IXITO [L50] ELB [M729] MEDAL [Q160] OST LIRF");
 
   io.load(plan, "testdata/test_mixed.lnmpln");
-  QCOMPARE(plan.getEntries().size(), 27);
+  QCOMPARE(plan.size(), 27);
   compressed = plan.compressedAirways();
   qDebug() << Q_FUNC_INFO << plan.toShortString();
   qDebug() << Q_FUNC_INFO << compressed.toShortString();
@@ -165,12 +163,10 @@ void FlightplanTest::testSaveFprDirect()
 
   io.load(fp, "testdata/enna_eddm.pln");
 
-  for(FlightplanEntry& e:fp.getEntries())
+  for(FlightplanEntry& e:fp)
     e.setAirway(QString());
 
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_direct.fpr");
-
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_direct.fpr").size(), 36089);
 }
 
 void FlightplanTest::testSaveFprAirway()
@@ -179,8 +175,6 @@ void FlightplanTest::testSaveFprAirway()
 
   io.load(fp, "testdata/_test_fpr.pln");
   io.saveFpr(fp, OUTPUT + QDir::separator() + "_test_fpr_airway.fpr");
-
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "_test_fpr_airway.fpr").size(), 36089);
 }
 
 void FlightplanTest::testLoadFs9()
@@ -191,7 +185,7 @@ void FlightplanTest::testLoadFs9()
 
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 13);
+  QCOMPARE(fp.size(), 13);
 }
 
 void FlightplanTest::testLoadFsc()
@@ -202,7 +196,7 @@ void FlightplanTest::testLoadFsc()
 
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 27);
+  QCOMPARE(fp.size(), 27);
 }
 
 void FlightplanTest::testLoadFms()
@@ -213,7 +207,7 @@ void FlightplanTest::testLoadFms()
 
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 18);
+  QCOMPARE(fp.size(), 18);
 }
 
 void FlightplanTest::testLoadFms2()
@@ -224,7 +218,7 @@ void FlightplanTest::testLoadFms2()
 
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 15);
+  QCOMPARE(fp.size(), 15);
 }
 
 void FlightplanTest::testSaveFlpDirect()
@@ -253,9 +247,7 @@ void FlightplanTest::testSaveFlpAirway()
   QCOMPARE(fp.isEmpty(), false);
 
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_airway.flp");
-
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_airway.flp"),
-           static_cast<unsigned int>(1376439437));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_airway.flp"), static_cast<quint32>(1431656137));
 }
 
 void FlightplanTest::testSaveFlpMixed()
@@ -267,9 +259,7 @@ void FlightplanTest::testSaveFlpMixed()
   QCOMPARE(fp.isEmpty(), false);
 
   io.saveFlp(fp, OUTPUT + QDir::separator() + "result_flp_mixed.flp");
-
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_mixed.flp"),
-           static_cast<unsigned int>(2460896818));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_mixed.flp"), static_cast<quint32>(1431655842));
 }
 
 void FlightplanTest::testSaveFlpCrjDirect()
@@ -281,9 +271,7 @@ void FlightplanTest::testSaveFlpCrjDirect()
   QCOMPARE(fp.isEmpty(), false);
 
   io.saveCrjFlp(fp, OUTPUT + QDir::separator() + "result_flp_crj_direct.flp");
-
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_direct.flp"),
-           static_cast<unsigned int>(36648602));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_direct.flp"), static_cast<quint32>(1431655935));
 }
 
 void FlightplanTest::testSaveFlpCrjAirway()
@@ -295,9 +283,7 @@ void FlightplanTest::testSaveFlpCrjAirway()
   QCOMPARE(fp.isEmpty(), false);
 
   io.saveCrjFlp(fp, OUTPUT + QDir::separator() + "result_flp_crj_airway.flp");
-
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_airway.flp"),
-           static_cast<unsigned int>(490869392));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_airway.flp"), static_cast<quint32>(1431655444));
 }
 
 void FlightplanTest::testSaveFlpCrjMixed()
@@ -309,9 +295,7 @@ void FlightplanTest::testSaveFlpCrjMixed()
   QCOMPARE(fp.isEmpty(), false);
 
   io.saveCrjFlp(fp, OUTPUT + QDir::separator() + "result_flp_crj_mixed.flp");
-
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_mixed.flp"),
-           static_cast<unsigned int>(273924346));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flp_crj_mixed.flp"), static_cast<quint32>(1431655815));
 }
 
 void FlightplanTest::testSaveFltplanDirect()
@@ -323,8 +307,7 @@ void FlightplanTest::testSaveFltplanDirect()
   QCOMPARE(fp.isEmpty(), false);
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan");
-
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan").size(), 3554);
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_direct.fltplan"), static_cast<quint32>(1431655685));
 }
 
 void FlightplanTest::testSaveFltplanAirway()
@@ -337,7 +320,7 @@ void FlightplanTest::testSaveFltplanAirway()
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan");
 
-  QCOMPARE(QFileInfo(OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan").size(), 4554);
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_airway.fltplan"), static_cast<quint32>(1431655952));
 }
 
 void FlightplanTest::testSaveFltplanMixed()
@@ -350,8 +333,37 @@ void FlightplanTest::testSaveFltplanMixed()
 
   io.saveFltplan(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed.fltplan");
 
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_mixed.fltplan"),
-           static_cast<unsigned int>(2315414080));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_mixed.fltplan"), static_cast<quint32>(1431656040));
+}
+
+void FlightplanTest::testSaveCiva()
+{
+  Flightplan fp;
+
+  io.load(fp, "testdata/_test_flp_mixed.pln");
+  QCOMPARE(fp.isLnmFormat(), false);
+  QCOMPARE(fp.isEmpty(), false);
+
+  io.saveCivaFms(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed_civa.fms");
+
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_mixed_civa.fms"), static_cast<quint32>(1431656257));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_mixed_civa1.fms"), static_cast<quint32>(1431656176));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_fltplan_mixed_civa2.fms"), static_cast<quint32>(1431655831));
+
+  io.load(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed_civa.fms");
+  QCOMPARE(fp.isLnmFormat(), false);
+  QCOMPARE(fp.isEmpty(), false);
+  QCOMPARE(fp.size(), 9);
+
+  io.load(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed_civa1.fms");
+  QCOMPARE(fp.isLnmFormat(), false);
+  QCOMPARE(fp.isEmpty(), false);
+  QCOMPARE(fp.size(), 9);
+
+  io.load(fp, OUTPUT + QDir::separator() + "result_fltplan_mixed_civa2.fms");
+  QCOMPARE(fp.isLnmFormat(), false);
+  QCOMPARE(fp.isEmpty(), false);
+  QCOMPARE(fp.size(), 4);
 }
 
 void FlightplanTest::testSaveFlightGearDirect()
@@ -406,7 +418,7 @@ void FlightplanTest::testLoadFlightGearSidStarTrans()
 
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 121);
+  QCOMPARE(fp.size(), 121);
 
   io.saveFlightGear(fp, OUTPUT + QDir::separator() + "KSEA_KFLL_sid_star_trans.xml");
 }
@@ -418,7 +430,7 @@ void FlightplanTest::testLoadFlightGearRunway()
   io.load(fp, "testdata/EDDF_LIRF_rw.xml");
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 25);
+  QCOMPARE(fp.size(), 25);
 }
 
 void FlightplanTest::testLoadFlightGear()
@@ -427,24 +439,25 @@ void FlightplanTest::testLoadFlightGear()
   io.load(fp, "testdata/EDDF_LIRF.xml");
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 22);
+  QCOMPARE(fp.size(), 22);
 
-  fp.clear();
+  fp.clearAll();
   io.load(fp, "testdata/KORD-KSEA.fgfp");
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 21);
+  QCOMPARE(fp.size(), 21);
 
-  fp.clear();
+  fp.clearAll();
   io.load(fp, "testdata/EDDF-LIRF.fgfp");
   QCOMPARE(fp.isLnmFormat(), false);
   QCOMPARE(fp.isEmpty(), false);
-  QCOMPARE(fp.getEntries().size(), 19);
+  QCOMPARE(fp.size(), 19);
 }
 
 void FlightplanTest::testSavePln()
 {
   io.savePln(flightplan, OUTPUT + QDir::separator() + "result_flightplan.pln");
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan.pln"), static_cast<quint32>(1431656309));
 }
 
 void FlightplanTest::testSavePlnAnnotated()
@@ -460,16 +473,19 @@ void FlightplanTest::testSaveRte()
 void FlightplanTest::testSaveFlp()
 {
   io.saveFlp(flightplan, OUTPUT + QDir::separator() + "result_flightplan.flp");
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan.flp"), static_cast<quint32>(1431655534));
 }
 
 void FlightplanTest::testSaveFms3()
 {
   io.saveFms11(flightplan, OUTPUT + QDir::separator() + "result_flightplan_3.fms");
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_3.fms"), static_cast<quint32>(1431655538));
 }
 
 void FlightplanTest::testSaveFms11()
 {
   io.saveFms11(flightplan, OUTPUT + QDir::separator() + "result_flightplan_11.fms");
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_11.fms"), static_cast<quint32>(1431655538));
 }
 
 void FlightplanTest::testSaveLnm()
@@ -512,7 +528,7 @@ void FlightplanTest::testSaveLnmGz()
   io.loadLnmGz(temp, gz);
 
   QVERIFY(atools::zip::isGzipCompressed(gz));
-  QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
+  QCOMPARE(temp.size(), flightplan.size());
 }
 
 void FlightplanTest::testReadLnmBroken()
@@ -580,6 +596,7 @@ void FlightplanTest::testSaveQwRte()
   Flightplan plan;
   io.load(plan, "testdata/IFR Hamburg - Fuhlsbuettel (EDDH) to Fiumicino (LIRF).pln");
   io.saveQwRte(plan, OUTPUT + QDir::separator() + "result_flightplan_qw_EDDH_LIRF.rte");
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_qw_EDDH_LIRF.rte"), static_cast<quint32>(1431656331));
 }
 
 void FlightplanTest::testSaveMaddogMdr()
@@ -588,26 +605,31 @@ void FlightplanTest::testSaveMaddogMdr()
     Flightplan plan;
     io.load(plan, "testdata/IFR Zurich (LSZH) to Dublin (EIDW).pln");
     io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_LSZH_EIDW.mdr");
+    QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_maddog_LSZH_EIDW.mdr"), static_cast<quint32>(1431655729));
   }
   {
     Flightplan plan;
     io.load(plan, "testdata/_test_flp_airway.pln");
     io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_airway.mdr");
+    QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_maddog_airway.mdr"), static_cast<quint32>(1431656385));
   }
   {
     Flightplan plan;
     io.load(plan, "testdata/_test_flp_direct.pln");
     io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_direct.mdr");
+    QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_maddog_direct.mdr"), static_cast<quint32>(1431655995));
   }
   {
     Flightplan plan;
     io.load(plan, "testdata/_test_flp_mixed.pln");
     io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_mixed.mdr");
+    QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_maddog_mixed.mdr"), static_cast<quint32>(1431655471));
   }
   {
     Flightplan plan;
     io.load(plan, "testdata/_test_flp_user.pln");
     io.saveMdr(plan, OUTPUT + QDir::separator() + "result_flightplan_maddog_user.mdr");
+    QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_maddog_user.mdr"), static_cast<quint32>(1431655560));
   }
 }
 
@@ -616,11 +638,11 @@ void FlightplanTest::testLoadGarminFpl()
   Flightplan plan;
   io.load(plan, "testdata/ESOKLFKB_garmin.fpl");
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 43);
+  QCOMPARE(plan.size(), 43);
 
   io.load(plan, "testdata/flightplan_garmin.fpl");
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 6);
+  QCOMPARE(plan.size(), 6);
 }
 
 void FlightplanTest::testLoadFsxPln()
@@ -628,8 +650,8 @@ void FlightplanTest::testLoadFsxPln()
   Flightplan plan;
   io.load(plan, "testdata/BPRL2.pln");
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 28);
-  QCOMPARE(plan.getProperties().size(), 0);
+  QCOMPARE(plan.size(), 28);
+  QCOMPARE(plan.getPropertiesConst().size(), 0);
 }
 
 void FlightplanTest::testLoadMsfsPln()
@@ -637,14 +659,14 @@ void FlightplanTest::testLoadMsfsPln()
   Flightplan plan;
   io.load(plan, "testdata/MSFS EDDH EDDF.PLN");
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 6);
-  QCOMPARE(plan.getProperties().size(), 8);
+  QCOMPARE(plan.size(), 6);
+  QCOMPARE(plan.getPropertiesConst().size(), 8);
 
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/MSFS EDXW EDDH.PLN");
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 2);
-  QCOMPARE(plan.getProperties().size(), 5);
+  QCOMPARE(plan.size(), 2);
+  QCOMPARE(plan.getPropertiesConst().size(), 5);
 }
 
 void FlightplanTest::testSaveGarminFpl()
@@ -654,26 +676,25 @@ void FlightplanTest::testSaveGarminFpl()
   Flightplan temp;
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_gns.fpl");
   QCOMPARE(temp.isLnmFormat(), false);
-  QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
+  QCOMPARE(temp.size(), flightplan.size());
 
-  io.saveGarminFpl(flightplanUser,
-                   OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl", false);
+  io.saveGarminFpl(flightplanUser, OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl", false);
 
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_usr_gns.fpl");
   QCOMPARE(temp.isLnmFormat(), false);
-  QCOMPARE(temp.getEntries().size(), flightplanUser.getEntries().size());
+  QCOMPARE(temp.size(), flightplanUser.size());
 
   io.saveGarminFpl(flightplan, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl", true);
 
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_gns_uwp.fpl");
   QCOMPARE(temp.isLnmFormat(), false);
-  QCOMPARE(temp.getEntries().size(), flightplan.getEntries().size());
+  QCOMPARE(temp.size(), flightplan.size());
 
   io.saveGarminFpl(flightplanUser, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl", true);
 
   io.load(temp, OUTPUT + QDir::separator() + "result_flightplan_usr_gns_uwp.fpl");
   QCOMPARE(temp.isLnmFormat(), false);
-  QCOMPARE(temp.getEntries().size(), flightplanUser.getEntries().size());
+  QCOMPARE(temp.size(), flightplanUser.size());
 }
 
 void FlightplanTest::testSaveGpx()
@@ -848,7 +869,7 @@ void FlightplanTest::testSaveGpx()
 
   QStringList names;
   io.loadGpxGz(&routeLoaded, &names, &tracksLoaded, &timestampsLoaded, bytes);
-  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
+  QCOMPARE(routeLoaded.size(), flightplan.size());
   QCOMPARE(timestampsLoaded, timestamps);
   for(int i = 0; i < tracksLoaded.size(); i++)
   {
@@ -856,13 +877,13 @@ void FlightplanTest::testSaveGpx()
       QCOMPARE(tracksLoaded.at(i).at(j).almostEqual(tracks.at(i).at(j), 0.000001f), true);
   }
 
-  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
-  QCOMPARE(names.size(), flightplan.getEntries().size());
+  QCOMPARE(routeLoaded.size(), flightplan.size());
+  QCOMPARE(names.size(), flightplan.size());
 
   tracksLoaded.clear();
   timestampsLoaded.clear();
   io.loadGpxGz(nullptr, nullptr, &tracksLoaded, &timestampsLoaded, bytes);
-  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
+  QCOMPARE(routeLoaded.size(), flightplan.size());
   QCOMPARE(timestampsLoaded, timestamps);
   for(int i = 0; i < tracksLoaded.size(); i++)
   {
@@ -873,7 +894,7 @@ void FlightplanTest::testSaveGpx()
   routeLoaded.clear();
   timestampsLoaded.clear();
   io.loadGpxGz(&routeLoaded, nullptr, nullptr, nullptr, bytes);
-  QCOMPARE(routeLoaded.size(), flightplan.getEntries().size());
+  QCOMPARE(routeLoaded.size(), flightplan.size());
 
   io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", tracksLoaded, timestamps, 10000);
 }
@@ -885,65 +906,65 @@ void FlightplanTest::testLoadGfp()
   io.load(plan, "testdata/Flight1 Garmin GTN 650-750 KYKM-CYLW.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 9);
-  QCOMPARE(plan.getProperties().size(), 0);
+  QCOMPARE(plan.size(), 9);
+  QCOMPARE(plan.getPropertiesConst().size(), 0);
 
   // FPN/RI:DA:KYKM:D:WENAS7.PERTT:R:09O:F:COBDI,N47072W120397:F:N47406W120509:F:
   // ROZSE,N48134W121018:F:DIABO,N48500W120562.J503.FOLDY,N49031W120427:AA:CYLW:A:PIGLU4.YDC(16O):AP:I16-Z.HUMEK
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/Reality XP GTN 750-650 Touch KYKM_CYLW.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 7);
-  QCOMPARE(plan.getProperties().size(), 8);
+  QCOMPARE(plan.size(), 7);
+  QCOMPARE(plan.getPropertiesConst().size(), 8);
 
   // FPN/RI:F:EDNL:F:KUDAV:F:LOWI
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/EDNL-LOWI.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 3);
-  QCOMPARE(plan.getProperties().size(), 0);
+  QCOMPARE(plan.size(), 3);
+  QCOMPARE(plan.getPropertiesConst().size(), 0);
 
   // FPN/RI:F:BIKF:F:N63045W021414:F:N62143W020281:F:N61000W019000:F:N56300W015000:F:N55000W014000:F: ...
   // ... N51340W011130:F:N47300W008450:F:N46000W008000:F:N44501W006552:F:N44033W005561:F:LEAS
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/BIKF-LEAS.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 12);
-  QCOMPARE(plan.getProperties().size(), 0);
+  QCOMPARE(plan.size(), 12);
+  QCOMPARE(plan.getPropertiesConst().size(), 0);
 
   // FPN/RI:F:ENBR:F:BADAB.L197.TUKMU.L621.AAL.P615.EKERN.Z998.UMVUP.M852.POVEL.Z94.GALMA.M736.RUDNO.L604.PABSA:F:LOWS
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/ENBR-LOWS.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 11);
-  QCOMPARE(plan.getProperties().size(), 0);
+  QCOMPARE(plan.size(), 11);
+  QCOMPARE(plan.getPropertiesConst().size(), 0);
 
   // FPN/RI:F:KEAT:F:EAT.V120.SEA.V495.CONDI.V338.YVR.V330.TRENA:F:N50805W124202:F:N51085W124178:F:CAG3:F:N51846W124150:F:CYPU
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/KEAT-CYPU.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 11);
-  QCOMPARE(plan.getProperties().size(), 0);
+  QCOMPARE(plan.size(), 11);
+  QCOMPARE(plan.getPropertiesConst().size(), 0);
 
   // FPN/RI:F:LOWI:F:NORIN.UT23.ALGOI.Z2.KUDES.UN871.BERSU.Z55.ROTOS.UZ669.MILPA.UN869.MEBAK.UP860.BEBIX.UM129.LMG.UN460.CNA:F:LFCY
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/LOWI-LFCY.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 12);
-  QCOMPARE(plan.getProperties().size(), 0);
+  QCOMPARE(plan.size(), 12);
+  QCOMPARE(plan.getPropertiesConst().size(), 0);
 
   // FPN/RI:DA:KYKM:D:WENAS7.PERTT:R:09O:F:COBDI,N47072W120397:F:N47406W120509:F:ROZSE,N48134W121018: ...
   // ... F:DIABO,N48500W120562.J503.FOLDY,N49031W120427:AA:CYLW:A:PIGLU4.YDC(16O):AP:RNVA.AMBAT
-  plan.clear();
+  plan.clearAll();
   io.load(plan, "testdata/KYKM_CYLW.gfp");
   qDebug() << Q_FUNC_INFO << plan;
   QCOMPARE(plan.isLnmFormat(), false);
-  QCOMPARE(plan.getEntries().size(), 7);
-  QCOMPARE(plan.getProperties().size(), 8);
+  QCOMPARE(plan.size(), 7);
+  QCOMPARE(plan.getPropertiesConst().size(), 8);
 }

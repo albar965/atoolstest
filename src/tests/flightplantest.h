@@ -111,6 +111,8 @@ private slots:
 
   void testLoadGfp();
 
+  void testSaveCiva();
+
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser, flightplanAll;
   atools::fs::pln::FlightplanIO io;
