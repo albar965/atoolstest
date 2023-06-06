@@ -1125,6 +1125,13 @@ void GeoTest::testCoordString_data()
   QTest::addColumn<QString>("coord");
   QTest::addColumn<Pos>("pos");
 
+  ROW("49, 34", atools::geo::Pos(34.f, 49.f));
+  ROW("-49, +34", atools::geo::Pos(34.f, -49.f));
+
+  ROW("-49.0,+34.0", atools::geo::Pos(34.f, -49.f));
+  ROW("49.0,34.0", atools::geo::Pos(34.f, 49.f));
+  ROW("49,0,34,0", atools::geo::Pos(34.f, 49.f));
+
   ROW("57N30", atools::geo::Pos(-130.f, 57.f));
   ROW("5730N", atools::geo::Pos(-30.f, 57.f));
   ROW("5730E", atools::geo::Pos(30.f, 57.f));
@@ -1137,6 +1144,9 @@ void GeoTest::testCoordString_data()
   ROW("N 52 33.58;E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
   ROW("N 52 33,58:E 13 17,26", atools::geo::Pos(13.287666, 52.559666));
   ROW("N 52 33.58|E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
+
+  ROW("N 52 33.58,E 13 17.26", atools::geo::Pos(13.287666, 52.559666));
+  ROW("N 52 33,58,E 13 17,26", atools::geo::Pos(13.287666, 52.559666));
 
   ROW("", atools::geo::EMPTY_POS);
   ROW("4", atools::geo::EMPTY_POS);
@@ -1164,7 +1174,6 @@ void GeoTest::testCoordString_data()
   ROW("50n  10e", atools::geo::Pos(10.f, 50.f));
 
   ROW("n 50.5 e10.5", atools::geo::Pos(10.5f, 50.5f));
-
   ROW("n 50,5 e10,5", atools::geo::Pos(10.5f, 50.5f));
 
   ROW("N49° 26' 41.57\" E9° 12' 5.49\"", atools::geo::Pos(9.201525, 49.444881));
@@ -1182,6 +1191,8 @@ void GeoTest::testCoordString_data()
   ROW("49,4449° N 9,2015° E", atools::geo::Pos(9.201500, 49.444901));
 
   ROW("N 49,4449° E 9,2015°", atools::geo::Pos(9.201500, 49.444901));
+  ROW("N49.4449°,E 9.2015°", atools::geo::Pos(9.201500, 49.444901));
+  ROW("N49,4449°,E 9,2015°", atools::geo::Pos(9.201500, 49.444901));
 
   ROW("E9° 12' 5.49\" N49° 26' 41.57\"", atools::geo::EMPTY_POS);
 
@@ -1193,6 +1204,12 @@ void GeoTest::testCoordString_data()
 
   ROW("N6500/W08000", atools::geo::Pos(-80.f, 65.f));
 
+  ROW("46 35.14, -120 39.66", atools::geo::Pos(-120.661003f, 46.585667f));
+  ROW("46 30, -120 30", atools::geo::Pos(-120.5f, 46.5f));
+  ROW("46 0, -120 1", atools::geo::Pos(-120.016670f, 46.f));
+  ROW("-54 50.60, -68 17.73", atools::geo::Pos(-68.295502f, -54.843334f));
+  ROW("50 20.32 ,8 52.72", atools::geo::Pos(8.878667f, 50.338665f));
+
 #undef ROW
 }
 
@@ -1201,8 +1218,6 @@ void GeoTest::testCoordString()
   QFETCH(QString, coord);
   QFETCH(Pos, pos);
 
-  // qInfo() << QLocale().decimalPoint();
-  // qInfo() << coord << atools::fs::util::fromAnyFormat(coord);
   bool hemisphere;
   QCOMPARE(atools::fs::util::fromAnyFormat(coord, &hemisphere), pos);
 }
