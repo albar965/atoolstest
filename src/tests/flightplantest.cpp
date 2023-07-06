@@ -478,14 +478,14 @@ void FlightplanTest::testSaveFlp()
 
 void FlightplanTest::testSaveFms3()
 {
-  io.saveFms11(flightplan, OUTPUT + QDir::separator() + "result_flightplan_3.fms");
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_3.fms"), static_cast<quint32>(1431655538));
+  io.saveFms3(flightplan, OUTPUT + QDir::separator() + "result_flightplan_3.fms");
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_3.fms"), static_cast<quint32>(1431656083));
 }
 
 void FlightplanTest::testSaveFms11()
 {
   io.saveFms11(flightplan, OUTPUT + QDir::separator() + "result_flightplan_11.fms");
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_11.fms"), static_cast<quint32>(1431655538));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_11.fms"), static_cast<quint32>(1431655992));
 }
 
 void FlightplanTest::testSaveLnm()
