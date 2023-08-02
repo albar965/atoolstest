@@ -276,8 +276,6 @@ void UtilTest::testLinkTarget()
 {
 #ifdef Q_OS_WIN
 
-  const static QChar SEP(QDir::separator());
-
   if(QFileInfo::exists(QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
                                                 "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
                                                 "LocalCache\\Packages\\Community"))
@@ -332,8 +330,6 @@ void UtilTest::testLinkTarget()
 void UtilTest::testCanonicalPath()
 {
 #ifdef Q_OS_WIN
-  const static QChar SEP(QDir::separator());
-
   if(QFileInfo::exists(QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
                                                 "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
                                                 "LocalCache\\Packages\\Community"))
