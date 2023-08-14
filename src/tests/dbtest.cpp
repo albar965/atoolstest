@@ -60,11 +60,26 @@ void DbTest::initTestCase()
   atools::fs::userdata::UserdataManager userdataUndo(dbUndo);
   userdataUndo.dropSchema();
   userdataUndo.createSchema(true);
+  userdataUndo.setUndoActive(true);
+  userdataUndo.importCsv({"testdata/dbmanagertest2.csv"});
+  QCOMPARE(userdataUndo.rowCount(), 50);
+  userdataUndo.importCsv({"testdata/dbmanagertest2.csv"});
+  QCOMPARE(userdataUndo.rowCount(), 100);
+  userdataUndo.undo();
+  QCOMPARE(userdataUndo.rowCount(), 50);
+  userdataUndo.undo();
+  QCOMPARE(userdataUndo.rowCount(), 0);
+  userdataUndo.importCsv({"testdata/dbmanagertest2.csv"});
+  QCOMPARE(userdataUndo.rowCount(), 50);
+  userdataUndo.undo();
+  QCOMPARE(userdataUndo.rowCount(), 0);
 
+  userdataUndo.dropSchema();
+  userdataUndo.createSchema(true);
+  QCOMPARE(userdataUndo.rowCount(), 0);
   userdataUndo.setUndoActive(false);
   userdataUndo.importCsv({"testdata/dbmanagertest.csv"}); // Import without undo
   userdataUndo.setUndoActive(true);
-
   QCOMPARE(userdataUndo.hasSchema(), true);
   QCOMPARE(userdataUndo.hasUndoSchema(), true);
   QCOMPARE(userdataUndo.hasData(), true);
