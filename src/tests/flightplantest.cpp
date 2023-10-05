@@ -859,9 +859,9 @@ void FlightplanTest::testSaveGpx()
     timestamps2.append(mSecsSinceEpoch /*- 3600*/ + i * 1000);
   const QVector<QVector<qint64> > timestamps({timestamps1, timestamps2});
 
-  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan.gpx", tracks, timestamps, 10000);
+  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan.gpx", tracks, timestamps);
 
-  QByteArray bytes = io.saveGpxGz(flightplan, tracks, timestamps, 10000);
+  QByteArray bytes = io.saveGpxGz(flightplan, tracks, timestamps);
   QVERIFY(atools::zip::isGzipCompressed(bytes));
 
   atools::geo::LineString routeLoaded;
@@ -897,7 +897,7 @@ void FlightplanTest::testSaveGpx()
   io.loadGpxGz(&routeLoaded, nullptr, nullptr, nullptr, bytes);
   QCOMPARE(routeLoaded.size(), flightplan.size());
 
-  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", tracksLoaded, timestamps, 10000);
+  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", tracksLoaded, timestamps);
 }
 
 void FlightplanTest::testLoadGfp()
