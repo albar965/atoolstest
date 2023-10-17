@@ -108,6 +108,9 @@ private slots:
   void testLineAntiMeridian_data();
   void testLineAntiMeridian();
 
+  void testLineStringAntiMeridian();
+  void testLineStringAntiMeridianList();
+
   void testBinaryGeo();
 
   void testBinaryMsaGeo_data();
@@ -115,6 +118,15 @@ private slots:
 
   void testDistance_data();
   void testDistance();
+
+  void testPolyOrient_data();
+  void testPolyOrient();
+
+  void testPolyLongest_data();
+  void testPolyLongest();
+
+  void testPolyLongestEpsilon_data();
+  void testPolyLongestEpsilon();
 
 };
 
