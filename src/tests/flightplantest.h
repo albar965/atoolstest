@@ -18,6 +18,7 @@
 #ifndef ATOOLSTEST_FPTEST_H
 #define ATOOLSTEST_FPTEST_H
 
+#include "fs/gpx/gpxio.h"
 #include "fs/pln/flightplan.h"
 #include "fs/pln/flightplanio.h"
 
@@ -116,6 +117,7 @@ private slots:
 private:
   atools::fs::pln::Flightplan flightplan, flightplanUser, flightplanAll;
   atools::fs::pln::FlightplanIO io;
+  atools::fs::gpx::GpxIO gpxio;
 };
 
 #endif // ATOOLSTEST_FPTEST_H

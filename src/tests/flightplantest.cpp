@@ -17,6 +17,7 @@
 
 #include "flightplantest.h"
 
+#include "fs/gpx/gpxtypes.h"
 #include "geo/pos.h"
 #include "geo/linestring.h"
 #include "atools.h"
@@ -857,47 +858,53 @@ void FlightplanTest::testSaveGpx()
     timestamps1.append(mSecsSinceEpoch /*- 7200*/ + i * 1000);
   for(int i = 0; i < track2.size(); i++)
     timestamps2.append(mSecsSinceEpoch /*- 3600*/ + i * 1000);
-  const QVector<QVector<qint64> > timestamps({timestamps1, timestamps2});
 
-  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan.gpx", tracks, timestamps);
+  atools::fs::gpx::GpxData data;
+  atools::fs::gpx::TrackPoints points;
+  for(int i = 0; i < track1.size(); i++)
+    points.append(atools::fs::gpx::TrackPoint(atools::geo::PosD(track1.at(i)), timestamps1.at(i)));
+  data.tracks.append(points);
 
-  QByteArray bytes = io.saveGpxGz(flightplan, tracks, timestamps);
+  atools::fs::gpx::TrackPoints points2;
+  for(int i = 0; i < track2.size(); i++)
+    points2.append(atools::fs::gpx::TrackPoint(atools::geo::PosD(track2.at(i)), timestamps2.at(i)));
+  data.tracks.append(points2);
+  data.flightplan = flightplan;
+
+  gpxio.saveGpx(OUTPUT + QDir::separator() + "result_flightplan.gpx", data);
+
+  QByteArray bytes = gpxio.saveGpxGz(data);
   QVERIFY(atools::zip::isGzipCompressed(bytes));
 
-  atools::geo::LineString routeLoaded;
-  QVector<atools::geo::LineString> tracksLoaded;
-  QVector<QVector<qint64> > timestampsLoaded;
-
-  QStringList names;
-  io.loadGpxGz(&routeLoaded, &names, &tracksLoaded, &timestampsLoaded, bytes);
-  QCOMPARE(routeLoaded.size(), flightplan.size());
-  QCOMPARE(timestampsLoaded, timestamps);
-  for(int i = 0; i < tracksLoaded.size(); i++)
+  atools::fs::gpx::GpxData loaded;
+  gpxio.loadGpxGz(loaded, bytes);
+  QCOMPARE(loaded.flightplan.size(), flightplan.size());
+  QCOMPARE(loaded.tracks.size(), 2);
+  QCOMPARE(loaded.flightplan.getDepartureIdent(), flightplan.getDepartureIdent());
+  QCOMPARE(loaded.flightplan.getDestinationIdent(), flightplan.getDestinationIdent());
+  QVERIFY(!loaded.flightplan.getDepartureIdent().isEmpty());
+  QVERIFY(!loaded.flightplan.getDestinationIdent().isEmpty());
+  for(int i = 0; i < loaded.tracks.size(); i++)
   {
-    for(int j = 0; j < tracksLoaded.at(i).size(); j++)
-      QCOMPARE(tracksLoaded.at(i).at(j).almostEqual(tracks.at(i).at(j), 0.000001f), true);
+    for(int j = 0; j < loaded.tracks.at(i).size(); j++)
+      QCOMPARE(loaded.tracks.at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
   }
 
-  QCOMPARE(routeLoaded.size(), flightplan.size());
-  QCOMPARE(names.size(), flightplan.size());
+  gpxio.saveGpx(OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", loaded);
 
-  tracksLoaded.clear();
-  timestampsLoaded.clear();
-  io.loadGpxGz(nullptr, nullptr, &tracksLoaded, &timestampsLoaded, bytes);
-  QCOMPARE(routeLoaded.size(), flightplan.size());
-  QCOMPARE(timestampsLoaded, timestamps);
-  for(int i = 0; i < tracksLoaded.size(); i++)
+  loaded.clear();
+  gpxio.loadGpx(loaded, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx");
+  QCOMPARE(loaded.flightplan.size(), flightplan.size());
+  QCOMPARE(loaded.tracks.size(), 2);
+  QCOMPARE(loaded.flightplan.getDepartureIdent(), flightplan.getDepartureIdent());
+  QCOMPARE(loaded.flightplan.getDestinationIdent(), flightplan.getDestinationIdent());
+  QVERIFY(!loaded.flightplan.getDepartureIdent().isEmpty());
+  QVERIFY(!loaded.flightplan.getDestinationIdent().isEmpty());
+  for(int i = 0; i < loaded.tracks.size(); i++)
   {
-    for(int j = 0; j < tracksLoaded.at(i).size(); j++)
-      QCOMPARE(tracksLoaded.at(i).at(j).almostEqual(tracks.at(i).at(j), 0.000001f), true);
+    for(int j = 0; j < loaded.tracks.at(i).size(); j++)
+      QCOMPARE(loaded.tracks.at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
   }
-
-  routeLoaded.clear();
-  timestampsLoaded.clear();
-  io.loadGpxGz(&routeLoaded, nullptr, nullptr, nullptr, bytes);
-  QCOMPARE(routeLoaded.size(), flightplan.size());
-
-  io.saveGpx(flightplan, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", tracksLoaded, timestamps);
 }
 
 void FlightplanTest::testLoadGfp()
