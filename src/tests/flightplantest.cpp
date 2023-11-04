@@ -487,7 +487,7 @@ void FlightplanTest::testSaveFms3()
 void FlightplanTest::testSaveFms11()
 {
   io.saveFms11(flightplan, OUTPUT + QDir::separator() + "result_flightplan_11.fms");
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_11.fms"), static_cast<quint32>(1431655991));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_11.fms"), static_cast<quint32>(1431655989));
 }
 
 void FlightplanTest::testSaveLnm()
@@ -860,15 +860,15 @@ void FlightplanTest::testSaveGpx()
     timestamps2.append(mSecsSinceEpoch /*- 3600*/ + i * 1000);
 
   atools::fs::gpx::GpxData data;
-  atools::fs::gpx::TrackPoints points;
+  atools::fs::gpx::TrailPoints points;
   for(int i = 0; i < track1.size(); i++)
-    points.append(atools::fs::gpx::TrackPoint(atools::geo::PosD(track1.at(i)), timestamps1.at(i)));
-  data.tracks.append(points);
+    points.append(atools::fs::gpx::TrailPoint(atools::geo::PosD(track1.at(i)), timestamps1.at(i)));
+  data.trails.append(points);
 
-  atools::fs::gpx::TrackPoints points2;
+  atools::fs::gpx::TrailPoints points2;
   for(int i = 0; i < track2.size(); i++)
-    points2.append(atools::fs::gpx::TrackPoint(atools::geo::PosD(track2.at(i)), timestamps2.at(i)));
-  data.tracks.append(points2);
+    points2.append(atools::fs::gpx::TrailPoint(atools::geo::PosD(track2.at(i)), timestamps2.at(i)));
+  data.trails.append(points2);
   data.flightplan = flightplan;
 
   gpxio.saveGpx(OUTPUT + QDir::separator() + "result_flightplan.gpx", data);
@@ -879,15 +879,15 @@ void FlightplanTest::testSaveGpx()
   atools::fs::gpx::GpxData loaded;
   gpxio.loadGpxGz(loaded, bytes);
   QCOMPARE(loaded.flightplan.size(), flightplan.size());
-  QCOMPARE(loaded.tracks.size(), 2);
+  QCOMPARE(loaded.trails.size(), 2);
   QCOMPARE(loaded.flightplan.getDepartureIdent(), flightplan.getDepartureIdent());
   QCOMPARE(loaded.flightplan.getDestinationIdent(), flightplan.getDestinationIdent());
   QVERIFY(!loaded.flightplan.getDepartureIdent().isEmpty());
   QVERIFY(!loaded.flightplan.getDestinationIdent().isEmpty());
-  for(int i = 0; i < loaded.tracks.size(); i++)
+  for(int i = 0; i < loaded.trails.size(); i++)
   {
-    for(int j = 0; j < loaded.tracks.at(i).size(); j++)
-      QCOMPARE(loaded.tracks.at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
+    for(int j = 0; j < loaded.trails.at(i).size(); j++)
+      QCOMPARE(loaded.trails.at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
   }
 
   gpxio.saveGpx(OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", loaded);
@@ -895,15 +895,15 @@ void FlightplanTest::testSaveGpx()
   loaded.clear();
   gpxio.loadGpx(loaded, OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx");
   QCOMPARE(loaded.flightplan.size(), flightplan.size());
-  QCOMPARE(loaded.tracks.size(), 2);
+  QCOMPARE(loaded.trails.size(), 2);
   QCOMPARE(loaded.flightplan.getDepartureIdent(), flightplan.getDepartureIdent());
   QCOMPARE(loaded.flightplan.getDestinationIdent(), flightplan.getDestinationIdent());
   QVERIFY(!loaded.flightplan.getDepartureIdent().isEmpty());
   QVERIFY(!loaded.flightplan.getDestinationIdent().isEmpty());
-  for(int i = 0; i < loaded.tracks.size(); i++)
+  for(int i = 0; i < loaded.trails.size(); i++)
   {
-    for(int j = 0; j < loaded.tracks.at(i).size(); j++)
-      QCOMPARE(loaded.tracks.at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
+    for(int j = 0; j < loaded.trails.at(i).size(); j++)
+      QCOMPARE(loaded.trails.at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
   }
 }
 
