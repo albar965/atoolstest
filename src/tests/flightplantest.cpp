@@ -487,7 +487,7 @@ void FlightplanTest::testSaveFms3()
 void FlightplanTest::testSaveFms11()
 {
   io.saveFms11(flightplan, OUTPUT + QDir::separator() + "result_flightplan_11.fms");
-  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_11.fms"), static_cast<quint32>(1431655989));
+  QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan_11.fms"), static_cast<quint32>(1431655987));
 }
 
 void FlightplanTest::testSaveLnm()

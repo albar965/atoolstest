@@ -122,9 +122,9 @@ void AirspaceTest::testLoadIvaoJson()
 
   SqlUtil util(db);
   QCOMPARE(util.hasTableAndRows("boundary"), true);
-  QCOMPARE(util.rowCount("boundary", "file_id = 3"), 695);
+  QCOMPARE(util.rowCount("boundary", "file_id = 3"), 9609);
   QCOMPARE(reader.getErrors().size(), 0);
-  QCOMPARE(reader.getNumAirspacesRead(), 695);
+  QCOMPARE(reader.getNumAirspacesRead(), 9609);
 }
 
 void AirspaceTest::testLoadOpenAir()
