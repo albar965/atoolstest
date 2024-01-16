@@ -67,20 +67,20 @@ void PerfTest::cleanupTestCase()
 
 void PerfTest::testPerfSaveLoadIni()
 {
-  perf.saveIni("aircraft_performance_ini.lnmperf");
+  perf.saveIni("output/aircraft_performance_ini.lnmperf");
 
   AircraftPerf loadedPerf;
-  loadedPerf.load("aircraft_performance_ini.lnmperf");
+  loadedPerf.load("output/aircraft_performance_ini.lnmperf");
 
   QCOMPARE(loadedPerf, perf);
 }
 
 void PerfTest::testPerfSaveLoadXml()
 {
-  perf.saveXml("aircraft_performance_xml.lnmperf");
+  perf.saveXml("output/aircraft_performance_xml.lnmperf");
 
   AircraftPerf loadedPerf;
-  loadedPerf.load("aircraft_performance_xml.lnmperf");
+  loadedPerf.load("output/aircraft_performance_xml.lnmperf");
 
   QCOMPARE(loadedPerf, perf);
 }
@@ -112,10 +112,10 @@ void PerfTest::testPerfSaveLoad()
 
   AircraftPerf loadedPerf;
   loadedPerf.load(filename);
-  loadedPerf.saveXml(QFileInfo(filename).fileName() + "_xml");
+  loadedPerf.saveXml("output/" + QFileInfo(filename).fileName() + "_xml");
 
   AircraftPerf loadedPerfXml;
-  loadedPerfXml.load(QFileInfo(filename).fileName() + "_xml");
+  loadedPerfXml.load("output/" + QFileInfo(filename).fileName() + "_xml");
 
   QCOMPARE(loadedPerf, loadedPerfXml);
 }

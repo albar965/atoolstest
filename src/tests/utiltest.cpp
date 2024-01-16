@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2022 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2024 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 
 #include "utiltest.h"
 #include "atools.h"
+#include "util/fileoperations.h"
 #include "util/props.h"
 #include "util/filesystemwatcher.h"
 #include "testutil/testutil.h"
@@ -43,6 +44,66 @@ void UtilTest::initTestCase()
 void UtilTest::cleanupTestCase()
 {
 
+}
+
+void UtilTest::testFileOperations()
+{
+  atools::util::FileOperations operations(true);
+
+  QVERIFY(!operations.canRemoveDir(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).constFirst()));
+  QVERIFY(!operations.canRemoveDir("."));
+  QVERIFY(!operations.canRemoveDir(".."));
+  QVERIFY(!operations.canRemoveDir(QDir::drives().constFirst().absoluteFilePath()));
+  QVERIFY(operations.canRemoveDir("testdata/MSFS"));
+
+  operations.removeDirectory("output/MSFS-copy", false);
+
+  QVERIFY(!QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
+                             "microsoft-aircraft-bell407/aircraft.cfg"));
+
+  operations.removeDirectory("testdata/../output/MSFS-copy2", false);
+  operations.copyDirectory("testdata/MSFS", "testdata/../output/MSFS-copy2", false);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 27);
+
+  operations.copyDirectory("testdata/MSFS", "testdata/../NOEXIST/MSFS-copy", false);
+  QCOMPARE(operations.getErrors().size(), 1);
+  QCOMPARE(operations.getFilesProcessed(), 0);
+
+  operations.copyDirectory("testdata/MSFS", "output/MSFS-copy", false);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 27);
+
+  QVERIFY(QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
+                            "microsoft-aircraft-bell407/aircraft.cfg"));
+
+  operations.copyDirectory("testdata/MSFS", "output/MSFS-copy", false);
+  QCOMPARE(operations.getErrors().size(), 1);
+  QCOMPARE(operations.getFilesProcessed(), 0);
+
+  operations.copyDirectory("testdata/MSFS", "output/MSFS-copy", true);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 27);
+
+  operations.removeDirectory("output/MSFS-copy", false);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 27);
+
+  QVERIFY(!QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
+                             "microsoft-aircraft-bell407/aircraft.cfg"));
+
+  operations.copyDirectory("testdata/MSFS", "output/MSFS-copy", false);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 27);
+
+  operations.removeDirectory("output/MSFS-copy", true);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 27);
+
+  QVERIFY(!QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
+                             "microsoft-aircraft-bell407/aircraft.cfg"));
+  QVERIFY(QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
+                            "microsoft-aircraft-bell407"));
 }
 
 void UtilTest::testFlags()
@@ -198,17 +259,17 @@ void UtilTest::testFilesystemWatcher()
   QStringList filenamesResult;
   QString dirResult;
   bool foundFiles = false, foundDir = false;
-  connect(&watcher, &FileSystemWatcher::filesUpdated, [&filenamesResult, &foundFiles](const QStringList &filenames)->void
-          {
-            foundFiles = true;
-            filenamesResult = filenames;
-            std::sort(filenamesResult.begin(), filenamesResult.end());
-          });
-  connect(&watcher, &FileSystemWatcher::dirUpdated, [&dirResult, &foundDir](const QString &dir)->void
-          {
-            foundDir = true;
-            dirResult = dir;
-          });
+  connect(&watcher, &FileSystemWatcher::filesUpdated, [&filenamesResult, &foundFiles](const QStringList& filenames)->void
+  {
+    foundFiles = true;
+    filenamesResult = filenames;
+    std::sort(filenamesResult.begin(), filenamesResult.end());
+  });
+  connect(&watcher, &FileSystemWatcher::dirUpdated, [&dirResult, &foundDir](const QString& dir)->void
+  {
+    foundDir = true;
+    dirResult = dir;
+  });
 
   QStringList files({"testdata/watcher/METAR-2022-9-6-19.00-ZULU.txt", "testdata/watcher/METAR-2022-9-6-20.00-ZULU.txt"});
   watcher.setFilenamesAndStart(files);
