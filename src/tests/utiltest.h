@@ -36,6 +36,7 @@ private slots:
   void cleanupTestCase();
 
   void testFileOperations();
+  void testFileOperationsLinks();
   void testFlags();
   void testProps();
   void testFilesystemWatcher();

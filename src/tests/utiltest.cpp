@@ -106,6 +106,40 @@ void UtilTest::testFileOperations()
                             "microsoft-aircraft-bell407"));
 }
 
+void UtilTest::testFileOperationsLinks()
+{
+  atools::util::FileOperations operations(true);
+  operations.removeDirectory("output/Little Xpconnect arm64-copy", false, true, true);
+
+  operations.copyDirectory("testdata/Little Xpconnect arm64NOTEXIST", "output/Little Xpconnect arm64-copy", false, true, true);
+  QCOMPARE(operations.getErrors().size(), 1);
+  QCOMPARE(operations.getFilesProcessed(), 0);
+
+  operations.copyDirectory("testdata/Little Xpconnect arm64", "outputNOTEXIST/Little Xpconnect arm64-copy", false, true, true);
+  QCOMPARE(operations.getErrors().size(), 1);
+  QCOMPARE(operations.getFilesProcessed(), 0);
+
+  operations.copyDirectory("testdata/Little Xpconnect arm64", "output/Little Xpconnect arm64-copy", false, true, true);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 40);
+
+  operations.copyDirectory("testdata/Little Xpconnect arm64", "output/Little Xpconnect arm64-copy", false, true, true);
+  QCOMPARE(operations.getErrors().size(), 1);
+  QCOMPARE(operations.getFilesProcessed(), 0);
+
+  operations.copyDirectory("testdata/Little Xpconnect arm64", "output/Little Xpconnect arm64-copy", true, true, true);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 40);
+
+  operations.removeDirectoryToTrash("output/Little Xpconnect arm64-copy");
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 1);
+
+  operations.copyDirectory("testdata/Little Xpconnect arm64", "output/Little Xpconnect arm64-copy", true, true, true);
+  QCOMPARE(operations.getErrors().size(), 0);
+  QCOMPARE(operations.getFilesProcessed(), 40);
+}
+
 void UtilTest::testFlags()
 {
   TestEnums test(TestEnum::NONE);
