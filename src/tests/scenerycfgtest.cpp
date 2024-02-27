@@ -100,7 +100,7 @@ void SceneryCfgTest::testContentXmlZero()
 
 void SceneryCfgTest::testAircraftIndex()
 {
-  atools::fs::scenery::AircraftIndex index;
+  atools::fs::scenery::AircraftIndex index(true);
 
   index.loadIndex({"testdata/MSFS/Community", "testdata/MSFS/Official/OneStore"});
 
