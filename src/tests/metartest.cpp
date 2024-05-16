@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2024 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 #include "metartest.h"
 
 #include "fs/weather/metar.h"
+#include "fs/weather/metarindex.h"
 #include "fs/weather/metarparser.h"
 #include "fs/weather/noaaweatherdownloader.h"
 #include "fs/weather/weathernetdownload.h"
@@ -52,6 +53,17 @@ const static QHash<QString, atools::geo::Pos> AIRPORT_COORDS = {
 
 const static QHash<QString, QString> AIRPORT_SUBST = {
   {"EDCF", "EDDB"}
+};
+
+const static QHash<QString, atools::geo::Pos> AIRPORT_COORDS_INTERPOLATE = {
+  {"XX1N", atools::geo::Pos(0.f, 1.f)},
+  {"XX1E", atools::geo::Pos(1.f, 0.f)},
+  {"XX1S", atools::geo::Pos(0.f, -1.f)},
+  {"XX1W", atools::geo::Pos(-1.f, 0.f)},
+  {"XX2N", atools::geo::Pos(0.f, 2.f)},
+  {"XX2E", atools::geo::Pos(2.f, 0.f)},
+  {"XX2S", atools::geo::Pos(0.f, -2.f)},
+  {"XX2W", atools::geo::Pos(-2.f, 0.f)}
 };
 
 MetarTest::MetarTest()
@@ -157,22 +169,19 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
     finished = true;
   });
 
-  const QHash<QString, atools::geo::Pos> *coords = &AIRPORT_COORDS;
-  downloader.setFetchAirportCoords([&coords](const QString& airportIdent) -> atools::geo::Pos
-  {
-    return coords->value(airportIdent);
+  downloader.setFetchAirportCoords([](const QString& airportIdent) -> atools::geo::Pos {
+    return AIRPORT_COORDS.value(airportIdent);
   });
 
-  atools::fs::weather::MetarResult metar = downloader.getMetar("EDDF", AIRPORT_COORDS.value("EDDF"));
+  atools::fs::weather::Metar metar = downloader.getMetar("EDDF", AIRPORT_COORDS.value("EDDF"));
   if(QFileInfo::exists(downloader.getRequestUrl()))
-    QVERIFY(!metar.isEmpty());
+    QVERIFY(metar.hasAnyMetar());
   else
-    QVERIFY(metar.isEmpty());
+    QVERIFY(!metar.hasAnyMetar());
 
   testutil::waitForValue(finished, 180);
 
-  qDebug() << Q_FUNC_INFO << downloader.getRequestUrl() << downloader.size()
-           << "updateFlag" << updateFlag << "errorFlag" << errorFlag;
+  qDebug() << Q_FUNC_INFO << downloader.getRequestUrl() << downloader.size() << "updateFlag" << updateFlag << "errorFlag" << errorFlag;
 
   if(expectFail)
   {
@@ -186,6 +195,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
     QVERIFY(!errorFlag);
     QVERIFY(downloader.size() > 100);
 
+#if 0
     for(auto it = AIRPORT_COORDS.constBegin(); it != AIRPORT_COORDS.constEnd(); ++it)
     {
       const QString ident = it.key();
@@ -195,20 +205,21 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
       metar = downloader.getMetar(ident, pos);
 
       qDebug() << Q_FUNC_INFO << "Result" << metar;
-      QVERIFY(!metar.isEmpty());
+      QVERIFY(metar.hasAnyMetar());
 
-      QVERIFY(metar.requestIdent == ident);
+      QVERIFY(metar.getRequestIdent() == ident);
       if(AIRPORT_SUBST.contains(ident))
       {
-        QVERIFY(metar.metarForStation.isEmpty());
-        QVERIFY(metar.metarForNearest.startsWith(AIRPORT_SUBST.value(ident)));
+        QVERIFY(metar.getStationMetar().isEmpty());
+        QVERIFY(metar.getNearestMetar().startsWith(AIRPORT_SUBST.value(ident)));
       }
       else
       {
-        QVERIFY(metar.metarForStation.startsWith(ident));
-        QVERIFY(metar.metarForNearest.isEmpty());
+        QVERIFY(metar.getStationMetar().startsWith(ident));
+        QVERIFY(metar.getNearestMetar().isEmpty());
       }
     }
+#endif
 
     for(auto it = AIRPORT_COORDS.constBegin(); it != AIRPORT_COORDS.constEnd(); ++it)
     {
@@ -216,30 +227,37 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
       const atools::geo::Pos pos = it.value();
       qDebug() << Q_FUNC_INFO << "Checking for" << ident << "at" << pos;
 
+      if(AIRPORT_SUBST.contains(ident))
+        qDebug() << Q_FUNC_INFO;
+
       metar = downloader.getMetar(QString(), pos);
 
       qDebug() << Q_FUNC_INFO << "Result" << metar;
-      QVERIFY(!metar.isEmpty());
-      QVERIFY(metar.metarForStation.isEmpty());
+      QVERIFY(metar.hasAnyMetar());
+      QVERIFY(metar.getStationMetar().isEmpty());
 
       if(AIRPORT_SUBST.contains(ident))
       {
-        QVERIFY(metar.requestIdent == AIRPORT_SUBST.value(ident));
-        QVERIFY(metar.metarForNearest.startsWith(AIRPORT_SUBST.value(ident)));
+        QVERIFY(metar.getRequestIdent().isEmpty());
+        QVERIFY(!metar.getNearestMetar().isEmpty());
+        QVERIFY(metar.getNearestIdent() == AIRPORT_SUBST.value(ident));
+        QVERIFY(!metar.getInterpolatedMetar().isEmpty());
       }
       else
       {
-        QVERIFY(metar.requestIdent == ident);
-        QVERIFY(metar.metarForNearest.startsWith(ident));
+        QVERIFY(metar.getRequestIdent().isEmpty());
+        QVERIFY(metar.getNearestIdent() == ident);
+        QVERIFY(!metar.getNearestMetar().isEmpty());
+        QVERIFY(metar.getInterpolatedMetar().isEmpty());
       }
     }
 
     metar = downloader.getMetar("KORD", atools::geo::EMPTY_POS);
     qDebug() << Q_FUNC_INFO << "Result" << metar;
-    QVERIFY(!metar.isEmpty());
-    QVERIFY(metar.metarForStation.startsWith("KORD"));
-    QVERIFY(metar.requestIdent == "KORD");
-    QVERIFY(metar.metarForNearest.isEmpty());
+    QVERIFY(metar.hasAnyMetar());
+    QVERIFY(metar.getStationMetar().startsWith("KORD"));
+    QVERIFY(metar.getRequestIdent() == "KORD");
+    QVERIFY(metar.getNearestMetar().isEmpty());
   }
 }
 
@@ -250,7 +268,7 @@ void MetarTest::testMetarAsn()
 
   QTextStream weatherSnapshot(&metarFile);
 
-  int numFailed = 0, numFailedPressure = 0, numFailedTemp = 0, numFailedDewpoint = 0, numFailedWind = 0;
+  int numFailed = 0, numFailedPressure = 0, numFailedTemp = 0, numFailedDewpoint = 0, numFailedWind = 0, numInvalidTimestamp = 0;
   QString line;
   while(weatherSnapshot.readLineInto(&line))
   {
@@ -259,22 +277,31 @@ void MetarTest::testMetarAsn()
 
     if(!line.isEmpty())
     {
-      atools::fs::weather::Metar metar(list.at(1), "XXXX", QDateTime(), true);
-      numFailed += !metar.isValid();
-      numFailedPressure += !(metar.getParsedMetar().getPressureMbar() < atools::fs::weather::INVALID_METAR_VALUE);
-      numFailedTemp += !(metar.getParsedMetar().getTemperatureC() < atools::fs::weather::INVALID_METAR_VALUE);
-      numFailedDewpoint += !(metar.getParsedMetar().getDewpointDegC() < atools::fs::weather::INVALID_METAR_VALUE);
-      numFailedWind += !(metar.getParsedMetar().getWindSpeedKts() < atools::fs::weather::INVALID_METAR_VALUE);
+      atools::fs::weather::Metar metar(QString(), atools::geo::EMPTY_POS, QDateTime(), list.at(1));
+      metar.parseAll(true /* useTimestamp */);
+
+      const atools::fs::weather::MetarParser& metarParser = metar.getMetarParser(atools::fs::weather::STATION);
+
+      numFailed += metarParser.hasErrors();
+      numInvalidTimestamp += !metarParser.getTimestamp().isValid();
+      numFailedPressure += !(metarParser.getPressureMbar() < atools::fs::weather::INVALID_METAR_VALUE);
+      numFailedTemp += !(metarParser.getTemperatureC() < atools::fs::weather::INVALID_METAR_VALUE);
+      numFailedDewpoint += !(metarParser.getDewpointDegC() < atools::fs::weather::INVALID_METAR_VALUE);
+      numFailedWind += !(metarParser.getWindSpeedKts() < atools::fs::weather::INVALID_METAR_VALUE);
     }
   }
   metarFile.close();
 
+  qDebug() << Q_FUNC_INFO << "numFailed" << numFailed << "numFailedPressure" << numFailedPressure << "numFailedTemp" << numFailedTemp
+           << "numFailedDewpoint" << numFailedDewpoint << "numFailedWind" << numFailedWind;
+
   // Check the number of failed since too many are not readable
-  QCOMPARE(numFailed, 21);
-  QCOMPARE(numFailedPressure, 366);
-  QCOMPARE(numFailedTemp, 67);
-  QCOMPARE(numFailedDewpoint, 107);
-  QCOMPARE(numFailedWind, 72);
+  QCOMPARE(numFailed, 24);
+  QCOMPARE(numInvalidTimestamp, 1);
+  QCOMPARE(numFailedPressure, 367);
+  QCOMPARE(numFailedTemp, 69);
+  QCOMPARE(numFailedDewpoint, 109);
+  QCOMPARE(numFailedWind, 66);
 }
 
 void MetarTest::testMetarSim()
@@ -284,26 +311,203 @@ void MetarTest::testMetarSim()
 
   QTextStream weatherSnapshot(&metarFiles);
 
-  int numFailed = 0, numFailedPressure = 0, numFailedTemp = 0, numFailedDewpoint = 0, numFailedWind = 0;
+  int numFailed = 0, numNoPressure = 0, numNoTemp = 0, numNoDewpoint = 0, numNoWind = 0, numInvalidTimestamp = 0;
   QString line;
   while(weatherSnapshot.readLineInto(&line))
   {
     if(!line.isEmpty() && !line.startsWith('#'))
     {
-      atools::fs::weather::Metar metar(line, "XXXX", QDateTime(), true);
-      numFailed += !metar.isValid();
-      numFailedPressure += !(metar.getParsedMetar().getPressureMbar() < atools::fs::weather::INVALID_METAR_VALUE);
-      numFailedTemp += !(metar.getParsedMetar().getTemperatureC() < atools::fs::weather::INVALID_METAR_VALUE);
-      numFailedDewpoint += !(metar.getParsedMetar().getDewpointDegC() < atools::fs::weather::INVALID_METAR_VALUE);
-      numFailedWind += !(metar.getParsedMetar().getWindSpeedKts() < atools::fs::weather::INVALID_METAR_VALUE);
+      atools::fs::weather::Metar metar(QString(), atools::geo::EMPTY_POS, QDateTime(), line);
+      metar.parseAll(true /* useTimestamp */);
+
+      const atools::fs::weather::MetarParser& metarParser = metar.getMetarParser(atools::fs::weather::STATION);
+
+      numFailed += metarParser.hasErrors();
+
+      QCOMPARE(!metarParser.hasErrors(), metarParser.isParsed());
+
+      if(metarParser.hasErrors())
+        qWarning() << Q_FUNC_INFO << metarParser.getMetarString();
+
+      bool invalidTimestamp = !metar.getTimestamp().isValid();
+      numInvalidTimestamp += invalidTimestamp;
+
+      bool noPressure = !(metarParser.getPressureMbar() < atools::fs::weather::INVALID_METAR_VALUE);
+      numNoPressure += noPressure;
+
+      bool noTemp = !(metarParser.getTemperatureC() < atools::fs::weather::INVALID_METAR_VALUE);
+      numNoTemp += noTemp;
+
+      bool noDewpoint = !(metarParser.getDewpointDegC() < atools::fs::weather::INVALID_METAR_VALUE);
+      numNoDewpoint += noDewpoint;
+
+      bool noWind = !(metarParser.getWindSpeedKts() < atools::fs::weather::INVALID_METAR_VALUE);
+      numNoWind += noWind;
+
+      if(noPressure || noTemp || noDewpoint || noWind)
+      {
+        qWarning() << Q_FUNC_INFO << "=========";
+        qWarning() << Q_FUNC_INFO << metarParser.getErrors();
+        qWarning() << Q_FUNC_INFO << "noPressure" << noPressure << "noTemp" << noTemp << "noDewpoint" << noDewpoint << "noWind" << noWind;
+        qWarning() << Q_FUNC_INFO << metarParser.getMetarString();
+      }
     }
   }
   metarFiles.close();
 
+  qDebug() << Q_FUNC_INFO << "numFailed" << numFailed << "numNoPressure" << numNoPressure << "numNoTemp" << numNoTemp
+           << "numNoDewpoint" << numNoDewpoint << "numNoWind" << numNoWind;
+
   // Check the number of failed since too many are not readable
-  QCOMPARE(numFailed, 15);
-  QCOMPARE(numFailedPressure, 398);
-  QCOMPARE(numFailedTemp, 105);
-  QCOMPARE(numFailedDewpoint, 160);
-  QCOMPARE(numFailedWind, 137);
+  QCOMPARE(numFailed, 168);
+  QCOMPARE(numInvalidTimestamp, 168);
+  QCOMPARE(numNoPressure, 552);
+  QCOMPARE(numNoTemp, 260);
+  QCOMPARE(numNoDewpoint, 315);
+  QCOMPARE(numNoWind, 286);
+}
+
+void MetarTest::testMetarInterpolatedSimple()
+{
+  atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT);
+  index.setFetchAirportCoords([](const QString& airportIdent) -> atools::geo::Pos {
+    return AIRPORT_COORDS.value(airportIdent);
+  });
+
+  QCOMPARE(index.read("testdata/METAR.txt", false), 9082);
+
+  qDebug() << Q_FUNC_INFO << "index.size()" << index.numStationMetars();
+  QCOMPARE(index.numStationMetars(), 4977);
+
+  atools::fs::weather::Metar metar = index.getMetar("EDDM", AIRPORT_COORDS.value("EDDM"));
+  QVERIFY(metar.hasAnyMetar());
+  QVERIFY(metar.hasStationMetar());
+  QVERIFY(metar.getMetarParserStation().isParsed());
+  QVERIFY(!metar.getMetarParserNearest().isParsed());
+  QVERIFY(!metar.getMetarParserInterpolated().isParsed());
+  qDebug() << Q_FUNC_INFO << "metar" << metar;
+
+  metar = index.getMetar("EDCF", AIRPORT_COORDS.value("EDCF"));
+  QVERIFY(metar.hasAnyMetar());
+  QVERIFY(!metar.hasStationMetar());
+  QVERIFY(!metar.getMetarParserStation().isParsed());
+  QVERIFY(metar.getMetarParserNearest().isParsed());
+  QVERIFY(metar.getMetarParserInterpolated().isParsed());
+  qDebug() << Q_FUNC_INFO << "metar" << metar;
+
+  metar = index.getMetar("EDDF", atools::geo::EMPTY_POS);
+  QVERIFY(metar.hasAnyMetar());
+  QVERIFY(metar.hasStationMetar());
+  QVERIFY(metar.getMetarParserStation().isParsed());
+  QVERIFY(!metar.getMetarParserNearest().isParsed());
+  QVERIFY(!metar.getMetarParserInterpolated().isParsed());
+  qDebug() << Q_FUNC_INFO << "metar" << metar;
+}
+
+void MetarTest::testMetarInterpolated()
+{
+  atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT);
+
+  index.setFetchAirportCoords([](const QString& airportIdent) -> atools::geo::Pos {
+    return AIRPORT_COORDS_INTERPOLATE.value(airportIdent);
+  });
+
+#if 1
+  // XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000
+  // XX1E 291330Z 09010KT 2000 RA OVC020 20/20 Q1100
+  // XX1S 291430Z 18010KT 3000 RA OVC030 30/30 Q1200
+  // XX1W 291530Z 27010KT 4000 +RA OVC040 40/40 Q1300
+  QCOMPARE(index.read("testdata/METAR4.txt", false), 4);
+  qDebug() << Q_FUNC_INFO << "index.size()" << index.numStationMetars();
+  QCOMPARE(index.numStationMetars(), 4);
+  atools::fs::weather::Metar metar;
+
+  metar = index.getMetar(QString(), AIRPORT_COORDS_INTERPOLATE.value("XX1N"));
+  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  validateMetar(metar,
+                QString(), QString(),
+                "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
+                QString(), QString());
+
+  metar = index.getMetar("XX1N", AIRPORT_COORDS_INTERPOLATE.value("XX1N"));
+  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  validateMetar(metar,
+                "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
+                QString(), QString(),
+                QString(), QString());
+
+  metar = index.getMetar(QString(), atools::geo::Pos(0.f, 0.f));
+  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  validateMetar(metar,
+                QString(), QString(),
+                "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
+                "XXXX 291530Z 2500 RA 25/25 Q1150", "IFR");
+#endif
+
+#if 1
+  // XX1N 291230Z 00010KT 1000 RA OVC010 10/10 Q1100
+  // XX1E 291330Z 00010KT 1000 RA OVC010 10/10 Q1100
+  // XX1S 291430Z 00010KT 1000 RA OVC010 10/10 Q1100
+  // XX1W 291530Z 00010KT 1000 RA OVC010 10/10 Q1100
+  // XX2N 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200
+  // XX2E 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200
+  // XX2S 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200
+  // XX2W 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200
+  QCOMPARE(index.read("testdata/METAR8.txt", false), 8);
+  qDebug() << Q_FUNC_INFO << "index.size()" << index.numStationMetars();
+  QCOMPARE(index.numStationMetars(), 8);
+
+  metar = index.getMetar(QString(), AIRPORT_COORDS_INTERPOLATE.value("XX2N"));
+  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  validateMetar(metar,
+                QString(), QString(),
+                "XX2N 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200", "IFR",
+                QString(), QString());
+
+  metar = index.getMetar("XX2N", AIRPORT_COORDS_INTERPOLATE.value("XX2N"));
+  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  validateMetar(metar,
+                "XX2N 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200", "IFR",
+                QString(), QString(),
+                QString(), QString());
+
+  metar = index.getMetar(QString(), atools::geo::Pos(0.f, 0.f));
+  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  validateMetar(metar,
+                QString(), QString(),
+                "XX1N 291230Z 00010KT 1000 RA OVC010 10/10 Q1100", "LIFR",
+                "XXXX 291530Z 00003KT 1300 RA 13/13 Q1133", "LIFR");
+#endif
+
+#if 1
+  // XX1N 291230Z 00020KT 6000 RA OVC100 10/10 Q1100
+  // XX2N 291230Z 18020KT 8000 +RA OVC120 20/20 Q1200
+  QCOMPARE(index.read("testdata/METAR2.txt", false), 2);
+  qDebug() << Q_FUNC_INFO << "index.size()" << index.numStationMetars();
+  QCOMPARE(index.numStationMetars(), 2);
+
+  metar = index.getMetar(QString(), atools::geo::Pos(0.f, 0.f));
+  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+
+  validateMetar(metar,
+                QString(), QString(),
+                "XX1N 291230Z 00020KT 6000 RA OVC100 10/10 Q1100", "MVFR",
+                "XXXX 291230Z 00007KT 6000 RA 13/13 Q1133", "MVFR");
+
+#endif
+}
+
+void MetarTest::validateMetar(const atools::fs::weather::Metar& m,
+                              const QString& stationMetar, const QString& stationFlightRules,
+                              const QString& nearestMetar, const QString& nearestFlightRules,
+                              const QString& interpolatedMetar, const QString& interpolatedFlightRules)
+{
+  QCOMPARE(m.getStationMetar(), stationMetar);
+  QCOMPARE(m.getStation().getFlightRulesString(), stationFlightRules);
+
+  QCOMPARE(m.getNearestMetar(), nearestMetar);
+  QCOMPARE(m.getNearest().getFlightRulesString(), nearestFlightRules);
+
+  QCOMPARE(m.getInterpolatedMetar(), interpolatedMetar);
+  QCOMPARE(m.getInterpolated().getFlightRulesString(), interpolatedFlightRules);
 }

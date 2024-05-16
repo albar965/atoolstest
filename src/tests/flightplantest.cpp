@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2024 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -460,11 +460,6 @@ void FlightplanTest::testSavePln()
 {
   io.savePln(flightplan, OUTPUT + QDir::separator() + "result_flightplan.pln");
   // QCOMPARE(atools::textFileHash(OUTPUT + QDir::separator() + "result_flightplan.pln"), static_cast<quint32>(1431656309));
-}
-
-void FlightplanTest::testSavePlnAnnotated()
-{
-  io.savePlnAnnotated(flightplan, OUTPUT + QDir::separator() + "result_flightplan_annotated.pln");
 }
 
 void FlightplanTest::testSaveRte()

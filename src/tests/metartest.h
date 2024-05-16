@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2024 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,8 @@ namespace atools {
 
 namespace fs {
 namespace weather {
+
+class Metar;
 class WeatherDownloadBase;
 }
 }
@@ -56,9 +58,16 @@ private slots:
 
   void testMetarAsn();
   void testMetarSim();
+  void testMetarInterpolatedSimple();
+
+  void testMetarInterpolated();
 
 private:
   void testDownload(atools::fs::weather::WeatherDownloadBase& downloader, bool expectFail);
+  void validateMetar(const atools::fs::weather::Metar& m,
+                     const QString& stationFlightRules, const QString& stationMetar,
+                     const QString& nearestFlightRules, const QString& nearestMetar,
+                     const QString& interpolatedFlightRules, const QString& interpolatedMetar);
 
 };
 
