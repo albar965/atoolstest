@@ -39,7 +39,7 @@ using atools::geo::nmToMeter;
 using atools::geo::meterToNm;
 using atools::geo::feetToNm;
 
-#define FUNC QString("%1:%2").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
+#define FUNC QString("Loc: [%1(%2)]").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
 
 namespace QTest {
 template<>
@@ -1161,17 +1161,27 @@ void GeoTest::testRectOverlap_data()
   Rect pacificW(Pos(145.73, 15.1203), Pos(177.444, -17.7564));
   Rect pacificC(Pos(173.146, 1.38116), Pos(-176, -10.f));
 
+  // double leftLonX, double topLatY, double rightLonX, double bottomLatY
+  Rect routeOk(-179., 65.573608, 179., -6.267500);
+  Rect viewportInvisibleOk(-33., 68., 3., 28.);
+  QTest::newRow("Route and Viewport ok") << routeOk << viewportInvisibleOk << true;
+
+  Rect routeWrong(3.209167, 65.573608, 177.738327, -6.267500);
+  Rect viewportInvisible2(-31., 68., 5., 28.);
+  QTest::newRow("Route and Viewport ok 2") << routeWrong << viewportInvisible2 << true;
+
+  Rect viewportInvisibleWrong(-33., 68., 3., 28.);
+  QTest::newRow("Route and Viewport wrong") << routeWrong << viewportInvisibleWrong << false;
+
   QTest::newRow("Germany EU") << germany << eu << true;
   QTest::newRow("SE EU EU") << seeu << eu << true;
   QTest::newRow("Germany SE EU") << germany << seeu << false;
   QTest::newRow("US EU") << us << eu << false;
   QTest::newRow("Germany US") << germany << us << false;
   QTest::newRow("Pacific US") << pacific << us << false;
-
   QTest::newRow("Pacific Pacific W") << pacific << pacificW << true;
   QTest::newRow("Pacific Pacific E") << pacific << pacificE << true;
   QTest::newRow("Pacific Pacific C") << pacific << pacificC << true;
-
 }
 
 void GeoTest::testRectOverlap()
@@ -1181,7 +1191,6 @@ void GeoTest::testRectOverlap()
   QFETCH(bool, result);
 
   QCOMPARE(r1.overlaps(r2), result);
-
 }
 
 void GeoTest::testCoordString_data()
@@ -1354,6 +1363,8 @@ void GeoTest::testRectExtend()
   QFETCH(Rect, rect);
   QFETCH(LineString, extends);
   QFETCH(Rect, expected);
+
+  qDebug() << Q_FUNC_INFO << "rect" << rect << "extends" << extends << "expected" << expected;
 
   QCOMPARE(rect.extend(extends), expected);
 }
