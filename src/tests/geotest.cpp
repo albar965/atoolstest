@@ -1201,8 +1201,18 @@ void GeoTest::testCoordString_data()
   QTest::addColumn<QString>("coord");
   QTest::addColumn<Pos>("pos");
 
+  ROW("0 30.00, -0 15.00", atools::geo::Pos(-0.250000f, 0.500000f));
+  ROW("-0 30.00, 0 15.00", atools::geo::Pos(0.250000f, -0.500000f));
+  ROW("5 30.00, -5 15.00", atools::geo::Pos(-5.250000f, 5.500000f));
+  ROW("-5 30.00, 5 15.00", atools::geo::Pos(5.250000f, -5.500000f));
+  ROW("52 30.00, -0 15.00", atools::geo::Pos(-0.250000f, 52.500000f));
+  ROW("-52 30.00, 0 15.00", atools::geo::Pos(0.250000f, -52.500000f));
+
   ROW("49, 34", atools::geo::Pos(34.f, 49.f));
   ROW("-49, +34", atools::geo::Pos(34.f, -49.f));
+
+  ROW("-0.1,0.1", atools::geo::Pos(0.1f, -0.1f));
+  ROW("0.1,-0.1", atools::geo::Pos(-0.1f, 0.1f));
 
   ROW("-49.0,+34.0", atools::geo::Pos(34.f, -49.f));
   ROW("49.0,34.0", atools::geo::Pos(34.f, 49.f));
