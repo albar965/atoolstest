@@ -42,13 +42,13 @@ void OnlineTest::runtest(int argc, char *argv[])
 
 void OnlineTest::initTestCase()
 {
-  dbVatsim = testutil::createDb("TESTDBVATSIM", "online_test_vatsim.sqlite");
-  dbVatsim3 = testutil::createDb("TESTDBVATSIM3", "online_test_vatsim3.sqlite");
+  dbVatsim = testutil::createDb("TESTDBVATSIM", "online_test_vatsim.sqlite", false /* readonly */);
+  dbVatsim3 = testutil::createDb("TESTDBVATSIM3", "online_test_vatsim3.sqlite", false /* readonly */);
 
-  dbIvao = testutil::createDb("TESTDBIVAO", "online_test_ivao.sqlite");
-  dbIvao2 = testutil::createDb("TESTDBIVAO2", "online_test_ivao2.sqlite");
+  dbIvao = testutil::createDb("TESTDBIVAO", "online_test_ivao.sqlite", false /* readonly */);
+  dbIvao2 = testutil::createDb("TESTDBIVAO2", "online_test_ivao2.sqlite", false /* readonly */);
 
-  dbCustom = testutil::createDb("TESTDBCUSTOM", "online_test_custom.sqlite");
+  dbCustom = testutil::createDb("TESTDBCUSTOM", "online_test_custom.sqlite", false /* readonly */);
 }
 
 void OnlineTest::cleanupTestCase()

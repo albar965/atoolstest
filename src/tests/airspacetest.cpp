@@ -44,7 +44,7 @@ void AirspaceTest::runtest(int argc, char *argv[])
 
 void AirspaceTest::initTestCase()
 {
-  db = testutil::createDb("TESTDBAIRSPACE", "online_test_airspaces.sqlite");
+  db = testutil::createDb("TESTDBAIRSPACE", "online_test_airspaces.sqlite", false /* readonly */);
 
   SqlScript script(db, true /* options->isVerbose()*/);
   script.executeScript(":/atools/resources/sql/fs/db/drop_meta.sql");

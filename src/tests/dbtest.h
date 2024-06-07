@@ -41,6 +41,9 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testException_data();
+  void testException();
+
   void testBound();
   void testInsert();
   void testInsertId();

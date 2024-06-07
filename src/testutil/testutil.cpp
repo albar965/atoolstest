@@ -46,12 +46,12 @@ void waitForValue(bool& done, int seconds)
   }
 }
 
-atools::sql::SqlDatabase *createDb(const QString& name, const QString& file)
+atools::sql::SqlDatabase *createDb(const QString& name, const QString& file, bool readonly)
 {
   atools::sql::SqlDatabase::addDatabase("QSQLITE", name);
   atools::sql::SqlDatabase *db = new atools::sql::SqlDatabase(name);
   db->setDatabaseName(file);
-  db->open();
+  db->open(readonly);
   return db;
 }
 
@@ -66,6 +66,5 @@ void removeDb(atools::sql::SqlDatabase *& db, const QString& name)
 
   atools::sql::SqlDatabase::removeDatabase(name);
 }
-
 
 } // namespace testutil

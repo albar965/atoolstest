@@ -43,7 +43,7 @@ void MagdecTest::initTestCase()
   qInfo() << tool.getVersion();
   tool.init(2019);
 
-  db = testutil::createDb("TESTDBMAGDEC", "online_test_magdec.sqlite");
+  db = testutil::createDb("TESTDBMAGDEC", "online_test_magdec.sqlite", false /* readonly */);
 
   atools::sql::SqlScript script(db, true /* options->isVerbose()*/);
   script.executeScript(":/atools/resources/sql/fs/db/drop_nav.sql");

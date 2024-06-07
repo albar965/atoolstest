@@ -55,8 +55,8 @@ enum RouteNetworkType
 
 void RouteTest::initTestCase()
 {
-  dbNav = testutil::createDb("TESTDBROUTE", "testdata/test_route.sqlite");
-  dbTrack = testutil::createDb("TESTDBTRACK", "testdata/test_track.sqlite");
+  dbNav = testutil::createDb("TESTDBROUTE", "testdata/test_route.sqlite", false /* readonly */);
+  dbTrack = testutil::createDb("TESTDBTRACK", "testdata/test_track.sqlite", false /* readonly */);
 
   RouteNetwork *net = new RouteNetwork(SOURCE_RADIO);
   RouteNetworkLoader(dbNav, nullptr).load(net);

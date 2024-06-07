@@ -31,7 +31,7 @@ namespace testutil {
 void waitForValue(bool& done, int seconds);
 void wait(int seconds);
 
-atools::sql::SqlDatabase *createDb(const QString& name, const QString& file);
+atools::sql::SqlDatabase *createDb(const QString& name, const QString& file, bool readonly);
 
 void removeDb(atools::sql::SqlDatabase *& db, const QString& name);
 

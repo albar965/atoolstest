@@ -44,7 +44,7 @@ void DbTest::runtest(int argc, char *argv[])
 
 void DbTest::initTestCase()
 {
-  db = testutil::createDb("TESTDBMANUSER", "test_user.sqlite");
+  db = testutil::createDb("TESTDBMANUSER", "test_user.sqlite", false /* readonly */);
   atools::fs::userdata::UserdataManager userdata(db);
   userdata.dropSchema();
   userdata.createSchema(true);
@@ -56,7 +56,7 @@ void DbTest::initTestCase()
   QCOMPARE(userdata.hasData(), true);
   QCOMPARE(userdata.rowCount(), 54);
 
-  dbUndo = testutil::createDb("TESTDBMANUSERUNDO", "test_user_undo.sqlite");
+  dbUndo = testutil::createDb("TESTDBMANUSERUNDO", "test_user_undo.sqlite", false /* readonly */);
   atools::fs::userdata::UserdataManager userdataUndo(dbUndo);
   userdataUndo.dropSchema();
   userdataUndo.createSchema(true);
@@ -85,7 +85,7 @@ void DbTest::initTestCase()
   QCOMPARE(userdataUndo.hasData(), true);
   QCOMPARE(userdataUndo.rowCount(), 54);
 
-  dbUndoBulk = testutil::createDb("TESTDBMANUSERUNDOBULK", "test_user_undo_bulk.sqlite");
+  dbUndoBulk = testutil::createDb("TESTDBMANUSERUNDOBULK", "test_user_undo_bulk.sqlite", false /* readonly */);
   atools::fs::userdata::UserdataManager userdataUndoBulk(dbUndoBulk);
   userdataUndoBulk.dropSchema();
   userdataUndoBulk.createSchema(true);
@@ -112,6 +112,78 @@ void DbTest::cleanupTestCase()
 
   testutil::removeDb(db, "TESTDBMANUSER");
   testutil::removeDb(dbUndo, "TESTDBMANUSERUNDO");
+}
+
+void DbTest::testException_data()
+{
+  QTest::addColumn<QString>("dbfile");
+  QTest::addColumn<QString>("dbname");
+  QTest::addColumn<bool>("ro");
+  QTest::addColumn<QString>("stmt");
+  QTest::addColumn<QString>("errorresult");
+
+  // QFile::remove("test_user_exception_ro.sqlite");
+  // QTest::newRow("RO fail") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << true
+  //                          << QString() << "unable to open database";
+
+  // QFile::remove("test_user_exception_ro.sqlite");
+  // QTest::newRow("Read only prepare") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << false
+  //                                    << QString() << QString();
+  // QTest::newRow("Read only ok") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << true
+  //                               << QString() << QString();
+  // QTest::newRow("Read only try write") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << true
+  //                                      << "create table test(test_id integer primary key)" << "attempt to write a readonly database";
+
+  // QFile::remove("test_user_exception.sqlite");
+  // QTest::newRow("Read write ok") << "test_user_exception.sqlite" << "TESTEXCEPTION1" << false
+  //                                << "create table test(test_id integer primary key)" << QString();
+
+  QTest::newRow("Read write query fail") << "test_user_exception.sqlite" << "TESTEXCEPTION2" << false
+                                         << "create table " << "incomplete input";
+
+  // QTest::newRow("Read write query fail 2") << "test_user_exception.sqlite" << "TESTEXCEPTION3" << false
+  //                                          << "select * from notexist " << "no such table";
+
+  // QTest::newRow("Read write file broken") << "testdata/dbmanagertest.csv" << "TESTEXCEPTIONBROKEN4" << false
+  //                                         << "create table test(test_id integer primary key)" << "file is not a database";
+
+  // QTest::newRow("Read only file broken") << "testdata/dbmanagertest.csv" << "TESTEXCEPTIONBROKEN5" << true
+  //                                        << "create table test(test_id integer primary key)" << "file is not a database";
+
+}
+
+void DbTest::testException()
+{
+  QFETCH(QString, dbfile);
+  QFETCH(QString, dbname);
+  QFETCH(bool, ro);
+  QFETCH(QString, stmt);
+  QFETCH(QString, errorresult);
+
+  SqlDatabase *database = nullptr;
+  QString err;
+
+  try
+  {
+    database = testutil::createDb(dbname, dbfile, ro /* readonly */);
+    qDebug() << Q_FUNC_INFO << "tables" << database->tables();
+
+    if(!stmt.isEmpty())
+      database->exec(stmt);
+    qDebug() << Q_FUNC_INFO << "tables" << database->tables();
+    testutil::removeDb(database, dbname);
+  }
+  catch(atools::sql::SqlException& e)
+  {
+    err = e.what();
+  }
+
+  qDebug() << Q_FUNC_INFO << "err" << err;
+
+  if(!errorresult.isEmpty())
+    QVERIFY(err.contains(errorresult));
+  else
+    QVERIFY(err.isEmpty());
 }
 
 void DbTest::testBound()
