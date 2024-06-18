@@ -441,7 +441,7 @@ void MetarTest::testMetarInterpolated()
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
-                "XXXX 291530Z 2500 RA 25/25 Q1150", "IFR");
+                "XXXX 291530Z 00000KT 2500 RA 25/25 Q1150", "IFR");
 #endif
 
 #if 1
