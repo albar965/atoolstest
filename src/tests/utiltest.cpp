@@ -64,7 +64,7 @@ void UtilTest::testFileOperations()
   operations.removeDirectory("testdata/../output/MSFS-copy2", false);
   operations.copyDirectory("testdata/MSFS", "testdata/../output/MSFS-copy2", false);
   QCOMPARE(operations.getErrors().size(), 0);
-  QCOMPARE(operations.getFilesProcessed(), 27);
+  QCOMPARE(operations.getFilesProcessed(), 35);
 
   operations.copyDirectory("testdata/MSFS", "testdata/../NOEXIST/MSFS-copy", false);
   QCOMPARE(operations.getErrors().size(), 1);
@@ -72,7 +72,7 @@ void UtilTest::testFileOperations()
 
   operations.copyDirectory("testdata/MSFS", "output/MSFS-copy", false);
   QCOMPARE(operations.getErrors().size(), 0);
-  QCOMPARE(operations.getFilesProcessed(), 27);
+  QCOMPARE(operations.getFilesProcessed(), 35);
 
   QVERIFY(QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
                             "microsoft-aircraft-bell407/aircraft.cfg"));
@@ -83,22 +83,22 @@ void UtilTest::testFileOperations()
 
   operations.copyDirectory("testdata/MSFS", "output/MSFS-copy", true);
   QCOMPARE(operations.getErrors().size(), 0);
-  QCOMPARE(operations.getFilesProcessed(), 27);
+  QCOMPARE(operations.getFilesProcessed(), 35);
 
   operations.removeDirectory("output/MSFS-copy", false);
   QCOMPARE(operations.getErrors().size(), 0);
-  QCOMPARE(operations.getFilesProcessed(), 27);
+  QCOMPARE(operations.getFilesProcessed(), 35);
 
   QVERIFY(!QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
                              "microsoft-aircraft-bell407/aircraft.cfg"));
 
   operations.copyDirectory("testdata/MSFS", "output/MSFS-copy", false);
   QCOMPARE(operations.getErrors().size(), 0);
-  QCOMPARE(operations.getFilesProcessed(), 27);
+  QCOMPARE(operations.getFilesProcessed(), 35);
 
   operations.removeDirectory("output/MSFS-copy", true);
   QCOMPARE(operations.getErrors().size(), 0);
-  QCOMPARE(operations.getFilesProcessed(), 27);
+  QCOMPARE(operations.getFilesProcessed(), 35);
 
   QVERIFY(!QFileInfo::exists("output/MSFS-copy/Community/microsoft-aircraft-bell407/SimObjects/Airplanes/"
                              "microsoft-aircraft-bell407/aircraft.cfg"));

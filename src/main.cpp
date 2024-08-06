@@ -49,39 +49,39 @@
  * Macros that allow to create and add test classes for command line selection.
  */
 #define RUNTESTEXT_COND(name, condition) \
-  { \
-    if(condition) \
-    { \
-      if(parser->isSet( # name) || parser->isSet("RunAll")) \
-      { \
-        name tst; \
-        runtest(tst, messages, otherOptions); \
-      } \
-    } \
-    else \
-    qStdOut() << "Skipping test" << # name << "since condition" << # condition << "is false" << endl; \
-  }
+        { \
+          if(condition) \
+          { \
+            if(parser->isSet( # name) || parser->isSet("RunAll")) \
+            { \
+              name tst; \
+              runtest(tst, messages, otherOptions); \
+            } \
+          } \
+          else \
+          qStdOut() << "Skipping test" << # name << "since condition" << # condition << "is false" << endl; \
+        }
 
 #define RUNTESTEXT(name) \
-  { \
-    if(parser->isSet( # name) || parser->isSet("RunAll")) \
-    { \
-      name tst; \
-      runtest(tst, messages, otherOptions); \
-      qStdOut() << "Execution time for" << # name << timer.restart() << "ms" << endl; \
-    } \
-  }
+        { \
+          if(parser->isSet( # name) || parser->isSet("RunAll")) \
+          { \
+            name tst; \
+            runtest(tst, messages, otherOptions); \
+            qStdOut() << "Execution time for" << # name << timer.restart() << "ms" << endl; \
+          } \
+        }
 
 #define RUNTEST(name) \
-  { \
-    name tst; \
-    QTest::qExec(&tst, argCount, argVector); \
-  }
+        { \
+          name tst; \
+          QTest::qExec(&tst, argCount, argVector); \
+        }
 
 #define DEFINETEST(name) \
-  { \
-    addOption(parser, # name); \
-  }
+        { \
+          addOption(parser, # name); \
+        }
 
 // Forward declarations
 void test();
@@ -197,8 +197,8 @@ int main(int argc, char *argv[])
   else
   {
     // Start test execution in event queue
-    QTimer::singleShot(0, test);
-    return app.exec();
+    QTimer::singleShot(0, &app, test);
+    return QCoreApplication::exec();
   }
 }
 

@@ -1,0 +1,16 @@
+{
+  "dependencies": [],
+  "content_type": "AIRCRAFT",
+  "title": "Model 407",
+  "manufacturer": "Bell",
+  "creator": "Microsoft/Nemeth Designs",
+  "package_version": "0.3.7",
+  "minimum_game_version": "1.35.19",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "VERSION 0.3.7 RELEASED OCTOBER 15, 2023\\n- Checklist autocomplete fixed",
+      "OlderHistory": "VERSION 0.2.9 RELEASED JANUARY 17, 2023\\n- Engine performance increased to match more closely the real-world behavior.\n- Now it is easier to overstress the rotor RPM and torque under heavy load.\n- The helicopter is easier to stabilize now in cruise flight with trim and assistances turned off.\n- Low rotor warning sound now sounds when the battery is switched on.\n- Annunciators illumination is stronger now in DIM mode.\n- Altimeter barometric scale values now match up with the simulator values.\n- Gauge illumination is toned down preventing it to being overblown on maximum brightness settings.\n- Auto-trim switch has been removed.\n- Force trim switch has been removed.\n- Pedal stop functionality added (limits left pedal movement during flight) above 50 kts.\n- Rotor rotation animation in multiplayer is now functioning.\n- Rotor brake is functional again.\n- Used fuel type in the weight and balance settings is JET fuel.\n- Added Turkish language translation.\n- Added Korean language translation.\n- Pedal animation adjustments on the connecting rod is fixed.\n- Interior collider adjustments. The camera doesn’t clip into the main panel anymore.\n- VR support adjustments. Full VR support.\n- Reference cruise speed now shows the correct value on the aircraft selection screen.\\n\\nVERSION 0.3.3 RELEASED SEPTEMBER 27, 2023\\n- Localization corrections\n- Performance data corrections\n- Changes in the throttle/governor functionality during startup and shutdown.\n- Manual throttle/RPM control still doesn't work properly during normal procedures due to missing core functionality.\n- Weight and balance correcrions, fuel setting corrections.\\n\\nVERSION 0.3.4 RELEASED OCTOBER 3, 2023\\n- Dynamics of the rotor blades tweaked\\n\\nVERSION 0.3.5 RELEASED \u000f\u001fD 1, 0\\n- Further rotor resistance tweaks\\n\\nVERSION 0.3.6 RELEASED OCTOBER 7, 2023\\n- FADEC tooltip\n- Fuel Pressure gauge not illuminaion\n- Further rotor weight changes\n- Further engine performance changes\n- Cold and dark state changes\n- Checklist correction"
+    }
+  },
+  "total_package_size": "00000000001132993384"
+}

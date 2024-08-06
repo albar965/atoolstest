@@ -1,0 +1,1459 @@
+{
+  "content": [
+    {
+      "path": "ContentInfo/asobo-aircraft-cabri-g2/Thumbnail.jpg",
+      "size": 48859,
+      "date": 133090157210000000
+    },
+    {
+      "path": "de-DE.locPak",
+      "size": 11784,
+      "date": 133269987317527653
+    },
+    {
+      "path": "en-US.locPak",
+      "size": 10398,
+      "date": 133269987317517592
+    },
+    {
+      "path": "es-ES.locPak",
+      "size": 12237,
+      "date": 133269987317467726
+    },
+    {
+      "path": "es-MX.locPak",
+      "size": 12292,
+      "date": 133269987317507620
+    },
+    {
+      "path": "fi-FI.locPak",
+      "size": 11016,
+      "date": 133269987317477699
+    },
+    {
+      "path": "fr-FR.locPak",
+      "size": 12391,
+      "date": 133269987317527653
+    },
+    {
+      "path": "it-IT.locPak",
+      "size": 12155,
+      "date": 133269987317537540
+    },
+    {
+      "path": "ja-JP.locPak",
+      "size": 12618,
+      "date": 133269987317467726
+    },
+    {
+      "path": "ko-KR.locPak",
+      "size": 11801,
+      "date": 133269987317487671
+    },
+    {
+      "path": "nb-NO.locPak",
+      "size": 10456,
+      "date": 133269987317487671
+    },
+    {
+      "path": "nl-NL.locPak",
+      "size": 11331,
+      "date": 133269987317477699
+    },
+    {
+      "path": "pl-PL.locPak",
+      "size": 12100,
+      "date": 133269987317457751
+    },
+    {
+      "path": "pt-BR.locPak",
+      "size": 11567,
+      "date": 133269987317517592
+    },
+    {
+      "path": "pt-PT.locPak",
+      "size": 11855,
+      "date": 133269987317507620
+    },
+    {
+      "path": "ru-RU.locPak",
+      "size": 16712,
+      "date": 133269987317537540
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/ai.cfg",
+      "size": 745,
+      "date": 132412777160000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/aircraft.cfg",
+      "size": 3300,
+      "date": 133092572700000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/apron.FLT",
+      "size": 2752,
+      "date": 133087579060000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/cameras.cfg",
+      "size": 23415,
+      "date": 133105694080000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/Checklist/Cabrig2_Checklist.xml",
+      "size": 23067,
+      "date": 133093633980000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/Checklist/Library.xml",
+      "size": 38457,
+      "date": 133100575890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/cockpit.cfg",
+      "size": 4772,
+      "date": 133159300220000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/Cruise.flt",
+      "size": 2843,
+      "date": 133105723900000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/effects/LIGHT_ASOBO_CockpitSpot.fx",
+      "size": 1356,
+      "date": 133088496510000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/effects/LIGHT_ASOBO_CockpitSpotNarrow.fx",
+      "size": 1351,
+      "date": 133068668290000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/effects/LIGHT_ASOBO_Landing.fx",
+      "size": 1227,
+      "date": 133089137130000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/effects/LIGHT_ASOBO_NavigationGreen.fx",
+      "size": 1228,
+      "date": 133089180600000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/effects/LIGHT_ASOBO_NavigationRed.fx",
+      "size": 1225,
+      "date": 133089180630000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/effects/LIGHT_ASOBO_NavigationWhite.fx",
+      "size": 1348,
+      "date": 133089179150000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/effects/LIGHT_ASOBO_StrobeSimple.fx",
+      "size": 1227,
+      "date": 133094517880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/engines.cfg",
+      "size": 9091,
+      "date": 133099551050000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/flight_model.cfg",
+      "size": 20254,
+      "date": 133523728760000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/gameplay.cfg",
+      "size": 695,
+      "date": 132001543020000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/hangar.flt",
+      "size": 1632,
+      "date": 133087579080000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2.xml",
+      "size": 4622,
+      "date": 133101231090000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior.xml",
+      "size": 19412,
+      "date": 133202508300000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD00.bin",
+      "size": 10928684,
+      "date": 133202503664582561
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD00.gltf",
+      "size": 515915,
+      "date": 133202503664612482
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD01.bin",
+      "size": 6380740,
+      "date": 133125769081066081
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD01.gltf",
+      "size": 446059,
+      "date": 133125769081086029
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD02.bin",
+      "size": 2848876,
+      "date": 133125769082206965
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD02.gltf",
+      "size": 391929,
+      "date": 133125769082227244
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD03.bin",
+      "size": 530876,
+      "date": 133125769082633560
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD03.gltf",
+      "size": 164710,
+      "date": 133125769082643528
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD04.bin",
+      "size": 168408,
+      "date": 133125769082834686
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD04.gltf",
+      "size": 69537,
+      "date": 133125769082834686
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD05.bin",
+      "size": 156,
+      "date": 133095453740917281
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_Interior_LOD05.gltf",
+      "size": 2318,
+      "date": 133095453740917281
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD00.bin",
+      "size": 24684612,
+      "date": 133095453510035584
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD00.gltf",
+      "size": 345290,
+      "date": 133095453510065469
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD01.bin",
+      "size": 15396044,
+      "date": 133095453515261742
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD01.gltf",
+      "size": 308149,
+      "date": 133095453515281687
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD02.bin",
+      "size": 8829920,
+      "date": 133095453518033834
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD02.gltf",
+      "size": 307497,
+      "date": 133095453518053791
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD03.bin",
+      "size": 3755228,
+      "date": 133095453519436749
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD03.gltf",
+      "size": 296586,
+      "date": 133095453519456697
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD04.bin",
+      "size": 605356,
+      "date": 133095453522239325
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD04.gltf",
+      "size": 207672,
+      "date": 133095453522249301
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD05.bin",
+      "size": 203744,
+      "date": 133095453523216733
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/Cabri_G2_LOD05.gltf",
+      "size": 187886,
+      "date": 133095453523226707
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/model/model.CFG",
+      "size": 224,
+      "date": 132944250980000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/Notice.txt",
+      "size": 183,
+      "date": 133090267590000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/panel/panel.cfg",
+      "size": 875,
+      "date": 133044233280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/panel/panel.xml",
+      "size": 438,
+      "date": 133077253920000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/RTC/animations/PlaneShowcase_COCKPIT.bin",
+      "size": 39320,
+      "date": 133095453741106784
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/RTC/animations/PlaneShowcase_COCKPIT.gltf",
+      "size": 9344,
+      "date": 133095453741116751
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/RTC/animations/PlaneShowcase_HANGAR.bin",
+      "size": 107908,
+      "date": 133095453741156646
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/RTC/animations/PlaneShowcase_HANGAR.gltf",
+      "size": 25177,
+      "date": 133095453741166619
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/RTC/definitions/RTC_Hangar.spb",
+      "size": 1861,
+      "date": 133095453741086830
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/runway.FLT",
+      "size": 2759,
+      "date": 133105723220000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/sound/Asobo_Cabri_G2.PC.PCK",
+      "size": 61213927,
+      "date": 133494425550000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/sound/sound.xml",
+      "size": 22441,
+      "date": 133105569230000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/soundAI/Asobo_Cabri_G2_AI.PC.PCK",
+      "size": 13866164,
+      "date": 133452236260000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/soundAI/soundai.xml",
+      "size": 5181,
+      "date": 133104849280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/systems.cfg",
+      "size": 6497,
+      "date": 133094494840000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/target_performance.cfg",
+      "size": 1791,
+      "date": 131961709460000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/AirspeedIndicator_CabriG2_albd.png.DDS",
+      "size": 1398256,
+      "date": 133039066630000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/AirspeedIndicator_CabriG2_albd.png.DDS.json",
+      "size": 119,
+      "date": 133039066630000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/AirspeedIndicator_CabriG2_comp.png.DDS",
+      "size": 699192,
+      "date": 133039068260000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/AirspeedIndicator_CabriG2_comp.png.DDS.json",
+      "size": 166,
+      "date": 133039068260000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_albd.png.DDS",
+      "size": 1398308,
+      "date": 132959859960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_albd.png.DDS.json",
+      "size": 127,
+      "date": 132959859960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_comp.png.DDS",
+      "size": 1398308,
+      "date": 132959859970000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_comp.png.DDS.json",
+      "size": 191,
+      "date": 132959859970000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_norm.png.DDS",
+      "size": 1398288,
+      "date": 132959859970000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLADES_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859970000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_BLADE_albd.png.DDS",
+      "size": 5592560,
+      "date": 133104774250000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_BLADE_albd.png.DDS.json",
+      "size": 119,
+      "date": 133104774250000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_BLADE_norm.png.DDS",
+      "size": 1398256,
+      "date": 133041014770000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_BLADE_norm.png.DDS.json",
+      "size": 160,
+      "date": 133041014770000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_SIDE_TAIL.png.DDS",
+      "size": 43920,
+      "date": 132702435870000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_SIDE_TAIL.png.DDS.json",
+      "size": 119,
+      "date": 132702435870000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_TAIL_albd.png.DDS",
+      "size": 5592560,
+      "date": 132963093040000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_BLUR_TAIL_albd.png.DDS.json",
+      "size": 119,
+      "date": 132963093040000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_albd.png.DDS",
+      "size": 5592580,
+      "date": 133039245360000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_albd.png.DDS.json",
+      "size": 144,
+      "date": 133039245360000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_comp.png.DDS",
+      "size": 5592580,
+      "date": 132966502860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_comp.png.DDS.json",
+      "size": 191,
+      "date": 132966502860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_norm.png.DDS",
+      "size": 5592560,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DECALS_norm.png.DDS.json",
+      "size": 185,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_albd.png.DDS",
+      "size": 5592580,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_albd.png.DDS.json",
+      "size": 127,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_comp.png.DDS",
+      "size": 5592580,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_comp.png.DDS.json",
+      "size": 191,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_norm.png.DDS",
+      "size": 5592560,
+      "date": 132959859550000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_01_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859550000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_albd.png.DDS",
+      "size": 5592580,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_albd.png.DDS.json",
+      "size": 144,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_comp.png.DDS",
+      "size": 5592580,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_comp.png.DDS.json",
+      "size": 191,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_norm.png.DDS",
+      "size": 5592560,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_DETAILS_02_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_albd.png.DDS",
+      "size": 5592580,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_albd.png.DDS.json",
+      "size": 127,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_comp.png.DDS",
+      "size": 5592580,
+      "date": 132966502890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_comp.png.DDS.json",
+      "size": 191,
+      "date": 132966502890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_norm.png.DDS",
+      "size": 5592560,
+      "date": 132966502890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_01_norm.png.DDS.json",
+      "size": 185,
+      "date": 132966502890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_albd.png.DDS",
+      "size": 5592580,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_albd.png.DDS.json",
+      "size": 127,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_comp.png.DDS",
+      "size": 5592580,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_comp.png.DDS.json",
+      "size": 191,
+      "date": 132966502880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_norm.png.DDS",
+      "size": 5592560,
+      "date": 132966502890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ENGINE_02_norm.png.DDS.json",
+      "size": 185,
+      "date": 132966502890000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_albd.png.DDS",
+      "size": 5592580,
+      "date": 132967568450000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_albd.png.DDS.json",
+      "size": 127,
+      "date": 132967568450000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967568460000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967568460000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_norm.png.DDS",
+      "size": 5592560,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_1_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_albd.png.DDS",
+      "size": 5592580,
+      "date": 132967568450000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_albd.png.DDS.json",
+      "size": 127,
+      "date": 132967568450000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967568460000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967568460000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_norm.png.DDS",
+      "size": 5592560,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_FUSELAGE_2_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_albd.png.DDS",
+      "size": 349700,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_albd.png.DDS.json",
+      "size": 144,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_comp.png.DDS",
+      "size": 349700,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_comp.png.DDS.json",
+      "size": 191,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_norm.png.DDS",
+      "size": 349680,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_LIGHTS_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod4_albd.png.DDS",
+      "size": 699192,
+      "date": 133095193340000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod4_albd.png.DDS.json",
+      "size": 102,
+      "date": 133095193340000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod4_comp.png.DDS",
+      "size": 699192,
+      "date": 132976092520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod4_comp.png.DDS.json",
+      "size": 166,
+      "date": 132976092520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod5_albd.png.DDS",
+      "size": 43832,
+      "date": 133095193990000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod5_albd.png.DDS.json",
+      "size": 102,
+      "date": 133095193990000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod5_comp.png.DDS",
+      "size": 43832,
+      "date": 132976093280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_lod5_comp.png.DDS.json",
+      "size": 166,
+      "date": 132976093280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_albd.png.DDS",
+      "size": 5592580,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_albd.png.DDS.json",
+      "size": 127,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_comp.png.DDS",
+      "size": 5592580,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_comp.png.DDS.json",
+      "size": 191,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_norm.png.DDS",
+      "size": 5592560,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_ROTOR_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_albd.png.DDS",
+      "size": 5592580,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_albd.png.DDS.json",
+      "size": 127,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_comp.png.DDS",
+      "size": 5592580,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_comp.png.DDS.json",
+      "size": 191,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_norm.png.DDS",
+      "size": 5592560,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_TAIL_ROTOR_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_albd.png.DDS",
+      "size": 5592580,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_albd.png.DDS.json",
+      "size": 144,
+      "date": 132959859520000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_comp.png.DDS",
+      "size": 5592580,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_comp.png.DDS.json",
+      "size": 191,
+      "date": 132959859530000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_norm.png.DDS",
+      "size": 5592560,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132967387960000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Airframe_WINDSHIELD_norm.png.DDS.json",
+      "size": 185,
+      "date": 132959859540000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_albd.png.DDS",
+      "size": 5592580,
+      "date": 132963189400000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_albd.png.DDS.json",
+      "size": 127,
+      "date": 132963189400000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967468280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967468280000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_BACK_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_albd.png.DDS",
+      "size": 5592580,
+      "date": 133040932860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_albd.png.DDS.json",
+      "size": 144,
+      "date": 133040932860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_comp.png.DDS",
+      "size": 5592580,
+      "date": 133040931310000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_comp.png.DDS.json",
+      "size": 191,
+      "date": 133040931310000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DECALS_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_albd.png.DDS",
+      "size": 5592580,
+      "date": 132963207650000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_albd.png.DDS.json",
+      "size": 127,
+      "date": 132963207650000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_comp.png.DDS",
+      "size": 5592580,
+      "date": 133041768290000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_comp.png.DDS.json",
+      "size": 191,
+      "date": 133041768290000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963207660000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_DETAILS_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963207660000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_albd.png.DDS",
+      "size": 5592580,
+      "date": 132963189440000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_albd.png.DDS.json",
+      "size": 127,
+      "date": 132963189440000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967468930000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967468930000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189450000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_FLOOR_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189450000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_albd.png.DDS",
+      "size": 5592580,
+      "date": 132963189440000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_albd.png.DDS.json",
+      "size": 127,
+      "date": 132963189440000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967469180000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967469180000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189440000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_PEDESTAL_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189440000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_albd.png.DDS",
+      "size": 5592580,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_albd.png.DDS.json",
+      "size": 127,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967469410000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967469410000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SEATS_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_albd.png.DDS",
+      "size": 5592580,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_albd.png.DDS.json",
+      "size": 127,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967469720000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967469720000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_SIDES_TOP_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_WINDSHIELD_comp.png.DDS",
+      "size": 5592580,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_WINDSHIELD_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_WINDSHIELD_comp.png.DDS.json",
+      "size": 191,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_WINDSHIELD_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_WINDSHIELD_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_WINDSHIELD_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189430000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_albd.png.DDS",
+      "size": 5592580,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_albd.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_albd.png.DDS.json",
+      "size": 127,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_comp.png.DDS",
+      "size": 5592580,
+      "date": 132967492080000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_comp.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_comp.png.DDS.json",
+      "size": 191,
+      "date": 132967492080000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_norm.png.DDS",
+      "size": 5592560,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_norm.png.DDS.FLAGS",
+      "size": 21,
+      "date": 132965747140000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/Cabri_G2_Cockpit_YOKE_PEDALS_norm.png.DDS.json",
+      "size": 185,
+      "date": 132963189420000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/texture.CFG",
+      "size": 450,
+      "date": 133034035860000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/thumbnail.JPG",
+      "size": 102445,
+      "date": 133038378040000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/thumbnail_small.JPG",
+      "size": 20447,
+      "date": 133038378120000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/WarningLights_albd.png.DDS",
+      "size": 87528,
+      "date": 133166280600000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_Cabri_G2/texture/WarningLights_albd.png.DDS.json",
+      "size": 102,
+      "date": 133166280600000000
+    },
+    {
+      "path": "sv-SE.locPak",
+      "size": 10880,
+      "date": 133269987317517592
+    },
+    {
+      "path": "tr-TR.locPak",
+      "size": 11794,
+      "date": 133269987317497646
+    },
+    {
+      "path": "zh-CN.locPak",
+      "size": 10369,
+      "date": 133269987317487671
+    }
+  ]
+}

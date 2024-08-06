@@ -104,15 +104,32 @@ void SceneryCfgTest::testAircraftIndex()
 
   index.loadIndex({"testdata/MSFS/Community", "testdata/MSFS/Official/OneStore"});
 
-  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/microsoft-aircraft-bell407/aircraft.cfg"), "Bell 407");
-  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_Baron_G58/aircraft.cfg"), "BE58");
-  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_B787_10/aircraft.cfg"), "B78X");
-  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/aircraft.cfg"), "DHC2");
-  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/aircraft.cfg"), "DHC2");
-  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_A320_NEO_Livery_01/aircraft.cfg"), "");
-  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/AirPlanes/Asobo_A320_NEO/aircraft.cfg"), "A20N");
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/microsoft-aircraft-bell407/aircraft.cfg"), "407");
+  QCOMPARE(index.getCategory("SimObjects/Airplanes/microsoft-aircraft-bell407/aircraft.cfg"), "Helicopter");
 
-  QCOMPARE(index.size(), 6);
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_Cabri_G2/aircraft.cfg"), "G2CA");
+  QCOMPARE(index.getCategory("SimObjects/Airplanes/Asobo_Cabri_G2/aircraft.cfg"), "Helicopter");
+
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_Baron_G58/aircraft.cfg"), "BE58");
+  QCOMPARE(index.getCategory("SimObjects/Airplanes/Asobo_Baron_G58/aircraft.cfg"), "airplane");
+
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_B787_10/aircraft.cfg"), "B78X");
+  QCOMPARE(index.getCategory("SimObjects/Airplanes/Asobo_B787_10/aircraft.cfg"), "airplane");
+
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/aircraft.cfg"), "DHC2");
+  QCOMPARE(index.getCategory("SimObjects/Airplanes/BlackbirdSims_DHC2_Floats/aircraft.cfg"), "airplane");
+
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/aircraft.cfg"), "DHC2");
+  QCOMPARE(index.getCategory("SimObjects/Airplanes/BlackbirdSims_DHC2_Wheels/aircraft.cfg"), "airplane");
+
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/Airplanes/Asobo_A320_NEO_Livery_01/aircraft.cfg"), "");
+  QCOMPARE(index.getCategory("SimObjects/Airplanes/Asobo_A320_NEO_Livery_01/aircraft.cfg"), "");
+
+  QCOMPARE(index.getIcaoTypeDesignator("SimObjects/AirPlanes/Asobo_A320_NEO/aircraft.cfg"), "A20N");
+  QCOMPARE(index.getCategory("SimObjects/AirPlanes/Asobo_A320_NEO/aircraft.cfg"), "airplane");
+
+
+  QCOMPARE(index.size(), 7);
 }
 
 void SceneryCfgTest::testXplane()
