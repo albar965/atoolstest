@@ -47,7 +47,7 @@ private slots:
 };
 
 /* *INDENT-OFF* */
-enum class TestEnum : atools::util::FlagType
+enum class TestEnum : quint64
 {
   NONE =    0,
   ONE =     0x0000000000000001,
@@ -69,7 +69,7 @@ enum class TestEnum : atools::util::FlagType
 };
 /* *INDENT-ON* */
 
-ATOOLS_DECLARE_FLAGS(TestEnums, TestEnum)
+ATOOLS_DECLARE_FLAGS_64(TestEnums, TestEnum)
 ATOOLS_DECLARE_OPERATORS_FOR_FLAGS(TestEnums)
 
 Q_DECLARE_TYPEINFO(TestEnums, Q_PRIMITIVE_TYPE);
