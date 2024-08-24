@@ -143,7 +143,7 @@ void UtilTest::testFileOperationsLinks()
 void UtilTest::testFlags()
 {
   TestEnums test(TestEnum::NONE);
-  QCOMPARE(test, TestEnum::NONE);
+  QCOMPARE(test.asEnum(), TestEnum::NONE);
 
   test |= TestEnum::ONE64;
   QCOMPARE(static_cast<TestEnum>(test), TestEnum::ONE64);
