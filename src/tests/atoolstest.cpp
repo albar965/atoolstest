@@ -17,6 +17,7 @@
 
 #include "atoolstest.h"
 
+#include "atools.h"
 #include "util/average.h"
 #include "zip/gzip.h"
 
@@ -154,6 +155,50 @@ void AtoolsTest::testDateTimeFromString()
            << QDateTime::fromString("2022-07-31T18:54:58.876Z", Qt::ISODate);
   qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58Z\", Qt::ISODateWithMs)"
            << QDateTime::fromString("2022-07-31T18:54:58Z", Qt::ISODateWithMs);
+}
+
+void AtoolsTest::testRoll_data()
+{
+#define FUNC QString("Roll: [%1(%2)]").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
+
+  QTest::addColumn<int>("size");
+  QTest::addColumn<int>("index");
+  QTest::addColumn<int>("result");
+
+  QTest::newRow(FUNC) << 5 << -501 << 4;
+  QTest::newRow(FUNC) << 5 << -10 << 0;
+  QTest::newRow(FUNC) << 5 << -9 << 1;
+  QTest::newRow(FUNC) << 5 << -8 << 2;
+  QTest::newRow(FUNC) << 5 << -7 << 3;
+  QTest::newRow(FUNC) << 5 << -6 << 4;
+  QTest::newRow(FUNC) << 5 << -5 << 0;
+  QTest::newRow(FUNC) << 5 << -4 << 1;
+  QTest::newRow(FUNC) << 5 << -3 << 2;
+  QTest::newRow(FUNC) << 5 << -2 << 3;
+  QTest::newRow(FUNC) << 5 << -1 << 4;
+  QTest::newRow(FUNC) << 5 << 0 << 0;
+  QTest::newRow(FUNC) << 5 << 1 << 1;
+  QTest::newRow(FUNC) << 5 << 2 << 2;
+  QTest::newRow(FUNC) << 5 << 3 << 3;
+  QTest::newRow(FUNC) << 5 << 4 << 4;
+  QTest::newRow(FUNC) << 5 << 5 << 0;
+  QTest::newRow(FUNC) << 5 << 6 << 1;
+  QTest::newRow(FUNC) << 5 << 7 << 2;
+  QTest::newRow(FUNC) << 5 << 8 << 3;
+  QTest::newRow(FUNC) << 5 << 9 << 4;
+  QTest::newRow(FUNC) << 5 << 10 << 0;
+  QTest::newRow(FUNC) << 5 << 11 << 1;
+  QTest::newRow(FUNC) << 5 << 501 << 1;
+
+}
+
+void AtoolsTest::testRoll()
+{
+  QFETCH(int, size);
+  QFETCH(int, index);
+  QFETCH(int, result);
+  QCOMPARE(atools::rollIndex(size, index), result);
+
 }
 
 void AtoolsTest::testAverage()
