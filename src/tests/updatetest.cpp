@@ -71,8 +71,8 @@ void UpdateTest::testUpdateStable()
   check.setUrl(VERSION_URL);
 
   bool found = false;
-  atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
+  atools::util::Updates testUpdates;
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::Updates updates) -> void
   {
     testUpdates = updates;
     found = true;
@@ -91,8 +91,8 @@ void UpdateTest::testUpdateBeta()
   check.setUrl(VERSION_URL);
 
   bool found = false;
-  atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
+  atools::util::Updates testUpdates;
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::Updates updates) -> void
   {
     testUpdates = updates;
     found = true;
@@ -111,8 +111,8 @@ void UpdateTest::testUpdateDevelop()
   check.setUrl(VERSION_URL);
 
   bool found = false;
-  atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
+  atools::util::Updates testUpdates;
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::Updates updates) -> void
   {
     testUpdates = updates;
     found = true;
@@ -131,8 +131,8 @@ void UpdateTest::testUpdateAll()
   check.setUrl(VERSION_URL);
 
   bool found = false;
-  atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
+  atools::util::Updates testUpdates;
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::Updates updates) -> void
   {
     testUpdates = updates;
     found = true;
@@ -151,8 +151,8 @@ void UpdateTest::testUpdateForce()
   check.setUrl(VERSION_URL);
 
   bool found = false;
-  atools::util::UpdateList testUpdates;
-  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::UpdateList updates) -> void
+  atools::util::Updates testUpdates;
+  connect(&check, &UpdateCheck::updateFound, [&testUpdates, &found](atools::util::Updates updates) -> void
   {
     testUpdates = updates;
     found = true;

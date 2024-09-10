@@ -359,12 +359,12 @@ void MetarTest::testMetarSim()
            << "numNoDewpoint" << numNoDewpoint << "numNoWind" << numNoWind;
 
   // Check the number of failed since too many are not readable
-  QCOMPARE(numFailed, 168);
-  QCOMPARE(numInvalidTimestamp, 168);
-  QCOMPARE(numNoPressure, 552);
-  QCOMPARE(numNoTemp, 260);
-  QCOMPARE(numNoDewpoint, 315);
-  QCOMPARE(numNoWind, 286);
+  QCOMPARE(numFailed, 169);
+  QCOMPARE(numInvalidTimestamp, 169);
+  QCOMPARE(numNoPressure, 554);
+  QCOMPARE(numNoTemp, 261);
+  QCOMPARE(numNoDewpoint, 316);
+  QCOMPARE(numNoWind, 288);
 }
 
 void MetarTest::testMetarInterpolatedSimple()
@@ -374,7 +374,7 @@ void MetarTest::testMetarInterpolatedSimple()
     return AIRPORT_COORDS.value(airportIdent);
   });
 
-  QCOMPARE(index.read("testdata/METAR.txt", false), 9082);
+  QCOMPARE(index.read("testdata/METAR.txt", false), 9084);
 
   qDebug() << Q_FUNC_INFO << "index.size()" << index.numStationMetars();
   QCOMPARE(index.numStationMetars(), 4977);
