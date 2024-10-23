@@ -45,17 +45,17 @@ void FsUtilTest::testRunwaySplit()
   int number;
   QString designator;
   bool trueHeading;
-  runwayNameSplit("RW01T", &number, &designator, &trueHeading);
+  runwayNameSplitNum("RW01T", &number, &designator, &trueHeading);
   QCOMPARE(number, 1);
   QCOMPARE(designator, QString());
   QCOMPARE(trueHeading, true);
 
-  runwayNameSplit("RW01", &number, &designator, &trueHeading);
+  runwayNameSplitNum("RW01", &number, &designator, &trueHeading);
   QCOMPARE(number, 1);
   QCOMPARE(designator, QString());
   QCOMPARE(trueHeading, false);
 
-  runwayNameSplit("1C", &number, &designator, &trueHeading);
+  runwayNameSplitNum("1C", &number, &designator, &trueHeading);
   QCOMPARE(number, 1);
   QCOMPARE(designator, "C");
   QCOMPARE(trueHeading, false);
