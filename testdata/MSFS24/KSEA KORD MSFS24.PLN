@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document>
+    <FlightPlan.FlightPlan>
+        <DepartureID>KSEA</DepartureID>
+        <DestinationID>KSEA</DestinationID>
+        <Title>KSEA - KSEA</Title>
+        <Descr>Flight from KSEA to KSEA</Descr>
+        <FPType>IFR</FPType>
+        <AppVersion>
+            <AppVersionMajor>12</AppVersionMajor>
+            <AppVersionMinor>1</AppVersionMinor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <DepartureDetails>
+            <RunwayNumberFP>16</RunwayNumberFP>
+            <RunwayDesignatorFP>LEFT</RunwayDesignatorFP>
+            <DepartureFP>BANGR9</DepartureFP>
+            <TransitionFP>ARRIE</TransitionFP>
+        </DepartureDetails>
+        <ArrivalDetails>
+            <RunwayNumberFP>16</RunwayNumberFP>
+            <RunwayDesignatorFP>LEFT</RunwayDesignatorFP>
+            <ArrivalFP>CHINS5</ArrivalFP>
+            <TransitionFP>PDT</TransitionFP>
+        </ArrivalDetails>
+        <ApproachDetails>
+            <ApproachTypeFP>RNAV</ApproachTypeFP>
+            <RunwayNumberFP>16</RunwayNumberFP>
+            <RunwayDesignatorFP>LEFT</RunwayDesignatorFP>
+            <SuffixFP>Z</SuffixFP>
+            <TransitionFP>GRIFY</TransitionFP>
+        </ApproachDetails>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

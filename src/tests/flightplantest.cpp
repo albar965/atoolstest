@@ -137,9 +137,15 @@ void FlightplanTest::testDetectFormat()
 
   QCOMPARE(FlightplanIO::detectFormat("testdata/BPRL2.pln"), atools::fs::pln::FSX_PLN);
   QCOMPARE(FlightplanIO::detectFormat("testdata/flightplan-procs.pln"), atools::fs::pln::FSX_PLN);
+  QCOMPARE(FlightplanIO::detectFormat("testdata/IFR Yakima Air  Mcallister Field (KYKM) to Kelowna (CYLW).pln"), atools::fs::pln::FSX_PLN);
 
   QCOMPARE(FlightplanIO::detectFormat("testdata/MSFS EDXW EDDH.PLN"), atools::fs::pln::MSFS_PLN);
   QCOMPARE(FlightplanIO::detectFormat("testdata/MSFS EDDH EDDF.PLN"), atools::fs::pln::MSFS_PLN);
+
+  QCOMPARE(FlightplanIO::detectFormat("testdata/MSFS24/EDDF EDDM 2 MSFS24.pln"), atools::fs::pln::MSFS_PLN_2024);
+  QCOMPARE(FlightplanIO::detectFormat("testdata/MSFS24/EDDF EDDM MSFS24.pln"), atools::fs::pln::MSFS_PLN_2024);
+  QCOMPARE(FlightplanIO::detectFormat("testdata/MSFS24/EDDF EDDM Parking MSFS24.pln"), atools::fs::pln::MSFS_PLN_2024);
+  QCOMPARE(FlightplanIO::detectFormat("testdata/MSFS24/KSEA KORD MSFS24.PLN"), atools::fs::pln::MSFS_PLN_2024);
 
   QCOMPARE(FlightplanIO::detectFormat("testdata/flightplan-fs9.pln"), atools::fs::pln::FS9_PLN);
   QCOMPARE(FlightplanIO::detectFormat("testdata/LIDTLSZS_FSC.pln"), atools::fs::pln::FSC_PLN);
@@ -664,6 +670,35 @@ void FlightplanTest::testLoadMsfsPln()
   QCOMPARE(plan.isLnmFormat(), false);
   QCOMPARE(plan.size(), 2);
   QCOMPARE(plan.getPropertiesConst().size(), 6);
+}
+
+void FlightplanTest::testLoadMsfs24Pln()
+{
+  Flightplan plan;
+
+  plan.clearAll();
+  io.load(plan, "testdata/MSFS24/EDDF EDDM 2 MSFS24.pln");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.size(), 6);
+  QCOMPARE(plan.getPropertiesConst().size(), 6);
+
+  plan.clearAll();
+  io.load(plan, "testdata/MSFS24/EDDF EDDM MSFS24.pln");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.size(), 6);
+  QCOMPARE(plan.getPropertiesConst().size(), 6);
+
+  plan.clearAll();
+  io.load(plan, "testdata/MSFS24/EDDF EDDM Parking MSFS24.pln");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.size(), 2);
+  QCOMPARE(plan.getPropertiesConst().size(), 1);
+
+  plan.clearAll();
+  io.load(plan, "testdata/MSFS24/KSEA KORD MSFS24.PLN");
+  QCOMPARE(plan.isLnmFormat(), false);
+  QCOMPARE(plan.size(), 2);
+  QCOMPARE(plan.getPropertiesConst().size(), 10);
 }
 
 void FlightplanTest::testSaveGarminFpl()

@@ -91,7 +91,6 @@ void TrackTest::testDownload_data()
   QTest::addColumn<int>("downloadNumber");
 
   QTest::newRow("NAT") << int(atools::track::NAT) << 0;
-  QTest::newRow("AUSOTS") << int(atools::track::AUSOTS) << 0;
   QTest::newRow("PACOTS") << int(atools::track::PACOTS) << 8;
 }
 

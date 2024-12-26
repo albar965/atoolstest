@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document>
+    <FlightPlan.FlightPlan>
+        <DepartureID>EDDF</DepartureID>
+        <DestinationID>EDDM</DestinationID>
+        <Title>EDDF - EDDM</Title>
+        <Descr>Flight from EDDF to EDDM</Descr>
+        <FPType>IFR</FPType>
+        <CruisingAlt>1000000.000</CruisingAlt>
+        <AppVersion>
+            <AppVersionMajor>12</AppVersionMajor>
+            <AppVersionMinor>1</AppVersionMinor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <DepartureDetails>
+            <RunwayNumberFP>25</RunwayNumberFP>
+            <RunwayDesignatorFP>CENTER</RunwayDesignatorFP>
+            <DepartureVisualPattern>
+                <DepartureVisualPatternType>Pattern Turn</DepartureVisualPatternType>
+                <VisualPatternDistance>0.950</VisualPatternDistance>
+                <VisualPatternAltitude>1000.000</VisualPatternAltitude>
+            </DepartureVisualPattern>
+        </DepartureDetails>
+        <ApproachDetails>
+            <ApproachVisualPattern>
+                <ApproachVisualPatternType>Teardrop</ApproachVisualPatternType>
+                <VisualPatternDistance>0.950</VisualPatternDistance>
+                <VisualPatternAltitude>1000.000</VisualPatternAltitude>
+            </ApproachVisualPattern>
+        </ApproachDetails>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

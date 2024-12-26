@@ -85,6 +85,7 @@ private slots:
 
   void testLoadFsxPln();
   void testLoadMsfsPln();
+  void testLoadMsfs24Pln();
 
   void testSaveFlightGearDirect();
   void testSaveFlightGearAirway();
