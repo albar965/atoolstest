@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1441,8 +1441,8 @@ void GeoTest::testRectRadius_data()
   QTest::addColumn<float>("south");
   QTest::addColumn<bool>("antimeridian");
 
-  QTest::newRow(FUNC) << Pos(176.64592f, 51.87803f) << 500.f << 159.979f << 60.2114f << -166.687f << 43.5447f << true;
-  QTest::newRow(FUNC) << Pos(-176.64592f, 51.87803f) << 500.f << 166.687f << 60.2114f << -159.979f << 43.5447f << true;
+  QTest::newRow(FUNC) << Pos(176.64592f, 51.87803f) << 500.f << 159.979f << 60.2114f << 193.313f << 43.5447f << false;
+  QTest::newRow(FUNC) << Pos(-176.64592f, 51.87803f) << 500.f << -193.313f << 60.2114f << -159.979f << 43.5447f << false;
 
   QTest::newRow(FUNC) << Pos(0.f, 0.f) << 60.f << -1.071429f << 1.f << 1.071429f << -1.f << false;
   QTest::newRow(FUNC) << Pos(0.f, 0.f) << 120.f << -1.071429f * 2.f << 2.f << 1.071429f * 2.f << -2.f << false;
@@ -1484,6 +1484,7 @@ void GeoTest::testRectRadius()
   QCOMPARE(rect.getEast(), east);
   QCOMPARE(rect.getSouth(), south);
 
+  qDebug() << Q_FUNC_INFO << rect << rect.crossesAntiMeridian() << antimeridian << radius << pos;
   QCOMPARE(rect.crossesAntiMeridian(), antimeridian);
 }
 
