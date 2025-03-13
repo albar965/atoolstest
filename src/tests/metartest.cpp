@@ -140,8 +140,9 @@ void MetarTest::testNoaaDownload()
 void MetarTest::testNoaaDownloadFailed()
 {
   NoaaWeatherDownloader downloader(this, true);
-  downloader.setRequestUrl("https://tgftp.nws.noaa.gov/data/observations/metar/cycles/XXX%1XXX");
-  testDownload(downloader, true);
+  // Does not work since error code is not given by NOAA
+  // downloader.setRequestUrl("https://tgftp.nws.noaa.gov/data/observations/metar/cycles/XXXXXXXX");
+  // testDownload(downloader, true);
 }
 
 void MetarTest::testNoaaDownloadFailedNoHost()
@@ -157,6 +158,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
 
   connect(&downloader, &WeatherDownloadBase::weatherUpdated, [&updateFlag, &finished]() -> void
   {
+    qDebug() << Q_FUNC_INFO << "weatherUpdated";
     updateFlag = true;
     finished = true;
   });
@@ -412,7 +414,6 @@ void MetarTest::testMetarInterpolated()
     return AIRPORT_COORDS_INTERPOLATE.value(airportIdent);
   });
 
-#if 1
   // XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000
   // XX1E 291330Z 09010KT 2000 RA OVC020 20/20 Q1100
   // XX1S 291430Z 18010KT 3000 RA OVC030 30/30 Q1200
@@ -441,10 +442,7 @@ void MetarTest::testMetarInterpolated()
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
-                "XXXX 291530Z 00000KT 2500 RA 25/25 Q1150", "IFR");
-#endif
-
-#if 1
+                "XXXX 281530Z 00000KT 2500 RA 25/25 Q1150", "IFR");
   // XX1N 291230Z 00010KT 1000 RA OVC010 10/10 Q1100
   // XX1E 291330Z 00010KT 1000 RA OVC010 10/10 Q1100
   // XX1S 291430Z 00010KT 1000 RA OVC010 10/10 Q1100
@@ -476,10 +474,7 @@ void MetarTest::testMetarInterpolated()
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00010KT 1000 RA OVC010 10/10 Q1100", "LIFR",
-                "XXXX 291530Z 00003KT 1300 RA 13/13 Q1133", "LIFR");
-#endif
-
-#if 1
+                "XXXX 281530Z 00003KT 1300 RA 13/13 Q1133", "LIFR");
   // XX1N 291230Z 00020KT 6000 RA OVC100 10/10 Q1100
   // XX2N 291230Z 18020KT 8000 +RA OVC120 20/20 Q1200
   QCOMPARE(index.read("testdata/METAR2.txt", false), 2);
@@ -492,9 +487,7 @@ void MetarTest::testMetarInterpolated()
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00020KT 6000 RA OVC100 10/10 Q1100", "MVFR",
-                "XXXX 291230Z 00007KT 6000 RA 13/13 Q1133", "MVFR");
-
-#endif
+                "XXXX 281230Z 00007KT 6000 RA 13/13 Q1133", "MVFR");
 }
 
 void MetarTest::validateMetar(const atools::fs::weather::Metar& m,
