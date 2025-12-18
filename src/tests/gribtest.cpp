@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -321,9 +321,9 @@ void GribTest::testGribDownload()
 
   bool done = false, err = false;
 
-  atools::grib::GribDatasetVector testdatasets;
+  atools::grib::GribDatasetList testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetList& datasets, QString) -> void
   {
     testdatasets = datasets;
     done = true;
@@ -354,9 +354,9 @@ void GribTest::testGribDownloadFail()
 
   bool done = false, err = false;
 
-  atools::grib::GribDatasetVector testdatasets;
+  atools::grib::GribDatasetList testdatasets;
   connect(&downloader, &GribDownloader::gribDownloadFinished,
-          [&testdatasets, &err, &done](const atools::grib::GribDatasetVector& datasets, QString) -> void
+          [&testdatasets, &err, &done](const atools::grib::GribDatasetList& datasets, QString) -> void
   {
     testdatasets = datasets;
     done = true;
@@ -384,7 +384,7 @@ void GribTest::testGribLoadWinds()
   GribReader reader(verbose);
   reader.readFile("testdata/global_winds.grib");
 
-  const atools::grib::GribDatasetVector& datasets = reader.getDatasets();
+  const atools::grib::GribDatasetList& datasets = reader.getDatasets();
 
   QCOMPARE(datasets.size(), 4);
   QCOMPARE(datasets.at(0).getData().size(), 65160);
@@ -425,7 +425,7 @@ void GribTest::testGribLoadLnm()
   lnmDatasetTest(reader.getDatasets(), QDateTime(QDate(2019, 04, 27), QTime(6, 0, 0), Qt::UTC));
 }
 
-void GribTest::lnmDatasetTest(const atools::grib::GribDatasetVector& datasets, const QDateTime& datetime)
+void GribTest::lnmDatasetTest(const atools::grib::GribDatasetList& datasets, const QDateTime& datetime)
 {
   QCOMPARE(datasets.size(), 10);
 

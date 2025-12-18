@@ -734,7 +734,7 @@ void GeoTest::testLineStringAntiMeridian()
 void GeoTest::testLineStringAntiMeridianList()
 {
   LineString linestring;
-  QVector<LineString> splits;
+  QList<LineString> splits;
 
   // "NADI FIR"
   linestring = LineString({170.f, 3.5f, 179.996002f, 3.5f, 179.996002f, -5.f, -179.999985f, -5.f, -171.f, -5.f, -172.938446f, -9.464358f,
@@ -750,27 +750,27 @@ void GeoTest::testLineStringAntiMeridianList()
   splits = linestring.splitAtAntiMeridianList();
   qDebug() << Q_FUNC_INFO << splits;
   QCOMPARE(splits.size(), 2);
-  QCOMPARE(splits, QVector<LineString>({LineString({170.f, 10.f, 180.f, 10.151082f, 180.f, -10.15108f, 170.f, -10.f}),
+  QCOMPARE(splits, QList<LineString>({LineString({170.f, 10.f, 180.f, 10.151082f, 180.f, -10.15108f, 170.f, -10.f}),
                                         LineString({-180.f, 10.151082f, -170.f, 10.f, -170.f, -10.f, -180.f, -10.15108f})}));
 
   linestring = LineString({170.f, 10.f, 170.f, -10.f, -170.f, -10.f, -170.f, 10.f, 170.f, 10.f});
   splits = linestring.splitAtAntiMeridianList();
   qDebug() << Q_FUNC_INFO << splits;
   QCOMPARE(splits.size(), 2);
-  QCOMPARE(splits, QVector<LineString>({LineString({170.f, 10.f, 170.f, -10.f, 180.f, -10.151082f, 180.f, 10.151080f}),
+  QCOMPARE(splits, QList<LineString>({LineString({170.f, 10.f, 170.f, -10.f, 180.f, -10.151082f, 180.f, 10.151080f}),
                                         LineString({-180.f, -10.151082f, -170.f, -10.f, -170.f, 10.f, -180.f, 10.151080f})}));
 
   linestring = LineString({140.f, 10.f, 160.f, 10.f, 160.f, -10.f, 140.f, -10.f, 140.f, 10.f});
   splits = linestring.splitAtAntiMeridianList();
   qDebug() << Q_FUNC_INFO << splits;
   QCOMPARE(splits.size(), 1);
-  QCOMPARE(splits, QVector<LineString>({LineString({140.f, 10.f, 160.f, 10.f, 160.f, -10.f, 140.f, -10.f})}));
+  QCOMPARE(splits, QList<LineString>({LineString({140.f, 10.f, 160.f, 10.f, 160.f, -10.f, 140.f, -10.f})}));
 
   linestring = LineString({140.f, 10.f, 140.f, -10.f, 160.f, -10.f, 160.f, 10.f, 140.f, 10.f});
   splits = linestring.splitAtAntiMeridianList();
   qDebug() << Q_FUNC_INFO << splits;
   QCOMPARE(splits.size(), 1);
-  QCOMPARE(splits, QVector<LineString>({LineString({140.f, 10.f, 140.f, -10.f, 160.f, -10.f, 160.f, 10.f})}));
+  QCOMPARE(splits, QList<LineString>({LineString({140.f, 10.f, 140.f, -10.f, 160.f, -10.f, 160.f, 10.f})}));
 }
 
 const static atools::geo::LineString track({atools::geo::Pos(-8.912841278937394, 52.60663708318238),
@@ -809,7 +809,7 @@ void GeoTest::testBinaryMsaGeo_data()
   QTest::addColumn<float>("radius");
   QTest::addColumn<float>("lat");
   QTest::addColumn<float>("lon");
-  QTest::addColumn<QVector<float> >("bearingAltitude");
+  QTest::addColumn<QList<float> >("bearingAltitude");
 
   // area_code  icao_code  airport_identifier  msa_center  msa_center_latitude  msa_center_longitude
   // magnetic_true_indicator  multiple_code  radius_limit
@@ -818,31 +818,31 @@ void GeoTest::testBinaryMsaGeo_data()
 
   // USA K7 06FA PHK 26.78274167 -80.69143333 M  25 180 26
   QTest::newRow("USA K7 06FA PHK") << 25.f << 26.78274167f << -80.69143333f
-                                   << QVector<float>({180.f, 26.f});
+                                   << QList<float>({180.f, 26.f});
 
   // AFR DA DAAP ILZ 26.72005 8.63577222 M 25 180 43
   QTest::newRow("AFR DA DAAP ILZ") << 25.f << 26.72005f << 8.63577222f
-                                   << QVector<float>({180.f, 43.f});
+                                   << QList<float>({180.f, 43.f});
 
   // AFR DA DAAG MAR 36.68476389 2.78216111 M 25 270 71 90 40
   QTest::newRow("AFR DA DAAG MAR") << 25.f << 36.68476389f << 2.78216111f
-                                   << QVector<float>({270.f, 71.f, 90.f, 40.f});
+                                   << QList<float>({270.f, 71.f, 90.f, 40.f});
 
   // AFR DA DAAG ZEM 36.795 3.57083333 M 25 180 44 270 85 360 53 90 40
   QTest::newRow("AFR DA DAAG ZEM") << 25.f << 36.795f << 3.57083333f
-                                   << QVector<float>({180.f, 44.f, 270.f, 85.f, 360.f, 53.f, 90.f, 40.f});
+                                   << QList<float>({180.f, 44.f, 270.f, 85.f, 360.f, 53.f, 90.f, 40.f});
 
   // AFR DA DAAJ DJA 24.28772778 9.45334167 M 25 180 83 360 79
   QTest::newRow("AFR DA DAAJ DJA") << 25.f << 24.28772778f << 9.45334167f
-                                   << QVector<float>({180.f, 83.f, 360.f, 79.f});
+                                   << QList<float>({180.f, 83.f, 360.f, 79.f});
 
   // AFR DA DAAS STF 36.17666667 5.28861111 M A 25 240 69 320 84 65 78 155 87
   QTest::newRow("AFR DA DAAS STF A") << 25.f << 36.17666667f << 5.28861111f
-                                     << QVector<float>({240.f, 69.f, 320.f, 84.f, 65.f, 78.f, 155.f, 87.f});
+                                     << QList<float>({240.f, 69.f, 320.f, 84.f, 65.f, 78.f, 155.f, 87.f});
 
   // AFR DA DAAS STF 36.17666667 5.28861111 M B 25 180 87 270 83
   QTest::newRow("AFR DA DAAS STF B") << 25.f << 36.17666667f << 5.28861111f
-                                     << QVector<float>({180.f, 87.f, 270.f, 83.f, });
+                                     << QList<float>({180.f, 87.f, 270.f, 83.f, });
 }
 
 void GeoTest::testBinaryMsaGeo()
@@ -850,7 +850,7 @@ void GeoTest::testBinaryMsaGeo()
   QFETCH(float, radius);
   QFETCH(float, lat);
   QFETCH(float, lon);
-  QFETCH(QVector<float>, bearingAltitude);
+  QFETCH(QList<float>, bearingAltitude);
 
   atools::fs::common::BinaryMsaGeometry geo;
   geo.addSectors(bearingAltitude);
@@ -1494,7 +1494,7 @@ void GeoTest::testPolyOrient_data()
   QTest::addColumn<int>("orientation");
 
   QTest::newRow(FUNC) << QPolygonF(
-    QVector<QPointF>({QPointF(1.f, 1.f), QPointF(2.f, 2.f)})
+    QList<QPointF>({QPointF(1.f, 1.f), QPointF(2.f, 2.f)})
       ) << static_cast<int>(atools::util::INVALID_TOO_SMALL);
 
   QTest::newRow(FUNC) << QPolygonF({
@@ -1539,7 +1539,7 @@ void GeoTest::testPolyOrient()
 void GeoTest::testPolyLongest_data()
 {
   QTest::addColumn<QPolygonF>("polygon");
-  QTest::addColumn<QVector<int> >("expected");
+  QTest::addColumn<QList<int> >("expected");
 
   QPolygonF polygon({
     /*  0 */ {0, 0}, /* -> 1 */
@@ -1560,30 +1560,30 @@ void GeoTest::testPolyLongest_data()
   });
 
   QTransform transform;
-  QTest::newRow(FUNC) << polygon << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
-  QTest::newRow(FUNC) << polygon.translated(QPointF(100, 100)) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << polygon << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << polygon.translated(QPointF(100, 100)) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   transform.rotate(45);
-  QTest::newRow(FUNC) << transform.map(polygon) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << transform.map(polygon) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   transform.rotate(45);
-  QTest::newRow(FUNC) << transform.map(polygon) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << transform.map(polygon) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   transform.rotate(45);
-  QTest::newRow(FUNC) << transform.map(polygon) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << transform.map(polygon) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   transform.scale(10., 10.);
   transform.rotate(45);
-  QTest::newRow(FUNC) << transform.map(polygon) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << transform.map(polygon) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   transform.rotate(45);
-  QTest::newRow(FUNC) << transform.map(polygon) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << transform.map(polygon) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   transform.rotate(45);
-  QTest::newRow(FUNC) << transform.map(polygon) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << transform.map(polygon) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   transform.rotate(45);
-  QTest::newRow(FUNC) << transform.map(polygon) << QVector<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
+  QTest::newRow(FUNC) << transform.map(polygon) << QList<int>({6, 4, 9, 3, 5, 2, 13, 1, 0, 7, 8, 10, 11, 12});
 
   QPolygonF polygonWrap({
     /* 0 */ {0, 0}, /* -> 2 */
@@ -1592,7 +1592,7 @@ void GeoTest::testPolyLongest_data()
     /* 3 */ {5, 7}, /* -> 2 */
     /* 4 */ {0, 10}, /* -> 1 */
   });
-  QTest::newRow(FUNC) << polygonWrap << QVector<int>({4, 0, 3, 1, 2});
+  QTest::newRow(FUNC) << polygonWrap << QList<int>({4, 0, 3, 1, 2});
 
   QPolygonF polygonWrap2({
     /* 0 */ {0, 0}, /* -> 2 */
@@ -1602,18 +1602,18 @@ void GeoTest::testPolyLongest_data()
     /* 4 */ {0, 10}, /* -> 1 */
     /* 5 */ {0, 0}, /* -> 2 */
   });
-  QTest::newRow(FUNC) << polygonWrap2 << QVector<int>({4, 0, 3, 1, 2});
+  QTest::newRow(FUNC) << polygonWrap2 << QList<int>({4, 0, 3, 1, 2});
 }
 
 void GeoTest::testPolyLongest()
 {
   QFETCH(QPolygonF, polygon);
-  QFETCH(QVector<int>, expected);
+  QFETCH(QList<int>, expected);
 
   atools::util::PolygonLineDistances result =
     atools::util::PolygonLineDistance::getLongPolygonLines(polygon, QRectF(-1024., -1024., 2048., 2048.), 15, 0.f);
 
-  for(const atools::util::PolygonLineDistance& line : qAsConst(result))
+  for(const atools::util::PolygonLineDistance& line : std::as_const(result))
     qDebug() << Q_FUNC_INFO << line.getIndexFrom() << line.getIndexTo() << line.getLength();
 
   qDebug() << Q_FUNC_INFO << expected;
@@ -1631,8 +1631,8 @@ void GeoTest::testPolyLongestEpsilon_data()
 {
   QTest::addColumn<QPolygonF>("polygon");
   QTest::addColumn<int>("limit");
-  QTest::addColumn<QVector<int> >("expectedFrom");
-  QTest::addColumn<QVector<int> >("expectedTo");
+  QTest::addColumn<QList<int> >("expectedFrom");
+  QTest::addColumn<QList<int> >("expectedTo");
 
   // LANDS END TRANSIT CORRIDOR,A Zoom 14,7NM
   QPolygonF polygonA({
@@ -1644,8 +1644,8 @@ void GeoTest::testPolyLongestEpsilon_data()
     /* 5 */ {390.7, 199.4}, /* -> 2 3     */
     /* 6 */ {493.7, 145.6}, /* -> 2       */
     /* 7 */ {596.9, 92.0}, /*  -> 2       */});
-  QTest::newRow(FUNC) << polygonA << 5 << QVector<int>({0, 5, 4, 2, 3}) << QVector<int>({2, 7, 5, 3, 4});
-  QTest::newRow(FUNC) << polygonA << 3 << QVector<int>({0, 5, 4}) << QVector<int>({2, 7, 5});
+  QTest::newRow(FUNC) << polygonA << 5 << QList<int>({0, 5, 4, 2, 3}) << QList<int>({2, 7, 5, 3, 4});
+  QTest::newRow(FUNC) << polygonA << 3 << QList<int>({0, 5, 4}) << QList<int>({2, 7, 5});
 
   // LANDS END TRANSIT CORRIDOR,B
   QPolygonF polygonB({
@@ -1673,15 +1673,15 @@ void GeoTest::testPolyLongestEpsilon_data()
     /* 21 */ {417.8, 126.4}, /* -> 2   */
     /* 22 */ {520.4, 72.6}, /*  -> 2   */
   });
-  QTest::newRow(FUNC) << polygonB << 4 << QVector<int>({18, 2, 0, 1}) << QVector<int>({22, 5, 1, 2});
+  QTest::newRow(FUNC) << polygonB << 4 << QList<int>({18, 2, 0, 1}) << QList<int>({22, 5, 1, 2});
 }
 
 void GeoTest::testPolyLongestEpsilon()
 {
   QFETCH(QPolygonF, polygon);
   QFETCH(int, limit);
-  QFETCH(QVector<int>, expectedFrom);
-  QFETCH(QVector<int>, expectedTo);
+  QFETCH(QList<int>, expectedFrom);
+  QFETCH(QList<int>, expectedTo);
 
   const atools::util::PolygonLineDistances result =
     atools::util::PolygonLineDistance::getLongPolygonLines(polygon, QRectF(-1024., -1024., 2048., 2048.), limit, 2.f);

@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2024 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -880,10 +880,10 @@ void FlightplanTest::testSaveGpx()
   for(int i = 0; i < track2.size(); i++)
     track2[i].setAltitude((i + 1) * 22.f);
 
-  const QVector<atools::geo::LineString> tracks({track1, track2});
+  const QList<atools::geo::LineString> tracks({track1, track2});
 
-  qint64 mSecsSinceEpoch = QDateTime::currentDateTime().toMSecsSinceEpoch(); // 1600000000000
-  QVector<qint64> timestamps1, timestamps2;
+  qint64 mSecsSinceEpoch = QDateTime::currentMSecsSinceEpoch(); // 1600000000000
+  QList<qint64> timestamps1, timestamps2;
   for(int i = 0; i < track1.size(); i++)
     timestamps1.append(mSecsSinceEpoch /*- 7200*/ + i * 1000);
   for(int i = 0; i < track2.size(); i++)

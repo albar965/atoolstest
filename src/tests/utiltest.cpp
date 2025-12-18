@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2024 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -210,7 +210,7 @@ void UtilTest::testProps()
   QByteArray bytes2((const char *)(byteTest2), 12);
 
   Props props;
-  props.addProps(QVector<Prop>({Prop(KEY_BOOL, true), Prop(KEY_BOOL, false),
+  props.addProps(QList<Prop>({Prop(KEY_BOOL, true), Prop(KEY_BOOL, false),
                                 Prop(KEY_BYTE, -1),
                                 Prop(KEY_BYTE, 127),
                                 Prop(KEY_BYTE, 128),

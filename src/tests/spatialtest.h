@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ private:
     }
 
   };
-  void printObjects(const QVector<Data>& objects, const atools::geo::Pos& origin);
+  void printObjects(const QList<Data>& objects, const atools::geo::Pos& origin);
   void printObject(int idx, const Data& data, const atools::geo::Pos& origin);
 
   atools::geo::SpatialIndex<Data> *index = nullptr;

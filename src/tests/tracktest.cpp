@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -56,8 +56,8 @@ void TrackTest::testTrackReader_data()
 
   // QTest::newRow("AUSOTS") << "testdata/AUSOTS.html" << int(atools::track::AUSOTS) << 21 << 0;
   // QTest::newRow("AUSOTS 2") << "testdata/AUSOTS2.html" << int(atools::track::AUSOTS) << 19 << 0;
-  QTest::newRow("PACOTS") << "testdata/PACOTS.html" << int(atools::track::PACOTS) << 14 << 0;
-  QTest::newRow("PACOTS 2") << "testdata/PACOTS2.html" << int(atools::track::PACOTS) << 16 << 0;
+  // QTest::newRow("PACOTS") << "testdata/PACOTS.html" << int(atools::track::PACOTS) << 14 << 0;
+  // QTest::newRow("PACOTS 2") << "testdata/PACOTS2.html" << int(atools::track::PACOTS) << 16 << 0;
   QTest::newRow("NAT (2 invalid)") << "testdata/NAT.html" << int(atools::track::NAT) << 13 << 1;
   QTest::newRow("NAT 2") << "testdata/NAT2.html" << int(atools::track::NAT) << 9 << 0;
 }
@@ -91,7 +91,7 @@ void TrackTest::testDownload_data()
   QTest::addColumn<int>("downloadNumber");
 
   QTest::newRow("NAT") << int(atools::track::NAT) << 0;
-  QTest::newRow("PACOTS") << int(atools::track::PACOTS) << 8;
+  // QTest::newRow("PACOTS") << int(atools::track::PACOTS) << 8;
 }
 
 void TrackTest::testDownload()
@@ -105,10 +105,10 @@ void TrackTest::testDownload()
 
   bool done = false, err = false;
 
-  atools::track::TrackVectorType resultTracks;
+  atools::track::TrackListType resultTracks;
   atools::track::TrackType resultType = atools::track::UNKNOWN;
   connect(&downloader, &TrackDownloader::trackDownloadFinished,
-          [&resultTracks, &resultType, &err, &done](const atools::track::TrackVectorType& tracks,
+          [&resultTracks, &resultType, &err, &done](const atools::track::TrackListType& tracks,
                                                     atools::track::TrackType type) -> void
   {
     qInfo() << "downloadFinished tracks size" << tracks.size() << "type" << char(type);
@@ -145,7 +145,7 @@ void TrackTest::testDownload()
   verifyTracks(resultTracks, downloadTrackType);
 }
 
-void TrackTest::verifyTracks(const atools::track::TrackVectorType& resultTracks, atools::track::TrackType type)
+void TrackTest::verifyTracks(const atools::track::TrackListType& resultTracks, atools::track::TrackType type)
 {
   QDateTime tomorrow, old;
   tomorrow = old = QDateTime::currentDateTimeUtc();

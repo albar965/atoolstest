@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -15,9 +15,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include "exception.h"
 #include "fs/sc/simconnecttypes.h"
-#include "geo/calculations.h"
 
 #include "tests/airspacetest.h"
 #include "tests/atoolstest.h"
@@ -59,7 +57,7 @@
             } \
           } \
           else \
-          qStdOut() << "Skipping test" << # name << "since condition" << # condition << "is false" << endl; \
+          qStdOut() << "Skipping test" << # name << "since condition" << # condition << "is false" << Qt::endl; \
         }
 
 #define RUNTESTEXT(name) \
@@ -68,14 +66,14 @@
           { \
             name tst; \
             runtest(tst, messages, otherOptions); \
-            qStdOut() << "Execution time for" << # name << timer.restart() << "ms" << endl; \
+            qStdOut() << "Execution time for" << # name << timer.restart() << "ms" << Qt::endl; \
           } \
         }
 
 #define RUNTEST(name) \
         { \
           name tst; \
-          QTest::qExec(&tst, argCount, argVector); \
+          QTest::qExec(&tst, argCount, argList); \
         }
 
 #define DEFINETEST(name) \
@@ -85,11 +83,11 @@
 
 // Forward declarations
 void test();
-void runtest(QObject& testObject, QVector<std::pair<int, QString> >& messages, const QStringList& options);
+void runtest(QObject& testObject, QList<std::pair<int, QString> >& messages, const QStringList& options);
 void addOption(QCommandLineParser *parser, const QString& shortOpt);
 
 static int argCount = 0;
-static char **argVector = nullptr;
+static char **argList = nullptr;
 static QCommandLineParser *parser = nullptr;
 static QStringList otherOptions;
 
@@ -107,13 +105,10 @@ int main(int argc, char *argv[])
   Q_INIT_RESOURCE(atools);
 
   // Register all types to allow conversion from/to QVariant and thus reading/writing into settings
-  atools::geo::registerMetaTypes();
   atools::fs::sc::registerMetaTypes();
 
-  qRegisterMetaTypeStreamOperators<TestEnums>();
-
   argCount = argc;
-  argVector = argv;
+  argList = argv;
 
   initIo();
 
@@ -125,12 +120,13 @@ int main(int argc, char *argv[])
 
   qStdOut() << "SSL supported" << QSslSocket::supportsSsl()
             << "build library" << QSslSocket::sslLibraryBuildVersionString()
-            << "library" << QSslSocket::sslLibraryVersionString() << endl;
+            << "library" << QSslSocket::sslLibraryVersionString() << Qt::endl;
 
-  qStdOut() << "Starting tests ..." << endl;
-  qStdOut() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion() << endl;
-  qStdOut() << "LANG=" << QProcessEnvironment::systemEnvironment().value("LANG") << endl;
-  qStdOut() << "LANGUAGE=" << QProcessEnvironment::systemEnvironment().value("LANGUAGE") << endl;
+  qStdOut() << "Starting tests ..." << Qt::endl;
+  qStdOut() << QCoreApplication::applicationName() << QCoreApplication::applicationVersion() << Qt::endl;
+  qStdOut() << QCoreApplication::applicationFilePath() << Qt::endl;
+  qStdOut() << "LANG=" << QProcessEnvironment::systemEnvironment().value("LANG") << Qt::endl;
+  qStdOut() << "LANGUAGE=" << QProcessEnvironment::systemEnvironment().value("LANGUAGE") << Qt::endl;
 
   // Command line reading
   parser = new QCommandLineParser();
@@ -205,7 +201,7 @@ int main(int argc, char *argv[])
 void test()
 {
   // status |= QTest::qExec(&tc, argc, argv);
-  QVector<std::pair<int, QString> > messages;
+  QList<std::pair<int, QString> > messages;
   try
   {
     QElapsedTimer timerTotal;
@@ -236,11 +232,11 @@ void test()
     RUNTESTEXT(UtilTest)
     RUNTESTEXT(VersionTest)
 
-    qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << endl;
+    qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << Qt::endl;
   }
   catch(std::exception& e)
   {
-    qStdErr() << "*** Caught exception" << e.what() << endl;
+    qStdErr() << "*** Caught exception" << e.what() << Qt::endl;
   }
 
   bool failed = false;
@@ -248,20 +244,20 @@ void test()
   {
     if(msg.first > 0)
     {
-      qStdErr() << "*** " << msg.second << "FAILED" << msg.first << endl;
+      qStdErr() << "*** " << msg.second << "FAILED" << msg.first << Qt::endl;
       failed = true;
     }
     else
-      qStdOut() << msg.second << "Success" << endl;
+      qStdOut() << msg.second << "Success" << Qt::endl;
   }
 
-  qStdOut() << "exit" << static_cast<int>(failed) << endl;
+  qStdOut() << "exit" << static_cast<int>(failed) << Qt::endl;
 
   deinitIo();
   QApplication::exit(failed);
 }
 
-void runtest(QObject& testObject, QVector<std::pair<int, QString> >& messages, const QStringList& options)
+void runtest(QObject& testObject, QList<std::pair<int, QString> >& messages, const QStringList& options)
 {
   int result = QTest::qExec(&testObject, options);
   messages.append(std::make_pair(result, QString(testObject.metaObject()->className())));

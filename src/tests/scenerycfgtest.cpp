@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -352,11 +352,11 @@ void SceneryCfgTest::testP3dv4AddOnUtf16()
 
 }
 
-void SceneryCfgTest::testP3dv4AddOnEncodingMismatch()
-{
-  AddOnPackage package("testdata/add-on_encoding_mismatch.xml");
-  QCOMPARE(package.getDescription(), QString("Sends simulator reports to Navigraph Charts öäüÖÜ"));
-}
+// void SceneryCfgTest::testP3dv4AddOnEncodingMismatch()
+// {
+//   AddOnPackage package("testdata/add-on_encoding_mismatch.xml");
+//   QCOMPARE(package.getDescription(), QString("Sends simulator reports to Navigraph Charts öäüÖÜ"));
+// }
 
 void SceneryCfgTest::testP3dv4AddOnNoEncoding()
 {

@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -365,7 +365,7 @@ void RouteTest::testRouteFinder()
   bool actualResult = router.calculateRoute(from, to, 0, Mode(mode));
 
   float actualDistance;
-  QVector<RouteLeg> routeLegs;
+  QList<RouteLeg> routeLegs;
   router.extractLegs(routeLegs, actualDistance);
 
   qDebug() << "res" << actualResult
@@ -377,7 +377,7 @@ void RouteTest::testRouteFinder()
   QCOMPARE(actualResult, result);
 
   QVERIFY(atools::almostEqual(meterToNm(actualDistance), dist, 10.f));
-  QVERIFY(atools::almostEqual(routeLegs.size(), num, 5));
+  QVERIFY(atools::almostEqual(routeLegs.size(), static_cast<qsizetype>(num), static_cast<qsizetype>(5)));
 }
 
 void RouteTest::testRouteNeighbors_data()
@@ -542,7 +542,7 @@ void RouteTest::printNearestResult(RouteNetwork *net,
   {
     const Node& node = net->getNode(result.nodes.at(i));
     qDebug() << "to origin" << meterToNm(node.getPosition().distanceMeterTo(origin)) << "nm"
-             << "to dest" << meterToNm(node.getPosition().distanceMeterTo(dest)) << "nm" << endl
+             << "to dest" << meterToNm(node.getPosition().distanceMeterTo(dest)) << "nm" << Qt::endl
              << "#" << i << "index" << result.nodes.at(i) << node;
     qDebug() << result.edges.at(i);
   }

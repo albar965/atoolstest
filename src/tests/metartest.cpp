@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2024 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -424,25 +424,26 @@ void MetarTest::testMetarInterpolated()
   atools::fs::weather::Metar metar;
 
   metar = index.getMetar(QString(), AIRPORT_COORDS_INTERPOLATE.value("XX1N"));
-  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  qDebug() << Q_FUNC_INFO << Qt::endl << "===================" << Qt::endl << metar << Qt::endl << "============";
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
                 QString(), QString());
 
   metar = index.getMetar("XX1N", AIRPORT_COORDS_INTERPOLATE.value("XX1N"));
-  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  qDebug() << Q_FUNC_INFO << Qt::endl << "===================" << Qt::endl << metar << Qt::endl << "============";
   validateMetar(metar,
                 "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
                 QString(), QString(),
                 QString(), QString());
 
   metar = index.getMetar(QString(), atools::geo::Pos(0.f, 0.f));
-  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  qDebug() << Q_FUNC_INFO << Qt::endl << "===================" << Qt::endl << metar << Qt::endl << "============";
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000", "LIFR",
-                "XXXX 281530Z 00000KT 2500 RA 25/25 Q1150", "IFR");
+                "XXXX 291530Z 00000KT 2500 RA 25/25 Q1150", "IFR");
+
   // XX1N 291230Z 00010KT 1000 RA OVC010 10/10 Q1100
   // XX1E 291330Z 00010KT 1000 RA OVC010 10/10 Q1100
   // XX1S 291430Z 00010KT 1000 RA OVC010 10/10 Q1100
@@ -456,25 +457,25 @@ void MetarTest::testMetarInterpolated()
   QCOMPARE(index.numStationMetars(), 8);
 
   metar = index.getMetar(QString(), AIRPORT_COORDS_INTERPOLATE.value("XX2N"));
-  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  qDebug() << Q_FUNC_INFO << Qt::endl << "===================" << Qt::endl << metar << Qt::endl << "============";
   validateMetar(metar,
                 QString(), QString(),
                 "XX2N 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200", "IFR",
                 QString(), QString());
 
   metar = index.getMetar("XX2N", AIRPORT_COORDS_INTERPOLATE.value("XX2N"));
-  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  qDebug() << Q_FUNC_INFO << Qt::endl << "===================" << Qt::endl << metar << Qt::endl << "============";
   validateMetar(metar,
                 "XX2N 291230Z 18010KT 2000 +RA OVC020 20/20 Q1200", "IFR",
                 QString(), QString(),
                 QString(), QString());
 
   metar = index.getMetar(QString(), atools::geo::Pos(0.f, 0.f));
-  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  qDebug() << Q_FUNC_INFO << Qt::endl << "===================" << Qt::endl << metar << Qt::endl << "============";
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00010KT 1000 RA OVC010 10/10 Q1100", "LIFR",
-                "XXXX 281530Z 00003KT 1300 RA 13/13 Q1133", "LIFR");
+                "XXXX 291530Z 00003KT 1300 RA 13/13 Q1133", "LIFR");
   // XX1N 291230Z 00020KT 6000 RA OVC100 10/10 Q1100
   // XX2N 291230Z 18020KT 8000 +RA OVC120 20/20 Q1200
   QCOMPARE(index.read("testdata/METAR2.txt", false), 2);
@@ -482,12 +483,12 @@ void MetarTest::testMetarInterpolated()
   QCOMPARE(index.numStationMetars(), 2);
 
   metar = index.getMetar(QString(), atools::geo::Pos(0.f, 0.f));
-  qDebug() << Q_FUNC_INFO << endl << "===================" << endl << metar << endl << "============";
+  qDebug() << Q_FUNC_INFO << Qt::endl << "===================" << Qt::endl << metar << Qt::endl << "============";
 
   validateMetar(metar,
                 QString(), QString(),
                 "XX1N 291230Z 00020KT 6000 RA OVC100 10/10 Q1100", "MVFR",
-                "XXXX 281230Z 00007KT 6000 RA 13/13 Q1133", "MVFR");
+                "XXXX 291230Z 00007KT 6000 RA 13/13 Q1133", "MVFR");
 }
 
 void MetarTest::validateMetar(const atools::fs::weather::Metar& m,

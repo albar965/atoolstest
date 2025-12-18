@@ -1,5 +1,5 @@
 #*****************************************************************************
-# Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+# Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ VERSION_NUMBER=4.1.0.develop
 QT += sql xml core widgets testlib network
 QT -= gui
 
-CONFIG += console testcase build_all c++14
+CONFIG += console testcase build_all c++17
 CONFIG -= app_bundle debug_and_release debug_and_release_target
 
 TARGET = atoolstest
@@ -68,6 +68,7 @@ TEMPLATE = app
 
 ATOOLS_INC_PATH=$$(ATOOLS_INC_PATH)
 ATOOLS_LIB_PATH=$$(ATOOLS_LIB_PATH)
+ATOOLS_NO_QT5COMPAT=$$(ATOOLS_NO_QT5COMPAT)
 OPENSSL_PATH_WIN32=$$(OPENSSL_PATH_WIN32)
 OPENSSL_PATH_WIN64=$$(OPENSSL_PATH_WIN64)
 GIT_PATH=$$(ATOOLS_GIT_PATH)
@@ -125,6 +126,11 @@ win32 {
     OPENSSL_PATH_WIN=$$(OPENSSL_PATH_WIN64)
   }
 }
+
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
+
+# https://doc.qt.io/qt-6.5/qtcore5-index.html - needed for QTextCodec
+!isEqual(ATOOLS_NO_QT5COMPAT, "true"): QT += core5compat
 
 macx {
   isEmpty(GIT_PATH) : GIT_PATH=git
@@ -282,12 +288,15 @@ unix:!macx {
   deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libicudata.so*  $$DEPLOY_DIR_LIB &&
   deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libicui18n.so*  $$DEPLOY_DIR_LIB &&
   deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libicuuc.so*  $$DEPLOY_DIR_LIB &&
-  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt5Gui.so*  $$DEPLOY_DIR_LIB &&
-  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt5Core.so*  $$DEPLOY_DIR_LIB &&
-  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt5Sql.so*  $$DEPLOY_DIR_LIB &&
-  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt5Widgets.so*  $$DEPLOY_DIR_LIB &&
-  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt5Test.so*  $$DEPLOY_DIR_LIB &&
-  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt5Network.so*  $$DEPLOY_DIR_LIB
+  !isEqual(ATOOLS_NO_QT5COMPAT, "true") {
+    deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt6Core5Compat.so*  $$DEPLOY_DIR_LIB &&
+  }
+  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt6Gui.so*  $$DEPLOY_DIR_LIB &&
+  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt6Core.so*  $$DEPLOY_DIR_LIB &&
+  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt6Sql.so*  $$DEPLOY_DIR_LIB &&
+  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt6Widgets.so*  $$DEPLOY_DIR_LIB &&
+  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt6Test.so*  $$DEPLOY_DIR_LIB &&
+  deploy.commands += cp -vfa $$[QT_INSTALL_LIBS]/libQt6Network.so*  $$DEPLOY_DIR_LIB
 }
 
 unix {

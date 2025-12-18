@@ -240,7 +240,7 @@ void MagdecTest::testWmm()
       for(float lonX = -180.f; lonX < 180.f; lonX += 1.f)
       {
         out << i++ << " latY " << latY << " lonX " << lonX
-            << " decl " << tool.getMagVar(atools::geo::Pos(lonX, latY)) << endl;
+            << " decl " << tool.getMagVar(atools::geo::Pos(lonX, latY)) << Qt::endl;
       }
     }
   }

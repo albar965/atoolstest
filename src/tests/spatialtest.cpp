@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2020 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@
 
 #include "geo/pos.h"
 #include "geo/calculations.h"
-#include "geo/linestring.h"
 #include "util/csvreader.h"
 #include "geo/spatialindex.h"
 #include "exception.h"
@@ -56,7 +55,6 @@ void SpatialTest::initTestCase()
     int idIndex = -1, identIndex = -1, regionIndex = -1, lonIndex = -1, latIndex = -1;
 
     QTextStream stream(&file);
-    stream.setCodec("UTF-8");
 
     int lineNum = 0;
     while(!stream.atEnd())
@@ -131,7 +129,7 @@ void SpatialTest::printObject(int idx, const Data& data, const atools::geo::Pos&
            << atools::geo::meterToNm(origin.distanceMeterTo(data.pos)) << "nm";
 }
 
-void SpatialTest::printObjects(const QVector<Data>& objects, const atools::geo::Pos& origin)
+void SpatialTest::printObjects(const QList<Data>& objects, const atools::geo::Pos& origin)
 {
   // Print a limited number of objects with a ellipse between start and end block
   qDebug() << "size" << objects.size();
@@ -173,7 +171,7 @@ void SpatialTest::testSpatialNearest()
   QElapsedTimer timer;
   timer.start();
 
-  QVector<Data> objects;
+  QList<Data> objects;
   index->getNearest(objects, pos, number);
   qDebug() << Q_FUNC_INFO << timer.restart() << "ms";
 
@@ -203,7 +201,7 @@ void SpatialTest::testSpatialRadius()
   QElapsedTimer timer;
   timer.start();
 
-  QVector<Data> objects;
+  QList<Data> objects;
   index->getRadius(objects, pos, atools::geo::nmToMeter(radius));
   qDebug() << Q_FUNC_INFO << timer.restart() << "ms";
 
@@ -235,7 +233,7 @@ void SpatialTest::testSpatialRadiusDest()
   QElapsedTimer timer;
   timer.start();
 
-  QVector<Data> objects;
+  QList<Data> objects;
   index->getRadius(objects, origin, atools::geo::nmToMeter(radiusMax));
   qDebug() << Q_FUNC_INFO << timer.restart() << "ms";
 
@@ -285,7 +283,7 @@ void SpatialTest::testCartesianDist()
            << "directDistance3D" << atools::geo::meterToNm(directDistance3D)
            << "gcDistance" << atools::geo::meterToNm(gcDistance) << "nm";
 
-  qDebug() << fixed << qSetRealNumberPrecision(0)
+  qDebug() << Qt::fixed << qSetRealNumberPrecision(0)
            << "gcDistance3D" << gcDistance3D
            << "directDistance3D" << directDistance3D
            << "gcDistance" << gcDistance << "meter";
