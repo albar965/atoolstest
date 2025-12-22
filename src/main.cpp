@@ -277,8 +277,8 @@ static QFile stdErrFile;
 
 void initIo()
 {
-  stdOutFile.open(stdout, QIODevice::WriteOnly | QIODevice::Text);
-  stdErrFile.open(stderr, QIODevice::WriteOnly | QIODevice::Text);
+  static_cast<void>(stdOutFile.open(stdout, QIODevice::WriteOnly | QIODevice::Text));
+  static_cast<void>(stdErrFile.open(stderr, QIODevice::WriteOnly | QIODevice::Text));
 
   qDbgStdOut = new QDebug(&stdOutFile);
   qDbgStdErr = new QDebug(&stdErrFile);

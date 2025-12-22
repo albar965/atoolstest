@@ -211,29 +211,29 @@ void UtilTest::testProps()
 
   Props props;
   props.addProps(QList<Prop>({Prop(KEY_BOOL, true), Prop(KEY_BOOL, false),
-                                Prop(KEY_BYTE, -1),
-                                Prop(KEY_BYTE, 127),
-                                Prop(KEY_BYTE, 128),
-                                Prop(KEY_BYTE, 255),
-                                Prop(KEY_INT, 42), Prop(KEY_INT, 965),
-                                Prop(KEY_INT, std::numeric_limits<int>::max()),
-                                Prop(KEY_INT, std::numeric_limits<int>::min()),
-                                Prop(KEY_INT, std::numeric_limits<unsigned int>::max()),
-                                Prop(KEY_INT, std::numeric_limits<unsigned int>::min()),
-                                Prop(KEY_SHORT, static_cast<short>(1024)),
-                                Prop(KEY_LONG, 4200000000000000000LL),
-                                Prop(KEY_LONG, 42LL),
-                                Prop(KEY_FLOAT, 3.14159f),
-                                Prop(KEY_DOUBLE, 2.71828182846),
-                                Prop(KEY_STRING, QString("Hello Test")),
-                                Prop(KEY_BYTES, bytes1),
-                                Prop(KEY_BYTES, bytes2),
-                                Prop(KEY_VARIANT, QVariant("Variant")),
-                                Prop(KEY_VARIANT, QVariant(1968)),
-                                Prop(KEY_VARIANT, QVariant(12.3456789f)),
-                                Prop(KEY_VARIANT, QVariant(23.5678901)),
-                                Prop(KEY_NONE),
-                                Prop()}));
+                              Prop(KEY_BYTE, -1),
+                              Prop(KEY_BYTE, 127),
+                              Prop(KEY_BYTE, 128),
+                              Prop(KEY_BYTE, 255),
+                              Prop(KEY_INT, 42), Prop(KEY_INT, 965),
+                              Prop(KEY_INT, std::numeric_limits<int>::max()),
+                              Prop(KEY_INT, std::numeric_limits<int>::min()),
+                              Prop(KEY_INT, std::numeric_limits<unsigned int>::max()),
+                              Prop(KEY_INT, std::numeric_limits<unsigned int>::min()),
+                              Prop(KEY_SHORT, static_cast<short>(1024)),
+                              Prop(KEY_LONG, 4200000000000000000LL),
+                              Prop(KEY_LONG, 42LL),
+                              Prop(KEY_FLOAT, 3.14159f),
+                              Prop(KEY_DOUBLE, 2.71828182846),
+                              Prop(KEY_STRING, QString("Hello Test")),
+                              Prop(KEY_BYTES, bytes1),
+                              Prop(KEY_BYTES, bytes2),
+                              Prop(KEY_VARIANT, QVariant("Variant")),
+                              Prop(KEY_VARIANT, QVariant(1968)),
+                              Prop(KEY_VARIANT, QVariant(12.3456789f)),
+                              Prop(KEY_VARIANT, QVariant(23.5678901)),
+                              Prop(KEY_NONE),
+                              Prop()}));
 
   QByteArray bytes;
   QDataStream out(&bytes, QIODevice::WriteOnly);
@@ -243,7 +243,7 @@ void UtilTest::testProps()
   QDataStream in(bytes);
   in >> propsRead;
 
-  for(const Prop& p : propsRead)
+  for(const Prop& p : std::as_const(propsRead))
     qDebug() << p;
 
   QCOMPARE(props.size() - 1, propsRead.size());
@@ -309,8 +309,8 @@ void UtilTest::testFilesystemWatcher()
   watcher.setFilenamesAndStart(files);
 
   QFile metar1(files.at(0)), metar2(files.at(1));
-  metar1.open(QIODevice::Append);
-  metar2.open(QIODevice::Append);
+  qDebug() << Q_FUNC_INFO << metar1.open(QIODevice::Append);
+  qDebug() << Q_FUNC_INFO << metar2.open(QIODevice::Append);
 
   qDebug() << Q_FUNC_INFO << "Test first ===========================================";
   testutil::wait(delay);
@@ -349,7 +349,7 @@ void UtilTest::testFilesystemWatcher()
   dirResult.clear();
   testutil::wait(delay);
   QFile dummyFile("testdata/watcher/DUMMYFILE");
-  dummyFile.open(QIODevice::WriteOnly);
+  qDebug() << Q_FUNC_INFO << dummyFile.open(QIODevice::WriteOnly);
   testutil::waitForValue(foundDir, 60);
   QVERIFY(foundDir);
   QVERIFY(!foundFiles);

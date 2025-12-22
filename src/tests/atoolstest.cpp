@@ -254,7 +254,7 @@ void AtoolsTest::testAverage()
 void AtoolsTest::testGzip()
 {
   QFile file("testdata/17Z.TXT.gz");
-  file.open(QIODevice::ReadOnly);
+  static_cast<void>(file.open(QIODevice::ReadOnly));
   QByteArray decompressed = atools::zip::gzipDecompress(file.readAll());
   QString str(decompressed);
   QCOMPARE(decompressed.size(), 2875509);
