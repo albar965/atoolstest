@@ -54,7 +54,7 @@ VERSION_NUMBER=4.1.0.develop
 QT += sql xml core widgets testlib network
 QT -= gui
 
-CONFIG += console testcase build_all c++17
+CONFIG += console testcase build_all c++20
 CONFIG -= app_bundle debug_and_release debug_and_release_target
 
 TARGET = atoolstest
