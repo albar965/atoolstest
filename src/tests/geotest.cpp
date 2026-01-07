@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2026 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ using atools::geo::nmToMeter;
 using atools::geo::meterToNm;
 using atools::geo::feetToNm;
 
-#define FUNC QString("Loc: [%1(%2)]").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
+#define FUNC QStringLiteral("Loc: [%1(%2)]").arg(__FUNCTION__).arg(__LINE__).toLocal8Bit()
 
 namespace QTest {
 template<>

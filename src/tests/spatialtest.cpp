@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Copyright 2015-2025 Alexander Barthel alex@littlenavmap.org
+* Copyright 2015-2026 Alexander Barthel alex@littlenavmap.org
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -113,7 +113,7 @@ void SpatialTest::initTestCase()
     file.close();
   }
   else
-    throw atools::Exception(QString("Cannot open file \"%1\". Reason: %2.").arg(filepath).arg(file.errorString()));
+    throw atools::Exception(QStringLiteral("Cannot open file \"%1\". Reason: %2.").arg(filepath).arg(file.errorString()));
 
   index->updateIndex();
 }
