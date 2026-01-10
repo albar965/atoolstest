@@ -247,6 +247,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
       }
       else
       {
+        qDebug() << Q_FUNC_INFO << "nearest" << metar.getNearestIdent() << "ident" << ident << "pos" << pos;
         QVERIFY(metar.getRequestIdent().isEmpty());
         QVERIFY(metar.getNearestIdent() == ident);
         QVERIFY(!metar.getNearestMetar().isEmpty());

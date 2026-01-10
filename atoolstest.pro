@@ -63,6 +63,11 @@ TARGET_NAME=$$TARGET
 
 TEMPLATE = app
 
+!versionAtLeast(QT_VERSION, 6.5) {
+    message("Cannot use Qt $${QT_VERSION}. Need at least Qt 6.5 or newer.")
+    error("Need at least Qt 6.5 or newer")
+}
+
 # =======================================================================
 # Copy environment variables into qmake variables
 
@@ -127,7 +132,7 @@ win32 {
   }
 }
 
-DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x050F00
+DEFINES += QT_DISABLE_DEPRECATED_UP_TO=0x060500
 
 # https://doc.qt.io/qt-6.5/qtcore5-index.html - needed for QTextCodec
 !isEqual(ATOOLS_NO_QT5COMPAT, "true"): QT += core5compat

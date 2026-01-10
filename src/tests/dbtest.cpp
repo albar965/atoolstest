@@ -124,31 +124,31 @@ void DbTest::testException_data()
 
   // QFile::remove("test_user_exception_ro.sqlite");
   // QTest::newRow("RO fail") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << true
-  //                          << QString() << "unable to open database";
+  // << QString() << "unable to open database";
 
   // QFile::remove("test_user_exception_ro.sqlite");
   // QTest::newRow("Read only prepare") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << false
-  //                                    << QString() << QString();
+  // << QString() << QString();
   // QTest::newRow("Read only ok") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << true
-  //                               << QString() << QString();
+  // << QString() << QString();
   // QTest::newRow("Read only try write") << "test_user_exception_ro.sqlite" << "TESTEXCEPTIONRO" << true
-  //                                      << "create table test(test_id integer primary key)" << "attempt to write a readonly database";
+  // << "create table test(test_id integer primary key)" << "attempt to write a readonly database";
 
   // QFile::remove("test_user_exception.sqlite");
   // QTest::newRow("Read write ok") << "test_user_exception.sqlite" << "TESTEXCEPTION1" << false
-  //                                << "create table test(test_id integer primary key)" << QString();
+  // << "create table test(test_id integer primary key)" << QString();
 
   QTest::newRow("Read write query fail") << "test_user_exception.sqlite" << "TESTEXCEPTION2" << false
                                          << "create table " << "incomplete input";
 
   // QTest::newRow("Read write query fail 2") << "test_user_exception.sqlite" << "TESTEXCEPTION3" << false
-  //                                          << "select * from notexist " << "no such table";
+  // << "select * from notexist " << "no such table";
 
   // QTest::newRow("Read write file broken") << "testdata/dbmanagertest.csv" << "TESTEXCEPTIONBROKEN4" << false
-  //                                         << "create table test(test_id integer primary key)" << "file is not a database";
+  // << "create table test(test_id integer primary key)" << "file is not a database";
 
   // QTest::newRow("Read only file broken") << "testdata/dbmanagertest.csv" << "TESTEXCEPTIONBROKEN5" << true
-  //                                        << "create table test(test_id integer primary key)" << "file is not a database";
+  // << "create table test(test_id integer primary key)" << "file is not a database";
 
 }
 
@@ -221,8 +221,8 @@ void DbTest::testBound()
            QStringList({"0", "1"}));
   QCOMPARE(positional, true);
 
-  QVERIFY_EXCEPTION_THROWN(atools::sql::SqlQuery::extractPlaceholders(
-                             "select '?' from a where id = ? and name = :id", positional), atools::sql::SqlException);
+  QVERIFY_THROWS_EXCEPTION(atools::sql::SqlException, atools::sql::SqlQuery::extractPlaceholders(
+                             "select '?' from a where id = ? and name = :id", positional));
 }
 
 // CREATE TABLE userdata (

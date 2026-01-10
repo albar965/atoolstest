@@ -171,25 +171,25 @@ void GribTest::testGribReadInterpolate()
 void GribTest::testGribReadNoGrib()
 {
   GribReader reader;
-  QVERIFY_EXCEPTION_THROWN(reader.readFile("testdata/add-on.xml"), atools::Exception);
+  QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readFile("testdata/add-on.xml"));
 }
 
 void GribTest::testGribReadNoFile()
 {
   GribReader reader;
-  QVERIFY_EXCEPTION_THROWN(reader.readFile(QString()), atools::Exception);
+  QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readFile(QString()));
 }
 
 void GribTest::testGribReadNoData()
 {
   GribReader reader;
-  QVERIFY_EXCEPTION_THROWN(reader.readData(QByteArray()), atools::Exception);
+  QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readData(QByteArray()));
 }
 
 void GribTest::testGribReadInvalidFile()
 {
   GribReader reader;
-  QVERIFY_EXCEPTION_THROWN(reader.readFile("testdata/global_turbulence.grib"), atools::Exception);
+  QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readFile("testdata/global_turbulence.grib"));
 }
 
 void GribTest::testGribWindLineStringQuery_data()

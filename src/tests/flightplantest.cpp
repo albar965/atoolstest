@@ -537,13 +537,13 @@ void FlightplanTest::testSaveLnmGz()
 void FlightplanTest::testReadLnmBroken()
 {
   atools::fs::pln::Flightplan temp;
-  QVERIFY_EXCEPTION_THROWN(io.load(temp, "testdata/flightplan_all_broken.lnmpln"), atools::Exception);
+  QVERIFY_THROWS_EXCEPTION(atools::Exception, io.load(temp, "testdata/flightplan_all_broken.lnmpln"));
 }
 
 void FlightplanTest::testReadLnmEmpty()
 {
   atools::fs::pln::Flightplan temp;
-  QVERIFY_EXCEPTION_THROWN(io.load(temp, "testdata/Empty Flightplan.lnmpln"), atools::Exception);
+  QVERIFY_THROWS_EXCEPTION(atools::Exception, io.load(temp, "testdata/Empty Flightplan.lnmpln"));
 }
 
 void FlightplanTest::testSaveLeveld()
