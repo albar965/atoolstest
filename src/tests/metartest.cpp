@@ -314,7 +314,7 @@ void MetarTest::testMetarSim()
 
   QTextStream weatherSnapshot(&metarFiles);
 
-  int numFailed = 0, numNoPressure = 0, numNoTemp = 0, numNoDewpoint = 0, numNoWind = 0, numInvalidTimestamp = 0;
+  int numFailed = 0, numNoPressure = 0, numNoTemp = 0, numNoDewpoint = 0, numNoWind = 0, numInvalidTimestamp = 0, numRead = 0;
   QString line;
   while(weatherSnapshot.readLineInto(&line))
   {
@@ -355,11 +355,13 @@ void MetarTest::testMetarSim()
         qWarning() << Q_FUNC_INFO << metarParser.getMetarString();
       }
     }
+
+    numRead++;
   }
   metarFiles.close();
 
   qDebug() << Q_FUNC_INFO << "numFailed" << numFailed << "numNoPressure" << numNoPressure << "numNoTemp" << numNoTemp
-           << "numNoDewpoint" << numNoDewpoint << "numNoWind" << numNoWind;
+           << "numNoDewpoint" << numNoDewpoint << "numNoWind" << numNoWind << "numRead" << numRead;
 
   // Check the number of failed since too many are not readable
   QCOMPARE(numFailed, 169);

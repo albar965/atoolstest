@@ -51,6 +51,9 @@ private slots:
   void testDensityAltitude_data();
   void testDensityAltitude();
 
+  void testCorrectDate_data();
+  void testCorrectDate();
+
 private:
   void correctDateLocalRun(int localDateDays, int localTimeHour, int utcTimeHour, float longitudeX, int expectedOffsetHours);
 

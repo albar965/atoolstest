@@ -212,6 +212,34 @@ void CalcTest::testDensityAltitude()
   QCOMPARE(densityAltitude, densityAltResult);
 }
 
+void CalcTest::testCorrectDate_data()
+{
+  QTest::addColumn<int>("day");
+  QTest::addColumn<int>("hour");
+  QTest::addColumn<int>("minute");
+  QTest::addColumn<QDateTime>("reference");
+  QTest::addColumn<QDateTime>("result");
+
+  QTest::newRow("291200") << 29 << 12 << 00 << QDateTime(QDate(2026, 2, 2), QTime(22, 0)) << QDateTime(QDate(2026, 1, 29), QTime(12, 0));
+  QTest::newRow("152000") << 15 << 20 << 00 << QDateTime(QDate(2026, 1, 1), QTime(20, 0)) << QDateTime(QDate(2025, 1, 15), QTime(20, 0));
+  QTest::newRow("282000") << 28 << 20 << 00 << QDateTime(QDate(2026, 2, 2), QTime(20, 0)) << QDateTime(QDate(2026, 1, 28), QTime(20, 0));
+  QTest::newRow("292000") << 29 << 20 << 00 << QDateTime(QDate(2026, 2, 2), QTime(20, 0)) << QDateTime(QDate(2026, 1, 29), QTime(20, 0));
+  QTest::newRow("312100") << 31 << 21 << 00 << QDateTime(QDate(2026, 2, 28), QTime(21, 0)) << QDateTime(QDate(2026, 1, 31), QTime(21, 0));
+  QTest::newRow("312000") << 31 << 20 << 00 << QDateTime(QDate(2026, 4, 2), QTime(20, 0)) << QDateTime(QDate(2026, 3, 31), QTime(20, 0));
+  QTest::newRow("010000") << 1 << 0 << 00 << QDateTime(QDate(2026, 1, 1), QTime(0, 0)) << QDateTime(QDate(2026, 1, 1), QTime(0, 0));
+}
+
+void CalcTest::testCorrectDate()
+{
+  QFETCH(int, day);
+  QFETCH(int, hour);
+  QFETCH(int, minute);
+  QFETCH(QDateTime, reference);
+  QFETCH(QDateTime, result);
+
+  QCOMPARE(atools::correctDate(day, hour, minute, reference), result);
+}
+
 void CalcTest::testSunsetSunrise_data()
 {
   QTest::addColumn<Pos>("pos");
