@@ -220,8 +220,18 @@ void CalcTest::testCorrectDate_data()
   QTest::addColumn<QDateTime>("reference");
   QTest::addColumn<QDateTime>("result");
 
-  QTest::newRow("291200") << 29 << 12 << 00 << QDateTime(QDate(2026, 2, 2), QTime(22, 0)) << QDateTime(QDate(2026, 1, 29), QTime(12, 0));
-  QTest::newRow("152000") << 15 << 20 << 00 << QDateTime(QDate(2026, 1, 1), QTime(20, 0)) << QDateTime(QDate(2025, 1, 15), QTime(20, 0));
+  QTest::newRow("151000") << 15 << 10 << 00 << QDateTime(QDate(2026, 2, 15), QTime(12, 0)) << QDateTime(QDate(2026, 2, 15), QTime(10, 0));
+  QTest::newRow("151200") << 15 << 12 << 00 << QDateTime(QDate(2026, 2, 15), QTime(12, 0)) << QDateTime(QDate(2026, 2, 15), QTime(12, 0));
+  QTest::newRow("151400") << 15 << 14 << 00 << QDateTime(QDate(2026, 2, 15), QTime(12, 0)) << QDateTime(QDate(2026, 1, 15), QTime(14, 0));
+
+  QTest::newRow("311200") << 31 << 12 << 00 << QDateTime(QDate(2026, 12, 30), QTime(12, 0)) << QDateTime(QDate(2026, 10, 31), QTime(12, 0));
+  QTest::newRow("301200") << 30 << 12 << 00 << QDateTime(QDate(2026, 12, 30), QTime(12, 0)) << QDateTime(QDate(2026, 12, 30), QTime(12, 0));
+  QTest::newRow("291200") << 29 << 12 << 00 << QDateTime(QDate(2026, 12, 30), QTime(12, 0)) << QDateTime(QDate(2026, 12, 29), QTime(12, 0));
+
+  QTest::newRow("301100") << 30 << 11 << 00 << QDateTime(QDate(2026, 1, 1), QTime(11, 0)) << QDateTime(QDate(2025, 12, 30), QTime(11, 0));
+  QTest::newRow("152000") << 15 << 20 << 00 << QDateTime(QDate(2026, 1, 1), QTime(20, 0)) << QDateTime(QDate(2025, 12, 15), QTime(20, 0));
+
+  QTest::newRow("291230") << 29 << 12 << 30 << QDateTime(QDate(2026, 2, 2), QTime(22, 0)) << QDateTime(QDate(2026, 1, 29), QTime(12, 30));
   QTest::newRow("282000") << 28 << 20 << 00 << QDateTime(QDate(2026, 2, 2), QTime(20, 0)) << QDateTime(QDate(2026, 1, 28), QTime(20, 0));
   QTest::newRow("292000") << 29 << 20 << 00 << QDateTime(QDate(2026, 2, 2), QTime(20, 0)) << QDateTime(QDate(2026, 1, 29), QTime(20, 0));
   QTest::newRow("312100") << 31 << 21 << 00 << QDateTime(QDate(2026, 2, 28), QTime(21, 0)) << QDateTime(QDate(2026, 1, 31), QTime(21, 0));
