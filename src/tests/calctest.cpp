@@ -48,38 +48,38 @@ void CalcTest::testNextSixHour_data()
   QTest::addColumn<QDateTime>("datetime");
   QTest::addColumn<QDateTime>("result");
 
-  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(0, 0), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), Qt::UTC);
+  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(0, 0), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), QTimeZone::UTC);
 
-  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(1, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), Qt::UTC);
+  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(1, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(6, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(6, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(7, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(7, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(11, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(11, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(12, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(12, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(17, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(17, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(19, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(19, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(23, 59), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(23, 59), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 24), QTime(0, 0), QTimeZone::UTC);
 
 }
 
@@ -99,38 +99,38 @@ void CalcTest::testLastSixHour_data()
   QTest::addColumn<QDateTime>("datetime");
   QTest::addColumn<QDateTime>("result");
 
-  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(0, 0), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(0, 0), Qt::UTC);
+  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(0, 0), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(0, 0), QTimeZone::UTC);
 
-  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(1, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(0, 0), Qt::UTC);
+  QTest::newRow("0:0") << QDateTime(QDate(2020, 12, 23), QTime(1, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(0, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(6, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(6, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(7, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(7, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(11, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(11, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(6, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(12, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(12, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(17, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(17, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(12, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(19, 30), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(19, 30), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC);
 
-  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(23, 59), Qt::UTC)
-                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), Qt::UTC);
+  QTest::newRow("1:0") << QDateTime(QDate(2020, 12, 23), QTime(23, 59), QTimeZone::UTC)
+                       << QDateTime(QDate(2020, 12, 23), QTime(18, 0), QTimeZone::UTC);
 
 }
 

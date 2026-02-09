@@ -371,7 +371,7 @@ void GribTest::testGribDownloadFail()
 
   downloader.setParameters({"UGRD", "VGRD"});
   downloader.setSurfaces({-80, 200, 300, 450, 700});
-  downloader.startDownload(QDateTime(QDate(2000, 01, 01), QTime(12, 0, 0), Qt::UTC));
+  downloader.startDownload(QDateTime(QDate(2000, 01, 01), QTime(12, 0, 0), QTimeZone::UTC));
 
   testutil::waitForValue(done, 30);
 
@@ -392,28 +392,28 @@ void GribTest::testGribLoadWinds()
   QCOMPARE(datasets.at(0).getAltFeetCalculated(), 9884.08f);
   QCOMPARE(datasets.at(0).getAltFeetRounded(), 10000.f);
   QCOMPARE(datasets.at(0).getParameterType(), atools::grib::U_WIND);
-  QCOMPARE(datasets.at(0).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), Qt::UTC));
+  QCOMPARE(datasets.at(0).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), QTimeZone::UTC));
 
   QCOMPARE(datasets.at(1).getData().size(), 65160);
   QCOMPARE(datasets.at(1).getSurface(), 700.f);
   QCOMPARE(datasets.at(1).getAltFeetCalculated(), 9884.08f);
   QCOMPARE(datasets.at(1).getAltFeetRounded(), 10000.f);
   QCOMPARE(datasets.at(1).getParameterType(), atools::grib::V_WIND);
-  QCOMPARE(datasets.at(1).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), Qt::UTC));
+  QCOMPARE(datasets.at(1).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), QTimeZone::UTC));
 
   QCOMPARE(datasets.at(2).getData().size(), 65160);
   QCOMPARE(datasets.at(2).getSurface(), 250.f);
   QCOMPARE(datasets.at(2).getAltFeetCalculated(), 34004.1f);
   QCOMPARE(datasets.at(2).getAltFeetRounded(), 34000.f);
   QCOMPARE(datasets.at(2).getParameterType(), atools::grib::U_WIND);
-  QCOMPARE(datasets.at(2).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), Qt::UTC));
+  QCOMPARE(datasets.at(2).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), QTimeZone::UTC));
 
   QCOMPARE(datasets.at(3).getData().size(), 65160);
   QCOMPARE(datasets.at(3).getSurface(), 250.f);
   QCOMPARE(datasets.at(3).getAltFeetCalculated(), 34004.1f);
   QCOMPARE(datasets.at(3).getAltFeetRounded(), 34000.f);
   QCOMPARE(datasets.at(3).getParameterType(), atools::grib::V_WIND);
-  QCOMPARE(datasets.at(3).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), Qt::UTC));
+  QCOMPARE(datasets.at(3).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), QTimeZone::UTC));
 }
 
 void GribTest::testGribLoadLnm()
@@ -422,7 +422,7 @@ void GribTest::testGribLoadLnm()
   // https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?file=gfs.t06z.pgrb2.1p00.anl&lev_200_mb=on&lev_300_mb=on&lev_450_mb=on&lev_700_mb=on&var_UGRD=on&var_VGRD=on&dir=%2Fgfs.2019042606
   reader.readFile("testdata/lnm_winds.grib");
 
-  lnmDatasetTest(reader.getDatasets(), QDateTime(QDate(2019, 04, 27), QTime(6, 0, 0), Qt::UTC));
+  lnmDatasetTest(reader.getDatasets(), QDateTime(QDate(2019, 04, 27), QTime(6, 0, 0), QTimeZone::UTC));
 }
 
 void GribTest::lnmDatasetTest(const atools::grib::GribDatasetList& datasets, const QDateTime& datetime)

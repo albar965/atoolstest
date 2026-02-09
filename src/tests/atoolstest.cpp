@@ -144,9 +144,9 @@ void AtoolsTest::testDateTimeFromString()
   // Returns UTC
   qDebug() << Q_FUNC_INFO;
   qDebug() << Q_FUNC_INFO << "QDateTime::fromSecsSinceEpoch(QDateTime::currentSecsSinceEpoch(), Qt::UTC)"
-           << QDateTime::fromSecsSinceEpoch(QDateTime::currentSecsSinceEpoch(), Qt::UTC);
+           << QDateTime::fromSecsSinceEpoch(QDateTime::currentSecsSinceEpoch(), QTimeZone::UTC);
   qDebug() << Q_FUNC_INFO << "QDateTime::fromMSecsSinceEpoch(QDateTime::currentMSecsSinceEpoch(), Qt::UTC)"
-           << QDateTime::fromMSecsSinceEpoch(QDateTime::currentMSecsSinceEpoch(), Qt::UTC);
+           << QDateTime::fromMSecsSinceEpoch(QDateTime::currentMSecsSinceEpoch(), QTimeZone::UTC);
   qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58.876Z\", Qt::ISODateWithMs)"
            << QDateTime::fromString("2022-07-31T18:54:58.876Z", Qt::ISODateWithMs);
   qDebug() << Q_FUNC_INFO << "QDateTime::fromString(\"2022-07-31T18:54:58Z\", Qt::ISODate)"
