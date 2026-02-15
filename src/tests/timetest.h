@@ -15,19 +15,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_CALCTEST_H
-#define ATOOLSTEST_CALCTEST_H
+#ifndef ATOOLSTEST_TIMETEST_H
+#define ATOOLSTEST_TIMETEST_H
 
 #include <QString>
 #include <QtTest>
 
-class CalcTest :
+namespace atools {
+namespace timezone {
+class TimeZoneManager;
+}
+}
+class TimeTest :
   public QObject
 {
   Q_OBJECT
 
 public:
-  CalcTest();
+  TimeTest();
 
   static void runtest(int argc, char *argv[]);
 
@@ -35,12 +40,25 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-  void testAltitudePressure_data();
-  void testAltitudePressure();
+  void testTimeZone_data();
+  void testTimeZone();
 
-  void testDensityAltitude_data();
-  void testDensityAltitude();
+  void testLastSixHour_data();
+  void testLastSixHour();
+  void testNextSixHour_data();
+  void testNextSixHour();
 
+  void testCorrectDateLocal_data();
+  void testCorrectDateLocal();
+
+  void testSunsetSunrise_data();
+  void testSunsetSunrise();
+
+  void testCorrectDate_data();
+  void testCorrectDate();
+
+private:
+  atools::timezone::TimeZoneManager *timezone;
 };
 
-#endif // ATOOLSTEST_CALCTEST_H
+#endif // ATOOLSTEST_TIMETEST_H

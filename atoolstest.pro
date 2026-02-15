@@ -217,6 +217,7 @@ SOURCES += \
   src/tests/scenerycfgtest.cpp \
   src/tests/magdectest.cpp \
   src/tests/spatialtest.cpp \
+  src/tests/timetest.cpp \
   src/tests/tracktest.cpp \
   src/tests/updatetest.cpp \
   src/tests/stringtest.cpp \
@@ -242,6 +243,7 @@ HEADERS += \
   src/tests/scenerycfgtest.h \
   src/tests/magdectest.h \
   src/tests/spatialtest.h \
+  src/tests/timetest.h \
   src/tests/tracktest.h \
   src/tests/updatetest.h \
   src/tests/stringtest.h \

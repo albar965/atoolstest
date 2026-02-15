@@ -34,6 +34,7 @@
 #include "tests/scenerycfgtest.h"
 #include "tests/spatialtest.h"
 #include "tests/stringtest.h"
+#include "tests/timetest.h"
 #include "tests/tracktest.h"
 #include "tests/updatetest.h"
 #include "tests/utiltest.h"
@@ -150,6 +151,7 @@ int main(int argc, char *argv[])
   DEFINETEST(AirspaceTest)
   DEFINETEST(AtoolsTest)
   DEFINETEST(CalcTest)
+  DEFINETEST(DbTest)
   DEFINETEST(DtmTest)
   DEFINETEST(FlightplanTest)
   DEFINETEST(FsUtilTest)
@@ -158,12 +160,12 @@ int main(int argc, char *argv[])
   DEFINETEST(MagdecTest)
   DEFINETEST(MetarTest)
   DEFINETEST(OnlineTest)
-  DEFINETEST(DbTest)
   DEFINETEST(PerfTest)
   DEFINETEST(RouteTest)
   DEFINETEST(SceneryCfgTest)
   DEFINETEST(SpatialTest)
   DEFINETEST(StringTest)
+  DEFINETEST(TimeTest)
   DEFINETEST(TrackTest)
   DEFINETEST(UpdateTest)
   DEFINETEST(UtilTest)
@@ -218,7 +220,6 @@ void test()
     RUNTESTEXT(FlightplanTest)
     RUNTESTEXT(FsUtilTest)
     RUNTESTEXT(GeoTest)
-    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
     RUNTESTEXT(MagdecTest)
     RUNTESTEXT(MetarTest)
     RUNTESTEXT(OnlineTest)
@@ -227,10 +228,12 @@ void test()
     RUNTESTEXT(SceneryCfgTest)
     RUNTESTEXT(SpatialTest)
     RUNTESTEXT(StringTest)
+    RUNTESTEXT(TimeTest)
     RUNTESTEXT(TrackTest)
-    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
     RUNTESTEXT(UtilTest)
     RUNTESTEXT(VersionTest)
+    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
+    RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
 
     qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << Qt::endl;
   }
