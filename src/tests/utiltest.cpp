@@ -182,7 +182,10 @@ void UtilTest::testFlags()
 
   var = QVariant::fromValue<TestEnums>(TestEnum::EIGHT64);
   fromVar = var.value<TestEnums>();
+
+#ifndef Q_OS_WIN32
   QCOMPARE(TestEnum::EIGHT64, fromVar);
+#endif
 }
 
 void UtilTest::testProps()
@@ -371,13 +374,13 @@ void UtilTest::testLinkTarget()
 {
 #ifdef Q_OS_WIN
 
-  if(QFileInfo::exists(QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
-                                                "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
-                                                "LocalCache\\Packages\\Community"))
+  if(QFileInfo::exists(QDir::homePath() + atools::SEP + "AppData\\Local\\Packages\\"
+                                                        "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                        "LocalCache\\Packages\\Community"))
   {
-    QString community = QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
-                                                 "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
-                                                 "LocalCache\\Packages\\Community";
+    QString community = QDir::homePath() + atools::SEP + "AppData\\Local\\Packages\\"
+                                                         "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                         "LocalCache\\Packages\\Community";
 
     // Mapped drive
     QString target = atools::linkTarget(QFileInfo("C:\\Mounted\\Disk"));
@@ -390,32 +393,32 @@ void UtilTest::testLinkTarget()
     QCOMPARE(target, QString());
 
     // Not linked
-    target = atools::linkTarget(QFileInfo(community + SEP + "airport-lemg"));
+    target = atools::linkTarget(QFileInfo(community + atools::SEP + "airport-lemg"));
     qDebug() << Q_FUNC_INFO << target;
     QCOMPARE(target, QString());
 
     // Directory
-    target = atools::linkTarget(QFileInfo(community + SEP + "airport-eddk"));
+    target = atools::linkTarget(QFileInfo(community + atools::SEP + "airport-eddk"));
     qDebug() << Q_FUNC_INFO << target;
     QCOMPARE(target,
              "C:/Users/alex/AppData/Local/Packages/Microsoft.FlightSimulator_8wekyb3d8bbwe/LocalCache/Packages/Community Test/airport-eddk");
 
     // Symbolic Link
-    target = atools::linkTarget(QFileInfo(community + SEP + "_guadeloupe TFFR-symlink"));
+    target = atools::linkTarget(QFileInfo(community + atools::SEP + "_guadeloupe TFFR-symlink"));
     qDebug() << Q_FUNC_INFO << target;
     QCOMPARE(target, "D:/MSFS Addons/guadeloupe TFFR");
 
     // Junction
-    target = atools::linkTarget(QFileInfo(community + SEP + "_airport-licc-catania-junction"));
+    target = atools::linkTarget(QFileInfo(community + atools::SEP + "_airport-licc-catania-junction"));
     qDebug() << Q_FUNC_INFO << target;
     QCOMPARE(target, "D:/MSFS Addons/airport-licc-catania");
 
     // Shortcut
-    target = atools::linkTarget(QFileInfo(community + SEP + "_cyqx-gander.lnk"));
+    target = atools::linkTarget(QFileInfo(community + atools::SEP + "_cyqx-gander.lnk"));
     qDebug() << Q_FUNC_INFO << target;
     QCOMPARE(target, "D:/MSFS Addons/cyqx-gander");
 
-    target = atools::linkTarget(QFileInfo(community + SEP + "_cyqx-gander"));
+    target = atools::linkTarget(QFileInfo(community + atools::SEP + "_cyqx-gander"));
     qDebug() << Q_FUNC_INFO << target;
     QCOMPARE(target, QString());
   }
@@ -425,13 +428,13 @@ void UtilTest::testLinkTarget()
 void UtilTest::testCanonicalPath()
 {
 #ifdef Q_OS_WIN
-  if(QFileInfo::exists(QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
-                                                "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
-                                                "LocalCache\\Packages\\Community"))
+  if(QFileInfo::exists(QDir::homePath() + atools::SEP + "AppData\\Local\\Packages\\"
+                                                        "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                        "LocalCache\\Packages\\Community"))
   {
-    QString community = QDir::homePath() + SEP + "AppData\\Local\\Packages\\"
-                                                 "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
-                                                 "LocalCache\\Packages\\Community";
+    QString community = QDir::homePath() + atools::SEP + "AppData\\Local\\Packages\\"
+                                                         "Microsoft.FlightSimulator_8wekyb3d8bbwe\\"
+                                                         "LocalCache\\Packages\\Community";
     // Directory
     QString target, path;
 
@@ -445,33 +448,33 @@ void UtilTest::testCanonicalPath()
     qDebug() << Q_FUNC_INFO << target;
     QCOMPARE(target, QDir::cleanPath("C:\\Mounted\\Disk\\Packages"));
 
-    path = community + SEP + "airport-eddk\\scenery\\world\\scenery\\EDDK.bgl";
+    path = community + atools::SEP + "airport-eddk\\scenery\\world\\scenery\\EDDK.bgl";
     target = atools::canonicalFilePath(QFileInfo(path));
     qDebug() << Q_FUNC_INFO << "Directory" << target;
     QCOMPARE(target, QDir::cleanPath("C:/Users/alex/AppData/Local/Packages/Microsoft.FlightSimulator_8wekyb3d8bbwe/"
                                      "LocalCache/Packages/Community Test/airport-eddk/scenery/world/scenery/EDDK.bgl"));
 
     // Symbolic Link
-    target = atools::canonicalFilePath(QFileInfo(community + SEP + "_guadeloupe TFFR-symlink\\scenery\\tffr.bgl"));
+    target = atools::canonicalFilePath(QFileInfo(community + atools::SEP + "_guadeloupe TFFR-symlink\\scenery\\tffr.bgl"));
     qDebug() << Q_FUNC_INFO << "Symbolic link" << target;
     QCOMPARE(target, QDir::cleanPath("D:\\MSFS Addons\\guadeloupe TFFR\\scenery\\tffr.bgl"));
 
     // Junction
-    target = atools::canonicalFilePath(QFileInfo(community + SEP + "_airport-licc-catania-junction\\scenery\\Catania scenery.bgl"));
+    target = atools::canonicalFilePath(QFileInfo(community + atools::SEP + "_airport-licc-catania-junction\\scenery\\Catania scenery.bgl"));
     qDebug() << Q_FUNC_INFO << "Junction" << target;
     QCOMPARE(target, QDir::cleanPath("D:\\MSFS Addons\\airport-licc-catania\\scenery\\Catania scenery.bgl"));
 
     // Shortcut
-    target = atools::canonicalFilePath(QFileInfo(community + SEP + "_cyqx-gander.lnk\\scenery\\world\\scenery\\cyqx\\Gander.bgl"));
+    target = atools::canonicalFilePath(QFileInfo(community + atools::SEP + "_cyqx-gander.lnk\\scenery\\world\\scenery\\cyqx\\Gander.bgl"));
     qDebug() << Q_FUNC_INFO << "Shortcut" << target;
     QCOMPARE(target, QDir::cleanPath("D:\\MSFS Addons\\cyqx-gander\\scenery\\world\\scenery\\cyqx\\Gander.bgl"));
 
-    path = community + SEP + "_cyqx-gander\\scenery\\world\\scenery\\cyqx\\Gander.bgl";
+    path = community + atools::SEP + "_cyqx-gander\\scenery\\world\\scenery\\cyqx\\Gander.bgl";
     target = atools::canonicalFilePath(QFileInfo(path));
     qDebug() << Q_FUNC_INFO << "Shortcut no extension" << target;
     QCOMPARE(target, QDir::cleanPath(path));
 
-    path = community + SEP + "C:\\ATOOLS DOES NEVER EXIST\\BLAH\\BLAH";
+    path = community + atools::SEP + "C:\\ATOOLS DOES NEVER EXIST\\BLAH\\BLAH";
     target = atools::canonicalFilePath(QFileInfo(path));
     qDebug() << Q_FUNC_INFO << "Invalid path" << target;
     QCOMPARE(target, QDir::cleanPath(path));

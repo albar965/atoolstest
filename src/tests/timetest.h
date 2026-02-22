@@ -40,6 +40,8 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
+  void testTimeZonePath();
+
   void testTimeZone_data();
   void testTimeZone();
 

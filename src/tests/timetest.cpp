@@ -46,6 +46,12 @@ void TimeTest::cleanupTestCase()
   ATOOLS_DELETE_LOG(timezone);
 }
 
+void TimeTest::testTimeZonePath()
+{
+  atools::timezone::TimeZoneManager manager(true);
+  timezone->readFile("testdata/timezone äöüß/timezone21");
+}
+
 void TimeTest::testTimeZone_data()
 {
   QTest::addColumn<float>("lonX");
