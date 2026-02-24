@@ -50,9 +50,9 @@ private slots:
   void testLoadOpenAir();
 
 private:
-  atools::geo::Pos fetchAirportCoordinates(const QString& airportIdent);
+  static atools::geo::Pos fetchAirportCoordinates(const QByteArray& airportIdent, void *object);
 
-  QHash<QString, atools::geo::Pos> airports;
+  QHash<QByteArray, atools::geo::Pos> airports;
 
   atools::sql::SqlDatabase *db = nullptr;
 };

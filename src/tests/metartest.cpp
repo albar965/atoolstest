@@ -32,7 +32,7 @@ using atools::fs::weather::WeatherNetDownload;
 using atools::fs::weather::WeatherDownloadBase;
 
 // select '{"'||ident||'"'|| ', atools::geo::Pos('||lonx ||',' || laty || ')}' from airport where ident like 'EDD%';
-const static QHash<QString, atools::geo::Pos> AIRPORT_COORDS = {
+const static QHash<QByteArray, atools::geo::Pos> AIRPORT_COORDS = {
   {"EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)},
   {"EDDF", atools::geo::Pos(8.57045555114746, 50.0333061218262)},
   {"EDDK", atools::geo::Pos(7.14274454116821, 50.8659172058105)},
@@ -55,7 +55,7 @@ const static QHash<QString, QString> AIRPORT_SUBST = {
   {"EDCF", "EDDB"}
 };
 
-const static QHash<QString, atools::geo::Pos> AIRPORT_COORDS_INTERPOLATE = {
+const static QHash<QByteArray, atools::geo::Pos> AIRPORT_COORDS_INTERPOLATE = {
   {"XX1N", atools::geo::Pos(0.f, 1.f)},
   {"XX1E", atools::geo::Pos(1.f, 0.f)},
   {"XX1S", atools::geo::Pos(0.f, -1.f)},
@@ -171,9 +171,9 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
     finished = true;
   });
 
-  downloader.setFetchAirportCoords([](const QString& airportIdent) -> atools::geo::Pos {
+  downloader.setFetchAirportCoords([](const QByteArray& airportIdent, void *) -> atools::geo::Pos {
     return AIRPORT_COORDS.value(airportIdent);
-  });
+  }, nullptr);
 
   atools::fs::weather::Metar metar = downloader.getMetar("EDDF", AIRPORT_COORDS.value("EDDF"));
   if(QFileInfo::exists(downloader.getRequestUrl()))
@@ -374,10 +374,10 @@ void MetarTest::testMetarSim()
 
 void MetarTest::testMetarInterpolatedSimple()
 {
-  atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT);
-  index.setFetchAirportCoords([](const QString& airportIdent) -> atools::geo::Pos {
+  atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT, true);
+  index.setFetchAirportCoords([](const QByteArray& airportIdent, void *) -> atools::geo::Pos {
     return AIRPORT_COORDS.value(airportIdent);
-  });
+  }, nullptr);
 
   QCOMPARE(index.read("testdata/METAR.txt", false), 9084);
 
@@ -411,11 +411,10 @@ void MetarTest::testMetarInterpolatedSimple()
 
 void MetarTest::testMetarInterpolated()
 {
-  atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT);
-
-  index.setFetchAirportCoords([](const QString& airportIdent) -> atools::geo::Pos {
+  atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT, true);
+  index.setFetchAirportCoords([](const QByteArray& airportIdent, void *) -> atools::geo::Pos {
     return AIRPORT_COORDS_INTERPOLATE.value(airportIdent);
-  });
+  }, nullptr);
 
   // XX1N 291230Z 00010KT 1000 -RA OVC010 10/10 Q1000
   // XX1E 291330Z 09010KT 2000 RA OVC020 20/20 Q1100

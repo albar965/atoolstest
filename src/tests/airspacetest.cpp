@@ -62,7 +62,7 @@ void AirspaceTest::initTestCase()
     while(!stream.atEnd())
     {
       QStringList line = stream.readLine().simplified().split(',');
-      airports.insert(line.value(0), atools::geo::Pos(line.value(1).toFloat(), line.value(2).toFloat()));
+      airports.insert(line.value(0).toLatin1(), atools::geo::Pos(line.value(1).toFloat(), line.value(2).toFloat()));
     }
     file.close();
   }
@@ -78,7 +78,7 @@ void AirspaceTest::testLoadGeoJsonTracon()
   QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/vatsim_traconboundaries_fmt.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
 
   atools::fs::userdata::AirspaceReaderVatsim reader(db);
-  reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
+  reader.setFetchAirportCoords(&AirspaceTest::fetchAirportCoordinates, this);
   reader.setFileId(1);
   reader.setAirspaceId(10000);
   reader.readFile("testdata/vatsim_traconboundaries_fmt.json");
@@ -96,7 +96,7 @@ void AirspaceTest::testLoadGeoJsonFir()
   QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/vatsim_firboundaries_fmt.json"), AirspaceReaderBase::VATSIM_GEO_JSON);
 
   atools::fs::userdata::AirspaceReaderVatsim reader(db);
-  reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
+  reader.setFetchAirportCoords(&AirspaceTest::fetchAirportCoordinates, this);
   reader.setFileId(2);
   reader.setAirspaceId(20000);
   reader.readFile("testdata/vatsim_firboundaries_fmt.json");
@@ -114,7 +114,7 @@ void AirspaceTest::testLoadIvaoJson()
   QCOMPARE(AirspaceReaderBase::detectFileFormat("testdata/ivao_atc_positions_fmt.json"), AirspaceReaderBase::IVAO_JSON);
 
   atools::fs::userdata::AirspaceReaderIvao reader(db);
-  reader.setFetchAirportCoords(std::bind(&AirspaceTest::fetchAirportCoordinates, this, std::placeholders::_1));
+  reader.setFetchAirportCoords(&AirspaceTest::fetchAirportCoordinates, this);
   reader.setFileId(3);
   reader.setAirspaceId(30000);
   reader.readFile("testdata/ivao_atc_positions_fmt.json");
@@ -144,7 +144,7 @@ void AirspaceTest::testLoadOpenAir()
   QCOMPARE(reader.getNumAirspacesRead(), 3151);
 }
 
-atools::geo::Pos AirspaceTest::fetchAirportCoordinates(const QString& airportIdent)
+atools::geo::Pos AirspaceTest::fetchAirportCoordinates(const QByteArray& airportIdent, void *object)
 {
-  return airports.value(airportIdent, atools::geo::EMPTY_POS);
+  return static_cast<AirspaceTest *>(object)->airports.value(airportIdent, atools::geo::EMPTY_POS);
 }
