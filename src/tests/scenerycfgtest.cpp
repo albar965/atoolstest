@@ -17,11 +17,12 @@
 
 #include "scenerycfgtest.h"
 
-#include "fs/scenery/scenerycfg.h"
+#include "exception.h"
 #include "fs/scenery/addonpackage.h"
-#include "fs/scenery/contentxml.h"
-#include "fs/xp/scenerypacks.h"
 #include "fs/scenery/aircraftindex.h"
+#include "fs/scenery/contentxml.h"
+#include "fs/scenery/scenerycfg.h"
+#include "fs/xp/scenerypacks.h"
 
 using atools::fs::scenery::SceneryCfg;
 using atools::fs::scenery::SceneryArea;
@@ -85,8 +86,7 @@ void SceneryCfgTest::testContentXmlSu10()
 void SceneryCfgTest::testContentXmlEmpty()
 {
   ContentXml xml;
-  xml.read("testdata/Content_empty.xml");
-
+  QVERIFY_THROWS_EXCEPTION(atools::Exception, xml.read("testdata/Content_empty.xml"));
   QCOMPARE(xml.getAreas().size(), 0);
 }
 
@@ -127,7 +127,6 @@ void SceneryCfgTest::testAircraftIndex()
 
   QCOMPARE(index.getIcaoTypeDesignator("SimObjects/AirPlanes/Asobo_A320_NEO/aircraft.cfg"), "A20N");
   QCOMPARE(index.getCategory("SimObjects/AirPlanes/Asobo_A320_NEO/aircraft.cfg"), "airplane");
-
 
   QCOMPARE(index.size(), 7);
 }
@@ -354,8 +353,8 @@ void SceneryCfgTest::testP3dv4AddOnUtf16()
 
 // void SceneryCfgTest::testP3dv4AddOnEncodingMismatch()
 // {
-//   AddOnPackage package("testdata/add-on_encoding_mismatch.xml");
-//   QCOMPARE(package.getDescription(), QString("Sends simulator reports to Navigraph Charts öäüÖÜ"));
+// AddOnPackage package("testdata/add-on_encoding_mismatch.xml");
+// QCOMPARE(package.getDescription(), QString("Sends simulator reports to Navigraph Charts öäüÖÜ"));
 // }
 
 void SceneryCfgTest::testP3dv4AddOnNoEncoding()
