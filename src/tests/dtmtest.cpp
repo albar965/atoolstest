@@ -77,26 +77,10 @@ void DtmTest::testElevation_data()
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("elevation");
 
-  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << atools::fs::common::OCEAN;
-  // QTest::newRow("Frankfurt") << Pos(8.5704f, 50.0333f) << 104.f;
-  // QTest::newRow("Mount Everest") << Pos(86.925278, 27.988056) << 8752.f;
-  // QTest::newRow("Metzada") << Pos(35.3917, 31.3317) << -384.f;
-}
-
-void DtmTest::testElevationLine_data()
-{
-  QTest::addColumn<LineString>("line");
-  QTest::addColumn<float>("minelevation");
-  QTest::addColumn<float>("maxelevation");
-
-  QTest::newRow("Frankfurt - Mount Everest") <<
-    LineString(Pos(8.5704f, 50.0333f), Pos(86.925278, 27.988056)) << -42.f << 8752.f;
-
-  QTest::newRow("Frankfurt - Ushuaia") <<
-    LineString(Pos(8.5704f, 50.0333f), Pos(68.2842, -54.8380)) << -500.f << 2865.f;
-
-  QTest::newRow("LGAV - KLAX") <<
-    LineString(Pos(23.9445, 37.9366), Pos(-118.4070, 33.9424)) << -500.f << 3459.f;
+  QTest::newRow("Metzada") << Pos(35.3917, 31.3317) << -384.f;
+  QTest::newRow("Atlantic") << Pos(0.f, 0.f) << atools::fs::common::ELEVATION_OCEAN;
+  QTest::newRow("Frankfurt") << Pos(8.5704f, 50.0333f) << 104.f;
+  QTest::newRow("Mount Everest") << Pos(86.925278, 27.988056) << 8752.f;
 }
 
 void DtmTest::testElevation()
@@ -108,6 +92,22 @@ void DtmTest::testElevation()
   QFETCH(float, elevation);
 
   QCOMPARE(reader.getElevation(pos), elevation);
+}
+
+void DtmTest::testElevationLine_data()
+{
+  QTest::addColumn<LineString>("line");
+  QTest::addColumn<float>("minelevation");
+  QTest::addColumn<float>("maxelevation");
+
+  QTest::newRow("Frankfurt - Mount Everest")
+    << LineString(Pos(8.5704f, 50.0333f), Pos(86.925278, 27.988056)) << -42.f << 8752.f;
+
+  QTest::newRow("Frankfurt - Ushuaia")
+    << LineString(Pos(8.5704f, 50.0333f), Pos(68.2842, -54.8380)) << atools::fs::common::ELEVATION_OCEAN << 2865.f;
+
+  QTest::newRow("LGAV - KLAX")
+    << LineString(Pos(23.9445, 37.9366), Pos(-118.4070, 33.9424)) << atools::fs::common::ELEVATION_OCEAN << 3459.f;
 }
 
 void DtmTest::testElevationLine()
@@ -131,6 +131,7 @@ void DtmTest::testElevationLine()
   {
     if(p.getAltitude() < min)
       min = p.getAltitude();
+
     if(p.getAltitude() > max)
       max = p.getAltitude();
   }
@@ -177,6 +178,6 @@ void DtmTest::testFilePos()
   QFETCH(qint64, fileoffset);
   QFETCH(int, fileindex);
 
-  QCOMPARE(reader.calcFileOffset(filepos, fileIndexResult), fileoffset);
+  QCOMPARE(reader.calcFileOffsetTest(filepos.getLonX(), filepos.getLatY(), fileIndexResult), fileoffset);
   QCOMPARE(fileIndexResult, fileindex);
 }
