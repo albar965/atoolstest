@@ -167,6 +167,12 @@ void UtilTest::testFlags()
   QVERIFY(testList.testFlag(TestEnum::FOUR32));
   QVERIFY(testList.testFlag(TestEnum::ONE64));
 
+  TestEnums testListAny(TestEnum::NONE | TestEnum::ONE | TestEnum::ONE16);
+  QVERIFY(testListAny.testFlag(TestEnum::ONE));
+  QVERIFY(testListAny.testFlag(TestEnum::ONE16));
+  QVERIFY(testListAny.testAnyFlag(TestEnum::LOWER32));
+  QVERIFY(!testListAny.testAnyFlag(TestEnum::UPPER32));
+
   QByteArray bytes;
   QDataStream out(&bytes, QIODevice::WriteOnly);
   out << testList;
