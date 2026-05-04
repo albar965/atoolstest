@@ -302,13 +302,13 @@ void UtilTest::testFilesystemWatcher()
   QStringList filenamesResult;
   QString dirResult;
   bool foundFiles = false, foundDir = false;
-  connect(&watcher, &FileSystemWatcher::filesUpdated, [&filenamesResult, &foundFiles](const QStringList& filenames)->void
+  connect(&watcher, &FileSystemWatcher::filesUpdated, [&filenamesResult, &foundFiles](const QStringList& filenames) -> void
   {
     foundFiles = true;
     filenamesResult = filenames;
     std::sort(filenamesResult.begin(), filenamesResult.end());
   });
-  connect(&watcher, &FileSystemWatcher::dirUpdated, [&dirResult, &foundDir](const QString& dir)->void
+  connect(&watcher, &FileSystemWatcher::dirUpdated, [&dirResult, &foundDir](const QString& dir) -> void
   {
     foundDir = true;
     dirResult = dir;
