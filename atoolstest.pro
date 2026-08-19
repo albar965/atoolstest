@@ -271,7 +271,8 @@ exists($$PWD/../little_navmap_keys) {
 # Local deployment commands for development
 
 unix:!macx {
-  copydata.commands = cp -Rvf $$PWD/testdata $$OUT_PWD
+  copydata.commands += cp -Rvf $$PWD/testdata $$OUT_PWD &&
+  copydata.commands += cp -avfu $$PWD/wmm $$OUT_PWD
 }
 
 # Linux specific deploy target
@@ -289,6 +290,7 @@ unix:!macx {
   deploy.commands += cp -vf $$PWD/CHANGELOG.txt $$DEPLOY_DIR &&
   deploy.commands += cp -vf $$PWD/README.txt $$DEPLOY_DIR &&
   deploy.commands += cp -vf $$PWD/LICENSE.txt $$DEPLOY_DIR &&
+  deploy.commands += cp -Rvf $$OUT_PWD/wmm $$DEPLOY_DIR &&
   deploy.commands += cp -vfa $$[QT_INSTALL_PLUGINS]/sqldrivers/libqsqlite.so*  $$DEPLOY_DIR_LIB/sqldrivers &&
   exists(/usr/lib/x86_64-linux-gnu/libssl.so) : deploy.commands += cp -vfaL /usr/lib/x86_64-linux-gnu/libssl.so $${DEPLOY_DIR_LIB}/libssl.so &&
   exists(/usr/lib/x86_64-linux-gnu/libcrypto.so) : deploy.commands += cp -vfaL /usr/lib/x86_64-linux-gnu/libcrypto.so $${DEPLOY_DIR_LIB}/libcrypto.so &&
@@ -317,6 +319,7 @@ win32 {
   deploy.commands += mkdir $$p($$DEPLOY_BASE/$$TARGET_NAME/sqldrivers) &&
   deploy.commands += echo $$VERSION_NUMBER > $$p($$DEPLOY_BASE/$$TARGET_NAME/version.txt) &&
   deploy.commands += echo $$GIT_REVISION_FULL > $$p($$DEPLOY_BASE/$$TARGET_NAME/revision.txt) &&
+  deploy.commands += xcopy /I /S /E /F /Y $$p($$PWD/wmm) $$p($$DEPLOY_BASE/$$TARGET_NAME/wmm) &&
   deploy.commands += xcopy $$p($$OUT_PWD/atoolstest.exe) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$OPENSSL_PATH_WIN/libcrypto*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
   deploy.commands += xcopy $$p($$OPENSSL_PATH_WIN/libssl*.dll) $$p($$DEPLOY_BASE/$$TARGET_NAME) &&
