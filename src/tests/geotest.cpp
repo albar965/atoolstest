@@ -718,9 +718,9 @@ void GeoTest::testLineStringAntiMeridian()
   QCOMPARE(split.size(), linestring.size() + 4);
   QCOMPARE(crossed, true);
   QCOMPARE(split, LineString({170.f, 10.f,
-                              180.f, 10.151082f, -180.f, 10.151082f,
+                              180.f, 10.15108f, -180.f, 10.15108f,
                               -170.f, 10.f, -170.f, -10.f,
-                              -180.f, -10.15108f, 180.f, -10.15108f,
+                              -180.f, -10.151082f, 180.f, -10.151082f,
                               170.f, -10.f, 170.f, 10.f}));
 
   linestring = LineString({140.f, 10.f, 160.f, 10.f, 160.f, -10.f, 140.f, -10.f, 140.f, 10.f});
@@ -736,12 +736,48 @@ void GeoTest::testLineStringAntiMeridianList()
   LineString linestring;
   QList<LineString> splits;
 
+  linestring = LineString({179.9999f, 10.f, -179.9999f, 10.f, -179.9999f, -10.f, 179.9999f, -10.f, 179.9999f, 10.f});
+  splits = linestring.splitAtAntiMeridianList();
+  qDebug() << Q_FUNC_INFO << splits;
+  QCOMPARE(splits.size(), 2);
+  QCOMPARE(splits, QList<LineString>({LineString({179.9999f, 10.f, 180.f, 10.f, 180.f, -10.f, 179.9999f, -10.f}),
+                                      LineString({-180.f, 10.f, -179.9999f, 10.f, -179.9999f, -10.f, -180.f, -10.f})}));
+
+  linestring = LineString({179.990005f, 10.f, -179.990005f, 10.f, -179.990005f, -10.f, 179.990005f, -10.f, 179.990005f, 10.f});
+  splits = linestring.splitAtAntiMeridianList();
+  qDebug() << Q_FUNC_INFO << splits;
+  QCOMPARE(splits.size(), 2);
+  QCOMPARE(splits, QList<LineString>({LineString({179.990005f, 10.f, 180.f, 10.f, 180.f, -10.f, 179.990005f, -10.f}),
+                                      LineString({-180.f, 10.f, -179.990005f, 10.f, -179.990005f, -10.f, -180.f, -10.f})}));
+
+  // LineString[Pos(179.990005,10.000000, Pos(180.000000,10.000000, Pos(180.000000,-10.000000, Pos(179.990005,-10.000000, ,
+  // LineString[Pos(-180.000000,10.000000, Pos(-179.990005,10.000000, Pos(-179.990005,-10.000000, Pos(-180.000000,-10.000000, )
+
   // "NADI FIR"
-  linestring = LineString({170.f, 3.5f, 179.996002f, 3.5f, 179.996002f, -5.f, -179.999985f, -5.f, -171.f, -5.f, -172.938446f, -9.464358f,
-                           -174.280991f, -12.486972f, -174.718170f, -13.455630f, -175.527145f, -15.225136f, -175.672546f, -15.539847f,
-                           -175.675308f, -15.545850f, -175.827927f, -15.900086f, -176.811066f, -18.148886f, -176.980453f, -18.530287f,
-                           -178.469528f, -21.800940f, -179.996002f, -25.f, 179.999985f, -25.f, 171.416672f, -25.f, 168.f, -28.f, 163.f,
-                           -30.f, 163.f, -17.666666f, 161.25f, -14.f, 163.f, -14.f, 170.f, -10.f});
+  linestring = LineString({170.f, 3.5f,
+                           179.996002f, 3.5f,
+                           179.996002f, -5.f, // ->
+                           -179.999985f, -5.f, // <-
+                           -171.f, -5.f,
+                           -172.938446f, -9.464358f,
+                           -174.280991f, -12.486972f,
+                           -174.718170f, -13.455630f,
+                           -175.527145f, -15.225136f,
+                           -175.672546f, -15.539847f,
+                           -175.675308f, -15.545850f,
+                           -175.827927f, -15.900086f,
+                           -176.811066f, -18.148886f,
+                           -176.980453f, -18.530287f,
+                           -178.469528f, -21.800940f,
+                           -179.996002f, -25.f, // ->
+                           179.999985f, -25.f, // <-
+                           171.416672f, -25.f,
+                           168.f, -28.f,
+                           163.f, -30.f,
+                           163.f, -17.666666f,
+                           161.25f, -14.f,
+                           163.f, -14.f,
+                           170.f, -10.f});
   splits = linestring.splitAtAntiMeridianList();
   qDebug() << Q_FUNC_INFO << splits;
   QCOMPARE(splits.size(), 2);
@@ -750,15 +786,15 @@ void GeoTest::testLineStringAntiMeridianList()
   splits = linestring.splitAtAntiMeridianList();
   qDebug() << Q_FUNC_INFO << splits;
   QCOMPARE(splits.size(), 2);
-  QCOMPARE(splits, QList<LineString>({LineString({170.f, 10.f, 180.f, 10.151082f, 180.f, -10.15108f, 170.f, -10.f}),
-                                        LineString({-180.f, 10.151082f, -170.f, 10.f, -170.f, -10.f, -180.f, -10.15108f})}));
+  QCOMPARE(splits, QList<LineString>({LineString({170.f, 10.f, 180.f, 10.15108f, 180.f, -10.151082f, 170.f, -10.f}),
+                                      LineString({-180.f, 10.15108f, -170.f, 10.f, -170.f, -10.f, -180.f, -10.151082f})}));
 
   linestring = LineString({170.f, 10.f, 170.f, -10.f, -170.f, -10.f, -170.f, 10.f, 170.f, 10.f});
   splits = linestring.splitAtAntiMeridianList();
   qDebug() << Q_FUNC_INFO << splits;
   QCOMPARE(splits.size(), 2);
-  QCOMPARE(splits, QList<LineString>({LineString({170.f, 10.f, 170.f, -10.f, 180.f, -10.151082f, 180.f, 10.151080f}),
-                                        LineString({-180.f, -10.151082f, -170.f, -10.f, -170.f, 10.f, -180.f, 10.151080f})}));
+  QCOMPARE(splits, QList<LineString>({LineString({170.f, 10.f, 170.f, -10.f, 180.f, -10.15108f, 180.f, 10.151082f}),
+                                      LineString({-180.f, -10.15108f, -170.f, -10.f, -170.f, 10.f, -180.f, 10.151082f})}));
 
   linestring = LineString({140.f, 10.f, 160.f, 10.f, 160.f, -10.f, 140.f, -10.f, 140.f, 10.f});
   splits = linestring.splitAtAntiMeridianList();
