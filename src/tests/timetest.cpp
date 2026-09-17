@@ -58,21 +58,29 @@ void TimeTest::testTimeZone_data()
   QTest::addColumn<float>("latY");
   QTest::addColumn<QTimeZone>("result");
 
+  // Kangerlussuaq (BGSF)
+  QTest::newRow("BGSF") << -50.6893f << 67.017f << QTimeZone("America/Iqaluit");
 
-  // Indianapolis International (KIND)
-  QTest::newRow("KIND") << -86.2946f << 39.7173f << QTimeZone("America/Indiana/Indianapolis");
+  // Colonia Sarmiento (SAUT)
+  QTest::newRow("SAUT") << -69.0005f << -45.5822f << QTimeZone("America/Argentina/La_Rioja");
 
-  // Elkhart Municipal (KEKM)
-  QTest::newRow("KEKM") << -86.0032f << 41.7194f << QTimeZone("America/Indiana/Indianapolis");
-
-  // Devi Ahilyabai Holkar (VAID)
-  QTest::newRow("VAID") << 75.8056f << 22.7233f << QTimeZone("Asia/Kolkata");
-
-  // Chhatrapati Shivaji International (VABB)
-  QTest::newRow("VABB") << 72.866f << 19.0916f << QTimeZone("Asia/Kolkata");
+  // Estancia La Laurita (SAAW)
+  QTest::newRow("SAAW") << -70.19651f << -44.77573f << QTimeZone("America/Argentina/La_Rioja");
 
   // Ternopil' International (UKLT)
-  QTest::newRow("UKLT") << 25.699f << 49.525f << QTimeZone("Europe/Kyiv");
+  QTest::newRow("UKLT") << 25.699f << 49.525f << QTimeZone("Europe/Kiev");
+
+  // Devi Ahilyabai Holkar (VAID)
+  QTest::newRow("VAID") << 75.8056f << 22.7233f << QTimeZone("Asia/Calcutta");
+
+  // Chhatrapati Shivaji International (VABB)
+  QTest::newRow("VABB") << 72.866f << 19.0916f << QTimeZone("Asia/Calcutta");
+
+  // Indianapolis International (KIND)
+  QTest::newRow("KIND") << -86.2946f << 39.7173f << QTimeZone("America/Indianapolis");
+
+  // Elkhart Municipal (KEKM)
+  QTest::newRow("KEKM") << -86.0032f << 41.7194f << QTimeZone("America/Indianapolis");
 
   QTest::newRow("GMT-5") << 74.05035f << -33.87041f << QTimeZone("Etc/GMT-5");
   QTest::newRow("GMT") << 4.61675f << -37.30027f << QTimeZone("Etc/GMT");
@@ -134,6 +142,7 @@ void TimeTest::testTimeZone()
 
   qDebug() << "Expected" << result << "zone" << zone << zone.standardTimeOffset(QDateTime()) / 3600.f;
   QCOMPARE(result, zone);
+  QCOMPARE(zone.isValid(), true);
 }
 
 void TimeTest::testNextSixHour_data()
