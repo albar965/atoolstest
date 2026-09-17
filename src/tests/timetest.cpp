@@ -59,7 +59,7 @@ void TimeTest::testTimeZone_data()
   QTest::addColumn<QTimeZone>("result");
 
   // Kangerlussuaq (BGSF)
-  QTest::newRow("BGSF") << -50.6893f << 67.017f << QTimeZone("America/Iqaluit");
+  QTest::newRow("BGSF") << -50.6893f << 67.017f << QTimeZone("America/Godthab");
 
   // Colonia Sarmiento (SAUT)
   QTest::newRow("SAUT") << -69.0005f << -45.5822f << QTimeZone("America/Argentina/La_Rioja");
