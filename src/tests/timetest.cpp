@@ -58,6 +58,7 @@ void TimeTest::testTimeZone_data()
   QTest::addColumn<float>("latY");
   QTest::addColumn<QTimeZone>("result");
 
+#ifdef Q_OS_WIN32
   // Kangerlussuaq (BGSF)
   QTest::newRow("BGSF") << -50.6893f << 67.017f << QTimeZone("America/Godthab");
 
@@ -81,6 +82,31 @@ void TimeTest::testTimeZone_data()
 
   // Elkhart Municipal (KEKM)
   QTest::newRow("KEKM") << -86.0032f << 41.7194f << QTimeZone("America/Indianapolis");
+#else
+  // Kangerlussuaq (BGSF)
+  QTest::newRow("BGSF") << -50.6893f << 67.017f << QTimeZone("America/Nuuk");
+
+  // Colonia Sarmiento (SAUT)
+  QTest::newRow("SAUT") << -69.0005f << -45.5822f << QTimeZone("America/Argentina/Catamarca");
+
+  // Estancia La Laurita (SAAW)
+  QTest::newRow("SAAW") << -70.19651f << -44.77573f << QTimeZone("America/Argentina/Catamarca");
+
+  // Ternopil' International (UKLT)
+  QTest::newRow("UKLT") << 25.699f << 49.525f << QTimeZone("Europe/Kyiv");
+
+  // Devi Ahilyabai Holkar (VAID)
+  QTest::newRow("VAID") << 75.8056f << 22.7233f << QTimeZone("Asia/Kolkata");
+
+  // Chhatrapati Shivaji International (VABB)
+  QTest::newRow("VABB") << 72.866f << 19.0916f << QTimeZone("Asia/Kolkata");
+
+  // Indianapolis International (KIND)
+  QTest::newRow("KIND") << -86.2946f << 39.7173f << QTimeZone("America/Indiana/Indianapolis");
+
+  // Elkhart Municipal (KEKM)
+  QTest::newRow("KEKM") << -86.0032f << 41.7194f << QTimeZone("America/Indiana/Indianapolis");
+#endif
 
   QTest::newRow("GMT-5") << 74.05035f << -33.87041f << QTimeZone("Etc/GMT-5");
   QTest::newRow("GMT") << 4.61675f << -37.30027f << QTimeZone("Etc/GMT");
