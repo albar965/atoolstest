@@ -58,6 +58,22 @@ void TimeTest::testTimeZone_data()
   QTest::addColumn<float>("latY");
   QTest::addColumn<QTimeZone>("result");
 
+
+  // Indianapolis International (KIND)
+  QTest::newRow("KIND") << -86.2946f << 39.7173f << QTimeZone("America/Indiana/Indianapolis");
+
+  // Elkhart Municipal (KEKM)
+  QTest::newRow("KEKM") << -86.0032f << 41.7194f << QTimeZone("America/Indiana/Indianapolis");
+
+  // Devi Ahilyabai Holkar (VAID)
+  QTest::newRow("VAID") << 75.8056f << 22.7233f << QTimeZone("Asia/Kolkata");
+
+  // Chhatrapati Shivaji International (VABB)
+  QTest::newRow("VABB") << 72.866f << 19.0916f << QTimeZone("Asia/Kolkata");
+
+  // Ternopil' International (UKLT)
+  QTest::newRow("UKLT") << 25.699f << 49.525f << QTimeZone("Europe/Kyiv");
+
   QTest::newRow("GMT-5") << 74.05035f << -33.87041f << QTimeZone("Etc/GMT-5");
   QTest::newRow("GMT") << 4.61675f << -37.30027f << QTimeZone("Etc/GMT");
   QTest::newRow("GMT+3") << -45.4809f << 33.87041f << QTimeZone("Etc/GMT+3");
@@ -66,6 +82,7 @@ void TimeTest::testTimeZone_data()
   // EDDF
   // 8.54692 50.02561
   QTest::newRow("EDDF") << 8.54692f << 50.02561f << QTimeZone("Europe/Berlin");
+
   // LPPD
   // -25.69855 37.74221
   QTest::newRow("LPPD") << -25.69855f << 37.74221f << QTimeZone("Atlantic/Azores");
