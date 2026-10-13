@@ -272,7 +272,7 @@ exists($$PWD/../little_navmap_keys) {
 
 unix:!macx {
   copydata.commands += cp -Rvf $$PWD/testdata $$OUT_PWD &&
-  copydata.commands += cp -avfu $$PWD/wmm $$OUT_PWD
+  copydata.commands += cp -avf $$PWD/wmm $$OUT_PWD
 }
 
 # Linux specific deploy target
