@@ -208,8 +208,6 @@ SOURCES += \
   src/tests/calctest.cpp \
   src/tests/dbtest.cpp \
   src/tests/fsutiltest.cpp \
-  src/tests/gribtest.cpp \
-  src/tests/metartest.cpp \
   src/tests/geotest.cpp \
   src/tests/dtmtest.cpp \
   src/tests/flightplantest.cpp \
@@ -226,6 +224,8 @@ SOURCES += \
   src/tests/onlinetest.cpp \
   src/tests/perftest.cpp \
   src/main.cpp \
+  src/tests/weathertest.cpp \
+  src/tests/windtest.cpp \
   src/testutil/testutil.cpp
 
 HEADERS += \
@@ -234,8 +234,6 @@ HEADERS += \
   src/tests/calctest.h \
   src/tests/dbtest.h \
   src/tests/fsutiltest.h \
-  src/tests/gribtest.h \
-  src/tests/metartest.h \
   src/tests/geotest.h \
   src/tests/dtmtest.h \
   src/tests/flightplantest.h \
@@ -251,6 +249,8 @@ HEADERS += \
   src/tests/versiontest.h \
   src/tests/onlinetest.h \
   src/tests/perftest.h \
+  src/tests/weathertest.h \
+  src/tests/windtest.h \
   src/testutil/testutil.h
 
 OTHER_FILES += \

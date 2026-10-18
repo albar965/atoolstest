@@ -15,16 +15,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include "metartest.h"
+#include "weathertest.h"
 
+#include "atools.h"
+#include "fs/util/fsutil.h"
 #include "fs/weather/metar.h"
 #include "fs/weather/metarindex.h"
 #include "fs/weather/metarparser.h"
 #include "fs/weather/noaaweatherdownloader.h"
-#include "fs/weather/weathernetdownload.h"
-#include "geo/pos.h"
-#include "atools.h"
 #include "fs/weather/weatherdownloadbase.h"
+#include "fs/weather/weathernetdownload.h"
+#include "fs/weather/xpweatherreader.h"
+#include "geo/pos.h"
 #include "testutil/testutil.h"
 
 using atools::fs::weather::NoaaWeatherDownloader;
@@ -66,49 +68,132 @@ const static QHash<QByteArray, atools::geo::Pos> AIRPORT_COORDS_INTERPOLATE = {
   {"XX2W", atools::geo::Pos(-2.f, 0.f)}
 };
 
-MetarTest::MetarTest()
+WeatherTest::WeatherTest()
 {
 
 }
 
-void MetarTest::runtest(int argc, char *argv[])
+void WeatherTest::runtest(int argc, char *argv[])
 {
-  MetarTest tst;
+  WeatherTest tst;
   QTest::qExec(&tst, argc, argv);
 }
 
-void MetarTest::initTestCase()
+void WeatherTest::initTestCase()
 {
   atools::fs::weather::initTranslateableTexts();
 }
 
-void MetarTest::cleanupTestCase()
+void WeatherTest::cleanupTestCase()
 {
 
 }
 
-void MetarTest::testVatsimDownload()
+void WeatherTest::testXpWeatherReader()
+{
+  atools::fs::weather::XpWeatherReader reader(nullptr, true);
+  reader.setWeatherPath("testdata/X-Plane/Output/real weather", atools::fs::weather::WEATHER_XP12);
+  reader.setFetchAirportCoords([](const QByteArray& airportIdent, void *) -> atools::geo::Pos {
+    return AIRPORT_COORDS.value(airportIdent);
+  }, nullptr);
+
+  QDateTime datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-10-20-12.00.txt");
+  reader.simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
+               "EDDM 010850Z AUTO VRB02KT CAVOK 18/13 Q1024 NOSIG");
+
+  datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-09-05-12.00.txt");
+  reader.simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
+               "EDDM 262350Z AUTO 00000KT CAVOK 06/06 Q1024 NOSIG");
+
+  datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-09-29-14.00.txt");
+  reader.simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
+               "EDDM 291350Z AUTO 08007KT 050V110 CAVOK 24/11 Q1022 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDF", atools::geo::Pos(8.57045555114746, 50.0333061218262)),
+               "EDDF 291350Z AUTO 10006KT 070V160 CAVOK 28/07 Q1019 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDK", atools::geo::Pos(7.14274454116821, 50.8659172058105)),
+               "EDDK 291350Z AUTO 12006KT 070V150 CAVOK 26/12 Q1018 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDH", atools::geo::Pos(9.98822784423828, 53.6303901672363)),
+               "EDDH 291350Z AUTO 11008KT CAVOK 22/14 Q1022 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDL", atools::geo::Pos(6.75731134414673, 51.2809257507324)),
+               "EDDL 291350Z AUTO 13010KT CAVOK 28/13 Q1017 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDN", atools::geo::Pos(11.0780086517334, 49.4986991882324)),
+               "EDDN 291350Z AUTO VRB02KT CAVOK 26/09 Q1021 NOSIG");
+
+  datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-09-29-05.15.txt");
+  reader.simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
+               "EDDM 290450Z AUTO 08002KT 0600 0250 R08L/0600D R08R/P2000N FG NCD 05/05 Q1022 TEMPO 6000");
+  compareMetar(reader.getXplaneMetar("EDDF", atools::geo::Pos(8.57045555114746, 50.0333061218262)),
+               "EDDF 290450Z AUTO 01008KT 340V040 CAVOK 18/10 Q1020 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDK", atools::geo::Pos(7.14274454116821, 50.8659172058105)),
+               "EDDK 290450Z AUTO 14004KT CAVOK 14/13 Q1019 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDH", atools::geo::Pos(9.98822784423828, 53.6303901672363)),
+               "EDDH 290450Z AUTO 04003KT 010V070 CAVOK 15/13 Q1022 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDL", atools::geo::Pos(6.75731134414673, 51.2809257507324)),
+               "EDDL 290450Z AUTO 04002KT CAVOK 15/14 Q1018 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDN", atools::geo::Pos(11.0780086517334, 49.4986991882324)),
+               "EDDN 290450Z AUTO 08001KT CAVOK 10/08 Q1022");
+
+  datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-10-01-04.00.txt");
+  reader.simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  compareMetar(reader.getXplaneMetar("EDDB", atools::geo::Pos(13.5006723403931, 52.362247467041)),
+               "EDDB 010350Z AUTO 12008KT CAVOK 15/09 Q1022 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDC", atools::geo::Pos(13.7679996490479, 51.1343460083008)),
+               "EDDC 010350Z AUTO 15009KT CAVOK 15/08 Q1023 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDV", atools::geo::Pos(9.68352222442627, 52.4602127075195)),
+               "EDDV 010350Z AUTO 10004KT 070V140 CAVOK 15/09 Q1019 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDW", atools::geo::Pos(8.78674697875977, 53.0474014282227)),
+               "EDDW 010350Z AUTO 12004KT 090V150 CAVOK 16/09 Q1018 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDS", atools::geo::Pos(9.22196388244629, 48.6898765563965)),
+               "EDDS 010350Z AUTO 00000KT CAVOK 14/10 Q1021");
+  compareMetar(reader.getXplaneMetar("EDDR", atools::geo::Pos(7.1095085144043, 49.2145538330078)),
+               "EDDR 010350Z AUTO 20003KT 9999 -RA NSC 18/16 Q1021 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDE", atools::geo::Pos(10.9581060409546, 50.9798126220703)),
+               "EDDE 010350Z AUTO 21007KT CAVOK 11/07 Q1021 NOSIG");
+  compareMetar(reader.getXplaneMetar("EDDG", atools::geo::Pos(7.68483066558838, 52.1346435546875)),
+               "EDDG 010350Z AUTO 13003KT 100V160 CAVOK 19/15 Q1018 TEMPO SHRA BKN045CB");
+  compareMetar(reader.getXplaneMetar("EDDP", atools::geo::Pos(12.2363834381104, 51.4239921569824)),
+               "EDDP 010350Z AUTO 14010KT CAVOK 12/08 Q1021 NOSIG");
+}
+
+void WeatherTest::compareMetar(const atools::fs::weather::Metar& metar, const QString& expectedStation)
+{
+  qDebug() << Q_FUNC_INFO << metar.getStationMetar();
+
+  if(!expectedStation.isEmpty())
+    QCOMPARE(metar.getStationMetar(), expectedStation);
+}
+
+void WeatherTest::testVatsimDownload()
 {
   WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
   downloader.setRequestUrl("https://metar.vatsim.net/metar.php?id=ALL");
   testDownload(downloader, false);
 }
 
-void MetarTest::testVatsimDownloadFailed()
+void WeatherTest::testVatsimDownloadFailed()
 {
   WeatherNetDownload downloader(this, atools::fs::weather::FLAT, true);
   downloader.setRequestUrl("https://www.vatsim.net/XXX");
   testDownload(downloader, true);
 }
 
-void MetarTest::testIvaoRead()
+void WeatherTest::testIvaoRead()
 {
   WeatherNetDownload downloader(this, atools::fs::weather::JSON, true);
   downloader.setRequestUrl("testdata/ivao_metar_fmt.json");
   testDownload(downloader, false);
 }
 
-void MetarTest::testIvaoDownload()
+void WeatherTest::testIvaoDownload()
 {
   QString KEY(":/atoolstest/little_navmap_keys/ivao_weather_api_key.bin");
   if(QFile::exists(KEY))
@@ -123,21 +208,21 @@ void MetarTest::testIvaoDownload()
   }
 }
 
-void MetarTest::testIvaoDownloadFailed()
+void WeatherTest::testIvaoDownloadFailed()
 {
   WeatherNetDownload downloader(this, atools::fs::weather::JSON, true);
   downloader.setRequestUrl("https://api.ivao.aero/v2/airports/all/metarXXX");
   testDownload(downloader, true);
 }
 
-void MetarTest::testNoaaDownload()
+void WeatherTest::testNoaaDownload()
 {
   NoaaWeatherDownloader downloader(this, true);
   downloader.setRequestUrl("https://tgftp.nws.noaa.gov/data/observations/metar/cycles/%1Z.TXT");
   testDownload(downloader, false);
 }
 
-void MetarTest::testNoaaDownloadFailed()
+void WeatherTest::testNoaaDownloadFailed()
 {
   NoaaWeatherDownloader downloader(this, true);
   // Does not work since error code is not given by NOAA
@@ -145,14 +230,14 @@ void MetarTest::testNoaaDownloadFailed()
   // testDownload(downloader, true);
 }
 
-void MetarTest::testNoaaDownloadFailedNoHost()
+void WeatherTest::testNoaaDownloadFailedNoHost()
 {
   NoaaWeatherDownloader downloader(this, true);
   downloader.setRequestUrl("https://NONONONO.nws.noaa.gov/data/observations/metar/cycles/%1Z.TXT");
   testDownload(downloader, true);
 }
 
-void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloader, bool expectFail)
+void WeatherTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloader, bool expectFail)
 {
   bool updateFlag = false, errorFlag = false, finished = false;
 
@@ -264,7 +349,7 @@ void MetarTest::testDownload(atools::fs::weather::WeatherDownloadBase& downloade
   }
 }
 
-void MetarTest::testMetarAsn()
+void WeatherTest::testMetarAsn()
 {
   QFile metarFile("testdata/current_wx_snapshot.txt");
   QVERIFY(metarFile.open(QIODevice::ReadOnly | QIODevice::Text));
@@ -307,7 +392,7 @@ void MetarTest::testMetarAsn()
   QCOMPARE(numFailedWind, 66);
 }
 
-void MetarTest::testMetarSim()
+void WeatherTest::testMetarSim()
 {
   QFile metarFiles("testdata/METAR.txt");
   QVERIFY(metarFiles.open(QIODevice::ReadOnly | QIODevice::Text));
@@ -372,7 +457,7 @@ void MetarTest::testMetarSim()
   QCOMPARE(numNoWind, 288);
 }
 
-void MetarTest::testMetarInterpolatedSimple()
+void WeatherTest::testMetarInterpolatedSimple()
 {
   atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT, true);
   index.setFetchAirportCoords([](const QByteArray& airportIdent, void *) -> atools::geo::Pos {
@@ -409,7 +494,7 @@ void MetarTest::testMetarInterpolatedSimple()
   qDebug() << Q_FUNC_INFO << "metar" << metar;
 }
 
-void MetarTest::testMetarInterpolated()
+void WeatherTest::testMetarInterpolated()
 {
   atools::fs::weather::MetarIndex index(atools::fs::weather::FLAT, true);
   index.setFetchAirportCoords([](const QByteArray& airportIdent, void *) -> atools::geo::Pos {
@@ -493,10 +578,10 @@ void MetarTest::testMetarInterpolated()
                 "XXXX 291230Z 00007KT 6000 RA 13/13 Q1133", "MVFR");
 }
 
-void MetarTest::validateMetar(const atools::fs::weather::Metar& m,
-                              const QString& stationMetar, const QString& stationFlightRules,
-                              const QString& nearestMetar, const QString& nearestFlightRules,
-                              const QString& interpolatedMetar, const QString& interpolatedFlightRules)
+void WeatherTest::validateMetar(const atools::fs::weather::Metar& m,
+                                const QString& stationMetar, const QString& stationFlightRules,
+                                const QString& nearestMetar, const QString& nearestFlightRules,
+                                const QString& interpolatedMetar, const QString& interpolatedFlightRules)
 {
   QCOMPARE(m.getStationMetar(), stationMetar);
   QCOMPARE(m.getStation().getFlightRulesString(), stationFlightRules);

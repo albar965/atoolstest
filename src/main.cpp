@@ -25,9 +25,9 @@
 #include "tests/flightplantest.h"
 #include "tests/fsutiltest.h"
 #include "tests/geotest.h"
-#include "tests/gribtest.h"
+#include "tests/windtest.h"
 #include "tests/magdectest.h"
-#include "tests/metartest.h"
+#include "tests/weathertest.h"
 #include "tests/onlinetest.h"
 #include "tests/perftest.h"
 #include "tests/routetest.h"
@@ -156,9 +156,7 @@ int main(int argc, char *argv[])
   DEFINETEST(FlightplanTest)
   DEFINETEST(FsUtilTest)
   DEFINETEST(GeoTest)
-  DEFINETEST(GribTest)
   DEFINETEST(MagdecTest)
-  DEFINETEST(MetarTest)
   DEFINETEST(OnlineTest)
   DEFINETEST(PerfTest)
   DEFINETEST(RouteTest)
@@ -170,6 +168,8 @@ int main(int argc, char *argv[])
   DEFINETEST(UpdateTest)
   DEFINETEST(UtilTest)
   DEFINETEST(VersionTest)
+  DEFINETEST(WeatherTest)
+  DEFINETEST(WindTest)
 
   parser->parse(QCoreApplication::arguments());
   otherOptions.append(QCoreApplication::arguments().constFirst());
@@ -221,7 +221,7 @@ void test()
     RUNTESTEXT(FsUtilTest)
     RUNTESTEXT(GeoTest)
     RUNTESTEXT(MagdecTest)
-    RUNTESTEXT(MetarTest)
+    RUNTESTEXT(WeatherTest)
     RUNTESTEXT(OnlineTest)
     RUNTESTEXT(PerfTest)
     RUNTESTEXT(RouteTest)
@@ -232,7 +232,7 @@ void test()
     RUNTESTEXT(TrackTest)
     RUNTESTEXT(UtilTest)
     RUNTESTEXT(VersionTest)
-    RUNTESTEXT_COND(GribTest, QSslSocket::supportsSsl())
+    RUNTESTEXT_COND(WindTest, QSslSocket::supportsSsl())
     RUNTESTEXT_COND(UpdateTest, QSslSocket::supportsSsl())
 
     qStdOut() << "Total execution time" << timerTotal.restart() << "ms" << Qt::endl;

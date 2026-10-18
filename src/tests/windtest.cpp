@@ -15,15 +15,16 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include "gribtest.h"
+#include "windtest.h"
 
-#include "grib/gribreader.h"
-#include "grib/gribdownloader.h"
-#include "grib/windquery.h"
-#include "geo/rect.h"
-#include "geo/linestring.h"
-#include "testutil/testutil.h"
 #include "exception.h"
+#include "fs/util/fsutil.h"
+#include "geo/linestring.h"
+#include "geo/rect.h"
+#include "grib/gribdownloader.h"
+#include "grib/gribreader.h"
+#include "grib/windquery.h"
+#include "testutil/testutil.h"
 
 using atools::grib::GribDownloader;
 using atools::grib::GribReader;
@@ -38,35 +39,93 @@ using atools::grib::Wind;
 // Use grib_ls to verify results:
 // lonx=0; laty=2 ; level=700 ;grib_ls -l$laty,$(($lonx+180)),1  -p level,shortName -w level=$level -F%4.8f testdata/lnm_winds.grib|grep $level
 
-GribTest::GribTest()
+WindTest::WindTest()
 {
 
 }
 
-void GribTest::runtest(int argc, char *argv[])
+void WindTest::runtest(int argc, char *argv[])
 {
-  GribTest tst;
+  WindTest tst;
   QTest::qExec(&tst, argc, argv);
 }
 
-void GribTest::initTestCase()
+void WindTest::initTestCase()
 {
   queryLnm = new WindQuery(this, verbose);
   queryLnm->initFromPath("testdata/lnm_winds.grib", atools::fs::weather::WEATHER_XP11);
   queryLnm->setSamplesPerDegree(100);
 
-  queryGlobal2 = new WindQuery(this, verbose);
-  queryGlobal2->initFromPath("testdata/global_winds2.grib", atools::fs::weather::WEATHER_XP11);
-  queryGlobal2->setSamplesPerDegree(100);
+  queryXp11 = new WindQuery(this, verbose);
+  queryXp11->initFromPath("testdata/global_winds2.grib", atools::fs::weather::WEATHER_XP11);
+  queryXp11->setSamplesPerDegree(100);
+
+  queryXp12 = new WindQuery(this, verbose);
+  queryXp12->initFromPath("testdata/X-Plane/Output/real weather", atools::fs::weather::WEATHER_XP12);
+  queryXp12->setSamplesPerDegree(100);
 }
 
-void GribTest::cleanupTestCase()
+void WindTest::cleanupTestCase()
 {
   delete queryLnm;
-  delete queryGlobal2;
+  delete queryXp11;
+  delete queryXp12;
 }
 
-void GribTest::testLoadSpecialCharPath()
+void WindTest::testLoadXp12()
+{
+  // GRIB-2026-09-27-00.00-ZULU-wind.grib
+  // GRIB-2026-09-27-03.00-ZULU-wind.grib
+  // GRIB-2026-09-27-06.00-ZULU-wind.grib
+  // GRIB-2026-09-27-09.00-ZULU-wind.grib
+  // GRIB-2026-09-27-12.00-ZULU-wind.grib
+  // GRIB-2026-09-27-15.00-ZULU-wind.grib
+  // GRIB-2026-09-27-18.00-ZULU-wind.grib
+  // GRIB-2026-09-27-21.00-ZULU-wind.grib
+  // GRIB-2026-09-29-00.00-ZULU-wind.grib
+  // GRIB-2026-09-29-03.00-ZULU-wind.grib
+  // GRIB-2026-09-29-06.00-ZULU-wind.grib
+  // GRIB-2026-09-29-09.00-ZULU-wind.grib
+  // GRIB-2026-09-29-12.00-ZULU-wind.grib
+  // GRIB-2026-09-29-15.00-ZULU-wind.grib
+  // GRIB-2026-09-29-18.00-ZULU-wind.grib
+  // GRIB-2026-09-29-21.00-ZULU-wind.grib
+  // GRIB-2026-10-01-00.00-ZULU-wind.grib
+  // GRIB-2026-10-01-03.00-ZULU-wind.grib
+  // GRIB-2026-10-01-06.00-ZULU-wind.grib
+  // GRIB-2026-10-01-09.00-ZULU-wind.grib
+  // GRIB-2026-10-01-12.00-ZULU-wind.grib
+  // GRIB-2026-10-01-15.00-ZULU-wind.grib
+  // GRIB-2026-10-01-18.00-ZULU-wind.grib
+  // GRIB-2026-10-01-21.00-ZULU-wind.grib
+
+  QDateTime from, to, datetime = atools::fs::util::xpGribFilenameToDateTime("GRIB-2026-09-01-12.00-ZULU-wind.grib");
+  queryXp12->simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  atools::grib::Wind wind = queryXp12->getWindForPos(Pos(0.f, 0.f, 0.f));
+  qDebug() << Q_FUNC_INFO << QFileInfo(queryXp12->getCurrentGribFile()).fileName();
+  queryXp12->getValidity(from, to);
+  qDebug() << Q_FUNC_INFO << from << to;
+  QCOMPARE(QFileInfo(queryXp12->getCurrentGribFile()).fileName(), "GRIB-2026-09-27-00.00-ZULU-wind.grib");
+
+  datetime = atools::fs::util::xpGribFilenameToDateTime("GRIB-2026-10-20-12.00-ZULU-wind.grib");
+  queryXp12->simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  wind = queryXp12->getWindForPos(Pos(0.f, 0.f, 0.f));
+  queryXp12->getValidity(from, to);
+  qDebug() << Q_FUNC_INFO << from << to;
+  QCOMPARE(QFileInfo(queryXp12->getCurrentGribFile()).fileName(), "GRIB-2026-10-01-21.00-ZULU-wind.grib");
+
+  datetime = atools::fs::util::xpGribFilenameToDateTime("GRIB-2026-09-29-12.00-ZULU-wind.grib");
+  queryXp12->simulatorTimeUpdated(datetime);
+  qDebug() << Q_FUNC_INFO << datetime;
+  wind = queryXp12->getWindForPos(Pos(0.f, 0.f, 0.f));
+  queryXp12->getValidity(from, to);
+  qDebug() << Q_FUNC_INFO << from << to;
+  QCOMPARE(QFileInfo(queryXp12->getCurrentGribFile()).fileName(), "GRIB-2026-09-29-12.00-ZULU-wind.grib");
+}
+
+void WindTest::testLoadSpecialCharPath()
 {
   WindQuery wq(this, verbose);
   wq.initFromPath("testdata/lnm_winds äöüß.grib", atools::fs::weather::WEATHER_XP11);
@@ -74,43 +133,43 @@ void GribTest::testLoadSpecialCharPath()
   QCOMPARE(wq.hasWindData(), true);
 }
 
-void GribTest::testGribReadTest_data()
+void WindTest::testGribReadTest_data()
 {
   QTest::addColumn<atools::grib::WindQuery *>("query");
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("speed");
   QTest::addColumn<float>("dir");
 
-  QTest::newRow("Pos(0.f,0.f) 0") << queryGlobal2 << Pos(0.f, 0.f, 0.f) << 0.f << 0.f;
-  QTest::newRow("Pos(1.f,1.f)") << queryGlobal2 << Pos(1.f, 1.f, 10000) << 22.2137f << 92.5149f;
-  QTest::newRow("Pos(-0.5f,-0.5f)") << queryGlobal2 << Pos(-0.5f, -0.5f, 10000) << 17.9995f << 89.3592f;
-  QTest::newRow("Pos(-1.f,0.f)") << queryGlobal2 << Pos(-1.f, 0.f, 10000) << 18.5741f << 84.845f;
-  QTest::newRow("Pos(0.f,0.f)") << queryGlobal2 << Pos(0.f, 0.f, 10000) << 22.296f << 93.6562f;
-  QTest::newRow("Pos(0.f,-1.f)") << queryGlobal2 << Pos(0.f, -1.f, 10000) << 17.4816f << 94.4095f;
-  QTest::newRow("Pos(-1.f,-1.f)") << queryGlobal2 << Pos(-1.f, -1.f, 10000) << 13.9446f << 82.16f;
-  QTest::newRow("Pos(-0.5f,0.f)") << queryGlobal2 << Pos(-0.5f, 0.f, 10000) << 20.3751f << 89.6526f;
-  QTest::newRow("Pos(0.f,-0.5f)") << queryGlobal2 << Pos(0.f, -0.5f, 10000) << 19.8884f << 93.9873f;
-  QTest::newRow("Pos(0.5f,0.f)") << queryGlobal2 << Pos(0.5f, 0.f, 10000) << 20.8644f << 96.3999f;
-  QTest::newRow("Pos(0.f,0.5f)") << queryGlobal2 << Pos(0.f, 0.5f, 10000) << 22.8479f << 91.1283f;
-  QTest::newRow("Pos(0.5f,0.5f)") << queryGlobal2 << Pos(0.5f, 0.5f, 10000) << 21.8117f << 93.3538f;
-  QTest::newRow("Pos(0.f,0.f)") << queryGlobal2 << Pos(0.f, 0.f, 10000) << 22.296f << 93.6562f;
-  QTest::newRow("Pos(43.f,33.f)") << queryGlobal2 << Pos(43.f, 33.f, 10000) << 35.3638f << 221.662f;
-  QTest::newRow("Pos(-15.f,46.f)") << queryGlobal2 << Pos(-15.f, 46.f, 10000) << 54.8431f << 287.531f;
-  QTest::newRow("Pos(-87.f,33.f)") << queryGlobal2 << Pos(-87.f, 33.f, 10000) << 8.83288f << 142.014f;
-  QTest::newRow("Pos(-100.f,32.f)") << queryGlobal2 << Pos(-100.f, 32.f, 10000) << 30.4046f << 232.225f;
-  QTest::newRow("Pos(-25.f,37.f)") << queryGlobal2 << Pos(-25.f, 37.f, 10000) << 33.194f << 271.102f;
-  QTest::newRow("Pos(9.f,50.f)") << queryGlobal2 << Pos(9.f, 50.f, 10000) << 29.2664f << 233.567f;
-  QTest::newRow("Pos(107.f,-17.f)") << queryGlobal2 << Pos(107.f, -17.f, 10000) << 19.7367f << 81.6838f;
-  QTest::newRow("Pos(30.f,-31.f)") << queryGlobal2 << Pos(30.f, -31.f, 10000) << 5.43035f << 352.321f;
-  QTest::newRow("Pos(0.9f,0.9f)") << queryGlobal2 << Pos(0.9f, 0.9f, 10000) << 22.062f << 92.7212f;
-  QTest::newRow("Pos(0.1f,0.1f)") << queryGlobal2 << Pos(0.1f, 0.1f, 10000) << 22.1285f << 93.6406f;
-  QTest::newRow("Pos(-100.f,66.f)") << queryGlobal2 << Pos(-100.f, 66.f, 10000) << 14.4823f << 29.7474f;
-  QTest::newRow("Pos(137.f,66.0f)") << queryGlobal2 << Pos(137.f, 66.0f, 10000) << 23.5245f << 180.584f;
+  QTest::newRow("Pos(0.f,0.f) 0") << queryXp11 << Pos(0.f, 0.f, 0.f) << 0.f << 0.f;
+  QTest::newRow("Pos(1.f,1.f)") << queryXp11 << Pos(1.f, 1.f, 10000) << 22.2137f << 92.5149f;
+  QTest::newRow("Pos(-0.5f,-0.5f)") << queryXp11 << Pos(-0.5f, -0.5f, 10000) << 17.9995f << 89.3592f;
+  QTest::newRow("Pos(-1.f,0.f)") << queryXp11 << Pos(-1.f, 0.f, 10000) << 18.5741f << 84.845f;
+  QTest::newRow("Pos(0.f,0.f)") << queryXp11 << Pos(0.f, 0.f, 10000) << 22.296f << 93.6562f;
+  QTest::newRow("Pos(0.f,-1.f)") << queryXp11 << Pos(0.f, -1.f, 10000) << 17.4816f << 94.4095f;
+  QTest::newRow("Pos(-1.f,-1.f)") << queryXp11 << Pos(-1.f, -1.f, 10000) << 13.9446f << 82.16f;
+  QTest::newRow("Pos(-0.5f,0.f)") << queryXp11 << Pos(-0.5f, 0.f, 10000) << 20.3751f << 89.6526f;
+  QTest::newRow("Pos(0.f,-0.5f)") << queryXp11 << Pos(0.f, -0.5f, 10000) << 19.8884f << 93.9873f;
+  QTest::newRow("Pos(0.5f,0.f)") << queryXp11 << Pos(0.5f, 0.f, 10000) << 20.8644f << 96.3999f;
+  QTest::newRow("Pos(0.f,0.5f)") << queryXp11 << Pos(0.f, 0.5f, 10000) << 22.8479f << 91.1283f;
+  QTest::newRow("Pos(0.5f,0.5f)") << queryXp11 << Pos(0.5f, 0.5f, 10000) << 21.8117f << 93.3538f;
+  QTest::newRow("Pos(0.f,0.f)") << queryXp11 << Pos(0.f, 0.f, 10000) << 22.296f << 93.6562f;
+  QTest::newRow("Pos(43.f,33.f)") << queryXp11 << Pos(43.f, 33.f, 10000) << 35.3638f << 221.662f;
+  QTest::newRow("Pos(-15.f,46.f)") << queryXp11 << Pos(-15.f, 46.f, 10000) << 54.8431f << 287.531f;
+  QTest::newRow("Pos(-87.f,33.f)") << queryXp11 << Pos(-87.f, 33.f, 10000) << 8.83288f << 142.014f;
+  QTest::newRow("Pos(-100.f,32.f)") << queryXp11 << Pos(-100.f, 32.f, 10000) << 30.4046f << 232.225f;
+  QTest::newRow("Pos(-25.f,37.f)") << queryXp11 << Pos(-25.f, 37.f, 10000) << 33.194f << 271.102f;
+  QTest::newRow("Pos(9.f,50.f)") << queryXp11 << Pos(9.f, 50.f, 10000) << 29.2664f << 233.567f;
+  QTest::newRow("Pos(107.f,-17.f)") << queryXp11 << Pos(107.f, -17.f, 10000) << 19.7367f << 81.6838f;
+  QTest::newRow("Pos(30.f,-31.f)") << queryXp11 << Pos(30.f, -31.f, 10000) << 5.43035f << 352.321f;
+  QTest::newRow("Pos(0.9f,0.9f)") << queryXp11 << Pos(0.9f, 0.9f, 10000) << 22.062f << 92.7212f;
+  QTest::newRow("Pos(0.1f,0.1f)") << queryXp11 << Pos(0.1f, 0.1f, 10000) << 22.1285f << 93.6406f;
+  QTest::newRow("Pos(-100.f,66.f)") << queryXp11 << Pos(-100.f, 66.f, 10000) << 14.4823f << 29.7474f;
+  QTest::newRow("Pos(137.f,66.0f)") << queryXp11 << Pos(137.f, 66.0f, 10000) << 23.5245f << 180.584f;
 
   QTest::newRow("Pos(-12.f,52.0f)") << queryLnm << Pos(-12.f, 52.0f, 10000) << 48.8687f << 296.868f;
 }
 
-void GribTest::testGribReadTest()
+void WindTest::testGribReadTest()
 {
   QFETCH(atools::grib::WindQuery *, query);
   QFETCH(Pos, pos);
@@ -125,7 +184,7 @@ void GribTest::testGribReadTest()
   // QCOMPARE(wind.speed, wind2.speed);
 }
 
-void GribTest::testGribReadInterpolate_data()
+void WindTest::testGribReadInterpolate_data()
 {
   QTest::addColumn<Pos>("pos");
   QTest::addColumn<float>("speed");
@@ -154,7 +213,7 @@ void GribTest::testGribReadInterpolate_data()
 
 }
 
-void GribTest::testGribReadInterpolate()
+void WindTest::testGribReadInterpolate()
 {
   QFETCH(Pos, pos);
   QFETCH(float, speed);
@@ -168,31 +227,31 @@ void GribTest::testGribReadInterpolate()
   // QCOMPARE(atools::almostEqual(wind.speed, wind2.speed, 0.5f), true);
 }
 
-void GribTest::testGribReadNoGrib()
+void WindTest::testGribReadNoGrib()
 {
   GribReader reader;
   QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readFile("testdata/add-on.xml"));
 }
 
-void GribTest::testGribReadNoFile()
+void WindTest::testGribReadNoFile()
 {
   GribReader reader;
   QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readFile(QString()));
 }
 
-void GribTest::testGribReadNoData()
+void WindTest::testGribReadNoData()
 {
   GribReader reader;
   QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readData(QByteArray()));
 }
 
-void GribTest::testGribReadInvalidFile()
+void WindTest::testGribReadInvalidFile()
 {
   GribReader reader;
   QVERIFY_THROWS_EXCEPTION(atools::Exception, reader.readFile("testdata/global_turbulence.grib"));
 }
 
-void GribTest::testGribWindLineStringQuery_data()
+void WindTest::testGribWindLineStringQuery_data()
 {
   QTest::addColumn<LineString>("line");
   QTest::addColumn<float>("speed"); // knots
@@ -218,7 +277,7 @@ void GribTest::testGribWindLineStringQuery_data()
 
 }
 
-void GribTest::testGribWindLineStringQuery()
+void WindTest::testGribWindLineStringQuery()
 {
   QFETCH(LineString, line);
   QFETCH(float, speed);
@@ -237,7 +296,7 @@ void GribTest::testGribWindLineStringQuery()
   // QCOMPARE(wind.dir, dir);
 }
 
-void GribTest::testGribWindRectQuery_data()
+void WindTest::testGribWindRectQuery_data()
 {
   QTest::addColumn<Rect>("rect");
   QTest::addColumn<float>("alt");
@@ -285,7 +344,7 @@ void GribTest::testGribWindRectQuery_data()
   /* *INDENT-ON* */
 }
 
-void GribTest::testGribWindRectQuery()
+void WindTest::testGribWindRectQuery()
 {
   QFETCH(Rect, rect);
   QFETCH(float, alt);
@@ -315,7 +374,7 @@ void GribTest::testGribWindRectQuery()
   }
 }
 
-void GribTest::testGribDownload()
+void WindTest::testGribDownload()
 {
   GribDownloader downloader(this, verbose);
 
@@ -348,7 +407,7 @@ void GribTest::testGribDownload()
   lnmDatasetTest(testdatasets, downloader.getDatetime());
 }
 
-void GribTest::testGribDownloadFail()
+void WindTest::testGribDownloadFail()
 {
   GribDownloader downloader(this, verbose);
 
@@ -379,7 +438,7 @@ void GribTest::testGribDownloadFail()
   QCOMPARE(testdatasets.size(), 0);
 }
 
-void GribTest::testGribLoadWinds()
+void WindTest::testGribLoadWinds()
 {
   GribReader reader(verbose);
   reader.readFile("testdata/global_winds.grib");
@@ -416,7 +475,7 @@ void GribTest::testGribLoadWinds()
   QCOMPARE(datasets.at(3).getDatetime(), QDateTime(QDate(2019, 04, 21), QTime(6, 0, 0), QTimeZone::UTC));
 }
 
-void GribTest::testGribLoadLnm()
+void WindTest::testGribLoadLnm()
 {
   GribReader reader(verbose);
   // https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?file=gfs.t06z.pgrb2.1p00.anl&lev_200_mb=on&lev_300_mb=on&lev_450_mb=on&lev_700_mb=on&var_UGRD=on&var_VGRD=on&dir=%2Fgfs.2019042606
@@ -425,7 +484,7 @@ void GribTest::testGribLoadLnm()
   lnmDatasetTest(reader.getDatasets(), QDateTime(QDate(2019, 04, 27), QTime(6, 0, 0), QTimeZone::UTC));
 }
 
-void GribTest::lnmDatasetTest(const atools::grib::GribDatasetList& datasets, const QDateTime& datetime)
+void WindTest::lnmDatasetTest(const atools::grib::GribDatasetList& datasets, const QDateTime& datetime)
 {
   QCOMPARE(datasets.size(), 10);
 

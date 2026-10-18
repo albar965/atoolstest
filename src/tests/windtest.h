@@ -15,30 +15,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef ATOOLSTEST_METARTEST_H
-#define ATOOLSTEST_METARTEST_H
+#ifndef ATOOLSTEST_WINDTEST_H
+#define ATOOLSTEST_WINDTEST_H
+
+#include "grib/gribcommon.h"
+
+namespace atools {
+namespace grib {
+class WindQuery;
+}
+}
 
 #include <QString>
 #include <QtTest>
 
-namespace atools {
-
-namespace fs {
-namespace weather {
-
-class Metar;
-class WeatherDownloadBase;
-}
-}
-}
-
-class MetarTest :
+class WindTest :
   public QObject
 {
   Q_OBJECT
 
 public:
-  MetarTest();
+  WindTest();
 
   static void runtest(int argc, char *argv[]);
 
@@ -46,29 +43,37 @@ private slots:
   void initTestCase();
   void cleanupTestCase();
 
-  void testVatsimDownload();
-  void testVatsimDownloadFailed();
+  void testLoadSpecialCharPath();
+  void testLoadXp12();
 
-  void testIvaoRead();
-  void testIvaoDownload();
-  void testIvaoDownloadFailed();
-  void testNoaaDownload();
-  void testNoaaDownloadFailed();
-  void testNoaaDownloadFailedNoHost();
+  void testGribReadTest_data();
+  void testGribReadTest();
+  void testGribReadInterpolate_data();
+  void testGribReadInterpolate();
 
-  void testMetarAsn();
-  void testMetarSim();
-  void testMetarInterpolatedSimple();
+  void testGribReadNoGrib();
+  void testGribReadNoFile();
+  void testGribReadNoData();
+  void testGribReadInvalidFile();
 
-  void testMetarInterpolated();
+  void testGribWindLineStringQuery_data();
+  void testGribWindLineStringQuery();
+
+  void testGribDownload();
+  void testGribDownloadFail();
+  void testGribLoadLnm();
+  void testGribLoadWinds();
+
+  void testGribWindRectQuery_data();
+  void testGribWindRectQuery();
 
 private:
-  void testDownload(atools::fs::weather::WeatherDownloadBase& downloader, bool expectFail);
-  void validateMetar(const atools::fs::weather::Metar& m,
-                     const QString& stationFlightRules, const QString& stationMetar,
-                     const QString& nearestFlightRules, const QString& nearestMetar,
-                     const QString& interpolatedFlightRules, const QString& interpolatedMetar);
+  void lnmDatasetTest(const atools::grib::GribDatasetList& datasets, const QDateTime& datetime);
+
+  bool verbose = false;
+
+  atools::grib::WindQuery *queryLnm = nullptr, *queryXp11 = nullptr, *queryXp12 = nullptr;
 
 };
 
-#endif // ATOOLSTEST_METARTEST_H
+#endif // ATOOLSTEST_WINDTEST_H
