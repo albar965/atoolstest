@@ -49,7 +49,7 @@
 # =============================================================================
 
 # Define program version here VERSION_NUMBER_TODO
-VERSION_NUMBER=4.2.1.beta
+VERSION_NUMBER=4.2.3.beta
 
 QT += sql xml core widgets testlib network
 QT -= gui
