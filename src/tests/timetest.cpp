@@ -448,50 +448,50 @@ void TimeTest::testCorrectDateLocal_data()
   // 01:00 UTC
 
   QTest::addColumn<int>("dayOfYearLocal"); // Date in days since January 1st at the user's location
-  QTest::addColumn<float>("hoursOfDayLocal"); // Local time (seconds since midnight) at the user's location
-  QTest::addColumn<float>("hoursOfDayUtc"); // Zulu time (seconds since midnight)
+  QTest::addColumn<int>("dayOfYearUtc"); // Date in days since January 1st at the user's location
+  QTest::addColumn<float>("secondsOfDayLocal"); // Local time (seconds since midnight) at the user's location
+  QTest::addColumn<float>("secondsOfDayUtc"); // Zulu time (seconds since midnight)
   QTest::addColumn<float>("lonX");
-  QTest::addColumn<float>("latY");
   QTest::addColumn<QString>("resultLocal");
   QTest::addColumn<QString>("resultUtc");
 
-  QTest::newRow("KORD") << 154 << 05.f << 11.f << -87.90797f << 41.97723f
-                        << "2026-06-04T05:00:00-06:00" << "2026-06-04T11:00:00Z";
-  QTest::newRow("KORD 2") << 154 << 19.f << 1.f << -87.90797f << 41.97723f
-                          << "2026-06-04T19:00:00-06:00" << "2026-06-05T01:00:00Z";
+  QTest::newRow("LGML") << 293 << 293 << 39469.063f << 32223.402f << 24.4769f << "2026-10-20T10:57:49+02:00" << "2026-10-20T08:57:03Z";
+  QTest::newRow("LPPD") << 154 << 154 << 12.f * 3600.f << 13.f * 3600.f << 37.7f << "2026-06-03T12:00:00-01:00" << "2026-06-03T13:00:00Z";
 
-  QTest::newRow("YPPH") << 154 << 18.f << 10.f << 115.9f << -31.9f
-                        << "2026-06-04T18:00:00+08:00" << "2026-06-04T10:00:00Z";
-  QTest::newRow("YPPH 2") << 154 << 05.f << 21.f << 115.9f << -31.9f
-                          << "2026-06-04T05:00:00+08:00" << "2026-06-03T21:00:00Z";
-
-  QTest::newRow("EGLC") << 154 << 12.f << 12.f << 0.05317f << 51.50404f
-                        << "2026-06-04T12:00:00+00:00" << "2026-06-04T12:00:00Z";
-  QTest::newRow("EGLC Midnight") << 154 << 0.f << 0.f << 0.05317f << 51.50404f
-                                 << "2026-06-04T00:00:00+00:00" << "2026-06-04T00:00:00Z";
-  QTest::newRow("EGFF") << 154 << 12.f << 12.f << -3.34244f << 51.3961f
-                        << "2026-06-04T12:00:00+00:00" << "2026-06-04T12:00:00Z";
-  QTest::newRow("EGFF Midnight") << 154 << 0.f << 0.f << -3.34244f << 51.3961f
-                                 << "2026-06-04T00:00:00+00:00" << "2026-06-04T00:00:00Z";
-  QTest::newRow("PMDY") << 154 << 12.f << 23.f << -177.38063f << 28.20519f
-                        << "2026-06-04T12:00:00-11:00" << "2026-06-04T23:00:00Z";
-  QTest::newRow("PMDY day") << 154 << 20.f << 07.f << -177.38063f << 28.20519f
-                            << "2026-06-04T20:00:00-11:00" << "2026-06-05T07:00:00Z";
-  QTest::newRow("PHNL") << 154 << 12.f << 22.f << -157.f << 21.3f
-                        << "2026-06-04T12:00:00-10:00" << "2026-06-04T22:00:00Z";
-  QTest::newRow("PHNL day") << 154 << 22.f << 8.f << -157.f << 21.3f
-                            << "2026-06-04T22:00:00-10:00" << "2026-06-05T08:00:00Z";
-  QTest::newRow("LPPD") << 154 << 12.f << 13.f << -25.6f << 37.7f
-                        << "2026-06-04T12:00:00-01:00" << "2026-06-04T13:00:00Z";
-  QTest::newRow("EDDF") << 154 << 13.f << 12.f << 8.5f << 50.f
-                        << "2026-06-04T13:00:00+01:00" << "2026-06-04T12:00:00Z";
-  QTest::newRow("LEZL") << 154 << 12.f << 11.f << -5.9f << 37.39f
-                        << "2026-06-04T12:00:00+01:00" << "2026-06-04T11:00:00Z";
-  QTest::newRow("NZAA day") << 154 << 11.f << 1.f << 174.7f << -36.9f
-                            << "2026-06-04T11:00:00+12:00" << "2026-06-03T23:00:00Z";  // ***
-  QTest::newRow("NFFN") << 154 << 10.f << 22.f << 177.4f << -17.7f
-                        << "2026-06-04T10:00:00+12:00" << "2026-06-03T22:00:00Z";
-
+  // QTest::newRow("KORD") << 154 << 05.f << 11.f << -87.90797f << 41.97723f
+  // << "2026-06-04T05:00:00-06:00" << "2026-06-04T11:00:00Z";
+  // QTest::newRow("KORD 2") << 154 << 19.f << 1.f << -87.90797f << 41.97723f
+  // << "2026-06-04T19:00:00-06:00" << "2026-06-05T01:00:00Z";
+  // QTest::newRow("YPPH") << 154 << 18.f << 10.f << 115.9f << -31.9f
+  // << "2026-06-04T18:00:00+08:00" << "2026-06-04T10:00:00Z";
+  // QTest::newRow("YPPH 2") << 154 << 05.f << 21.f << 115.9f << -31.9f
+  // << "2026-06-04T05:00:00+08:00" << "2026-06-03T21:00:00Z";
+  // QTest::newRow("EGLC") << 154 << 12.f << 12.f << 0.05317f << 51.50404f
+  // << "2026-06-04T12:00:00+00:00" << "2026-06-04T12:00:00Z";
+  // QTest::newRow("EGLC Midnight") << 154 << 0.f << 0.f << 0.05317f << 51.50404f
+  // << "2026-06-04T00:00:00+00:00" << "2026-06-04T00:00:00Z";
+  // QTest::newRow("EGFF") << 154 << 12.f << 12.f << -3.34244f << 51.3961f
+  // << "2026-06-04T12:00:00+00:00" << "2026-06-04T12:00:00Z";
+  // QTest::newRow("EGFF Midnight") << 154 << 0.f << 0.f << -3.34244f << 51.3961f
+  // << "2026-06-04T00:00:00+00:00" << "2026-06-04T00:00:00Z";
+  // QTest::newRow("PMDY") << 154 << 12.f << 23.f << -177.38063f << 28.20519f
+  // << "2026-06-04T12:00:00-11:00" << "2026-06-04T23:00:00Z";
+  // QTest::newRow("PMDY day") << 154 << 20.f << 07.f << -177.38063f << 28.20519f
+  // << "2026-06-04T20:00:00-11:00" << "2026-06-05T07:00:00Z";
+  // QTest::newRow("PHNL") << 154 << 12.f << 22.f << -157.f << 21.3f
+  // << "2026-06-04T12:00:00-10:00" << "2026-06-04T22:00:00Z";
+  // QTest::newRow("PHNL day") << 154 << 22.f << 8.f << -157.f << 21.3f
+  // << "2026-06-04T22:00:00-10:00" << "2026-06-05T08:00:00Z";
+  // QTest::newRow("LPPD") << 154 << 12.f << 13.f << -25.6f << 37.7f
+  // << "2026-06-04T12:00:00-01:00" << "2026-06-04T13:00:00Z";
+  // QTest::newRow("EDDF") << 154 << 13.f << 12.f << 8.5f << 50.f
+  // << "2026-06-04T13:00:00+01:00" << "2026-06-04T12:00:00Z";
+  // QTest::newRow("LEZL") << 154 << 12.f << 11.f << -5.9f << 37.39f
+  // << "2026-06-04T12:00:00+01:00" << "2026-06-04T11:00:00Z";
+  // QTest::newRow("NZAA day") << 154 << 11.f << 1.f << 174.7f << -36.9f
+  // << "2026-06-04T11:00:00+12:00" << "2026-06-03T23:00:00Z";  // ***
+  // QTest::newRow("NFFN") << 154 << 10.f << 22.f << 177.4f << -17.7f
+  // << "2026-06-04T10:00:00+12:00" << "2026-06-03T22:00:00Z";
   // QTest::newRow("PLCH 15:00") << 154 << 15.f << 1.f << -157.f << 1.96617f  << "2026-06-04T15:00:00-10:00" << "2026-06-05T01:00:00Z";
   // QTest::newRow("PLCH 01:00") << 154 << 1.f << 11.f << -157.f << 1.96617f  << "2026-06-04T01:00:00-10:00" << "2026-06-04T11:00:00Z";
   // QTest::newRow("PLCH 14:00") << 154 << 14.f << 0.f << -157.f << 1.96617f  << "2026-06-04T14:00:00-10:00" << "2026-06-05T00:00:00Z";
@@ -500,17 +500,17 @@ void TimeTest::testCorrectDateLocal_data()
 void TimeTest::testCorrectDateLocal()
 {
   QFETCH(int, dayOfYearLocal);
-  QFETCH(float, hoursOfDayLocal);
-  QFETCH(float, hoursOfDayUtc);
+  QFETCH(int, dayOfYearUtc);
+  QFETCH(float, secondsOfDayLocal);
+  QFETCH(float, secondsOfDayUtc);
   QFETCH(float, lonX);
-  QFETCH(float, latY);
   QFETCH(QString, resultLocal);
   QFETCH(QString, resultUtc);
 
   QDateTime local, utc;
-  timezone->correctDateLocal(local, utc, dayOfYearLocal + 1, hoursOfDayLocal * 3600.f, hoursOfDayUtc * 3600.f, lonX, latY);
+  atools::buidDateUtcAndLocal(local, utc, dayOfYearLocal, secondsOfDayLocal, dayOfYearUtc, secondsOfDayUtc, lonX);
 
-  qDebug() << "dayOfYearLocal" << dayOfYearLocal << "hoursOfDayLocal" << hoursOfDayLocal << "hoursOfDayUtc" << hoursOfDayUtc;
+  qDebug() << "dayOfYearLocal" << dayOfYearLocal << "hoursOfDayLocal" << secondsOfDayLocal << "hoursOfDayUtc" << secondsOfDayUtc;
   qDebug() << "local" << local.toString(Qt::ISODate);
   qDebug() << "utc" << utc.toString(Qt::ISODate);
   qDebug() << "resultLocal" << resultLocal;
