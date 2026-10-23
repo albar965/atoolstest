@@ -447,6 +447,16 @@ void TimeTest::testCorrectDateLocal_data()
   // 19:00 local
   // 01:00 UTC
 
+  // LNM: 20.10.2026 09:49 UTC Sim: 8:49 UTC Local 11:50 LNM 11:49 UTC+02
+  // sim/time/zulu_time_sec 32223.402
+  // sim/time/zulu_date_days 293
+  // sim/time/local_time_sec 39469.063
+  // sim/time/local_date_days 293
+  // 10:58 local
+  // 8:57 UTC
+  // WX before 11 h 16 min LNM LGPA 202350Z AUTO 02004KT //// // ////// 15/11 Q1024 RE//
+  // WX should be LGML 210902
+
   QTest::addColumn<int>("dayOfYearLocal"); // Date in days since January 1st at the user's location
   QTest::addColumn<int>("dayOfYearUtc"); // Date in days since January 1st at the user's location
   QTest::addColumn<float>("secondsOfDayLocal"); // Local time (seconds since midnight) at the user's location
@@ -455,8 +465,8 @@ void TimeTest::testCorrectDateLocal_data()
   QTest::addColumn<QString>("resultLocal");
   QTest::addColumn<QString>("resultUtc");
 
-  QTest::newRow("LGML") << 293 << 293 << 39469.063f << 32223.402f << 24.4769f << "2026-10-20T10:57:49+02:00" << "2026-10-20T08:57:03Z";
-  QTest::newRow("LPPD") << 154 << 154 << 12.f * 3600.f << 13.f * 3600.f << 37.7f << "2026-06-03T12:00:00-01:00" << "2026-06-03T13:00:00Z";
+  QTest::newRow("LGML") << 293 << 293 << 39469.063f << 32223.402f << 24.4769f << "2026-10-21T10:57:49+02:00" << "2026-10-21T08:57:03Z";
+  QTest::newRow("LPPD") << 154 << 154 << 12.f * 3600.f << 13.f * 3600.f << 37.7f << "2026-06-04T12:00:00-01:00" << "2026-06-04T13:00:00Z";
 
   // QTest::newRow("KORD") << 154 << 05.f << 11.f << -87.90797f << 41.97723f
   // << "2026-06-04T05:00:00-06:00" << "2026-06-04T11:00:00Z";
@@ -508,7 +518,7 @@ void TimeTest::testCorrectDateLocal()
   QFETCH(QString, resultUtc);
 
   QDateTime local, utc;
-  atools::buidDateUtcAndLocal(local, utc, dayOfYearLocal, secondsOfDayLocal, dayOfYearUtc, secondsOfDayUtc, lonX);
+  atools::buildDateUtcAndLocal(local, utc, dayOfYearLocal, secondsOfDayLocal, dayOfYearUtc, secondsOfDayUtc, lonX);
 
   qDebug() << "dayOfYearLocal" << dayOfYearLocal << "hoursOfDayLocal" << secondsOfDayLocal << "hoursOfDayUtc" << secondsOfDayUtc;
   qDebug() << "local" << local.toString(Qt::ISODate);
