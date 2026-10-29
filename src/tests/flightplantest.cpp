@@ -917,7 +917,7 @@ void FlightplanTest::testSaveGpx()
   for(int i = 0; i < loaded.getTrails().size(); i++)
   {
     for(int j = 0; j < loaded.getTrails().at(i).size(); j++)
-      QCOMPARE(loaded.getTrails().at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
+      QCOMPARE(loaded.getTrails().at(i).at(j).getPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
   }
 
   gpxio.saveGpx(OUTPUT + QDir::separator() + "result_flightplan_loaded.gpx", loaded);
@@ -933,7 +933,7 @@ void FlightplanTest::testSaveGpx()
   for(int i = 0; i < loaded.getTrails().size(); i++)
   {
     for(int j = 0; j < loaded.getTrails().at(i).size(); j++)
-      QCOMPARE(loaded.getTrails().at(i).at(j).pos.asPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
+      QCOMPARE(loaded.getTrails().at(i).at(j).getPos().almostEqual(tracks.at(i).at(j), 0.000001f), true);
   }
 }
 

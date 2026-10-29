@@ -98,19 +98,22 @@ void WeatherTest::testXpWeatherReader()
   }, nullptr);
 
   QDateTime datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-10-20-12.00.txt");
-  reader.simulatorTimeUpdated(datetime);
+  reader.setWeatherDatetimeCurrent(datetime);
+  reader.simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
                "EDDM 010850Z AUTO VRB02KT CAVOK 18/13 Q1024 NOSIG");
 
   datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-09-05-12.00.txt");
-  reader.simulatorTimeUpdated(datetime);
+  reader.setWeatherDatetimeCurrent(datetime);
+  reader.simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
                "EDDM 262350Z AUTO 00000KT CAVOK 06/06 Q1024 NOSIG");
 
   datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-09-29-14.00.txt");
-  reader.simulatorTimeUpdated(datetime);
+  reader.setWeatherDatetimeCurrent(datetime);
+  reader.simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
                "EDDM 291350Z AUTO 08007KT 050V110 CAVOK 24/11 Q1022 NOSIG");
@@ -126,7 +129,8 @@ void WeatherTest::testXpWeatherReader()
                "EDDN 291350Z AUTO VRB02KT CAVOK 26/09 Q1021 NOSIG");
 
   datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-09-29-05.15.txt");
-  reader.simulatorTimeUpdated(datetime);
+  reader.setWeatherDatetimeCurrent(datetime);
+  reader.simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   compareMetar(reader.getXplaneMetar("EDDM", atools::geo::Pos(11.7894306182861, 48.3521003723145)),
                "EDDM 290450Z AUTO 08002KT 0600 0250 R08L/0600D R08R/P2000N FG NCD 05/05 Q1022 TEMPO 6000");
@@ -142,7 +146,8 @@ void WeatherTest::testXpWeatherReader()
                "EDDN 290450Z AUTO 08001KT CAVOK 10/08 Q1022");
 
   datetime = atools::fs::util::xpMetarFilenameToDateTime("metar-2026-10-01-04.00.txt");
-  reader.simulatorTimeUpdated(datetime);
+  reader.setWeatherDatetimeCurrent(datetime);
+  reader.simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   compareMetar(reader.getXplaneMetar("EDDB", atools::geo::Pos(13.5006723403931, 52.362247467041)),
                "EDDB 010350Z AUTO 12008KT CAVOK 15/09 Q1022 NOSIG");
