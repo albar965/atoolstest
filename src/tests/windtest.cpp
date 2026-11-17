@@ -100,7 +100,8 @@ void WindTest::testLoadXp12()
   // GRIB-2026-10-01-21.00-ZULU-wind.grib
 
   QDateTime from, to, datetime = atools::fs::util::xpGribFilenameToDateTime("GRIB-2026-09-01-12.00-ZULU-wind.grib");
-  queryXp12->simulatorTimeUpdated(datetime);
+  queryXp12->setWeatherDatetimeCurrent(datetime);
+  queryXp12->simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   atools::grib::Wind wind = queryXp12->getWindForPos(Pos(0.f, 0.f, 0.f));
   qDebug() << Q_FUNC_INFO << QFileInfo(queryXp12->getCurrentGribFile()).fileName();
@@ -109,7 +110,8 @@ void WindTest::testLoadXp12()
   QCOMPARE(QFileInfo(queryXp12->getCurrentGribFile()).fileName(), "GRIB-2026-09-27-00.00-ZULU-wind.grib");
 
   datetime = atools::fs::util::xpGribFilenameToDateTime("GRIB-2026-10-20-12.00-ZULU-wind.grib");
-  queryXp12->simulatorTimeUpdated(datetime);
+  queryXp12->setWeatherDatetimeCurrent(datetime);
+  queryXp12->simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   wind = queryXp12->getWindForPos(Pos(0.f, 0.f, 0.f));
   queryXp12->getValidity(from, to);
@@ -117,7 +119,8 @@ void WindTest::testLoadXp12()
   QCOMPARE(QFileInfo(queryXp12->getCurrentGribFile()).fileName(), "GRIB-2026-10-01-21.00-ZULU-wind.grib");
 
   datetime = atools::fs::util::xpGribFilenameToDateTime("GRIB-2026-09-29-12.00-ZULU-wind.grib");
-  queryXp12->simulatorTimeUpdated(datetime);
+  queryXp12->setWeatherDatetimeCurrent(datetime);
+  queryXp12->simulatorTimeUpdated();
   qDebug() << Q_FUNC_INFO << datetime;
   wind = queryXp12->getWindForPos(Pos(0.f, 0.f, 0.f));
   queryXp12->getValidity(from, to);
